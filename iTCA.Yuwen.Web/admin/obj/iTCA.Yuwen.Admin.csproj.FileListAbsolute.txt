@@ -1,0 +1,7 @@
+D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\Admin\bin\iTCA.Yuwen.Admin.dll
+D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\Admin\bin\iTCA.Yuwen.Admin.pdb
+D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\Admin\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\Admin\obj\Debug\iTCA.Yuwen.Admin.dll
+D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\Admin\obj\Debug\iTCA.Yuwen.Admin.pdb
+D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\bin\iTCA.Yuwen.Admin.dll
+D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\bin\iTCA.Yuwen.Admin.pdb

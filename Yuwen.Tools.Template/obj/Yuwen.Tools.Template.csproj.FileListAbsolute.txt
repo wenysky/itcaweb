@@ -1,0 +1,10 @@
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\bin\Debug\Yuwen.Tools.Template.dll
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\bin\Debug\Yuwen.Tools.Template.pdb
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\obj\Debug\Yuwen.Tools.Template.dll
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\obj\Debug\Yuwen.Tools.Template.pdb
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\bin\Release\Yuwen.Tools.Template.dll
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\bin\Release\Yuwen.Tools.Template.pdb
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\obj\Release\ResolveAssemblyReference.cache
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\obj\Release\Yuwen.Tools.Template.dll
+D:\Documents\DotNet\CvsPlace\itca\Yuwen.Tools.Template\obj\Release\Yuwen.Tools.Template.pdb
