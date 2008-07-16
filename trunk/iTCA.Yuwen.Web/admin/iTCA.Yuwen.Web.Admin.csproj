@@ -1,15 +1,16 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CB76ACA5-6080-4DDF-91A4-5A9C97557265}</ProjectGuid>
+    <ProjectGuid>{26190AC0-EE8A-426A-8DB1-6EA001FDE93E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>iTCA.Yuwen.Web.Admin</RootNamespace>
     <AssemblyName>iTCA.Yuwen.Web.Admin</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminPage.cs">
@@ -60,13 +65,6 @@
     <Compile Include="dbcontrol.aspx.designer.cs">
       <DependentUpon>dbcontrol.aspx</DependentUpon>
     </Compile>
-    <Compile Include="deleteadmin.aspx.cs">
-      <DependentUpon>deleteadmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="deleteadmin.aspx.designer.cs">
-      <DependentUpon>deleteadmin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -74,9 +72,16 @@
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
+    <Compile Include="deleteadmin.aspx.cs">
+      <DependentUpon>deleteadmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="deleteadmin.aspx.designer.cs">
+      <DependentUpon>deleteadmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -98,9 +103,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Main.css" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ABlist.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AEditadmin.aspx" />
@@ -116,14 +118,16 @@
     <Content Include="BReply.aspx" />
     <Content Include="columnlist.aspx" />
     <Content Include="dbcontrol.aspx" />
+    <Content Include="default.aspx" />
     <Content Include="deleteadmin.aspx" />
     <Content Include="ftb.colorpicker.aspx" />
     <Content Include="ftb.imagegallery.aspx" />
     <Content Include="ftb.inserttable.aspx" />
-    <Content Include="default.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Main.css" />
     <Content Include="postarticle.aspx" />
     <Content Include="template.aspx" />
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\iTCA.Yuwen.Core\iTCA.Yuwen.Core.csproj">
@@ -148,7 +152,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -162,10 +166,11 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1384</DevelopmentServerPort>
+          <DevelopmentServerPort>1120</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://www.itca.com/admin/</IISUrl>
+          <IISUrl>http://www.dev7.com/itca/admin</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
