@@ -56,7 +56,7 @@ namespace Yuwen.Tools
                 if (Regex.IsMatch(requestPath, url.Pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase))
                 {
                     string newUrl = Regex.Replace(requestPath, url.Pattern, url.QueryString, RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                    context.RewritePath("/" + url.Page, string.Empty, newUrl);
+                    context.RewritePath(requestPath.Substring(0, context.Request.Path.LastIndexOf("/")) + "/" + url.Page, string.Empty, newUrl);//requestPath.Substring(0, context.Request.Path.LastIndexOf("/")),解决非根目录的虚拟目录问题
                     return;
                 }
             }
@@ -76,7 +76,7 @@ namespace Yuwen.Tools
         private static object lockHelper = new object();
         private static volatile SiteUrls instance = null;
 
-        string SiteUrlsFile = HttpContext.Current.Server.MapPath("/config/urls.config");
+        string SiteUrlsFile = HttpContext.Current.Server.MapPath("~/config/urls.config");
         private System.Collections.ArrayList _Urls;
         public System.Collections.ArrayList Urls
         {
