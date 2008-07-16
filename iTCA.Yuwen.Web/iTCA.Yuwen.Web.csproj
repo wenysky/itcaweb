@@ -1,15 +1,16 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4258E845-D517-4A01-876E-A668B78EED9F}</ProjectGuid>
+    <ProjectGuid>{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>iTCA.Yuwen.Web</RootNamespace>
     <AssemblyName>iTCA.Yuwen.Web</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,41 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="App_Code, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\pulish\bak_2008-06-27\bin\App_Code.dll</HintPath>
-    </Reference>
-    <Reference Include="App_Web_ewwuxgiv, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\pulish\bak_2008-06-27\bin\App_Web_ewwuxgiv.dll</HintPath>
-    </Reference>
-    <Reference Include="App_Web_ophbiy_p, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\pulish\bak_2008-06-27\bin\App_Web_ophbiy_p.dll</HintPath>
-    </Reference>
-    <Reference Include="App_Web_ru5tvrvv, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\pulish\bak_2008-06-27\bin\App_Web_ru5tvrvv.dll</HintPath>
-    </Reference>
-    <Reference Include="App_Web_s0wfswid, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\pulish\bak_2008-06-27\bin\App_Web_s0wfswid.dll</HintPath>
-    </Reference>
-    <Reference Include="FreeTextBox, Version=1.6.3.26073, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\pulish\bak_2008-06-27\bin\FreeTextBox.dll</HintPath>
-    </Reference>
+    <Reference Include="App_Code, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite, Version=1.0.49.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="ann.aspx.cs">
+      <DependentUpon>ann.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -107,14 +89,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="config\urls.config" />
-    <Content Include="index.aspx" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="ann.aspx" />
+    <Content Include="App_Data\db.mdb">
+    </Content>
+    <Content Include="App_Data\information.txt" />
     <Content Include="book\agree.aspx" />
     <Content Include="book\chgpwd.aspx" />
     <Content Include="book\find.aspx" />
     <Content Include="book\frame.css" />
+    <Content Include="book\header.html" />
     <Content Include="book\index.aspx" />
     <Content Include="book\itca.css" />
     <Content Include="book\left.html" />
@@ -128,7 +111,10 @@
     <Content Include="book\Ucpm.aspx" />
     <Content Include="book\user.aspx" />
     <Content Include="book\UTitle.aspx" />
-    <Content Include="config\db.config" />
+    <Content Include="code.aspx" />
+    <Content Include="config\sql.txt" />
+    <Content Include="config\sqlite.txt" />
+    <Content Include="db.txt" />
     <Content Include="editor\langs\zh.js" />
     <Content Include="editor\plugins\advhr\css\advhr.css" />
     <Content Include="editor\plugins\advhr\editor_plugin.js" />
@@ -368,6 +354,13 @@
     <Content Include="images\cms\total05.jpg" />
     <Content Include="images\cms\total06.jpg" />
     <Content Include="images\cms\total07.jpg" />
+    <Content Include="images\face\1.GIF" />
+    <Content Include="images\face\2.gif" />
+    <Content Include="images\face\3.gif" />
+    <Content Include="images\face\4.GIF" />
+    <Content Include="images\face\5.gif" />
+    <Content Include="images\face\men.ico" />
+    <Content Include="images\face\women.ico" />
     <Content Include="images\footer.gif" />
     <Content Include="images\index\banner1.gif" />
     <Content Include="images\index\default01.jpg" />
@@ -403,6 +396,7 @@
     <Content Include="include\header.html" />
     <Content Include="include\header_fr_book.html" />
     <Content Include="include\header_fr_oth.html" />
+    <Content Include="index.aspx" />
     <Content Include="news.aspx" />
     <Content Include="other\Connection.html" />
     <Content Include="other\cul.html" />
@@ -442,27 +436,41 @@
     <Content Include="other\orgshow.html" />
     <Content Include="showarticle.aspx" />
     <Content Include="showcolumn.aspx" />
+    <Content Include="templates\ann.htm" />
     <Content Include="templates\css\itca.css" />
     <Content Include="templates\index.htm" />
     <Content Include="templates\news.htm" />
     <Content Include="templates\showarticle.htm" />
     <Content Include="templates\showcolumn.htm" />
+    <Content Include="templates\simple\ann.htm" />
+    <Content Include="templates\simple\index.htm" />
+    <Content Include="templates\simple\news.htm" />
+    <Content Include="templates\simple\showarticle.htm" />
+    <Content Include="templates\simple\showcolumn.htm" />
     <Content Include="templates\_footer.htm" />
     <Content Include="templates\_header.htm" />
     <Content Include="templates\_indexfooter.htm" />
+    <Content Include="upload\2008\06\25\339585628106.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config\db.config" />
+    <Content Include="config\urls.config" />
+    <Content Include="config\复件 %282%29 db.config" />
+    <Content Include="config\复件 db.config" />
+    <None Include="images\act\CVS\Entries" />
+    <None Include="images\act\CVS\Entries.Extra" />
+    <None Include="images\act\CVS\Entries.Extra.Old" />
+    <None Include="images\act\CVS\Entries.Old" />
+    <None Include="images\act\CVS\Repository" />
+    <None Include="images\act\CVS\Root" />
+    <Content Include="include\itca.Master" />
+    <None Include="other\org.files\vml_1.emz" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iTCA.Yuwen.Core\iTCA.Yuwen.Core.csproj">
       <Project>{1C1A6FB6-3170-4BAB-B500-325E811410E6}</Project>
       <Name>iTCA.Yuwen.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iTCA.Yuwen.Data.Sqlite\iTCA.Yuwen.Data.Sqlite.csproj">
-      <Project>{4A8CE0EA-DBAD-468D-9B99-8A8092A207AB}</Project>
-      <Name>iTCA.Yuwen.Data.Sqlite</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\iTCA.Yuwen.Data\iTCA.Yuwen.Data.csproj">
-      <Project>{9BF72E25-3096-4F3D-9C99-F7F619B6B5CA}</Project>
-      <Name>iTCA.Yuwen.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\iTCA.Ywen.Entity\iTCA.Yuwen.Entity.csproj">
       <Project>{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}</Project>
@@ -472,32 +480,9 @@
       <Project>{5B2EE769-84C8-4F9A-8A35-5375C4A77BC3}</Project>
       <Name>Yuwen.Tools.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Yuwen.Tools.TinyCache\Yuwen.Tools.TinyCache.csproj">
-      <Project>{F3D83379-DBB2-4911-8981-F165152EE0CA}</Project>
-      <Name>Yuwen.Tools.TinyCache</Name>
-    </ProjectReference>
-    <ProjectReference Include="Admin\iTCA.Yuwen.Web.Admin.csproj">
-      <Project>{CB76ACA5-6080-4DDF-91A4-5A9C97557265}</Project>
-      <Name>iTCA.Yuwen.Web.Admin</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\db.mdb">
-    </Content>
-    <Content Include="App_Data\information.txt" />
-    <Content Include="code.aspx" />
-    <Content Include="images\face\1.GIF" />
-    <Content Include="images\face\2.gif" />
-    <Content Include="images\face\3.gif" />
-    <Content Include="images\face\4.GIF" />
-    <Content Include="images\face\5.gif" />
-    <Content Include="images\face\men.ico" />
-    <Content Include="images\face\women.ico" />
-    <Content Include="include\itca.Master" />
-    <None Include="other\org.files\vml_1.emz" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -511,10 +496,11 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1030</DevelopmentServerPort>
+          <DevelopmentServerPort>1038</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://www.itca.com/</IISUrl>
+          <IISUrl>http://www.dev7.com/itca</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
