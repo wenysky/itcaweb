@@ -49,6 +49,20 @@
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="GuestBook\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestBook\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestBook\posttopic.aspx.cs">
+      <DependentUpon>posttopic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestBook\posttopic.aspx.designer.cs">
+      <DependentUpon>posttopic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="include\itca.Master.cs">
       <DependentUpon>itca.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -463,8 +477,11 @@
     <None Include="images\act\CVS\Entries.Old" />
     <None Include="images\act\CVS\Repository" />
     <None Include="images\act\CVS\Root" />
+    <Content Include="GuestBook\index.aspx" />
+    <Content Include="GuestBook\posttopic.aspx" />
     <Content Include="include\itca.Master" />
     <None Include="other\org.files\vml_1.emz" />
+    <Content Include="templates\GuestBook\posttopic.htm" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
