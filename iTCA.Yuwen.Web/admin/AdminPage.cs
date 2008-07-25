@@ -7,11 +7,12 @@ namespace iTCA.Yuwen.Web.Admin
     {        
         protected override void OnInit(EventArgs e)
         {
-            //Response.Write("aaaa");
+            /*
             if (Session["Admin"] == null)
             {
                 Response.End();
             }
+             */ 
             base.OnInit(e);
         }
     }
