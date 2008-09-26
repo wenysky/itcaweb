@@ -14,24 +14,23 @@ namespace Yuwen.Tools.Template
 
         static Template()
         {
-
             RegexOptions options = RegexOptions.Compiled;
 
+            //解析模板引用
             r[0] = new Regex(@"<%template ([^\[\]\{\}\s]+)%>", options);
 
+            //解析循环loop
             r[1] = new Regex(@"<%loop ((\(([a-zA-Z]+)\) )?)([^\[\]\{\}\s]+) ([^\[\]\{\}\s]+)%>", options);
-
             r[2] = new Regex(@"<%\/loop%>", options);
 
+            //解析while条件
             r[3] = new Regex(@"<%while ([^\[\]\{\}\s]+)%>", options);
-
             r[4] = new Regex(@"<%\/while ([^\[\]\{\}\s]+)%>", options);
 
+            //解析if..else条件
             r[5] = new Regex(@"<%if (?:\s*)(([^\s]+)((?:\s*)(\|\||\&\&)(?:\s*)([^\s]+))?)(?:\s*)%>", options);
             //r[5] = new Regex(@"<%if ([^\s]+)%>", options);
-
             r[6] = new Regex(@"<%else(( (?:\s*)if (?:\s*)(([^\s]+)((?:\s*)(\|\||\&\&)(?:\s*)([^\s]+))?))?)(?:\s*)%>", options);
-
             r[7] = new Regex(@"<%\/if%>", options);
 
             //解析{var.a}
@@ -76,7 +75,6 @@ namespace Yuwen.Tools.Template
 
             //继承类Inherits
             r[22] = new Regex(@"<%inherits (?:""?)([\s\S]+?)(?:""?)%>", options);
-
         }
 
         
