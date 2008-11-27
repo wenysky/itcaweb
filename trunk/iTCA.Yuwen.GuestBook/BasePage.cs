@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 using System.Web;
-using Yuwen.Tools.TinyData;
+using Natsuhime.TinyData;
 
 namespace iTCA.Yuwen.GuestBook
 {
