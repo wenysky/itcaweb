@@ -70,9 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MyCodes\NConvert\NatsuHime.Tools.TinyData\NatsuHime.Tools.TinyData.csproj">
-      <Project>{5CB1FF30-C7C4-4FAB-B295-6330D2BF988F}</Project>
-      <Name>NatsuHime.Tools.TinyData</Name>
+    <ProjectReference Include="..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">
+      <Project>{67268E9E-AA3B-4D9E-956A-158922DA6B79}</Project>
+      <Name>DeepinSummer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
