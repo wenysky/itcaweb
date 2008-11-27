@@ -130,6 +130,10 @@
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">
+      <Project>{67268E9E-AA3B-4D9E-956A-158922DA6B79}</Project>
+      <Name>DeepinSummer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\iTCA.Yuwen.Core\iTCA.Yuwen.Core.csproj">
       <Project>{1C1A6FB6-3170-4BAB-B500-325E811410E6}</Project>
       <Name>iTCA.Yuwen.Core</Name>
@@ -141,10 +145,6 @@
     <ProjectReference Include="..\..\Yuwen.Tools.Data\Yuwen.Tools.Data.csproj">
       <Project>{5B2EE769-84C8-4F9A-8A35-5375C4A77BC3}</Project>
       <Name>Yuwen.Tools.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Yuwen.Tools.Template\Yuwen.Tools.Template.csproj">
-      <Project>{A96FA384-8E84-4FC0-867D-863E568BB07D}</Project>
-      <Name>Yuwen.Tools.Template</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Yuwen.Tools.TinyCache\Yuwen.Tools.TinyCache.csproj">
       <Project>{F3D83379-DBB2-4911-8981-F165152EE0CA}</Project>
