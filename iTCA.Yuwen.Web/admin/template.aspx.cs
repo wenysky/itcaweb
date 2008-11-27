@@ -1,8 +1,8 @@
 using System;
 using System.Data;
 using System.IO;
-using Yuwen.Tools.Template;
 using System.Collections;
+using Natsuhime;
 
 namespace iTCA.Yuwen.Web.Admin
 {
@@ -74,6 +74,9 @@ namespace iTCA.Yuwen.Web.Admin
 
         protected void btnCreateAll_Click(object sender, EventArgs e)
         {
+            NewTemplate ntp = new NewTemplate("test");
+            ntp.CreateFromFolder(Server.MapPath("~/templates/"), Server.MapPath("~/"));
+            /*
             Hashtable ht = new Hashtable();
             DirectoryInfo dirinfo = new DirectoryInfo(Server.MapPath("~/templates/"));
             Template tp = new Template();
@@ -91,6 +94,7 @@ namespace iTCA.Yuwen.Web.Admin
                 string fullfilename = key.Split('.')[0];
                 tp.CreateTemplate(Server.MapPath("~/"), fullfilename, 1);
             }
+             */
             Response.Write("OK!");
         }
     }
