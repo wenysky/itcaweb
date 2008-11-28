@@ -146,10 +146,6 @@
       <Project>{5B2EE769-84C8-4F9A-8A35-5375C4A77BC3}</Project>
       <Name>Yuwen.Tools.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Yuwen.Tools.TinyCache\Yuwen.Tools.TinyCache.csproj">
-      <Project>{F3D83379-DBB2-4911-8981-F165152EE0CA}</Project>
-      <Name>Yuwen.Tools.TinyCache</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -166,7 +162,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1120</DevelopmentServerPort>
+          <DevelopmentServerPort>17670</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://www.dev7.com/itca/admin</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
