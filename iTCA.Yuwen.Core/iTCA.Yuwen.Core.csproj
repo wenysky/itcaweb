@@ -41,9 +41,7 @@
   <ItemGroup>
     <Compile Include="Articles.cs" />
     <Compile Include="GuestBook.cs" />
-    <Compile Include="Utils\HttpModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />
