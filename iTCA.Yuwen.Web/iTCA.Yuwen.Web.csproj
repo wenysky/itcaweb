@@ -30,7 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="App_Code, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
@@ -53,20 +52,6 @@
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GuestBook\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GuestBook\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GuestBook\posttopic.aspx.cs">
-      <DependentUpon>posttopic.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GuestBook\posttopic.aspx.designer.cs">
-      <DependentUpon>posttopic.aspx</DependentUpon>
-    </Compile>
     <Compile Include="include\itca.Master.cs">
       <DependentUpon>itca.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -82,20 +67,6 @@
       <DependentUpon>news.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="other\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="other\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="other\Links.aspx.cs">
-      <DependentUpon>Links.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="other\Links.aspx.designer.cs">
-      <DependentUpon>Links.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="showarticle.aspx.cs">
       <DependentUpon>showarticle.aspx</DependentUpon>
@@ -108,27 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ann.aspx" />
-    <Content Include="App_Data\db.mdb">
-    </Content>
     <Content Include="App_Data\information.txt" />
-    <Content Include="book\agree.aspx" />
-    <Content Include="book\chgpwd.aspx" />
-    <Content Include="book\find.aspx" />
-    <Content Include="book\frame.css" />
-    <Content Include="book\header.html" />
-    <Content Include="book\index.aspx" />
-    <Content Include="book\itca.css" />
-    <Content Include="book\left.html" />
-    <Content Include="book\Login.aspx" />
-    <Content Include="book\Loginout.aspx" />
-    <Content Include="book\post.aspx" />
-    <Content Include="book\read.aspx" />
-    <Content Include="book\reg.aspx" />
-    <Content Include="book\right.html" />
-    <Content Include="book\UCenter.aspx" />
-    <Content Include="book\Ucpm.aspx" />
-    <Content Include="book\user.aspx" />
-    <Content Include="book\UTitle.aspx" />
     <Content Include="code.aspx" />
     <Content Include="config\sql.txt" />
     <Content Include="config\sqlite.txt" />
@@ -416,42 +367,6 @@
     <Content Include="include\header_fr_oth.html" />
     <Content Include="index.aspx" />
     <Content Include="news.aspx" />
-    <Content Include="other\Connection.html" />
-    <Content Include="other\cul.html" />
-    <Content Include="other\events.html" />
-    <Content Include="other\index.aspx" />
-    <Content Include="other\intr.html" />
-    <Content Include="other\Links.aspx" />
-    <Content Include="other\org.files\arrow.gif" />
-    <Content Include="other\org.files\data.xml" />
-    <Content Include="other\org.files\filelist.xml" />
-    <Content Include="other\org.files\find.js" />
-    <Content Include="other\org.files\frameset.js" />
-    <Content Include="other\org.files\fullpage.gif" />
-    <Content Include="other\org.files\gif_1.gif" />
-    <Content Include="other\org.files\gif_1.html" />
-    <Content Include="other\org.files\gif_1.js" />
-    <Content Include="other\org.files\go.gif" />
-    <Content Include="other\org.files\keys.js" />
-    <Content Include="other\org.files\maximize.gif" />
-    <Content Include="other\org.files\minimize.gif" />
-    <Content Include="other\org.files\minus.gif" />
-    <Content Include="other\org.files\panminus.gif" />
-    <Content Include="other\org.files\panplus.gif" />
-    <Content Include="other\org.files\plus.gif" />
-    <Content Include="other\org.files\tick-foc.gif" />
-    <Content Include="other\org.files\tick-off.gif" />
-    <Content Include="other\org.files\tick-on.gif" />
-    <Content Include="other\org.files\toc.gif" />
-    <Content Include="other\org.files\toc2.gif" />
-    <Content Include="other\org.files\toolbar.html" />
-    <Content Include="other\org.files\visio.css" />
-    <Content Include="other\org.files\vml_1.html" />
-    <Content Include="other\org.files\vml_1.js" />
-    <Content Include="other\org.files\widgets.html" />
-    <Content Include="other\org.files\zoom.html" />
-    <Content Include="other\org.html" />
-    <Content Include="other\orgshow.html" />
     <Content Include="showarticle.aspx" />
     <Content Include="showcolumn.aspx" />
     <Content Include="templates\ann.htm" />
@@ -481,10 +396,7 @@
     <None Include="images\act\CVS\Entries.Old" />
     <None Include="images\act\CVS\Repository" />
     <None Include="images\act\CVS\Root" />
-    <Content Include="GuestBook\index.aspx" />
-    <Content Include="GuestBook\posttopic.aspx" />
     <Content Include="include\itca.Master" />
-    <None Include="other\org.files\vml_1.emz" />
     <Content Include="templates\GuestBook\posttopic.htm" />
     <Content Include="Web.config" />
   </ItemGroup>
