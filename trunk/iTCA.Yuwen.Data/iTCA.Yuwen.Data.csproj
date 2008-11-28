@@ -43,13 +43,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">
+      <Project>{67268E9E-AA3B-4D9E-956A-158922DA6B79}</Project>
+      <Name>DeepinSummer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iTCA.Ywen.Entity\iTCA.Yuwen.Entity.csproj">
       <Project>{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}</Project>
       <Name>iTCA.Yuwen.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Yuwen.Tools.Data\Yuwen.Tools.Data.csproj">
-      <Project>{5B2EE769-84C8-4F9A-8A35-5375C4A77BC3}</Project>
-      <Name>Yuwen.Tools.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

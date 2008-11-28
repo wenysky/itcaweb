@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 using System.Web;
-using Yuwen.Tools.Data;
+using Natsuhime.Data;
 
 namespace iTCA.Yuwen.Web
 {
