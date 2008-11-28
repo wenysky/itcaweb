@@ -3,7 +3,7 @@ using System.Data;
 using System.Web;
 using iTCA.Yuwen.Core;
 using iTCA.Yuwen.Entity;
-using Yuwen.Tools.Data;
+using Natsuhime.Data;
 
 namespace iTCA.Yuwen.Web.Admin
 {

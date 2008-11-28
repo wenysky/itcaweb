@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data;
-using Yuwen.Tools.Data;
+using Natsuhime.Data;
 using iTCA.Yuwen.Entity;
 
 namespace iTCA.Yuwen.Data.Sqlite

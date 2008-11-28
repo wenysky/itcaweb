@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 using System.Reflection;
-using Yuwen.Tools.Data;
+using Natsuhime.Data;
 
 namespace iTCA.Yuwen.Data
 {

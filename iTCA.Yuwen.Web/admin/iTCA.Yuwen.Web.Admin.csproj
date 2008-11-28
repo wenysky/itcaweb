@@ -142,10 +142,6 @@
       <Project>{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}</Project>
       <Name>iTCA.Yuwen.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Yuwen.Tools.Data\Yuwen.Tools.Data.csproj">
-      <Project>{5B2EE769-84C8-4F9A-8A35-5375C4A77BC3}</Project>
-      <Name>Yuwen.Tools.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
