@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using iTCA.Yuwen.Data;
 using System.Data;
-using Yuwen.Tools.TinyCache;
+using Natsuhime;
 using iTCA.Yuwen.Entity;
 
 namespace iTCA.Yuwen.Core

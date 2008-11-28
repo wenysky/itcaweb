@@ -517,7 +517,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1038</DevelopmentServerPort>
+          <DevelopmentServerPort>17667</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://www.dev7.com/itca</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
