@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Data.Sqlite", "i
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Entity", "iTCA.Ywen.Entity\iTCA.Yuwen.Entity.csproj", "{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.GuestBook", "iTCA.Yuwen.GuestBook\iTCA.Yuwen.GuestBook.csproj", "{91A8AF75-56C1-4520-886A-CD15BBEE4385}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Web", "iTCA.Yuwen.Web\iTCA.Yuwen.Web.csproj", "{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Web.Admin", "iTCA.Yuwen.Web\admin\iTCA.Yuwen.Web.Admin.csproj", "{26190AC0-EE8A-426A-8DB1-6EA001FDE93E}"
@@ -45,10 +43,6 @@ Global
 		{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91A8AF75-56C1-4520-886A-CD15BBEE4385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91A8AF75-56C1-4520-886A-CD15BBEE4385}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91A8AF75-56C1-4520-886A-CD15BBEE4385}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91A8AF75-56C1-4520-886A-CD15BBEE4385}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
