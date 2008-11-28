@@ -21,7 +21,7 @@ namespace iTCA.Yuwen.Web
                 System.Web.HttpContext.Current.Response.Write("不存在的文章!");
                 System.Web.HttpContext.Current.Response.End();
             }
-            pagetitle = string.Format("{0} - {1} - iTCA 重庆工学院计算机协会", Utils.RemoveHtml(articleinfo.Title), articleinfo.Columnname);
+            pagetitle = string.Format("{0} - {1} - iTCA 重庆工学院计算机协会", Natsuhime.Utils.RemoveHtml(articleinfo.Title), articleinfo.Columnname);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace iTCA.Yuwen.Web.Admin
             {
                 pageid = 1;
             }
-            pagecounthtml = Utils.GetPageNumbersHtml(pageid, pagecount, string.Format("articlelist.aspx?cid={0}", columnid), 8, "pageid", "");
+            pagecounthtml = Natsuhime.Utils.GetPageNumbersHtml(pageid, pagecount, string.Format("articlelist.aspx?cid={0}", columnid), 8, "pageid", "");
             rptArticleList.DataSource = Articles.GetArticleCollection(columnid, 18, pageid);
             rptArticleList.DataBind();
         }
