@@ -19,7 +19,7 @@ namespace iTCA.Yuwen.Web
         protected override void Page_Show()
         {
             pagetitle = "欢迎来到 iTCA 重庆工学院计算机协会 - iTCA 重庆工学院计算机协会";
-            annlist = Articles.GetArticleCollection(1, 4, 1);
+            annlist = Articles.GetArticleCollection(1, 12, 1);
             newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
         }
     }
