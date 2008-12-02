@@ -1,0 +1,61 @@
+﻿<%namespace iTCA.Yuwen.Data%>
+<%namespace iTCA.Yuwen.Entity%>
+<%inherits iTCA.Yuwen.Web.index%>
+
+<%template _header%>
+	<!--内容开始-->
+	<%template _rightside%>
+	
+	<!--左栏开始-->
+	<div id="left-side">
+		<!--新闻列表开始-->
+		<!--推荐文章开始-->
+		<div class="div-header">首页最新推送文章</div>
+		<!--分页开始-->
+		<div id="pager">分页:<span>1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a></div>
+		<!--分页结束-->
+		<ul>
+		    <%loop (ArticleInfo) anninfo annlist%>
+			<li class="article-list">
+				<h2 class="title"><a href="showarticle-{anninfo.articleid}.aspx">{anninfo.title}</a></h2>
+				<span class="description">11月28日消息，据国外媒体报道，对于微软CEO史蒂夫·鲍尔默(Steve Ballmer)而言，2008年是一个多事之秋，值此感恩节之际，鲍尔默至少要感谢以下人物和企业：1、苹果苹果的iPhone、iPod和Mac等产品给微软造成了不少麻烦，但微软相对成功的I am a ...</span>
+				<div class="post-info"><span class="author">{anninfo.username}</span>投递 @ 发布于<span class="post-date">{anninfo.postdate}</span></div>
+			</li>
+			<%/loop%>
+		</ul>		
+		<!--分页开始-->
+		<div id="pager">分页:<span>1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a></div>
+		<!--分页结束-->
+		<!--推荐文章结束-->
+		
+		<!--栏目列表开始-->
+		<div class="div-header">技术文章</div>
+		<ul>
+		    <%loop (ArticleInfo) newsinfo newslist%>
+			<li class="article-list"><h2><a href="showarticle-{newsinfo.articleid}.aspx">{newsinfo.title}</a></h2></li>
+			<%/loop%>
+		</ul>
+		
+		<div class="div-header">业界新闻</div>
+		<ul>
+			<li class="article-list"><h2><a href="#">鲍尔默感恩节答谢名单 盖茨杨致远榜上有名</a></h2></li>
+			<li class="article-list"><h2><a href="#">英国卫报：疯狂的树屋</a></h2></li>
+			<li class="article-list"><h2><a href="#">阿里巴巴“援冬”产品取得开门红</a></h2></li>
+		</ul>
+		<!--栏目列表结束-->
+		
+		<!--插件文章列表开始-->
+		<div class="div-header">论坛新帖</div>
+		<ul>
+			<li class="article-list"><h2><a href="#">鲍尔默感恩节答谢名单 盖茨杨致远榜上有名</a></h2></li>
+			<li class="article-list"><h2><a href="#">英国卫报：疯狂的树屋</a></h2></li>
+			<li class="article-list"><h2><a href="#">阿里巴巴“援冬”产品取得开门红</a></h2></li>
+		</ul>
+		<!--插件文章列表开始-->	
+			
+		<!--新闻列表结束-->
+	</div>
+	<!--左栏结束-->
+	<!--内容结束-->
+
+<%template _footer%>

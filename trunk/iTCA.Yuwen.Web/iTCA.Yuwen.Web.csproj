@@ -347,15 +347,6 @@
     <Content Include="index.aspx" />
     <Content Include="showarticle.aspx" />
     <Content Include="showcolumn.aspx" />
-    <Content Include="templates\ann.htm" />
-    <Content Include="templates\css\itca.css" />
-    <Content Include="templates\index.htm" />
-    <Content Include="templates\news.htm" />
-    <Content Include="templates\showarticle.htm" />
-    <Content Include="templates\showcolumn.htm" />
-    <Content Include="templates\_footer.htm" />
-    <Content Include="templates\_header.htm" />
-    <Content Include="templates\_indexfooter.htm" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\db.config" />
@@ -366,6 +357,21 @@
     <None Include="images\act\CVS\Entries.Old" />
     <None Include="images\act\CVS\Repository" />
     <None Include="images\act\CVS\Root" />
+    <Content Include="templates\index.htm">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="templates\main.css" />
+    <Content Include="templates\showarticle.htm" />
+    <Content Include="templates\showcolumn.htm" />
+    <Content Include="templates\_header.htm">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="templates\_footer.htm">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="templates\_rightside.htm">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
