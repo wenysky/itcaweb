@@ -45,19 +45,11 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ann.aspx.cs">
-      <DependentUpon>ann.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="news.aspx.cs">
-      <DependentUpon>news.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,7 +63,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ann.aspx" />
     <Content Include="App_Data\information.txt" />
     <Content Include="code.aspx" />
     <Content Include="config\sql.txt" />
@@ -354,7 +345,6 @@
     <Content Include="images\other\tel.gif" />
     <Content Include="images\validator.jpg" />
     <Content Include="index.aspx" />
-    <Content Include="news.aspx" />
     <Content Include="showarticle.aspx" />
     <Content Include="showcolumn.aspx" />
     <Content Include="templates\ann.htm" />
