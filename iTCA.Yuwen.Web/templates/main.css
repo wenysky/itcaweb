@@ -96,6 +96,18 @@ h1,h2,h3 {
 	margin:3px 10px;
 	text-align:right;
 }
+#pager a
+{
+    margin:3px;
+    padding:0px 2px;
+}
+#pager span
+{
+    margin:3px;
+    padding:0px 2px;
+    background-color:#B6C9E7;
+    color:White;
+}
 
 /*内容右栏开始*/
 #right-side{
