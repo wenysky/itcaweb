@@ -138,7 +138,7 @@ override protected void OnInit(EventArgs e)
 
 	Response.Write("			<li class=\"article-list\">\r\n");
 	Response.Write("				<h2 class=\"title\"><a href=\"showarticle-" + newinfo.Articleid.ToString().Trim() + ".aspx\">" + newinfo.Title.ToString().Trim() + "</a></h2>\r\n");
-	Response.Write("				<span class=\"description\">11月28日消息，据国外媒体报道，对于微软CEO史蒂夫·鲍尔默(Steve Ballmer)而言，2008年是一个多事之秋，值此感恩节之际，鲍尔默至少要感谢以下人物和企业：1、苹果苹果的iPhone、iPod和Mac等产品给微软造成了不少麻烦，但微软相对成功的I am a ...</span>\r\n");
+	Response.Write("				<span class=\"description\">" + newinfo.Summary.ToString().Trim() + "</span>\r\n");
 	Response.Write("				<div class=\"post-info\"><span class=\"author\">" + newinfo.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + newinfo.Postdate.ToString().Trim() + "</span></div>\r\n");
 	Response.Write("			</li>\r\n");
 
