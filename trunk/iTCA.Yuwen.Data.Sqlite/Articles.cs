@@ -7,7 +7,7 @@ using iTCA.Yuwen.Entity;
 
 namespace iTCA.Yuwen.Data.Sqlite
 {
-    public class DataProvider : IDataProvider
+    public partial class DataProvider : IDataProvider
     {
         /// <summary>
         /// 取得文章列表.

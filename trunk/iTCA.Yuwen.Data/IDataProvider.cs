@@ -5,7 +5,7 @@ using iTCA.Yuwen.Entity;
 
 namespace iTCA.Yuwen.Data
 {
-    public interface IDataProvider
+    public partial interface IDataProvider
     {
         IDataReader GetArticles(int cid, int pagesize, int currentpage);
         IDataReader GetArticles(string cids, int pagesize, int currentpage);
