@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseProvider.cs" />
-    <Compile Include="IDataProvider.cs" />
+    <Compile Include="IArticles.cs" />
     <Compile Include="IUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
