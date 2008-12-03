@@ -8,9 +8,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using Yuwen.Tools.Data;
-using Yuwen.Tools.TinyCache;
 using System.Data.Common;
+using Natsuhime.Data;
+using Natsuhime;
 
 namespace iTCA.Yuwen.Web
 {
