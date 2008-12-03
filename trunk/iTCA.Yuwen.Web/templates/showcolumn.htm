@@ -18,7 +18,7 @@
 		    <%loop (ArticleInfo) newinfo newslist%>
 			<li class="article-list">
 				<h2 class="title"><a href="showarticle-{newinfo.articleid}.aspx">{newinfo.title}</a></h2>
-				<span class="description">11月28日消息，据国外媒体报道，对于微软CEO史蒂夫·鲍尔默(Steve Ballmer)而言，2008年是一个多事之秋，值此感恩节之际，鲍尔默至少要感谢以下人物和企业：1、苹果苹果的iPhone、iPod和Mac等产品给微软造成了不少麻烦，但微软相对成功的I am a ...</span>
+				<span class="description">{newinfo.summary}</span>
 				<div class="post-info"><span class="author">{newinfo.username}</span>投递 @ 发布于<span class="post-date">{newinfo.postdate}</span></div>
 			</li>
 			<%/loop%>
