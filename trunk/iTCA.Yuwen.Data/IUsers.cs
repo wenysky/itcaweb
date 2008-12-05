@@ -7,6 +7,8 @@ namespace iTCA.Yuwen.Data
 {
     public partial interface IDataProvider
     {
+        IDataReader GetUsers(int pagesize, int currentpage);
+        int GetArticleCollectionPageCount(int pagesize);
         /// <summary>
         /// 取得用户信息(用于登录)
         /// </summary>
