@@ -21,6 +21,7 @@ namespace iTCA.Yuwen.Entity
         public string Regip { get; set; }
         public string Regdate { get; set; }
         public string Lastlogip { get; set; }
+        public string Lastlogdate { get; set; }
         public int Del { get; set; }
         public int Articlecount { get; set; }
         public int Topiccount { get; set; }
