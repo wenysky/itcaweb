@@ -1,21 +1,31 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
+using iTCA.Yuwen.Core;
+using iTCA.Yuwen.Entity;
 
 namespace iTCA.Yuwen.Web
 {
-    public partial class login : System.Web.UI.Page
+    public partial class login : BasePage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void Page_Show()
         {
-
+            if (System.Web.HttpContext.Current.Request.Form["loginid"] != null && System.Web.HttpContext.Current.Request.Form["password"] != null)
+            {
+                string loginid = System.Web.HttpContext.Current.Request.Form["loginid"].ToString();
+                string password = System.Web.HttpContext.Current.Request.Form["password"].ToString();
+                UserInfo info = Users.GetUserInfo(loginid, password, 0);
+                if (info != null)
+                {
+                    System.Web.HttpContext.Current.Response.Write("login success!");
+                }
+                else
+                {
+                    System.Web.HttpContext.Current.Response.Write("login failed");
+                }
+            }
+            else
+            {
+                System.Web.HttpContext.Current.Response.Write("用户名或密码为空");
+            }
         }
     }
 }
