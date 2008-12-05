@@ -18,17 +18,70 @@ namespace iTCA.Yuwen.Data.Sqlite
         /// <returns>用户记录</returns>
         public IDataReader GetUserInfo(string loginid, string password, int logintype)
         {
-            throw new NotImplementedException();
+            string sql;
+            if (loginid == 0)
+            {
+                sql = "SELECT * FROM wy_users WHERE email=@loginid AND password=@password";
+            }
+            else
+            {
+                sql = "SELECT * FROM wy_users WHERE username=@loginid AND password=@password";
+            }
+            IDataReader dr;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@loginid", DbType.String, 100, loginid),
+                DbHelper.MakeInParam("@password", DbType.String, 32, password)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, sql, prams);
+            return dr;
         }
 
         public IDataReader GetUserInfo(int uid)
         {
-            throw new NotImplementedException();
+            IDataReader dr;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@uid", DbType.Int32, 4, uid)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_users WHERE uid=@uid", prams);
+            return dr;
         }
 
         public IDataReader GetUserInfo(string username)
         {
-            throw new NotImplementedException();
+            IDataReader dr;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@username", DbType.String, 100, username),
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_users WHERE username=@username", prams);
+            return dr;
+        }
+
+
+
+        public IDataReader GetUsers(int pagesize, int currentpage)
+        {
+            IDataReader dr;
+            int recordoffset = (currentpage - 1) * pagesize;
+
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_users ORDER BY uid LIMIT @recordoffset,@pagesize", prams);
+            return dr;
+        }
+
+
+
+        public int GetArticleCollectionPageCount(int pagesize)
+        {
+            int recordcount;
+            recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(uid) FROM wy_users"));
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
         }
     }
 }
