@@ -19,7 +19,7 @@ namespace iTCA.Yuwen.Data.Sqlite
         public IDataReader GetUserInfo(string loginid, string password, int logintype)
         {
             string sql;
-            if (loginid == 0)
+            if (logintype == 0)
             {
                 sql = "SELECT * FROM wy_users WHERE email=@loginid AND password=@password";
             }
