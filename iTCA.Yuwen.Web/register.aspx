@@ -24,6 +24,20 @@ override protected void OnInit(EventArgs e)
 	Response.Write("				<li><a href=\"#\">投递</a></li>\r\n");
 	Response.Write("				<li><a href=\"#\">博客</a></li>\r\n");
 	Response.Write("				<li><a href=\"#\">论坛</a></li>\r\n");
+
+	if (userinfo==null)
+	{
+
+	Response.Write("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("				<li><a href=\"loginout.aspx\">注销" + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
+
+	}	//end if
+
 	Response.Write("				<li><a href=\"#\">关于</a></li>\r\n");
 	Response.Write("			</ul>\r\n");
 	Response.Write("		</div>\r\n");

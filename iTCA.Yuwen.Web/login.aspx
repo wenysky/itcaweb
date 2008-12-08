@@ -24,6 +24,20 @@ override protected void OnInit(EventArgs e)
 	Response.Write("				<li><a href=\"#\">投递</a></li>\r\n");
 	Response.Write("				<li><a href=\"#\">博客</a></li>\r\n");
 	Response.Write("				<li><a href=\"#\">论坛</a></li>\r\n");
+
+	if (userinfo==null)
+	{
+
+	Response.Write("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("				<li><a href=\"loginout.aspx\">注销" + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
+
+	}	//end if
+
 	Response.Write("				<li><a href=\"#\">关于</a></li>\r\n");
 	Response.Write("			</ul>\r\n");
 	Response.Write("		</div>\r\n");
@@ -124,11 +138,19 @@ override protected void OnInit(EventArgs e)
 	Response.Write("	<!--左栏开始-->\r\n");
 	Response.Write("	<div id=\"left-side\">\r\n");
 	Response.Write("		<!--文章开始-->\r\n");
-	Response.Write("		<div class=\"div-header\">用户登录</div>\r\n");
+	Response.Write("		<div class=\"div-header\">用户登录</div>		\r\n");
 	Response.Write("		<form action=\"\" method=\"post\" id=\"login\">\r\n");
-	Response.Write("		<input id=\"loginid\" name=\"loginid\" type=\"text\" />\r\n");
-	Response.Write("		<input id=\"password\" name=\"password\" type=\"password\" />\r\n");
-	Response.Write("		<input type=\"submit\" value=\"登录\" />\r\n");
+	Response.Write("		<table>\r\n");
+	Response.Write("		    <tr>\r\n");
+	Response.Write("		        <th>帐号: </th><td><input id=\"loginid\" name=\"loginid\" type=\"text\" />(请输入注册邮箱作为帐号)</td>\r\n");
+	Response.Write("		    </tr>\r\n");
+	Response.Write("		    <tr>\r\n");
+	Response.Write("		        <th>密码: </th><td><input id=\"password\" name=\"password\" type=\"password\" /></td>\r\n");
+	Response.Write("		    </tr>\r\n");
+	Response.Write("		    <tr>\r\n");
+	Response.Write("		        <th></th><td><input type=\"submit\" value=\"登录\" /></td>\r\n");
+	Response.Write("		    </tr>\r\n");
+	Response.Write("		</table>\r\n");
 	Response.Write("		</form>\r\n");
 	Response.Write("		<!--文章结束-->\r\n");
 	Response.Write("	</div>\r\n");
