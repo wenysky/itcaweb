@@ -25,7 +25,7 @@ namespace iTCA.Yuwen.Web
             {
                 pageid = 1;
             }
-            pagecounthtml = Natsuhime.Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", columnid), ".aspx", 8);
+            pagecounthtml = Natsuhime.Web.Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", columnid), ".aspx", 8);
             newslist = Articles.GetArticleCollection(columnid, 12, pageid);
 
             pagetitle = string.Format("{0} - iTCA 重庆工学院计算机协会", Articles.GetColumnName(columnid));

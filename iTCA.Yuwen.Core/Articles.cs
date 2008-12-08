@@ -1,9 +1,11 @@
 using System;
-using System.Collections.Generic;
-using iTCA.Yuwen.Data;
 using System.Data;
-using Natsuhime;
+using System.Collections.Generic;
+
+using iTCA.Yuwen.Data;
 using iTCA.Yuwen.Entity;
+using Natsuhime.Common;
+using Natsuhime;
 
 namespace iTCA.Yuwen.Core
 {
