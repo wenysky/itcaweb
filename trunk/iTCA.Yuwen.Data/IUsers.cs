@@ -19,5 +19,8 @@ namespace iTCA.Yuwen.Data
         IDataReader GetUserInfo(string loginid, string password, int logintype);
         IDataReader GetUserInfo(int uid);
         IDataReader GetUserInfo(string username);
+
+
+        void AddUser(UserInfo info);
     }
 }

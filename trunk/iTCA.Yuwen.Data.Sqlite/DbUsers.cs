@@ -75,13 +75,40 @@ namespace iTCA.Yuwen.Data.Sqlite
             return dr;
         }
 
-
-
         public int GetArticleCollectionPageCount(int pagesize)
         {
             int recordcount;
             recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(uid) FROM wy_users"));
             return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
+
+
+
+        public void AddUser(UserInfo info)
+        {
+            DbParameter[] dbparams = 
+		    {
+			    DbHelper.MakeInParam("@username", DbType.String, 100, info.Username),                
+			    DbHelper.MakeInParam("@password", DbType.String, 100, info.Password),
+			    DbHelper.MakeInParam("@groupid", DbType.Int32, 4, info.Groupid),
+			    DbHelper.MakeInParam("@adminid", DbType.Int32, 4, info.Adminid),
+			    DbHelper.MakeInParam("@qq", DbType.String, 100, info.Qq),
+			    DbHelper.MakeInParam("@email", DbType.String, 100, info.Email),
+			    DbHelper.MakeInParam("@msn", DbType.String, 100, info.Msn),
+			    DbHelper.MakeInParam("@hi", DbType.String, 100, info.Hi),
+			    DbHelper.MakeInParam("@nickname", DbType.String, 100, info.Nickname),
+			    DbHelper.MakeInParam("@realname", DbType.String, 100, info.Realname),
+			    DbHelper.MakeInParam("@regip", DbType.String, 100, info.Regip),
+			    DbHelper.MakeInParam("@del", DbType.Int32, 4, info.Del),
+			    DbHelper.MakeInParam("@articlecount", DbType.Int32, 4, info.Articlecount),
+			    DbHelper.MakeInParam("@topiccount", DbType.Int32, 4, info.Topiccount),
+			    DbHelper.MakeInParam("@replycount", DbType.Int32, 4, info.Replycount),
+			    DbHelper.MakeInParam("@lastlogip", DbType.String, 100, info.Lastlogip),
+			    DbHelper.MakeInParam("@bdday", DbType.DateTime, 8, info.Bdday),
+			    DbHelper.MakeInParam("@lastlogdate", DbType.DateTime, 8, info.Lastlogdate),
+			    DbHelper.MakeInParam("@regdate", DbType.DateTime, 8, info.Regdate)
+		    };
+            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_users(username,password,groupid,adminid,qq,email,msn,hi,nickname,realname,regip,del,articlecount,topiccount,replycount,lastlogip,bdday,lastlogdate,regdate) VALUES(@username,@password,@groupid,@adminid,@qq,@email,@msn,@hi,@nickname,@realname,@regip,@del,@articlecount,@topiccount,@replycount,@lastlogip,@bdday,@lastlogdate,@regdate)", dbparams);
         }
     }
 }
