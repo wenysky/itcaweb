@@ -32,6 +32,10 @@ namespace iTCA.Yuwen.Web
         /// 页面查询Sql内容
         /// </summary>
         protected string querydetail;
+        /// <summary>
+        /// 当前用户信息(如果为空表示未登录)
+        /// </summary>
+        protected iTCA.Yuwen.Entity.UserInfo userinfo;
         #endregion
 
         protected BasePage()
@@ -40,7 +44,8 @@ namespace iTCA.Yuwen.Web
             sw = System.Diagnostics.Stopwatch.StartNew();
             DbHelper.QueryCount = 0;
             DbHelper.QueryDetail = "";
-
+            //验证登录
+            CheckLogin();
             //页面执行
             Page_Show();
 
@@ -55,6 +60,24 @@ namespace iTCA.Yuwen.Web
         protected virtual void Page_Show()
         {
             return;
+        }
+        /// <summary>
+        /// 验证登录
+        /// </summary>
+        protected virtual void CheckLogin()
+        {
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies["cmsnt"];
+            userinfo = null;
+            if (cookie != null && cookie.Values["userid"] != null && cookie.Values["password"] != null)
+            {
+                int uid = Convert.ToInt32(cookie.Values["userid"]);
+                string password = cookie.Values["password"].ToString().Trim();
+
+                if (uid > 0 && password != string.Empty)
+                {
+                    userinfo = iTCA.Yuwen.Core.Users.GetUserInfo(uid.ToString(), password, 3);
+                }
+            }
         }
     }
 }

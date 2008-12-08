@@ -8,6 +8,11 @@ namespace iTCA.Yuwen.Web
     {
         protected override void Page_Show()
         {
+            if (userinfo != null)
+            {
+                System.Web.HttpContext.Current.Response.Write("您已经登录了,请不要重复登录.");
+                System.Web.HttpContext.Current.Response.End();
+            }
             if (System.Web.HttpContext.Current.Request.HttpMethod.Equals("POST"))
             {
                 if (System.Web.HttpContext.Current.Request.Form["loginid"] != null && System.Web.HttpContext.Current.Request.Form["password"] != null)
@@ -35,7 +40,6 @@ namespace iTCA.Yuwen.Web
                     }
                     else
                     {
-                        System.Web.HttpContext.Current.Response.Cookies["cmsnt"].Expires = DateTime.Now.AddDays(-1d);
                         System.Web.HttpContext.Current.Response.Write("login failed");
                     }
                 }
