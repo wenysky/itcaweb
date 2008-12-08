@@ -14,7 +14,7 @@ namespace iTCA.Yuwen.Data.Sqlite
         /// </summary>
         /// <param name="loginid">登录id(UserName或者Email)</param>
         /// <param name="password">密码</param>
-        /// <param name="logintype">登录类型(0为邮箱地址登录,1为UserName登录)</param>
+        /// <param name="logintype">登录类型(0为邮箱地址登录,1为UserName登录,3为uid登录)</param>
         /// <returns>用户记录</returns>
         public IDataReader GetUserInfo(string loginid, string password, int logintype)
         {
@@ -23,9 +23,13 @@ namespace iTCA.Yuwen.Data.Sqlite
             {
                 sql = "SELECT * FROM wy_users WHERE email=@loginid AND password=@password";
             }
-            else
+            else if (logintype == 1)
             {
                 sql = "SELECT * FROM wy_users WHERE username=@loginid AND password=@password";
+            }
+            else
+            {
+                sql = "SELECT * FROM wy_users WHERE uid=@loginid AND password=@password";
             }
             IDataReader dr;
             DbParameter[] prams = 
