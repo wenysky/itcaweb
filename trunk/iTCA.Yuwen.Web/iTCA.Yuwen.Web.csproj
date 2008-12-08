@@ -52,6 +52,14 @@
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="loginout.aspx.cs">
+      <DependentUpon>loginout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Utility\dbconvert.aspx.cs">
       <DependentUpon>dbconvert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -376,7 +384,11 @@
     <None Include="images\act\CVS\Repository" />
     <None Include="images\act\CVS\Root" />
     <Content Include="login.aspx" />
+    <Content Include="loginout.aspx" />
+    <Content Include="register.aspx" />
     <Content Include="templates\login.htm" />
+    <Content Include="templates\register.htm" />
+    <Content Include="templates\loginout.htm" />
     <Content Include="Utility\dbconvert.aspx" />
     <Content Include="templates\index.htm">
       <SubType>ASPXCodeBehind</SubType>
@@ -426,13 +438,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>17667</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://www.dev7.com/itca</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
