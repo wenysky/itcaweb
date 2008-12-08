@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Common;
 
 using Natsuhime.Data;
-using Natsuhime;
+using Natsuhime.Web;
 
 namespace iTCA.Yuwen.Web.Utility
 {

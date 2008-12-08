@@ -29,7 +29,7 @@ namespace iTCA.Yuwen.Web.Admin
             {
                 ddlColumns.SelectedValue = articleinfo.Columnid.ToString();
                 ddlHightlight.SelectedValue = articleinfo.Highlight;
-                tbxTitle.Text = Natsuhime.Utils.RemoveHtml(articleinfo.Title.TrimEnd());
+                tbxTitle.Text = Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title.TrimEnd());
                 tbxContent.Text = articleinfo.Content.TrimEnd();
                 btnSubmit.Text = "±à¼­";
             }
