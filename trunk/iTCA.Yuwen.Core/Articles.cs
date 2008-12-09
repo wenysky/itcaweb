@@ -49,7 +49,7 @@ namespace iTCA.Yuwen.Core
                 currentpage = 1;
             }
             List<ArticleInfo> coll = new List<ArticleInfo>();
-            if (Utils.IsNumericString(cids))
+            if (TypeParse.IsNumericString(cids))
             {
                 IDataReader reader = DatabaseProvider.GetInstance().GetArticles(cids, pagesize, currentpage);
 
@@ -129,7 +129,7 @@ namespace iTCA.Yuwen.Core
         /// <returns></returns>
         public static int GetArticleCollectionPageCount(string cids, int pagesize)
         {
-            if (Utils.IsNumericString(cids))
+            if (TypeParse.IsNumericString(cids))
             {
                 return DatabaseProvider.GetInstance().GetArticleCollectionPageCount(cids, pagesize);
             }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using iTCA.Yuwen.Core;
 using iTCA.Yuwen.Entity;
+using Natsuhime.Web;
 
 namespace iTCA.Yuwen.Web
 {
@@ -22,12 +23,12 @@ namespace iTCA.Yuwen.Web
         protected string pagecounthtml;
         protected override void Page_Show()
         {
-            pagetitle = "欢迎来到 iTCA 重庆工学院计算机协会 - iTCA 重庆工学院计算机协会";
+            pagetitle = "WebSiteName";
             annlist = Articles.GetArticleCollection(1, 12, 1);
             newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
 
             pagecount = Articles.GetArticleCollectionPageCount(1, 12);
-            pagecounthtml = Natsuhime.Web.Utils.GetStaticPageNumbersHtml(1, pagecount, string.Format("showcolumn-{0}", 1), ".aspx", 8);
+            pagecounthtml = Utils.GetStaticPageNumbersHtml(1, pagecount, string.Format("showcolumn-{0}", 1), ".aspx", 8);
         }
     }
 }

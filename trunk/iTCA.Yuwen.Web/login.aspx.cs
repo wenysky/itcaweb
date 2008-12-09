@@ -1,6 +1,7 @@
 ﻿using System;
 using iTCA.Yuwen.Core;
 using iTCA.Yuwen.Entity;
+using Natsuhime.Web;
 
 namespace iTCA.Yuwen.Web
 {
@@ -12,13 +13,14 @@ namespace iTCA.Yuwen.Web
             {
                 System.Web.HttpContext.Current.Response.Write("您已经登录了,请不要重复登录.");
                 System.Web.HttpContext.Current.Response.End();
+                return;
             }
-            if (System.Web.HttpContext.Current.Request.HttpMethod.Equals("POST"))
+            if (YRequest.IsPost())
             {
-                if (System.Web.HttpContext.Current.Request.Form["loginid"] != null && System.Web.HttpContext.Current.Request.Form["password"] != null)
+                string loginid = YRequest.GetString("loginid");
+                string password = YRequest.GetString("password");
+                if (loginid != string.Empty && password != string.Empty)
                 {
-                    string loginid = System.Web.HttpContext.Current.Request.Form["loginid"].ToString();
-                    string password = System.Web.HttpContext.Current.Request.Form["password"].ToString();
                     UserInfo info = Users.GetUserInfo(loginid, password, 0);
                     if (info != null)
                     {
@@ -28,19 +30,18 @@ namespace iTCA.Yuwen.Web
 
 
                         cookie.Expires = DateTime.Now.AddDays(30d);
-                        
+
                         //if (cookieDomain != string.Empty && HttpContext.Current.Request.Url.Host.IndexOf(cookieDomain) > -1 && IsValidDomain(HttpContext.Current.Request.Url.Host))
                         //{
                         //    cookie.Domain = cookieDomain;
                         //}
 
                         System.Web.HttpContext.Current.Response.AppendCookie(cookie);
-                        System.Web.HttpContext.Current.Response.Write("login success!");
                         System.Web.HttpContext.Current.Response.Redirect("usercontrolpanl.aspx");
                     }
                     else
                     {
-                        System.Web.HttpContext.Current.Response.Write("login failed");
+                        System.Web.HttpContext.Current.Response.Write("<script>alert('login failed')</script>");
                     }
                 }
                 else

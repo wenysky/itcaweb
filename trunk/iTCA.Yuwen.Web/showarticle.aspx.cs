@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using iTCA.Yuwen.Core;
 using iTCA.Yuwen.Entity;
+using Natsuhime.Web;
 
 namespace iTCA.Yuwen.Web
 {
@@ -10,7 +11,7 @@ namespace iTCA.Yuwen.Web
         protected ArticleInfo articleinfo;
         protected override void Page_Show()
         {
-            int articleid = Convert.ToInt32(System.Web.HttpContext.Current.Request.QueryString["id"]);
+            int articleid = YRequest.GetQueryInt("id", 0);
             if (articleid <= 0)
             {
                 articleid = 1;
@@ -21,7 +22,7 @@ namespace iTCA.Yuwen.Web
                 System.Web.HttpContext.Current.Response.Write("不存在的文章!");
                 System.Web.HttpContext.Current.Response.End();
             }
-            pagetitle = string.Format("{0} - {1} - iTCA 重庆工学院计算机协会", Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title), articleinfo.Columnname);
+            pagetitle = string.Format("{0} - {1} - WebSiteName", Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title), articleinfo.Columnname);
         }
     }
 }
