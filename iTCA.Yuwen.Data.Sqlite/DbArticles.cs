@@ -97,12 +97,13 @@ namespace iTCA.Yuwen.Data.Sqlite
 			    DbHelper.MakeInParam("@title", DbType.String, 100,articleinfo.Title),
 			    DbHelper.MakeInParam("@columnid", DbType.Int32, 4,articleinfo.Columnid),
 			    DbHelper.MakeInParam("@highlight", DbType.String, 20,articleinfo.Highlight),
+                DbHelper.MakeInParam("@summary", DbType.String, 160,articleinfo.Summary),
 			    DbHelper.MakeInParam("@content", DbType.String, 5000,articleinfo.Content),
 			    DbHelper.MakeInParam("@postdate", DbType.DateTime, 8,articleinfo.Postdate),
 			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,articleinfo.Uid),
 			    DbHelper.MakeInParam("@username", DbType.String, 20,articleinfo.Username)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_articles(title,columnid,highlight,content,postdate,uid,username) VALUES(@title,@columnid,@highlight,@content,@postdate,@uid,@username)", prams);
+            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_articles(title,columnid,highlight,summary,content,postdate,uid,username) VALUES(@title,@columnid,@highlight,@summary,@content,@postdate,@uid,@username)", prams);
         }
 
         public void EditArticle(ArticleInfo articleinfo)

@@ -25,7 +25,7 @@ namespace iTCA.Yuwen.Entity
             get { return m_ColumnName; }
             set { m_ColumnName = value; }
         }
-        private string m_Title;        
+        private string m_Title;
 
         public string Title
         {
@@ -123,7 +123,7 @@ namespace iTCA.Yuwen.Entity
             get { return m_Badcount; }
             set { m_Badcount = value; }
         }
-        private string m_Highlight;
+        private string m_Highlight = "";
 
         public string Highlight
         {
