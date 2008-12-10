@@ -21,7 +21,7 @@ override protected void OnInit(EventArgs e)
 	Response.Write("			<ul>\r\n");
 	Response.Write("				<li><a href=\"index.aspx\">首页</a></li>\r\n");
 	Response.Write("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
-	Response.Write("				<li><a href=\"#\">投递</a></li>\r\n");
+	Response.Write("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
 	Response.Write("				<li><a href=\"#\">博客</a></li>\r\n");
 	Response.Write("				<li><a href=\"#\">论坛</a></li>\r\n");
 
