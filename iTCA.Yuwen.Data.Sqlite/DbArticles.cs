@@ -66,6 +66,68 @@ namespace iTCA.Yuwen.Data.Sqlite
             return dr;
         }
 
+        public IDataReader GetUserArticles(int uid, int pagesize, int currentpage)
+        {
+            IDataReader dr;
+            int recordoffset = (currentpage - 1) * pagesize;
+
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,uid),
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_articles WHERE del=0 AND uid=@uid ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", prams);
+
+            return dr;
+        }
+
+        public int GetArticleCollectionPageCount(int cid, int pagesize)
+        {
+            int recordcount;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@columnid", DbType.Int32, 4,cid)
+		    };
+            if (cid > 0)
+            {
+                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0 AND columnid=@columnid", prams));
+            }
+            else
+            {
+                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0", prams));
+            }
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
+        public int GetArticleCollectionPageCount(string cids, int pagesize)
+        {
+            int recordcount;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@columnids", DbType.String, 100,cids)
+		    };
+            if (cids.Trim() != "")
+            {
+                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0 AND columnid IN (" + cids + ") ", prams));
+            }
+            else
+            {
+                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0", prams));
+            }
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
+        public int GetUserArticleCollectionPageCount(int uid, int pagesize)
+        {
+            int recordcount;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,uid)
+		    };
+            recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0 AND uid=@uid", prams));
+
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
+
         /// <summary>
         /// 取得栏目列表
         /// </summary>
@@ -132,7 +194,7 @@ namespace iTCA.Yuwen.Data.Sqlite
             DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_articles SET del=1 WHERE articleid=@articleid", prams);
         }
 
-        
+
         public void CreateColumn(ColumnInfo columninfo)
         {
             DbParameter[] prams = 
@@ -165,41 +227,11 @@ namespace iTCA.Yuwen.Data.Sqlite
             DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_columns SET columnname=@columnname,parentid=@parentid WHERE columnid=@columnid", prams);
         }
 
-        public int GetArticleCollectionPageCount(int cid, int pagesize)
-        {
-            int recordcount;
-            DbParameter[] prams = 
-		    {
-			    DbHelper.MakeInParam("@columnid", DbType.Int32, 4,cid)
-		    };
-            if (cid > 0)
-            {
-                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0 AND columnid=@columnid", prams));
-            }
-            else
-            {
-                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0", prams));
-            }
-            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
-        }
 
-        public int GetArticleCollectionPageCount(string cids, int pagesize)
-        {
-            int recordcount;
-            DbParameter[] prams = 
-		    {
-			    DbHelper.MakeInParam("@columnids", DbType.String, 100,cids)
-		    };
-            if (cids.Trim() != "")
-            {
-                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0 AND columnid IN (" + cids + ") ", prams));
-            }
-            else
-            {
-                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0", prams));
-            }
-            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
-        }
 
+        #region IDataProvider 成员
+
+
+        #endregion
     }
 }
