@@ -167,7 +167,7 @@ override protected void OnInit(EventArgs e)
 	{
 		info__loop__id++;
 
-	Response.Write("		    <li><a href=\"showarticle-" + info.Articleid.ToString().Trim() + ".aspx\">" + info.Title.ToString().Trim() + "</a></li>\r\n");
+	Response.Write("		    <li style=\"border-bottom:1px solid #666; line-height:200%;\"><a href=\"showarticle-" + info.Articleid.ToString().Trim() + ".aspx\">" + info.Title.ToString().Trim() + "</a><span style=\"margin-left:10px\">" + info.Postdate.ToString().Trim() + "</span></li>\r\n");
 
 	}	//end loop
 

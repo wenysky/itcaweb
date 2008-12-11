@@ -22,7 +22,7 @@ namespace iTCA.Yuwen.Web
                 pagetitle = string.Format("{0}的用户中心", userinfo.Username);
                 int pageid = YRequest.GetInt("pageid", 1);
                 int pagecount = Articles.GetUserArticleCollectionPageCount(userinfo.Uid, 8);
-                pagecounthtml = Utils.GetStaticPageNumbersHtml(pageid, pagecount, "usercontrolpanel", ".aspx", 8);
+                pagecounthtml = Utils.GetPageNumbersHtml(pageid, pagecount, "usercontrolpanel.aspx", 8, "pageid", "");
                 myarticlelist = Articles.GetUserArticleCollection(userinfo.Uid, 8, pageid);
 
                 if (ispost)
