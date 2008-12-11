@@ -4,7 +4,11 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="templates/main.css" />
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<title>{pagetitle}</title>
+<%if pagetitle==""%>
+<title>{config.websitename} {config.seotitle} - Powered by 盛夏之地</title>
+<%else%>
+<title>{pagetitle} - {config.websitename} {config.seotitle} - Powered by 盛夏之地</title>
+<%/if%>
 </head>
 <body>
 <div id="wrap">
