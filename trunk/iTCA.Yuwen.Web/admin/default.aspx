@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title>后台管理-重庆工学院计算机协会(iTCA)</title>
+    <title>Admin Control Panle - Power by 盛夏之地</title>
     <style type="text/css">
     * 
     {
