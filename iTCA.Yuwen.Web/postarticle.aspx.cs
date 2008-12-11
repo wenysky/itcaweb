@@ -39,7 +39,8 @@ namespace iTCA.Yuwen.Web
                 articleinfo.Username = userinfo.Username;
                 Articles.CreateArticle(articleinfo);
 
-                System.Web.HttpContext.Current.Response.Redirect(string.Format("showcolumn-{0}-1.aspx", articleinfo.Columnid));
+                currentcontext.Response.Write("<script>alert('发布成功,跳转到栏目列表.')</script>");
+                currentcontext.Response.Redirect(string.Format("showcolumn-{0}-1.aspx", articleinfo.Columnid));
             }
         }
     }

@@ -33,6 +33,10 @@ namespace iTCA.Yuwen.Web
         /// </summary>
         protected string querydetail;
         /// <summary>
+        /// System.Web.HttpContext.Current
+        /// </summary>
+        protected HttpContext currentcontext = System.Web.HttpContext.Current;
+        /// <summary>
         /// «Î«Û «∑Ò «post
         /// </summary>
         protected bool ispost;

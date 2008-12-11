@@ -11,11 +11,10 @@ namespace iTCA.Yuwen.Web
         {
             if (userinfo != null)
             {
-                System.Web.HttpContext.Current.Response.Write("您已经登录了,请不要重复登录.");
-                System.Web.HttpContext.Current.Response.End();
-                return;
+                currentcontext.Response.Write("<script>alert('您已经登录了,请不要重复登录!')</script>");
+                currentcontext.Response.Redirect("usercontrolpanl.aspx");
             }
-            if (YRequest.IsPost())
+            if (ispost)
             {
                 string loginid = YRequest.GetString("loginid");
                 string password = YRequest.GetString("password");
@@ -36,17 +35,19 @@ namespace iTCA.Yuwen.Web
                         //    cookie.Domain = cookieDomain;
                         //}
 
-                        System.Web.HttpContext.Current.Response.AppendCookie(cookie);
-                        System.Web.HttpContext.Current.Response.Redirect("usercontrolpanl.aspx");
+                        currentcontext.Response.AppendCookie(cookie);
+                        currentcontext.Response.Write("<script>alert('登录成功,跳转到用户中心.')</script>");
+                        currentcontext.Response.Redirect("usercontrolpanl.aspx");
                     }
                     else
                     {
-                        System.Web.HttpContext.Current.Response.Write("<script>alert('login failed')</script>");
+                        currentcontext.Response.Write("<script>alert('登录失败,帐号或密码错误!')</script>");
                     }
                 }
                 else
                 {
-                    System.Web.HttpContext.Current.Response.Write("用户名或密码为空");
+                    currentcontext.Response.Write("<script>alert('登录失败,用户名或密码为空!')</script>");
+                    currentcontext.Response.Redirect("index.aspx");
                 }
             }
         }
