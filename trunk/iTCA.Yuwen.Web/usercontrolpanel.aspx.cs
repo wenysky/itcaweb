@@ -14,7 +14,8 @@ namespace iTCA.Yuwen.Web
         {
             if (userinfo == null)
             {
-                currentcontext.Response.Write("<script>alert('发布成功,跳转到栏目列表.')</script>");
+                pagetitle = "用户中心";
+                currentcontext.Response.Write("<script>alert('帐号验证失败,请登录后再访问用户中心!')</script>");
                 currentcontext.Response.Redirect("login.aspx");
             }
             else

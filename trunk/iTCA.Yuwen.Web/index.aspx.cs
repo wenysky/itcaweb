@@ -23,7 +23,6 @@ namespace iTCA.Yuwen.Web
         protected string pagecounthtml;
         protected override void Page_Show()
         {
-            pagetitle = "WebSiteName";
             annlist = Articles.GetArticleCollection(1, 12, 1);
             newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
 

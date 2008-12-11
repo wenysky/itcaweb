@@ -9,6 +9,7 @@ namespace iTCA.Yuwen.Web
     {
         protected override void Page_Show()
         {
+            pagetitle = "注册用户";
             if (userinfo != null)
             {
                 currentcontext.Response.Write("您已经登录了,请不要重复注册帐号!");
