@@ -62,6 +62,28 @@ namespace iTCA.Yuwen.Core
             }
             return coll;
         }
+        public static List<ArticleInfo> GetUserArticleCollection(int uid, int pagesize, int currentpage)
+        {
+            if (currentpage <= 0)
+            {
+                currentpage = 1;
+            }
+            List<ArticleInfo> coll = new List<ArticleInfo>();
+
+            IDataReader reader = DatabaseProvider.GetInstance().GetUserArticles(uid, pagesize, currentpage);
+
+            while (reader.Read())
+            {
+                DataReader2ArticleCollection(coll, reader);
+            }
+            reader.Close();
+            return coll;
+        }
+        public static int GetUserArticleCollectionPageCount(int uid, int pagesize)
+        {
+            return DatabaseProvider.GetInstance().GetUserArticleCollectionPageCount(uid, pagesize);
+        }
+
         /// <summary>
         /// 将DataReader的Article添加到List<ArticleInfo>泛型列表(暂时废除)
         /// </summary>
