@@ -374,6 +374,10 @@
       <Project>{67268E9E-AA3B-4D9E-956A-158922DA6B79}</Project>
       <Name>DeepinSummer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\iTCA.Yuwen.Config\iTCA.Yuwen.Config.csproj">
+      <Project>{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}</Project>
+      <Name>iTCA.Yuwen.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iTCA.Yuwen.Core\iTCA.Yuwen.Core.csproj">
       <Project>{1C1A6FB6-3170-4BAB-B500-325E811410E6}</Project>
       <Name>iTCA.Yuwen.Core</Name>

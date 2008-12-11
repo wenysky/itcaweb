@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Web.Admin", "iTC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepinSummer", "..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj", "{67268E9E-AA3B-4D9E-956A-158922DA6B79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Config", "iTCA.Yuwen.Config\iTCA.Yuwen.Config.csproj", "{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{67268E9E-AA3B-4D9E-956A-158922DA6B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67268E9E-AA3B-4D9E-956A-158922DA6B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67268E9E-AA3B-4D9E-956A-158922DA6B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
