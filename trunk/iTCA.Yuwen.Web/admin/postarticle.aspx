@@ -41,6 +41,11 @@
                 </tr>
                 <tr>
                     <td colspan="2">
+                        <asp:TextBox ID="tbxSummary" runat="server" TextMode="MultiLine" Height="70px" Width="790px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
                         <asp:TextBox ID="tbxContent" runat="server" TextMode="MultiLine" Height="366px" Width="790px"></asp:TextBox></td>
                 </tr>
                 <tr>

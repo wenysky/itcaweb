@@ -30,6 +30,7 @@ namespace iTCA.Yuwen.Web.Admin
                 ddlColumns.SelectedValue = articleinfo.Columnid.ToString();
                 ddlHightlight.SelectedValue = articleinfo.Highlight;
                 tbxTitle.Text = Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title.TrimEnd());
+                tbxSummary.Text = articleinfo.Summary.TrimEnd();
                 tbxContent.Text = articleinfo.Content.TrimEnd();
                 btnSubmit.Text = "±à¼­";
             }
@@ -49,6 +50,7 @@ namespace iTCA.Yuwen.Web.Admin
             articleinfo.Columnid = Convert.ToInt32(ddlColumns.SelectedValue);
             articleinfo.Title = tbxTitle.Text.Trim();
             articleinfo.Highlight = ddlHightlight.SelectedValue;
+            articleinfo.Summary = tbxSummary.Text.TrimEnd();
             articleinfo.Content = tbxContent.Text.TrimEnd();
             articleinfo.Postdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             articleinfo.Uid = 1;
@@ -69,7 +71,7 @@ namespace iTCA.Yuwen.Web.Admin
         {
             DateTime time = DateTime.Now;
             Random random = new Random();
-            string savepath = string.Format("upload/{1}{0}{2}{0}{3}{0}", Path.DirectorySeparatorChar, time.ToString("yyyy"),time.ToString("MM"), time.ToString("dd"));
+            string savepath = string.Format("upload{0}{1}{0}{2}{0}{3}{0}", Path.DirectorySeparatorChar, time.ToString("yyyy"),time.ToString("MM"), time.ToString("dd"));
             string filename = fuUploader.FileName;
             string fileextname = Path.GetExtension(filename).ToLower();
             string savefilename = (Environment.TickCount & int.MaxValue).ToString() + random.Next(1000, 9999).ToString() + fileextname;
