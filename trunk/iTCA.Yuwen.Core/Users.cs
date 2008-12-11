@@ -63,5 +63,10 @@ namespace iTCA.Yuwen.Core
         {
             DatabaseProvider.GetInstance().AddUser(info);
         }
+
+        public static void EditUser(UserInfo info)
+        {
+            DatabaseProvider.GetInstance().EditUser(info);
+        }
     }
 }

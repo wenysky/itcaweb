@@ -114,5 +114,33 @@ namespace iTCA.Yuwen.Data.Sqlite
 		    };
             DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_users(username,password,groupid,adminid,qq,email,msn,hi,nickname,realname,regip,del,articlecount,topiccount,replycount,lastlogip,bdday,lastlogdate,regdate) VALUES(@username,@password,@groupid,@adminid,@qq,@email,@msn,@hi,@nickname,@realname,@regip,@del,@articlecount,@topiccount,@replycount,@lastlogip,@bdday,@lastlogdate,@regdate)", dbparams);
         }
+
+        public void EditUser(UserInfo info)
+        {
+            DbParameter[] dbparams = 
+		    {
+			    DbHelper.MakeInParam("@uid", DbType.String, 4, info.Uid),   
+			    DbHelper.MakeInParam("@username", DbType.String, 100, info.Username),                
+			    DbHelper.MakeInParam("@password", DbType.String, 100, info.Password),
+			    DbHelper.MakeInParam("@groupid", DbType.Int32, 4, info.Groupid),
+			    DbHelper.MakeInParam("@adminid", DbType.Int32, 4, info.Adminid),
+			    DbHelper.MakeInParam("@qq", DbType.String, 100, info.Qq),
+			    DbHelper.MakeInParam("@email", DbType.String, 100, info.Email),
+			    DbHelper.MakeInParam("@msn", DbType.String, 100, info.Msn),
+			    DbHelper.MakeInParam("@hi", DbType.String, 100, info.Hi),
+			    DbHelper.MakeInParam("@nickname", DbType.String, 100, info.Nickname),
+			    DbHelper.MakeInParam("@realname", DbType.String, 100, info.Realname),
+			    DbHelper.MakeInParam("@regip", DbType.String, 100, info.Regip),
+			    DbHelper.MakeInParam("@del", DbType.Int32, 4, info.Del),
+			    DbHelper.MakeInParam("@articlecount", DbType.Int32, 4, info.Articlecount),
+			    DbHelper.MakeInParam("@topiccount", DbType.Int32, 4, info.Topiccount),
+			    DbHelper.MakeInParam("@replycount", DbType.Int32, 4, info.Replycount),
+			    DbHelper.MakeInParam("@lastlogip", DbType.String, 100, info.Lastlogip),
+			    DbHelper.MakeInParam("@bdday", DbType.DateTime, 8, info.Bdday),
+			    DbHelper.MakeInParam("@lastlogdate", DbType.DateTime, 8, info.Lastlogdate),
+			    DbHelper.MakeInParam("@regdate", DbType.DateTime, 8, info.Regdate)
+		    };
+            DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_users SET username=@username,password=@password,groupid=@groupid,adminid=@adminid,qq=@qq,email=@email,msn=@msn,hi=@hi,nickname=@nickname,realname=@realname,regip=@regip,del=@del,articlecount=@articlecount,topiccount=@topiccount,replycount=@replycount,lastlogip=@lastlogip,bdday=@bdday,lastlogdate=@lastlogdate,regdate=@regdate WHERE uid=@uid", dbparams);
+        }
     }
 }
