@@ -1,6 +1,7 @@
 ﻿using System;
 using iTCA.Yuwen.Core;
 using iTCA.Yuwen.Entity;
+using Natsuhime.Web;
 
 namespace iTCA.Yuwen.Web
 {
@@ -8,29 +9,46 @@ namespace iTCA.Yuwen.Web
     {
         protected override void Page_Show()
         {
-            UserInfo info = new UserInfo();
-            info.Adminid = 1;
-            info.Articlecount = 0;
-            info.Bdday = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            info.Del = 0;
-            info.Email = "admin@qq.com";
-            info.Groupid = 1;
-            info.Hi = "";
-            info.Lastlogdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            info.Lastlogip = "127.0.0.1";
-            info.Msn = "";
-            info.Nickname = "管理员";
-            info.Password = "123";
-            info.Qq = "";
-            info.Realname = "";
-            info.Regdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            info.Regip = "0.0.0.0";
-            info.Replycount = 0;
-            info.Topiccount = 0;
-            info.Username = "admin";
+            if (userinfo != null)
+            {
+                currentcontext.Response.Write("您已经登录了,请不要重复注册帐号!");
+                currentcontext.Response.End();
+            }
+            if (ispost)
+            {
+                string email = YRequest.GetString("email");
+                string password = YRequest.GetString("password");
+                string username = YRequest.GetString("username");
 
-            Users.AddUser(info);
-                
+                if (email != string.Empty && password != string.Empty && username != string.Empty)
+                {
+                    UserInfo info = new UserInfo();
+                    info.Adminid = 0;
+                    info.Articlecount = 0;
+                    info.Bdday = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                    info.Del = 0;
+                    info.Email = email;
+                    info.Groupid = 1;
+                    info.Hi = "";
+                    info.Lastlogdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                    info.Lastlogip = "";
+                    info.Msn = "";
+                    info.Nickname = username;
+                    info.Password = password;
+                    info.Qq = "";
+                    info.Realname = "";
+                    info.Regdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                    info.Regip = YRequest.GetIP();
+                    info.Replycount = 0;
+                    info.Topiccount = 0;
+                    info.Username = username;
+
+                    Users.AddUser(info);
+                    currentcontext.Response.Write("<script>alert('注册帐号成功,跳转到用户中心.')</script>");
+                    currentcontext.Response.Redirect("usercenter.aspx");
+                }
+            }
+
         }
     }
 }

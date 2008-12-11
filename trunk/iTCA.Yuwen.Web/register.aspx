@@ -29,12 +29,13 @@ override protected void OnInit(EventArgs e)
 	{
 
 	Response.Write("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
+	Response.Write("				<li><a href=\"register.aspx\">注册</a></li>\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("				<li><a href=\"loginout.aspx\">注销" + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
+	Response.Write("				<li><a href=\"loginout.aspx\">注销 " + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
 
 	}	//end if
 
@@ -138,11 +139,25 @@ override protected void OnInit(EventArgs e)
 	Response.Write("	<!--左栏开始-->\r\n");
 	Response.Write("	<div id=\"left-side\">\r\n");
 	Response.Write("		<!--文章开始-->\r\n");
-	Response.Write("		<div class=\"div-header\">用户登录</div>\r\n");
+	Response.Write("		<div class=\"div-header\">用户注册</div>\r\n");
 	Response.Write("		<form action=\"\" method=\"post\" id=\"login\">\r\n");
-	Response.Write("		<input id=\"loginid\" name=\"loginid\" type=\"text\" />\r\n");
-	Response.Write("		<input id=\"password\" name=\"password\" type=\"password\" />\r\n");
-	Response.Write("		<input type=\"submit\" value=\"登录\" />\r\n");
+	Response.Write("		    <table>\r\n");
+	Response.Write("		        <tr>\r\n");
+	Response.Write("		            <th>帐号: </th><td><input id=\"email\" name=\"email\" type=\"text\" />(请填写使用中的邮箱地址,本站将采用Email登陆.)</td>\r\n");
+	Response.Write("		        </tr>\r\n");
+	Response.Write("		        <tr>\r\n");
+	Response.Write("		            <th>密码: </th><td><input id=\"password\" name=\"password\" type=\"password\" /></td>\r\n");
+	Response.Write("		        </tr>\r\n");
+	Response.Write("		        <tr>\r\n");
+	Response.Write("		            <th>其他信息</th><td></td>\r\n");
+	Response.Write("		        </tr>\r\n");
+	Response.Write("		        <tr>\r\n");
+	Response.Write("		            <th>用户名: </th><td><input id=\"username\" name=\"username\" type=\"text\" />(注册后无法修改,请确定填写正确.)</td>\r\n");
+	Response.Write("		        </tr>\r\n");
+	Response.Write("		        <tr>\r\n");
+	Response.Write("		            <th></th><td><input type=\"submit\" value=\"注册\" /></td>\r\n");
+	Response.Write("		        </tr>\r\n");
+	Response.Write("		    </table>\r\n");
 	Response.Write("		</form>\r\n");
 	Response.Write("		<!--文章结束-->\r\n");
 	Response.Write("	</div>\r\n");
