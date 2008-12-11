@@ -11,7 +11,20 @@ override protected void OnInit(EventArgs e)
 	Response.Write("<head>\r\n");
 	Response.Write("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/main.css\" />\r\n");
 	Response.Write("	<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />\r\n");
-	Response.Write("	<title>" + pagetitle.ToString() + "</title>\r\n");
+
+	if (pagetitle=="")
+	{
+
+	Response.Write("<title>" + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("<title>" + pagetitle.ToString() + " - " + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
+
+	}	//end if
+
 	Response.Write("</head>\r\n");
 	Response.Write("<body>\r\n");
 	Response.Write("<div id=\"wrap\">\r\n");
@@ -167,7 +180,7 @@ override protected void OnInit(EventArgs e)
 	Response.Write("	<!--左栏结束-->\r\n");
 	Response.Write("	<!--内容结束-->\r\n");
 
-	Response.Write("	<div id=\"footer\">\r\n");
+	Response.Write("	<div id=\"footer\" title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">\r\n");
 	Response.Write("		<ul>\r\n");
 	Response.Write("			<li><a href=\"#\">关于本站</a></li>\r\n");
 	Response.Write("			<li><a href=\"#\">联系我们</a></li>		\r\n");

@@ -12,6 +12,7 @@ namespace iTCA.Yuwen.Web
         protected List<ColumnInfo> columnlist;
         protected override void Page_Show()
         {
+            pagetitle = "投递文章";
             if (userinfo == null)
             {
                 System.Web.HttpContext.Current.Response.Write("<script>alert('请登录后再投递文章,谢谢~');history.back();</script>");

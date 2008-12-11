@@ -9,6 +9,7 @@ namespace iTCA.Yuwen.Web
     {
         protected override void Page_Show()
         {
+            pagetitle = "用户登录";
             if (userinfo != null)
             {
                 currentcontext.Response.Write("<script>alert('您已经登录了,请不要重复登录!')</script>");

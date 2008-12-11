@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using iTCA.Yuwen.Core;
 using iTCA.Yuwen.Entity;
-
+using Natsuhime.Web;
 
 namespace iTCA.Yuwen.Web
 {
@@ -13,22 +13,18 @@ namespace iTCA.Yuwen.Web
         protected override void Page_Show()
         {
             int columnid, pageid, pagecount;
-            columnid = Convert.ToInt32(System.Web.HttpContext.Current.Request.QueryString["cid"]);
-            pageid = Convert.ToInt32(System.Web.HttpContext.Current.Request.QueryString["pageid"]);
+            columnid = YRequest.GetInt("cid", 0);
+            pageid = YRequest.GetInt("pageid", 1); 
 
             pagecount = Articles.GetArticleCollectionPageCount(columnid, 12);
             if (pageid > pagecount)
             {
                 pageid = pagecount;
             }
-            if (pageid == 0)
-            {
-                pageid = 1;
-            }
             pagecounthtml = Natsuhime.Web.Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", columnid), ".aspx", 8);
             newslist = Articles.GetArticleCollection(columnid, 12, pageid);
 
-            pagetitle = string.Format("{0} - iTCA 重庆工学院计算机协会", Articles.GetColumnName(columnid));
+            pagetitle = Articles.GetColumnName(columnid);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace iTCA.Yuwen.Web
         /// 页面查询Sql内容
         /// </summary>
         protected string querydetail;
+        protected iTCA.Yuwen.Config.MainConfigInfo config;
         /// <summary>
         /// System.Web.HttpContext.Current
         /// </summary>
@@ -52,6 +53,7 @@ namespace iTCA.Yuwen.Web
             sw = System.Diagnostics.Stopwatch.StartNew();
             DbHelper.QueryCount = 0;
             DbHelper.QueryDetail = "";
+            config = iTCA.Yuwen.Config.MainConfigs.GetConfig();
             ispost = Natsuhime.Web.YRequest.IsPost();
             //验证登录
             CheckLogin();

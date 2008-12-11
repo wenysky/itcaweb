@@ -19,10 +19,10 @@ namespace iTCA.Yuwen.Web
             articleinfo = Articles.GetArticleInfo(articleid);
             if (articleinfo == null)
             {
-                System.Web.HttpContext.Current.Response.Write("不存在的文章!");
-                System.Web.HttpContext.Current.Response.End();
+                currentcontext.Response.Write("不存在的文章!");
+                currentcontext.Response.End();
             }
-            pagetitle = string.Format("{0} - {1} - WebSiteName", Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title), articleinfo.Columnname);
+            pagetitle = string.Format("{0} - {1}", Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title), articleinfo.Columnname);
         }
     }
 }
