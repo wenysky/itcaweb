@@ -33,6 +33,10 @@ namespace iTCA.Yuwen.Web
         /// </summary>
         protected string querydetail;
         /// <summary>
+        /// 请求是否是post
+        /// </summary>
+        protected bool ispost;
+        /// <summary>
         /// 当前用户信息(如果为空表示未登录)
         /// </summary>
         protected iTCA.Yuwen.Entity.UserInfo userinfo;
@@ -44,6 +48,7 @@ namespace iTCA.Yuwen.Web
             sw = System.Diagnostics.Stopwatch.StartNew();
             DbHelper.QueryCount = 0;
             DbHelper.QueryDetail = "";
+            ispost = Natsuhime.Web.YRequest.IsPost();
             //验证登录
             CheckLogin();
             //页面执行
