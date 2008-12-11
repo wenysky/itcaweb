@@ -7,7 +7,9 @@ namespace iTCA.Yuwen.Web
     {
         protected override void Page_Show()
         {
-            System.Web.HttpContext.Current.Response.Cookies["cmsnt"].Expires = DateTime.Now.AddDays(-1d);
+            currentcontext.Response.Cookies["cmsnt"].Expires = DateTime.Now.AddDays(-1d);
+            currentcontext.Response.Write("<script>alert('注销成功,跳转到首页')</script>");
+            currentcontext.Response.Redirect("index.aspx");
         }
     }
 }
