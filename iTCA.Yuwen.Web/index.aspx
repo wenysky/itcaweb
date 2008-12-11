@@ -29,12 +29,13 @@ override protected void OnInit(EventArgs e)
 	{
 
 	Response.Write("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
+	Response.Write("				<li><a href=\"register.aspx\">注册</a></li>\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("				<li><a href=\"loginout.aspx\">注销" + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
+	Response.Write("				<li><a href=\"loginout.aspx\">注销 " + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
 
 	}	//end if
 
