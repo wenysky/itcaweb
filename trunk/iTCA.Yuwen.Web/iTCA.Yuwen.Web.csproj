@@ -72,6 +72,10 @@
       <DependentUpon>uploadfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="usercontrolpanel.aspx.cs">
+      <DependentUpon>usercontrolpanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Utility\dbconvert.aspx.cs">
       <DependentUpon>dbconvert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -343,7 +347,9 @@
     <Content Include="templates\loginout.htm" />
     <Content Include="templates\postarticle.htm" />
     <Content Include="templates\uploadfile.htm" />
+    <Content Include="templates\usercontrolpanel.htm" />
     <Content Include="uploadfile.aspx" />
+    <Content Include="usercontrolpanel.aspx" />
     <Content Include="Utility\dbconvert.aspx" />
     <Content Include="templates\index.htm">
       <SubType>ASPXCodeBehind</SubType>

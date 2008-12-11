@@ -37,7 +37,7 @@ namespace iTCA.Yuwen.Web
 
                         currentcontext.Response.AppendCookie(cookie);
                         currentcontext.Response.Write("<script>alert('登录成功,跳转到用户中心.')</script>");
-                        currentcontext.Response.Redirect("usercontrolpanl.aspx");
+                        currentcontext.Response.Redirect("usercontrolpanel.aspx");
                     }
                     else
                     {

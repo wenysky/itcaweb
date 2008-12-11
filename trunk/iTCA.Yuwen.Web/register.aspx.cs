@@ -45,7 +45,7 @@ namespace iTCA.Yuwen.Web
 
                     Users.AddUser(info);
                     currentcontext.Response.Write("<script>alert('注册帐号成功,跳转到用户中心.')</script>");
-                    currentcontext.Response.Redirect("usercenter.aspx");
+                    currentcontext.Response.Redirect("usercontrolpanel.aspx");
                 }
             }
 
