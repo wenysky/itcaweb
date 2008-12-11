@@ -19,8 +19,9 @@
 				<li><a href="#">论坛</a></li>
 		    <%if {userinfo}==null%>
 				<li><a href="login.aspx">登录</a></li>
+				<li><a href="register.aspx">注册</a></li>
 			<%else%>
-				<li><a href="loginout.aspx">注销{userinfo.username}</a></li>
+				<li><a href="loginout.aspx">注销 {userinfo.username}</a></li>
 			<%/if%>
 				<li><a href="#">关于</a></li>
 			</ul>
