@@ -32,7 +32,7 @@
 		<div class="div-header">我发布的文章</div>
 		<ul>
 		<%loop (ArticleInfo) info myarticlelist%>
-		    <li><a href="showarticle-{info.articleid}.aspx">{info.title}</a></li>
+		    <li style="border-bottom:1px solid #666; line-height:200%;"><a href="showarticle-{info.articleid}.aspx">{info.title}</a><span style="margin-left:10px">{info.postdate}</span></li>
 		<%/loop%>
 		</ul>
 		<!--分页开始-->

@@ -141,6 +141,8 @@ override protected void OnInit(EventArgs e)
 	Response.Write("	<div id=\"left-side\">\r\n");
 	Response.Write("		<!--文章开始-->\r\n");
 	Response.Write("		<div class=\"div-header\">用户注册</div>\r\n");
+	Response.Write("		<br />\r\n");
+	Response.Write("		<br />\r\n");
 	Response.Write("		<form action=\"\" method=\"post\" id=\"login\">\r\n");
 	Response.Write("		    <table>\r\n");
 	Response.Write("		        <tr>\r\n");
@@ -150,7 +152,7 @@ override protected void OnInit(EventArgs e)
 	Response.Write("		            <th>密码: </th><td><input id=\"password\" name=\"password\" type=\"password\" /></td>\r\n");
 	Response.Write("		        </tr>\r\n");
 	Response.Write("		        <tr>\r\n");
-	Response.Write("		            <th>其他信息</th><td></td>\r\n");
+	Response.Write("		            <th>其他信息<br /><br /></th><td></td>\r\n");
 	Response.Write("		        </tr>\r\n");
 	Response.Write("		        <tr>\r\n");
 	Response.Write("		            <th>用户名: </th><td><input id=\"username\" name=\"username\" type=\"text\" />(注册后无法修改,请确定填写正确.)</td>\r\n");
