@@ -22,5 +22,6 @@ namespace iTCA.Yuwen.Data
 
 
         void AddUser(UserInfo info);
+        void EditUser(UserInfo info);
     }
 }
