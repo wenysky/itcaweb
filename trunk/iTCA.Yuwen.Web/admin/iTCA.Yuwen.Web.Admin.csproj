@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="mainSetting.aspx.cs">
       <DependentUpon>mainSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="mainSetting.aspx.designer.cs">
       <DependentUpon>mainSetting.aspx</DependentUpon>
