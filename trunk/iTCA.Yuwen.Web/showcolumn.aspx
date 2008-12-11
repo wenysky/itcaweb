@@ -35,6 +35,7 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
+	Response.Write("				<li><a href=\"usercontrolpanel.aspx\">用户中心</a></li>\r\n");
 	Response.Write("				<li><a href=\"loginout.aspx\">注销 " + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
 
 	}	//end if
