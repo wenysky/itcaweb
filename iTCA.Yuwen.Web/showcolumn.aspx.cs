@@ -24,7 +24,14 @@ namespace iTCA.Yuwen.Web
             pagecounthtml = Natsuhime.Web.Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", columnid), ".aspx", 8);
             newslist = Articles.GetArticleCollection(columnid, 12, pageid);
 
-            pagetitle = Articles.GetColumnName(columnid);
+            if (columnid > 0)
+            {
+                pagetitle = Articles.GetColumnName(columnid);
+            }
+            else
+            {
+                pagetitle = "所有文章列表";
+            }
         }
     }
 }

@@ -388,6 +388,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="config\main.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="upload\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
