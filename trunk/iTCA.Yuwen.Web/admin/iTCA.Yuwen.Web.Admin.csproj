@@ -86,6 +86,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="mainSetting.aspx.cs">
+      <DependentUpon>mainSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mainSetting.aspx.designer.cs">
+      <DependentUpon>mainSetting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="postarticle.aspx.cs">
       <DependentUpon>postarticle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -103,28 +109,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ABlist.aspx" />
-    <Content Include="AdminLogin.aspx" />
-    <Content Include="AEditadmin.aspx" />
     <Content Include="Aleft.html" />
-    <Content Include="ALinks.aspx" />
-    <Content Include="ALoginout.aspx" />
-    <Content Include="AOthEdit.aspx" />
     <Content Include="articlelist.aspx" />
     <Content Include="ATitle.css" />
-    <Content Include="AUcpm.aspx" />
-    <Content Include="AUlist.aspx" />
-    <Content Include="BDel.aspx" />
-    <Content Include="BReply.aspx" />
     <Content Include="columnlist.aspx" />
     <Content Include="dbcontrol.aspx" />
     <Content Include="default.aspx" />
     <Content Include="deleteadmin.aspx" />
-    <Content Include="ftb.colorpicker.aspx" />
-    <Content Include="ftb.imagegallery.aspx" />
-    <Content Include="ftb.inserttable.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Main.css" />
+    <Content Include="mainSetting.aspx" />
     <Content Include="postarticle.aspx" />
     <Content Include="template.aspx" />
     <Content Include="TextFile1.txt" />
@@ -133,6 +127,10 @@
     <ProjectReference Include="..\..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">
       <Project>{67268E9E-AA3B-4D9E-956A-158922DA6B79}</Project>
       <Name>DeepinSummer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\iTCA.Yuwen.Config\iTCA.Yuwen.Config.csproj">
+      <Project>{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}</Project>
+      <Name>iTCA.Yuwen.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\iTCA.Yuwen.Core\iTCA.Yuwen.Core.csproj">
       <Project>{1C1A6FB6-3170-4BAB-B500-325E811410E6}</Project>
