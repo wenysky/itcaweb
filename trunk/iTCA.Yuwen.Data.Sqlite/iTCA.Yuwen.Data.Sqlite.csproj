@@ -41,6 +41,7 @@
     <Compile Include="DbArticles.cs" />
     <Compile Include="DbUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DbAttachments.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">

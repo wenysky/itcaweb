@@ -94,3 +94,12 @@ info.Regdate
 
 uid,username,password,groupid,adminid,qq,email,msn,hi,nickname,realname,regip,del,articlecount,topiccount,replycount,lastlogip,bdday,lastlogdate,regdate
 uid,@username,@password,@groupid,@adminid,@qq,@email,@msn,@hi,@nickname,@realname,@regip,@del,@articlecount,@topiccount,@replycount,@lastlogip,@bdday,@lastlogdate,@regdate
+
+
+attachmentid,@filename,@filepath,@filetype,@posterid,@description
+Attachmentid
+Filename
+Filepath
+Filetype
+Posterid
+Description

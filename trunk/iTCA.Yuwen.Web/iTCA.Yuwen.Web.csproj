@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ImportDLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
@@ -62,6 +66,10 @@
     </Compile>
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploadfile.aspx.cs">
+      <DependentUpon>uploadfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Utility\dbconvert.aspx.cs">
@@ -388,6 +396,9 @@
     <None Include="images\act\CVS\Repository" />
     <None Include="images\act\CVS\Root" />
     <None Include="liteeditor\images\post_editor.js.bak" />
+    <Content Include="javascript\ajaxfileupload.js" />
+    <Content Include="javascript\jquery-1.2.6.js" />
+    <Content Include="javascript\jquery.MultiFile.js" />
     <Content Include="liteeditor\edit.html" />
     <Content Include="liteeditor\images\bbcode.js" />
     <Content Include="liteeditor\images\common.js" />
@@ -451,6 +462,8 @@
     <Content Include="templates\register.htm" />
     <Content Include="templates\loginout.htm" />
     <Content Include="templates\postarticle.htm" />
+    <Content Include="templates\uploadfile.htm" />
+    <Content Include="uploadfile.aspx" />
     <Content Include="Utility\dbconvert.aspx" />
     <Content Include="templates\index.htm">
       <SubType>ASPXCodeBehind</SubType>

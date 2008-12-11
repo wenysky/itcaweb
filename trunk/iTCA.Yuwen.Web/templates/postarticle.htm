@@ -47,17 +47,78 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea name="content" rows="2" cols="20" id="tbxContent" style="height:366px;width:100%;"></textarea>
+                        <textarea name="content" rows="2" cols="20" id="content" style="height:366px;width:100%;"></textarea>
                     </td>
                 </tr>
                 <tr>
                     
                     <td>上传文件:</td>
 
-                    <td>
-                        <input type="file" name="fuUploader" id="fuUploader" />
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                        <input type="submit" name="btnUpload" value="上传" id="btnUpload" /><span id="lbMessage" style="color:Red;"></span></td>
+                    <td>                       
+                        <input type="file" name="upfile" id="upfile" />
+                        <button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">上传文件</button>                          
+                        <script src="javascript/jquery-1.2.6.js" type="text/javascript" language="javascript"></script>
+                        <script src="javascript/ajaxfileupload.js" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            function ajaxFileUpload()
+                            {
+                                //starting setting some animation when the ajax starts and completes
+                                $("#loading")
+                                .ajaxStart(function(){
+                                    $(this).show();
+                                })
+                                .ajaxComplete(function(){
+                                    $(this).hide();
+                                });
+                               
+                                /*
+                                    prepareing ajax file upload
+                                    url: the url of script file handling the uploaded files
+                                                fileElementId: the file type of input element id and it will be the index of  $_FILES Array()
+                                    dataType: it support json, xml
+                                    secureuri:use secure protocol
+                                    success: call back function when the ajax complete
+                                    error: callback function when the ajax failed
+                                   
+                                        */
+                                $.ajaxFileUpload
+                                (
+                                    {
+                                        url:'uploadfile.aspx',
+                                        secureuri:false,
+                                        fileElementId:'upfile',
+                                        dataType: 'json',
+                                        success: function (data, status)
+                                        {
+                                            if(typeof(data.Filepath) != 'undefined')
+                                            {
+                                                alert('上传成功!');                                                
+                                                tinyMCE.getInstanceById('content').getBody().innerHTML += '<img src="' + data.Filepath + '" alt="" />';
+                                            }
+//                                            if(typeof(data.error) != 'undefined')
+//                                            {
+//                                                if(data.error != '')
+//                                                {
+//                                                    alert(data.error);
+//                                                }else
+//                                                {
+//                                                    alert(data.msg);
+//                                                }
+//                                            }
+
+                                        },
+                                        error: function (data, status, e)
+                                        {
+                                            alert(e);
+                                        }
+                                    }
+                                )
+                               
+                                return false;
+
+                            }  
+                        </script>
+                    </td>
                 </tr>
 
                 <tr>                    
