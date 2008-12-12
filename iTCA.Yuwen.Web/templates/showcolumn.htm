@@ -16,11 +16,15 @@
 		<!--分页结束-->
 		<ul>
 		    <%loop (ArticleInfo) newinfo newslist%>
-			<li class="article-list">
-				<h2 class="title"><a href="showarticle-{newinfo.articleid}.aspx">{newinfo.title}</a></h2>
-				<span class="description">{newinfo.summary}</span>
-				<div class="post-info"><span class="author">{newinfo.username}</span>投递 @ 发布于<span class="post-date">{newinfo.postdate}</span></div>
-			</li>
+			    <li class="article-list">
+			    <%if {config.urlrewrite}==1%>
+				    <h2 class="title"><a href="showarticle-{newinfo.articleid}{config.urlrewriteextname}">{newinfo.title}</a></h2>
+				<%else%>
+				    <h2 class="title"><a href="showarticle.aspx?id={newinfo.articleid}">{newinfo.title}</a></h2>
+				<%/if%>
+				    <span class="description">{newinfo.summary}</span>
+				    <div class="post-info"><span class="author">{newinfo.username}</span>投递 @ 发布于<span class="post-date">{newinfo.postdate}</span></div>
+			    </li>
 			<%/loop%>
 		</ul>		
 		<!--分页开始-->

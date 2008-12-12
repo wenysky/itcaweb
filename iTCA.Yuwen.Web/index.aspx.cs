@@ -27,7 +27,7 @@ namespace iTCA.Yuwen.Web
             newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
 
             pagecount = Articles.GetArticleCollectionPageCount(1, 12);
-            pagecounthtml = Utils.GetStaticPageNumbersHtml(1, pagecount, string.Format("showcolumn-{0}", 1), ".aspx", 8);
+            pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(1, pagecount, string.Format("showcolumn-{0}", 1), ".aspx", 8) : Utils.GetPageNumbersHtml(1, pagecount, "showcolumn.aspx?cid=1", 8, "pageid", "");
         }
     }
 }

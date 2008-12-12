@@ -122,7 +122,6 @@
     <Content Include="mainSetting.aspx" />
     <Content Include="postarticle.aspx" />
     <Content Include="template.aspx" />
-    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">

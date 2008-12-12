@@ -165,11 +165,24 @@ override protected void OnInit(EventArgs e)
 	{
 		newinfo__loop__id++;
 
-	Response.Write("			<li class=\"article-list\">\r\n");
-	Response.Write("				<h2 class=\"title\"><a href=\"showarticle-" + newinfo.Articleid.ToString().Trim() + ".aspx\">" + newinfo.Title.ToString().Trim() + "</a></h2>\r\n");
-	Response.Write("				<span class=\"description\">" + newinfo.Summary.ToString().Trim() + "</span>\r\n");
-	Response.Write("				<div class=\"post-info\"><span class=\"author\">" + newinfo.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + newinfo.Postdate.ToString().Trim() + "</span></div>\r\n");
-	Response.Write("			</li>\r\n");
+	Response.Write("			    <li class=\"article-list\">\r\n");
+
+	if (config.Urlrewrite==1)
+	{
+
+	Response.Write("				    <h2 class=\"title\"><a href=\"showarticle-" + newinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + newinfo.Title.ToString().Trim() + "</a></h2>\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("				    <h2 class=\"title\"><a href=\"showarticle.aspx?id=" + newinfo.Articleid.ToString().Trim() + "\">" + newinfo.Title.ToString().Trim() + "</a></h2>\r\n");
+
+	}	//end if
+
+	Response.Write("				    <span class=\"description\">" + newinfo.Summary.ToString().Trim() + "</span>\r\n");
+	Response.Write("				    <div class=\"post-info\"><span class=\"author\">" + newinfo.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + newinfo.Postdate.ToString().Trim() + "</span></div>\r\n");
+	Response.Write("			    </li>\r\n");
 
 	}	//end loop
 

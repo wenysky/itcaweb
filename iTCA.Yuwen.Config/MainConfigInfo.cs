@@ -15,11 +15,23 @@ namespace iTCA.Yuwen.Config
         /// cookie作用域
         /// </summary>
         public string Cookiedomain { get; set; }
+        /// <summary>
+        /// 启用UrlRewrite
+        /// </summary>
+        public int Urlrewrite { get; set; }
+        /// <summary>
+        /// UrlRewrite扩展名
+        /// </summary>
+        public string Urlrewriteextname { get; set; }
 
         /// <summary>
         /// 关闭站点
         /// </summary>
         public int Closed { get; set; }
+        /// <summary>
+        /// 关闭原因
+        /// </summary>
+        public string Closedreason { get; set; }
         /// <summary>
         /// 网站名称
         /// </summary>

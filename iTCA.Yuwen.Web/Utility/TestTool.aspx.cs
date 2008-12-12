@@ -28,7 +28,22 @@ namespace iTCA.Yuwen.Web.Utility
             info.Dbtype = "Sqlite";
             info.Tableprefix = "wy_";
             info.ApplictionPath = "/";
-            SerializationHelper.SaveXml(info, Utils.GetMapPath("~/hmsm.config"));
+            BaseConfigs.Save(info);
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            MainConfigInfo info = new MainConfigInfo();
+            info.Closed = 0;
+            info.Closedreason = "";
+            info.ApplictionSecKey = Guid.NewGuid().ToString();
+            info.Cookiedomain = "";
+            info.Urlrewrite = 0;
+            info.Urlrewriteextname = ".aspx";
+            info.Websitename = "盛夏之地";
+            info.Seotitle = "技术同好会";
+
+            MainConfigs.Save(info);
         }
     }
 }
