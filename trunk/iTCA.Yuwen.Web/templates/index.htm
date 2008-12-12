@@ -16,11 +16,15 @@
 		<!--分页结束-->
 		<ul>
 		    <%loop (ArticleInfo) anninfo annlist%>
-			<li class="article-list">
-				<h2 class="title"><a href="showarticle-{anninfo.articleid}.aspx">{anninfo.title}</a></h2>
-				<span class="description">{anninfo.summary}</span>
-				<div class="post-info"><span class="author">{anninfo.username}</span>投递 @ 发布于<span class="post-date">{anninfo.postdate}</span></div>
-			</li>
+			    <li class="article-list">
+			    <%if {config.urlrewrite}==1%>
+				    <h2 class="title"><a href="showarticle-{anninfo.articleid}{config.urlrewriteextname}">{anninfo.title}</a></h2>
+		        <%else%>
+		            <h2 class="title"><a href="showarticle.aspx?id={anninfo.articleid}">{anninfo.title}</a></h2>
+		        <%/if%>
+				    <span class="description">{anninfo.summary}</span>
+				    <div class="post-info"><span class="author">{anninfo.username}</span>投递 @ 发布于<span class="post-date">{anninfo.postdate}</span></div>
+			    </li>
 			<%/loop%>
 		</ul>		
 		<!--分页开始-->
@@ -32,7 +36,11 @@
 		<div class="div-header">技术文章</div>
 		<ul>
 		    <%loop (ArticleInfo) newsinfo newslist%>
-			<li class="article-list"><h2><a href="showarticle-{newsinfo.articleid}.aspx">{newsinfo.title}</a></h2></li>
+		        <%if {config.urlrewrite}==1%>
+			        <li class="article-list"><h2><a href="showarticle-{newsinfo.articleid}{config.urlrewriteextname}">{newsinfo.title}</a></h2></li>
+			    <%else%>
+			        <li class="article-list"><h2><a href="showarticle.aspx?id={newsinfo.articleid}">{newsinfo.title}</a></h2></li>
+			    <%/if%>
 			<%/loop%>
 		</ul>
 		
