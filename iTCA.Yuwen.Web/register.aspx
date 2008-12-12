@@ -36,7 +36,7 @@ override protected void OnInit(EventArgs e)
 	Response.Write("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
 	Response.Write("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
 	Response.Write("				<li><a href=\"#\">博客</a></li>\r\n");
-	Response.Write("				<li><a href=\"#\">论坛</a></li>\r\n");
+	Response.Write("				<li><a href=\"bbs/\">论坛</a></li>\r\n");
 
 	if (userinfo==null)
 	{
