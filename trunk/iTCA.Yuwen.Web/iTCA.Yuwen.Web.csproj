@@ -103,6 +103,13 @@
     <Compile Include="Utility\dbtool.aspx.designer.cs">
       <DependentUpon>dbtool.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\TestTool.aspx.cs">
+      <DependentUpon>TestTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Utility\TestTool.aspx.designer.cs">
+      <DependentUpon>TestTool.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\information.txt" />
@@ -389,6 +396,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\main.config" />
+    <Content Include="Utility\TestTool.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

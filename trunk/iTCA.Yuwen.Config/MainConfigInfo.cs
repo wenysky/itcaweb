@@ -6,19 +6,7 @@ namespace iTCA.Yuwen.Config
 {
     [Serializable]
     public class MainConfigInfo
-    {
-        /// <summary>
-        /// 安装目录(相对于应用程序池)
-        /// </summary>
-        public string ApplictionPath { get; set; }
-        /// <summary>
-        /// 数据库链接字符串
-        /// </summary>
-        public string Dbconnectstring { get; set; }
-        /// <summary>
-        /// 表前缀
-        /// </summary>
-        public string Tableprefix { get; set; }
+    {        
         /// <summary>
         /// 应用程序key(用于cookie加密之类的)
         /// </summary>

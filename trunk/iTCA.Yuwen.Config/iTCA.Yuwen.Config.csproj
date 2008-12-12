@@ -36,6 +36,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseConfigInfo.cs" />
+    <Compile Include="BaseConfigs.cs" />
     <Compile Include="MainConfigInfo.cs" />
     <Compile Include="MainConfigs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,17 +4,17 @@ using Natsuhime.Common;
 
 namespace iTCA.Yuwen.Config
 {
-    public class MainConfigs
+    public class BaseConfigs
     {
         private static object lockHelper = new object();
 
-        private static MainConfigInfo m_configinfo;
+        private static BaseConfigInfo m_configinfo;
 
-        private static string configpath = Path.Combine(Utils.GetMapPath("~/"), "config" + Path.DirectorySeparatorChar + "main.config");
+        private static string configpath = Utils.GetMapPath("~/hmsm.config");
         /// <summary>
         /// 静态构造函数初始化相应实例和定时器
         /// </summary>
-        static MainConfigs()
+        static BaseConfigs()
         {
             if (m_configinfo == null)
             {
@@ -34,7 +34,7 @@ namespace iTCA.Yuwen.Config
         /// 取得静态配置信息
         /// </summary>
         /// <returns></returns>
-        public static MainConfigInfo GetConfig()
+        public static BaseConfigInfo GetConfig()
         {
             return m_configinfo;
         }
@@ -45,7 +45,7 @@ namespace iTCA.Yuwen.Config
         /// </summary>
         /// <param name="configinfo">配置信息</param>
         /// <param name="configFilePath">配置文件完整路径</param>
-        public static void Save(MainConfigInfo configinfo)
+        public static void Save(BaseConfigInfo configinfo)
         {
             lock (lockHelper)
             {
@@ -57,9 +57,9 @@ namespace iTCA.Yuwen.Config
         /// 从XML加载配置信息
         /// </summary>
         /// <returns></returns>
-        public static MainConfigInfo Load()
+        public static BaseConfigInfo Load()
         {
-            return (MainConfigInfo)SerializationHelper.LoadXml(typeof(MainConfigInfo), configpath);
+            return (BaseConfigInfo)SerializationHelper.LoadXml(typeof(BaseConfigInfo), configpath);
         }
     }
 }
