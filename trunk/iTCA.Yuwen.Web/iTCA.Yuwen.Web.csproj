@@ -399,6 +399,9 @@
     <Content Include="Utility\TestTool.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NSWindBase.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="upload\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

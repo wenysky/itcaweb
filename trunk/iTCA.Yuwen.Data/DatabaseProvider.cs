@@ -22,7 +22,7 @@ namespace iTCA.Yuwen.Data
 		{
 			try
 			{
-                _instance = (IDataProvider)Activator.CreateInstance(Type.GetType(string.Format("iTCA.Yuwen.Data.{0}.DataProvider, iTCA.Yuwen.Data.{0}", DBConfigs.GetDbType()), false, true));
+                _instance = (IDataProvider)Activator.CreateInstance(Type.GetType(string.Format("iTCA.Yuwen.Data.{0}.DataProvider, iTCA.Yuwen.Data.{0}", DbConfigs.GetConfig().Dbtype), false, true));
 			}
 			catch
 			{
