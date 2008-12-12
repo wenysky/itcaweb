@@ -10,7 +10,7 @@ namespace iTCA.Yuwen.Config
 
         private static BaseConfigInfo m_configinfo;
 
-        private static string configpath = Utils.GetMapPath("~/hmsm.config");
+        private static string configpath = Utils.GetMapPath("~/NSWindBase.config");
         /// <summary>
         /// 静态构造函数初始化相应实例和定时器
         /// </summary>
