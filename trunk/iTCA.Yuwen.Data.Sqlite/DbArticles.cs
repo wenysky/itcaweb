@@ -9,6 +9,7 @@ namespace iTCA.Yuwen.Data.Sqlite
 {
     public partial class DataProvider : IDataProvider
     {
+        #region 取得列表
         /// <summary>
         /// 取得文章列表.
         /// </summary>
@@ -37,6 +38,24 @@ namespace iTCA.Yuwen.Data.Sqlite
             }
             return dr;
         }
+        public int GetArticleCollectionPageCount(int cid, int pagesize)
+        {
+            int recordcount;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@columnid", DbType.Int32, 4,cid)
+		    };
+            if (cid > 0)
+            {
+                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0 AND columnid=@columnid", prams));
+            }
+            else
+            {
+                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0", prams));
+            }
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
+
         /// <summary>
         /// 通过cid列表取得文章列表.
         /// </summary>
@@ -65,40 +84,6 @@ namespace iTCA.Yuwen.Data.Sqlite
             }
             return dr;
         }
-
-        public IDataReader GetUserArticles(int uid, int pagesize, int currentpage)
-        {
-            IDataReader dr;
-            int recordoffset = (currentpage - 1) * pagesize;
-
-            DbParameter[] prams = 
-		    {
-			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,uid),
-			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
-			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
-		    };
-            dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_articles WHERE del=0 AND uid=@uid ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", prams);
-
-            return dr;
-        }
-
-        public int GetArticleCollectionPageCount(int cid, int pagesize)
-        {
-            int recordcount;
-            DbParameter[] prams = 
-		    {
-			    DbHelper.MakeInParam("@columnid", DbType.Int32, 4,cid)
-		    };
-            if (cid > 0)
-            {
-                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0 AND columnid=@columnid", prams));
-            }
-            else
-            {
-                recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, "SELECT COUNT(articleid) FROM wy_articles WHERE del=0", prams));
-            }
-            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
-        }
         public int GetArticleCollectionPageCount(string cids, int pagesize)
         {
             int recordcount;
@@ -116,6 +101,22 @@ namespace iTCA.Yuwen.Data.Sqlite
             }
             return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
         }
+
+        public IDataReader GetUserArticles(int uid, int pagesize, int currentpage)
+        {
+            IDataReader dr;
+            int recordoffset = (currentpage - 1) * pagesize;
+
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,uid),
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_articles WHERE del=0 AND uid=@uid ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", prams);
+
+            return dr;
+        }
         public int GetUserArticleCollectionPageCount(int uid, int pagesize)
         {
             int recordcount;
@@ -127,15 +128,7 @@ namespace iTCA.Yuwen.Data.Sqlite
 
             return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
         }
-
-        /// <summary>
-        /// 取得栏目列表
-        /// </summary>
-        /// <returns></returns>
-        public IDataReader GetArticleColumnList()
-        {
-            return DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_columns WHERE del=0 ORDER BY [columnid]");
-        }
+        #endregion
 
         /// <summary>
         /// 取得文章内容
@@ -167,7 +160,6 @@ namespace iTCA.Yuwen.Data.Sqlite
 		    };
             DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_articles(title,columnid,highlight,summary,content,postdate,uid,username) VALUES(@title,@columnid,@highlight,@summary,@content,@postdate,@uid,@username)", prams);
         }
-
         public void EditArticle(ArticleInfo articleinfo)
         {
             DbParameter[] prams = 
@@ -184,7 +176,6 @@ namespace iTCA.Yuwen.Data.Sqlite
 		    };
             DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_articles SET title=@title,columnid=@columnid,highlight=@highlight,summary=@summary,content=@content,postdate=@postdate,uid=@uid,username=@username WHERE articleid=@articleid", prams);
         }
-
         public void DeleteArticle(int articleid)
         {
             DbParameter[] prams = 
@@ -193,45 +184,5 @@ namespace iTCA.Yuwen.Data.Sqlite
 		    };
             DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_articles SET del=1 WHERE articleid=@articleid", prams);
         }
-
-
-        public void CreateColumn(ColumnInfo columninfo)
-        {
-            DbParameter[] prams = 
-		    {
-			    //DbHelper.MakeInParam("@columnid", DbType.Int32, 4,columninfo.Columnid),
-			    DbHelper.MakeInParam("@columnname", DbType.String, 50,columninfo.Columnname),
-			    DbHelper.MakeInParam("@parentid", DbType.Int32, 4,columninfo.Parentid)
-		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_columns(columnname,parentid) VALUES(@columnname,@columnname)", prams);
-        }
-
-        public void DeleteColumn(int columnid)
-        {
-            DbParameter[] prams = 
-		    {
-			    DbHelper.MakeInParam("@columnid", DbType.Int32, 4,columnid)
-		    };
-            //DbHelper.ExecuteNonQuery(CommandType.Text, "DELETE FROM wy_columns WHERE columnid=@columnid", prams);
-            DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_columns SET del=1 WHERE columnid=@columnid", prams);
-        }
-
-        public void EditColumn(ColumnInfo columninfo)
-        {
-            DbParameter[] prams = 
-		    {
-			    DbHelper.MakeInParam("@columnname", DbType.String, 100,columninfo.Columnname),
-			    DbHelper.MakeInParam("@columnid", DbType.Int32, 4,columninfo.Columnid),
-			    DbHelper.MakeInParam("@parentid", DbType.Int32, 4,columninfo.Parentid)
-		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_columns SET columnname=@columnname,parentid=@parentid WHERE columnid=@columnid", prams);
-        }
-
-
-
-        #region IDataProvider 成员
-
-
-        #endregion
     }
 }
