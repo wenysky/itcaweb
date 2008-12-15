@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Data;
 using Natsuhime.Data;
 using iTCA.Yuwen.Entity;
+using iTCA.Yuwen.Config;
 
 namespace iTCA.Yuwen.Data.Sqlite
 {
@@ -45,6 +46,18 @@ namespace iTCA.Yuwen.Data.Sqlite
 			    DbHelper.MakeInParam("@uid", DbType.Int32, 4, uid)
 		    };
             dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_users WHERE uid=@uid", prams);
+            return dr;
+        }
+
+        public IDataReader GetUserInfo(int uid, string password)
+        {
+            IDataReader dr;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@uid", DbType.String, 100, uid),
+                DbHelper.MakeInParam("@password", DbType.Int32, 4, password)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}users WHERE uid=@uid AND password=@password", BaseConfigs.GetConfig().Tableprefix), prams);
             return dr;
         }
 

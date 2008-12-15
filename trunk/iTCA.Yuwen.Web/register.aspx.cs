@@ -14,6 +14,7 @@ namespace iTCA.Yuwen.Web
             {
                 currentcontext.Response.Write("您已经登录了,请不要重复注册帐号!");
                 currentcontext.Response.End();
+                return;
             }
             if (ispost)
             {
@@ -23,6 +24,18 @@ namespace iTCA.Yuwen.Web
 
                 if (email != string.Empty && password != string.Empty && username != string.Empty)
                 {
+                    if (Users.GetUserInfo(username, 1) != null)
+                    {
+                        currentcontext.Response.Write("用户名已存在!");
+                        currentcontext.Response.End();
+                        return;
+                    }
+                    else if (Users.GetUserInfo(email, 0) != null)
+                    {
+                        currentcontext.Response.Write("Email已存在!");
+                        currentcontext.Response.End();
+                        return;
+                    }
                     UserInfo info = new UserInfo();
                     info.Adminid = 0;
                     info.Articlecount = 0;

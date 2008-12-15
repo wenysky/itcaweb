@@ -17,6 +17,7 @@ namespace iTCA.Yuwen.Data
         /// <param name="logintype">登录类型(0为邮箱地址登录,1为UserName登录,3为uid登录)</param>
         /// <returns>用户记录</returns>
         IDataReader GetUserInfo(string loginid, string password, int logintype);
+        IDataReader GetUserInfo(int uid, string password);
         IDataReader GetUserInfo(int uid);
         IDataReader GetUserInfo(string loginid, int logintype);
 

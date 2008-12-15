@@ -56,6 +56,36 @@ namespace iTCA.Yuwen.Core
             reader.Close();
             return info;
         }
+        public static UserInfo GetUserInfo(int uid, string password)
+        {
+            UserInfo info;
+            IDataReader reader = DatabaseProvider.GetInstance().GetUserInfo(uid, password);
+            if (reader.Read())
+            {
+                info = DataReader2UserInfo(reader);
+            }
+            else
+            {
+                info = null;
+            }
+            reader.Close();
+            return info;
+        }
+        public static UserInfo GetUserInfo(string loginid, int logintype)
+        {
+            UserInfo info;
+            IDataReader reader = DatabaseProvider.GetInstance().GetUserInfo(loginid, logintype);
+            if (reader.Read())
+            {
+                info = DataReader2UserInfo(reader);
+            }
+            else
+            {
+                info = null;
+            }
+            reader.Close();
+            return info;
+        }
 
 
 

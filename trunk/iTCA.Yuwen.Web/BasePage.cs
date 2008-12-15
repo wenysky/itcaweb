@@ -86,7 +86,7 @@ namespace iTCA.Yuwen.Web
 
                 if (uid > 0 && password != string.Empty)
                 {
-                    userinfo = iTCA.Yuwen.Core.Users.GetUserInfo(uid.ToString(), password, 3);
+                    userinfo = iTCA.Yuwen.Core.Users.GetUserInfo(uid, password);
                 }
             }
         }

@@ -25,7 +25,7 @@ namespace iTCA.Yuwen.Web
             int commentpageid=YRequest.GetQueryInt("commentpageid", 1);
             commentlist = Comments.GetCommentCollection(articleid, 8, commentpageid);
             int commentpagecount = Comments.GetCommentCollectionPageCount(articleid, 8);
-            commentcounthtml = config.Urlrewrite == 1 ? Natsuhime.Web.Utils.GetStaticPageNumbersHtml(commentpageid, commentpagecount, string.Format("showarticle-{0}-{1}", articleid, commentpageid), ".aspx", 8) : Utils.GetPageNumbersHtml(commentpageid, commentpagecount, string.Format("showarticle.aspx?id={0}&commentpageid={1}", articleid, commentpageid), 8, "commentpageid", "");
+            commentcounthtml = config.Urlrewrite == 1 ? Natsuhime.Web.Utils.GetStaticPageNumbersHtml(commentpageid, commentpagecount, string.Format("showarticle-{0}", articleid), ".aspx", 8) : Utils.GetPageNumbersHtml(commentpageid, commentpagecount, string.Format("showarticle.aspx?id={0}", articleid), 8, "commentpageid", "");
         }
     }
 }
