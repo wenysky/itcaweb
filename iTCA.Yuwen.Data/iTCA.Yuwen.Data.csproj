@@ -41,6 +41,7 @@
     <Compile Include="DatabaseProvider.cs" />
     <Compile Include="IArticles.cs" />
     <Compile Include="IAttachment.cs" />
+    <Compile Include="IColumn.cs" />
     <Compile Include="IUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IComments.cs" />
