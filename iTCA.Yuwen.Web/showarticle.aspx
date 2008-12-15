@@ -173,7 +173,16 @@ override protected void OnInit(EventArgs e)
 
 	Response.Write("		        <li>\r\n");
 	Response.Write("		            <div class=\"content\">" + info.Content.ToString().Trim() + "</div>\r\n");
-	Response.Write("		            <span><a href=\"comment.aspx?action=grade&type=1&commentid=" + info.Commentid.ToString().Trim() + "\">支持(" + info.Goodcount.ToString().Trim() + ")</a><a href=\"comment.aspx?action=grade&type=-1&commentid=" + info.Commentid.ToString().Trim() + "\">反对(" + info.Badcount.ToString().Trim() + ")</a></span>                    <span>" + info.Username.ToString().Trim() + " 于 " + info.Postdate.ToString().Trim() + " 留言</span>\r\n");
+	Response.Write("		            <span><a href=\"comment.aspx?action=grade&type=1&commentid=" + info.Commentid.ToString().Trim() + "\">支持(" + info.Goodcount.ToString().Trim() + ")</a><a href=\"comment.aspx?action=grade&type=-1&commentid=" + info.Commentid.ToString().Trim() + "\">反对(" + info.Badcount.ToString().Trim() + ")</a></span><span>" + info.Username.ToString().Trim() + " 于 " + info.Postdate.ToString().Trim() + " 留言 \r\n");
+
+	if (userinfo!=null&&userinfo.Adminid==1)
+	{
+
+	Response.Write("[<a href=\"comment.aspx?action=del&commentid=" + info.Commentid.ToString().Trim() + "\">删除</a>]\r\n");
+
+	}	//end if
+
+	Response.Write("</span>\r\n");
 	Response.Write("		        </li>\r\n");
 
 	}	//end loop
