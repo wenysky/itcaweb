@@ -70,7 +70,21 @@ namespace iTCA.Yuwen.Core
             return DatabaseProvider.GetInstance().GetUserCommentsPageCount(uid, pagesize);
         }
         #endregion
-
+        public static CommentInfo GetCommentInfo(int commentid)
+        {
+            CommentInfo info;
+            IDataReader reader = DatabaseProvider.GetInstance().GetCommentInfo(commentid);
+            if (reader.Read())
+            {
+                info = DataReader2CommentInfo(reader);
+            }
+            else
+            {
+                info = null;
+            }
+            reader.Close();
+            return info;
+        }
         public static void CreateComment(CommentInfo info)
         {
             if (info != null)

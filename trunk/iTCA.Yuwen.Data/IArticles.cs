@@ -16,11 +16,19 @@ namespace iTCA.Yuwen.Data
 
         IDataReader GetArticles(string cids, int pagesize, int currentpage);
         int GetArticleCollectionPageCount(string cids, int pagesize);
+
+        IDataReader GetRecommendArticles(int pagesize, int currentpage);
+        int GetRecommendArticleCollectionPageCount(int pagesize);
+
+        IDataReader GetHotArticles(int pagesize, int currentpage);
+        int GetHotArticleCollectionPageCount(int pagesize);
         #endregion
 
         IDataReader GetArticleInfo(int articleid);
         void CreateArticle(ArticleInfo articleinfo);
         void EditArticle(ArticleInfo articleinfo);
         void DeleteArticle(int articleid);
+
+        void ChangeCommentCount(int articleid, int changevalue, int type);
     }
 }

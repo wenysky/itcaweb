@@ -26,12 +26,12 @@ namespace iTCA.Yuwen.Web.Admin
         {
             dddlParentid.DataTextField = "columnname";
             dddlParentid.DataValueField = "columnid";
-            dddlParentid.DataSource = Articles.GetColumnCollection();
+            dddlParentid.DataSource = Columns.GetColumnCollection();
             dddlParentid.DataBind();
         }
         private void BindgvColumnList()
         {
-            gvColumnList.DataSource = Articles.GetColumnCollection();
+            gvColumnList.DataSource = Columns.GetColumnCollection();
             gvColumnList.DataBind();
         }
 
@@ -42,7 +42,7 @@ namespace iTCA.Yuwen.Web.Admin
             ColumnInfo columninfo = new ColumnInfo();
             columninfo.Columnname = tbxColumnname.Text.Trim();
             columninfo.Parentid = Convert.ToInt32(dddlParentid.SelectedValue);
-            Articles.CreateColumn(columninfo);
+            Columns.CreateColumn(columninfo);
             lbMessage.Text = "添加成功!";
             RemoveColumnListCache();
             BindData();
@@ -72,7 +72,7 @@ namespace iTCA.Yuwen.Web.Admin
             int columnid = Convert.ToInt32(gvColumnList.Rows[e.RowIndex].Cells[0].Text);
             if (columnid > 5)//id<6的为系统默认分类不允许删除
             {
-                Articles.DeleteColumn(columnid);
+                Columns.DeleteColumn(columnid);
                 lbMessage.Text = "删除成功!";
                 RemoveColumnListCache();
                 this.BindData();
@@ -90,7 +90,7 @@ namespace iTCA.Yuwen.Web.Admin
             columninfo.Columnid = Convert.ToInt32(gvColumnList.Rows[e.RowIndex].Cells[0].Text);
             columninfo.Columnname = ((TextBox)(gvColumnList.Rows[e.RowIndex].Cells[1].Controls[0])).Text.Trim();
             columninfo.Parentid = Convert.ToInt32((((TextBox)gvColumnList.Rows[e.RowIndex].Cells[2].Controls[0])).Text.Trim());
-            Articles.EditColumn(columninfo);
+            Columns.EditColumn(columninfo);
             lbMessage.Text = "更新成功!";
             gvColumnList.EditIndex = -1;
             RemoveColumnListCache();

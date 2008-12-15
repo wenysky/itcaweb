@@ -18,7 +18,7 @@ namespace iTCA.Yuwen.Web.Admin
             {
                 ddlColumns.DataTextField = "columnname";
                 ddlColumns.DataValueField = "columnid";
-                ddlColumns.DataSource = Articles.GetColumnCollection();
+                ddlColumns.DataSource = Columns.GetColumnCollection();
                 ddlColumns.DataBind();
 
                 ListItem myListItem = new ListItem("«Î—°‘Ò", "0");

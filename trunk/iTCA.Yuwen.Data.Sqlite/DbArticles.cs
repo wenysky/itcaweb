@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Data;
 using Natsuhime.Data;
 using iTCA.Yuwen.Entity;
+using iTCA.Yuwen.Config;
 
 namespace iTCA.Yuwen.Data.Sqlite
 {
@@ -19,6 +20,7 @@ namespace iTCA.Yuwen.Data.Sqlite
         /// <returns>ап╠М</returns>
         public System.Data.IDataReader GetArticles(int cid, int pagesize, int currentpage)
         {
+            string sql;
             IDataReader dr;
             int recordoffset = (currentpage - 1) * pagesize;
 
@@ -30,12 +32,13 @@ namespace iTCA.Yuwen.Data.Sqlite
 		    };
             if (cid > 0)
             {
-                dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_articles WHERE del=0 AND columnid=@columnid ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", prams);
+                sql = string.Format("SELECT * FROM {0}articles WHERE del=0 AND columnid=@columnid ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix);
             }
             else
             {
-                dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_articles WHERE del=0 ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", prams);
+                sql = string.Format("SELECT * FROM {0}articles WHERE del=0 ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix);
             }
+            dr = DbHelper.ExecuteReader(CommandType.Text, sql, prams);
             return dr;
         }
         public int GetArticleCollectionPageCount(int cid, int pagesize)
@@ -128,6 +131,50 @@ namespace iTCA.Yuwen.Data.Sqlite
 
             return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
         }
+
+        public IDataReader GetRecommendArticles(int pagesize, int currentpage)
+        {
+            IDataReader dr;
+            int recordoffset = (currentpage - 1) * pagesize;
+
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}articles WHERE del=0 AND recommend=1 ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix), prams);
+
+            return dr;
+        }
+        public int GetRecommendArticleCollectionPageCount(int pagesize)
+        {
+            int recordcount;
+            recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, string.Format("SELECT COUNT(articleid) FROM {0}articles WHERE del=0 AND recommend=1", BaseConfigs.GetConfig().Tableprefix)));
+
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
+
+        public IDataReader GetHotArticles(int pagesize, int currentpage)
+        {
+            IDataReader dr;
+            int recordoffset = (currentpage - 1) * pagesize;
+
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}articles WHERE del=0 ORDER BY commentcount DESC,articleid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix), prams);
+
+            return dr;
+        }
+        public int GetHotArticleCollectionPageCount(int pagesize)
+        {
+            int recordcount;
+            recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, string.Format("SELECT COUNT(articleid) FROM {0}articles WHERE del=0", BaseConfigs.GetConfig().Tableprefix)));
+
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
         #endregion
 
         /// <summary>
@@ -183,6 +230,25 @@ namespace iTCA.Yuwen.Data.Sqlite
 			    DbHelper.MakeInParam("@articleid", DbType.Int32, 4,articleid)
 		    };
             DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_articles SET del=1 WHERE articleid=@articleid", prams);
+        }
+        public void ChangeCommentCount(int articleid, int changevalue, int type)
+        {
+            string sql;
+            if (type == 1)
+            {
+                sql = string.Format("UPDATE {0}articles SET commentcount=commentcount+@increasevalue WHERE articleid=@articleid", BaseConfigs.GetConfig().Tableprefix);
+            }
+            else
+            {
+                sql = string.Format("UPDATE {0}articles SET commentcount=commentcount-@increasevalue WHERE articleid=@articleid", BaseConfigs.GetConfig().Tableprefix);
+            }
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@articleid", DbType.Int32, 4,articleid),
+			    DbHelper.MakeInParam("@increasevalue", DbType.Int32, 4,changevalue)
+		    };
+            DbHelper.ExecuteReader(CommandType.Text, sql, prams);
+
         }
     }
 }

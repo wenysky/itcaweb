@@ -81,7 +81,13 @@ namespace iTCA.Yuwen.Data.Sqlite
 
         public IDataReader GetCommentInfo(int commentid)
         {
-            throw new NotImplementedException();
+            IDataReader dr;
+            DbParameter[] dbparams =
+            {
+                DbHelper.MakeInParam("@commentid", DbType.Int32, 4, commentid)
+            };
+            dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}comments WHERE commentid=@commentid", BaseConfigs.GetConfig().Tableprefix), dbparams);
+            return dr;
         }
 
         public void CreateComment(CommentInfo commentinfo)
