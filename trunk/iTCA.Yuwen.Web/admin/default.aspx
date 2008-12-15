@@ -20,8 +20,8 @@
         {
             font:12px Tahoma;
 	        text-align:center;
-	        background:#FFF;
-	        width:960px;
+	        background:#EEEEFF;
+	        width:100%;
         }
     ul 
         {
@@ -68,7 +68,7 @@
     </div>
     <div id="Main" style="margin:10px auto 0 auto; border:solid 1px gray; text-align:left">欢迎 <asp:Label ID="lbLoginName" runat="server"></asp:Label> 登录后台管理,点击<a href="../" target="_blank">回到前台</a>。
     </div>
-    <div id="Menu" style="width:130px; float:right; border:solid 1px gray; margin:10px 5px">
+    <div id="Menu" style="background-color:#FFF;width:13%; float:left; border:solid 1px gray; margin:10px 5px">
         <ul>
             <li><a href="articlelist.aspx" target="MainIFR">后台首页</a></li>
             <li><a href="postarticle.aspx" target="MainIFR">发布文章</a></li>
@@ -78,14 +78,13 @@
             <li><a href="AUlist.aspx" target="MainIFR">用户管理</a></li>
             <li><a href="AEditadmin.aspx" target="MainIFR">管理设置</a></li>
             <li><a href="ALinks.aspx" target="MainIFR">友情管理</a></li>
-            <!--<li><a href="#" target="MainIFR">系统设置</a></li>-->
-            <li><a href="AOthEdit.aspx" target="MainIFR">其他管理</a></li>
+            <li><a href="mainSetting.aspx" target="MainIFR">系统设置</a></li>
             <li><a href="template.aspx" target="MainIFR">模板生成</a></li>
             <li><a href="ALoginout.aspx" target="_parent">退出后台</a></li>
         </ul>
     </div>
     
-    <iframe id="MainIFR" name="MainIFR" frameborder="0" scrolling="no" src="articlelist.aspx" width="800px" height="490px" style="margin:10px auto auto auto; border:solid 1px gray;">
+    <iframe id="MainIFR" name="MainIFR" frameborder="0" scrolling="yes" src="articlelist.aspx" width="85%" height="490px" style="margin:10px auto auto auto; border:solid 1px gray;">
     </iframe>
     </form>
 </body>

@@ -11,11 +11,17 @@
     <div>
     <table>
         <tr>
-            <th>网站名称 : </th><td><asp:TextBox ID="tbxWebSiteName" runat="server" Width="178px"></asp:TextBox></td>
+            <th>网站名称  : </th><td><asp:TextBox ID="tbxWebSiteName" runat="server" Width="178px"></asp:TextBox></td>
         </tr>
         <tr>
-            <th>标题SEO  : </th><td><asp:TextBox ID="tbxSEOTitle" runat="server" Height="111px" 
+            <th>标题SEO   : </th><td><asp:TextBox ID="tbxSEOTitle" runat="server" Height="111px" 
                         TextMode="MultiLine" Width="256px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <th>页面伪静态: </th><td><asp:CheckBox ID="ckbxUrlRewrite" runat="server" Text="启用" /></td>
+        </tr>
+        <tr>
+            <th>伪静态后缀: </th><td><asp:TextBox ID="tbxUrlRewriteExtName" runat="server"></asp:TextBox></td>
         </tr>
         <tr>
             <th></th><td></td>
