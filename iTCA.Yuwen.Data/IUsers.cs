@@ -18,7 +18,7 @@ namespace iTCA.Yuwen.Data
         /// <returns>用户记录</returns>
         IDataReader GetUserInfo(string loginid, string password, int logintype);
         IDataReader GetUserInfo(int uid);
-        IDataReader GetUserInfo(string username);
+        IDataReader GetUserInfo(string loginid, int logintype);
 
 
         void AddUser(UserInfo info);

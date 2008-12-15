@@ -14,7 +14,7 @@ namespace iTCA.Yuwen.Data.Sqlite
         /// </summary>
         /// <param name="loginid">登录id(UserName或者Email)</param>
         /// <param name="password">密码</param>
-        /// <param name="logintype">登录类型(0为邮箱地址登录,1为UserName登录,3为uid登录)</param>
+        /// <param name="logintype">登录类型(0为邮箱地址登录,1为UserName登录)</param>
         /// <returns>用户记录</returns>
         public IDataReader GetUserInfo(string loginid, string password, int logintype)
         {
@@ -23,13 +23,9 @@ namespace iTCA.Yuwen.Data.Sqlite
             {
                 sql = "SELECT * FROM wy_users WHERE email=@loginid AND password=@password";
             }
-            else if (logintype == 1)
-            {
-                sql = "SELECT * FROM wy_users WHERE username=@loginid AND password=@password";
-            }
             else
             {
-                sql = "SELECT * FROM wy_users WHERE uid=@loginid AND password=@password";
+                sql = "SELECT * FROM wy_users WHERE username=@loginid AND password=@password";
             }
             IDataReader dr;
             DbParameter[] prams = 
@@ -52,14 +48,23 @@ namespace iTCA.Yuwen.Data.Sqlite
             return dr;
         }
 
-        public IDataReader GetUserInfo(string username)
+        public IDataReader GetUserInfo(string loginid, int logintype)
         {
+            string sql;
+            if (logintype == 0)
+            {
+                sql = "SELECT * FROM wy_users WHERE email=@loginid";
+            }
+            else
+            {
+                sql = "SELECT * FROM wy_users WHERE username=@loginid";
+            }
             IDataReader dr;
             DbParameter[] prams = 
 		    {
-			    DbHelper.MakeInParam("@username", DbType.String, 100, username),
+			    DbHelper.MakeInParam("@loginid", DbType.String, 100, loginid),
 		    };
-            dr = DbHelper.ExecuteReader(CommandType.Text, "SELECT * FROM wy_users WHERE username=@username", prams);
+            dr = DbHelper.ExecuteReader(CommandType.Text, sql, prams);
             return dr;
         }
 
