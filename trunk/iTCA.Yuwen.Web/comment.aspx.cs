@@ -14,6 +14,7 @@ namespace iTCA.Yuwen.Web
             {
                 currentcontext.Response.Write("请登录后再留言评论.");
                 currentcontext.Response.End();
+                return;
             }
             string action = YRequest.GetQueryString("action");
             if (action == string.Empty)
@@ -45,6 +46,7 @@ namespace iTCA.Yuwen.Web
                 {
                     currentcontext.Response.Write("参数为空.");
                     currentcontext.Response.End();
+                    return;
                 }
             }
             else if (action == "grade")
@@ -60,6 +62,22 @@ namespace iTCA.Yuwen.Web
                 {
                     currentcontext.Response.Write("参数为空.");
                     currentcontext.Response.End();
+                    return;
+                }
+            }
+            else if (action == "del")
+            {
+                int commentid = YRequest.GetQueryInt("commentid", 0);
+                if (commentid > 0)
+                {
+                    Comments.DeleteComment(commentid);
+                    currentcontext.Response.Redirect(YRequest.GetUrlReferrer());
+                }
+                else
+                {
+                    currentcontext.Response.Write("参数为空.");
+                    currentcontext.Response.End();
+                    return;
                 }
             }
             else
