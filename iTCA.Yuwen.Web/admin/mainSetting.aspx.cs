@@ -6,7 +6,7 @@ using Natsuhime.Common;
 
 namespace iTCA.Yuwen.Web.Admin
 {
-    public partial class mainsetting :AdminPage
+    public partial class mainsetting : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,6 +16,8 @@ namespace iTCA.Yuwen.Web.Admin
                 MainConfigInfo mainconfiginfo = MainConfigs.Load();
                 tbxWebSiteName.Text = mainconfiginfo.Websitename;
                 tbxSEOTitle.Text = mainconfiginfo.Seotitle;
+                ckbxUrlRewrite.Checked = mainconfiginfo.Urlrewrite == 1 ? true : false;
+                tbxUrlRewriteExtName.Text = mainconfiginfo.Urlrewriteextname;
             }
             else
             {
@@ -23,13 +25,19 @@ namespace iTCA.Yuwen.Web.Admin
                 string seotitle = tbxSEOTitle.Text.Trim();
                 if (websitename != string.Empty && seotitle != string.Empty)
                 {
-                    MainConfigInfo mainconfiginfo = new MainConfigInfo();
-                    mainconfiginfo.Websitename = websitename;
-                    mainconfiginfo.Seotitle = seotitle;
-
-                    MainConfigs.Save(mainconfiginfo);
+                    MainConfigInfo info = new MainConfigInfo();
+                    info.Closed = 0;
+                    info.Closedreason = "";
+                    info.ApplictionSecKey = "";
+                    info.Cookiedomain = "";
+                    info.Urlrewrite = Convert.ToInt32(ckbxUrlRewrite.Checked);
+                    info.Urlrewriteextname = tbxUrlRewriteExtName.Text.Trim();
+                    info.Websitename = websitename;
+                    info.Seotitle = seotitle;
+                    MainConfigs.Save(info);
+                    MainConfigs.ResetConfig();
                 }
             }
-        }
+        }        
     }
 }

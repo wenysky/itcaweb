@@ -110,9 +110,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Aleft.html" />
     <Content Include="articlelist.aspx" />
-    <Content Include="ATitle.css" />
     <Content Include="columnlist.aspx" />
     <Content Include="dbcontrol.aspx" />
     <Content Include="default.aspx" />
