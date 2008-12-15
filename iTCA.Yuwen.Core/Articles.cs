@@ -13,16 +13,6 @@ namespace iTCA.Yuwen.Core
     {
         #region 取得列表
         /// <summary>
-        /// 将DataReader的Article添加到List<ArticleInfo>泛型列表(暂时废除)
-        /// </summary>
-        /// <param name="coll"></param>
-        /// <param name="reader"></param>
-        private static void DataReader2ArticleCollection(List<ArticleInfo> coll, IDataReader reader)
-        {
-            ArticleInfo info = DataReader2ArticleInfo(reader);
-            coll.Add(info);
-        }
-        /// <summary>
         /// 将DataReader的Article转换为ArticleInfo泛型列表
         /// </summary>
         /// <param name="reader"></param>
@@ -83,7 +73,7 @@ namespace iTCA.Yuwen.Core
 
             while (reader.Read())
             {
-                DataReader2ArticleCollection(coll, reader);
+                coll.Add(DataReader2ArticleInfo(reader));
             }
             reader.Close();
             return coll;
@@ -97,6 +87,7 @@ namespace iTCA.Yuwen.Core
         {
             return DatabaseProvider.GetInstance().GetArticleCollectionPageCount(cid, pagesize);
         }
+
         /// <summary>
         /// 通过cids取得文章列表.
         /// </summary>
@@ -140,6 +131,7 @@ namespace iTCA.Yuwen.Core
                 return 0;
             }
         }
+
         public static List<ArticleInfo> GetUserArticleCollection(int uid, int pagesize, int currentpage)
         {
             if (currentpage <= 0)
@@ -152,7 +144,7 @@ namespace iTCA.Yuwen.Core
 
             while (reader.Read())
             {
-                DataReader2ArticleCollection(coll, reader);
+                coll.Add(DataReader2ArticleInfo(reader));
             }
             reader.Close();
             return coll;
@@ -160,6 +152,46 @@ namespace iTCA.Yuwen.Core
         public static int GetUserArticleCollectionPageCount(int uid, int pagesize)
         {
             return DatabaseProvider.GetInstance().GetUserArticleCollectionPageCount(uid, pagesize);
+        }
+
+        public static List<ArticleInfo> GetRecommendArticles(int pagesize, int currentpage)
+        {
+            if (currentpage <= 0)
+            {
+                currentpage = 1;
+            }
+            List<ArticleInfo> coll = new List<ArticleInfo>();
+            IDataReader reader = DatabaseProvider.GetInstance().GetRecommendArticles(pagesize,currentpage);
+            while (reader.Read())
+            {
+                coll.Add(DataReader2ArticleInfo(reader));
+            }
+            reader.Close();
+            return coll;
+        }
+        public static int GetRecommendArticleCollectionPageCount(int pagesize)
+        {
+            return DatabaseProvider.GetInstance().GetRecommendArticleCollectionPageCount(pagesize);
+        }
+
+        public static List<ArticleInfo> GetHotArticles(int pagesize, int currentpage)
+        {
+            if (currentpage <= 0)
+            {
+                currentpage = 1;
+            }
+            List<ArticleInfo> coll = new List<ArticleInfo>();
+            IDataReader reader = DatabaseProvider.GetInstance().GetHotArticles(pagesize, currentpage);
+            while (reader.Read())
+            {
+                coll.Add(DataReader2ArticleInfo(reader));
+            }
+            reader.Close();
+            return coll;
+        }
+        public static int GetHotArticleCollectionPageCount(int pagesize)
+        {
+            return DatabaseProvider.GetInstance().GetHotArticleCollectionPageCount(pagesize);
         }
         #endregion
 
@@ -182,7 +214,7 @@ namespace iTCA.Yuwen.Core
             }
             reader.Close();
             return info;
-        }       
+        }
         /// <summary>
         /// 发布新文章
         /// </summary>
@@ -206,6 +238,16 @@ namespace iTCA.Yuwen.Core
         public static void DeleteArticle(int articleid)
         {
             DatabaseProvider.GetInstance().DeleteArticle(articleid);
-        }       
+        }
+        /// <summary>
+        /// 改变文章的评论数
+        /// </summary>
+        /// <param name="articleid"></param>
+        /// <param name="changevalue"></param>
+        /// <param name="type">1为增加,其余为减少</param>
+        public static void ChangeCommentCount(int articleid, int changevalue, int type)
+        {
+            DatabaseProvider.GetInstance().ChangeCommentCount(articleid, changevalue, type);
+        }
     }
 }

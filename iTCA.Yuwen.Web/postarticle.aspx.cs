@@ -17,7 +17,7 @@ namespace iTCA.Yuwen.Web
             {
                 System.Web.HttpContext.Current.Response.Write("<script>alert('请登录后再投递文章,谢谢~');history.back();</script>");
             }
-            columnlist = Articles.GetColumnCollection();
+            columnlist = Columns.GetColumnCollection();
             if (!YRequest.IsPost())
             {
 

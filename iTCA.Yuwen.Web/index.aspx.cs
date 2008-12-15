@@ -15,7 +15,7 @@ namespace iTCA.Yuwen.Web
         /// <summary>
         /// 协会公告列表
         /// </summary>
-        protected List<ArticleInfo> annlist;
+        protected List<ArticleInfo> mainarticlelist;
         /// <summary>
         /// 推荐文章页码
         /// </summary>
@@ -23,11 +23,21 @@ namespace iTCA.Yuwen.Web
         protected string pagecounthtml;
         protected override void Page_Show()
         {
-            annlist = Articles.GetArticleCollection(1, 12, 1);
-            newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
+            int pageid = 1;
+            if (true)
+            {
+                mainarticlelist = Articles.GetRecommendArticles(10, 1);
+                pagecount = Articles.GetRecommendArticleCollectionPageCount(10);
+                pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, "showcolumn-recommend", ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?type=recommend", 8, "pageid", "");
+            }
+            else
+            {
+                mainarticlelist = Articles.GetArticleCollection(0, 10, 1);
+                pagecount = Articles.GetArticleCollectionPageCount(0, 10);
+                pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", 0), ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?cid=0", 8, "pageid", "");
+            }
 
-            pagecount = Articles.GetArticleCollectionPageCount(1, 12);
-            pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(1, pagecount, string.Format("showcolumn-{0}", 1), ".aspx", 8) : Utils.GetPageNumbersHtml(1, pagecount, "showcolumn.aspx?cid=1", 8, "pageid", "");
+            newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
         }
     }
 }

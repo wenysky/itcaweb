@@ -15,15 +15,15 @@
 		<div id="pager">页码:{pagecounthtml}</div>
 		<!--分页结束-->
 		<ul>
-		    <%loop (ArticleInfo) anninfo annlist%>
+		    <%loop (ArticleInfo) info mainarticlelist%>
 			    <li class="article-list">
 			    <%if {config.urlrewrite}==1%>
-				    <h2 class="title"><a href="showarticle-{anninfo.articleid}{config.urlrewriteextname}">{anninfo.title}</a></h2>
+				    <h2 class="title"><a href="showarticle-{info.articleid}{config.urlrewriteextname}">{info.title}</a></h2>
 		        <%else%>
-		            <h2 class="title"><a href="showarticle.aspx?id={anninfo.articleid}">{anninfo.title}</a></h2>
+		            <h2 class="title"><a href="showarticle.aspx?id={info.articleid}">{info.title}</a></h2>
 		        <%/if%>
-				    <span class="description">{anninfo.summary}</span>
-				    <div class="post-info"><span class="author">{anninfo.username}</span>投递 @ 发布于<span class="post-date">{anninfo.postdate}</span></div>
+				    <span class="description">{info.summary}</span>
+				    <div class="post-info"><span class="author">{info.username}</span>投递 @ 发布于<span class="post-date">{info.postdate}</span><span>评论({info.commentcount})</span></div>
 			    </li>
 			<%/loop%>
 		</ul>		
