@@ -41,6 +41,7 @@
     <Compile Include="ArticleInfo.cs" />
     <Compile Include="AttachmentInfo.cs" />
     <Compile Include="ColumnInfo.cs" />
+    <Compile Include="CommentInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfo.cs" />
   </ItemGroup>
