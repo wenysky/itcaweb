@@ -158,6 +158,30 @@ override protected void OnInit(EventArgs e)
 	Response.Write("		<div class=\"post-info article\"><span class=\"author\">" + articleinfo.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + articleinfo.Postdate.ToString().Trim() + "</span></div>\r\n");
 	Response.Write("		<div class=\"article-content article\">" + articleinfo.Content.ToString().Trim() + "</div>\r\n");
 	Response.Write("		<!--文章结束-->\r\n");
+	Response.Write("		<div class=\"div-header\">评论:</div>\r\n");
+	Response.Write("		<div id=\"comment\">\r\n");
+	Response.Write("		    <form action=\"comment.aspx?action=postcomment&articleid=" + articleinfo.Articleid.ToString().Trim() + "\" method=\"post\">\r\n");
+	Response.Write("		        <textarea cols=\"80\" rows=\"5\" name=\"commentcontent\" id=\"commentcontent\"></textarea>\r\n");
+	Response.Write("		        <input type=\"submit\" value=\"提交留言\" /><input type=\"reset\" />\r\n");
+	Response.Write("		    </form>\r\n");
+	Response.Write("		    <ul>\r\n");
+
+	int info__loop__id=0;
+	foreach(CommentInfo info in commentlist)
+	{
+		info__loop__id++;
+
+	Response.Write("		        <li>\r\n");
+	Response.Write("		            <div class=\"content\">" + info.Content.ToString().Trim() + "</div>\r\n");
+	Response.Write("		            <span><a href=\"comment.aspx?action=grade&type=1&commentid=" + info.Commentid.ToString().Trim() + "\">支持(" + info.Goodcount.ToString().Trim() + ")</a><a href=\"comment.aspx?action=grade&type=-1&commentid=" + info.Commentid.ToString().Trim() + "\">反对(" + info.Badcount.ToString().Trim() + ")</a></span>                    <span>" + info.Username.ToString().Trim() + " 于 " + info.Postdate.ToString().Trim() + " 留言</span>\r\n");
+	Response.Write("		        </li>\r\n");
+
+	}	//end loop
+
+	Response.Write("		    </ul>\r\n");
+	Response.Write("		    <!--分页开始-->\r\n");
+	Response.Write("		    <div id=\"pager\">页码:" + commentcounthtml.ToString() + "</div>\r\n");
+	Response.Write("		</div>\r\n");
 	Response.Write("	</div>\r\n");
 	Response.Write("	<!--左栏结束-->\r\n");
 	Response.Write("	<!--内容结束-->\r\n");

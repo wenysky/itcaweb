@@ -21,7 +21,7 @@ namespace iTCA.Yuwen.Web
             {
                 pageid = pagecount;
             }
-            pagecounthtml = config.Urlrewrite == 1 ? Natsuhime.Web.Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", columnid), ".aspx", 8) : Utils.GetPageNumbersHtml(1, pagecount, string.Format("showcolumn.aspx?cid={0}", columnid), 8, "pageid", "");
+            pagecounthtml = config.Urlrewrite == 1 ? Natsuhime.Web.Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", columnid), ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, string.Format("showcolumn.aspx?cid={0}", columnid), 8, "pageid", "");
             newslist = Articles.GetArticleCollection(columnid, 12, pageid);
 
             if (columnid > 0)

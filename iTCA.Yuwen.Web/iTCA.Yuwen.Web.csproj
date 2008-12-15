@@ -52,6 +52,10 @@
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="comment.aspx.cs">
+      <DependentUpon>comment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -399,7 +403,9 @@
     <Content Include="Utility\TestTool.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="comment.aspx" />
     <Content Include="NSWindBase.config" />
+    <Content Include="templates\comment.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />
