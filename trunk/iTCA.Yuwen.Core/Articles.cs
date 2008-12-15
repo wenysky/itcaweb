@@ -11,79 +11,7 @@ namespace iTCA.Yuwen.Core
 {
     public class Articles
     {
-        /// <summary>
-        /// 通过cid取得文章列表.
-        /// </summary>
-        /// <param name="cid">栏目id(如果为0表示取得所有栏目)</param>
-        /// <param name="pagesize">分页大小</param>
-        /// <param name="currentpage">当前页</param>
-        /// <returns>列表</returns>
-        public static List<ArticleInfo> GetArticleCollection(int cid, int pagesize, int currentpage)
-        {
-            if (currentpage <= 0)
-            {
-                currentpage = 1;
-            }
-            List<ArticleInfo> coll = new List<ArticleInfo>();
-
-            IDataReader reader = DatabaseProvider.GetInstance().GetArticles(cid, pagesize, currentpage);
-
-            while (reader.Read())
-            {
-                DataReader2ArticleCollection(coll, reader);
-            }
-            reader.Close();
-            return coll;
-        }
-        /// <summary>
-        /// 通过cid取得文章列表.
-        /// </summary>
-        /// <param name="cids">栏目id字符串(,分割)为空字符串表示所有栏目</param>
-        /// <param name="pagesize">分页大小</param>
-        /// <param name="currentpage">当前页</param>
-        /// <returns>列表</returns>
-        public static List<ArticleInfo> GetArticleCollection(string cids, int pagesize, int currentpage)
-        {
-            if (currentpage <= 0)
-            {
-                currentpage = 1;
-            }
-            List<ArticleInfo> coll = new List<ArticleInfo>();
-            if (TypeParse.IsNumericString(cids))
-            {
-                IDataReader reader = DatabaseProvider.GetInstance().GetArticles(cids, pagesize, currentpage);
-
-                while (reader.Read())
-                {
-                    //DataReader2ArticleCollection(coll, reader);
-                    coll.Add(DataReader2ArticleInfo(reader));
-                }
-                reader.Close();
-            }
-            return coll;
-        }
-        public static List<ArticleInfo> GetUserArticleCollection(int uid, int pagesize, int currentpage)
-        {
-            if (currentpage <= 0)
-            {
-                currentpage = 1;
-            }
-            List<ArticleInfo> coll = new List<ArticleInfo>();
-
-            IDataReader reader = DatabaseProvider.GetInstance().GetUserArticles(uid, pagesize, currentpage);
-
-            while (reader.Read())
-            {
-                DataReader2ArticleCollection(coll, reader);
-            }
-            reader.Close();
-            return coll;
-        }
-        public static int GetUserArticleCollectionPageCount(int uid, int pagesize)
-        {
-            return DatabaseProvider.GetInstance().GetUserArticleCollectionPageCount(uid, pagesize);
-        }
-
+        #region 取得列表
         /// <summary>
         /// 将DataReader的Article添加到List<ArticleInfo>泛型列表(暂时废除)
         /// </summary>
@@ -127,13 +55,38 @@ namespace iTCA.Yuwen.Core
             //文章的栏目前缀
             if (info.Columnid > 0)
             {
-                info.Columnname = GetColumnName(info.Columnid);
+                info.Columnname = Columns.GetColumnName(info.Columnid);
             }
             else
             {
                 info.Columnname = "";
             }
             return info;
+        }
+
+        /// <summary>
+        /// 通过cid取得文章列表.
+        /// </summary>
+        /// <param name="cid">栏目id(如果为0表示取得所有栏目)</param>
+        /// <param name="pagesize">分页大小</param>
+        /// <param name="currentpage">当前页</param>
+        /// <returns>列表</returns>
+        public static List<ArticleInfo> GetArticleCollection(int cid, int pagesize, int currentpage)
+        {
+            if (currentpage <= 0)
+            {
+                currentpage = 1;
+            }
+            List<ArticleInfo> coll = new List<ArticleInfo>();
+
+            IDataReader reader = DatabaseProvider.GetInstance().GetArticles(cid, pagesize, currentpage);
+
+            while (reader.Read())
+            {
+                DataReader2ArticleCollection(coll, reader);
+            }
+            reader.Close();
+            return coll;
         }
         /// <summary>
         /// 取得分页数目
@@ -143,6 +96,33 @@ namespace iTCA.Yuwen.Core
         public static int GetArticleCollectionPageCount(int cid, int pagesize)
         {
             return DatabaseProvider.GetInstance().GetArticleCollectionPageCount(cid, pagesize);
+        }
+        /// <summary>
+        /// 通过cids取得文章列表.
+        /// </summary>
+        /// <param name="cids">栏目id字符串(,分割)为空字符串表示所有栏目</param>
+        /// <param name="pagesize">分页大小</param>
+        /// <param name="currentpage">当前页</param>
+        /// <returns>列表</returns>
+        public static List<ArticleInfo> GetArticleCollection(string cids, int pagesize, int currentpage)
+        {
+            if (currentpage <= 0)
+            {
+                currentpage = 1;
+            }
+            List<ArticleInfo> coll = new List<ArticleInfo>();
+            if (TypeParse.IsNumericString(cids))
+            {
+                IDataReader reader = DatabaseProvider.GetInstance().GetArticles(cids, pagesize, currentpage);
+
+                while (reader.Read())
+                {
+                    //DataReader2ArticleCollection(coll, reader);
+                    coll.Add(DataReader2ArticleInfo(reader));
+                }
+                reader.Close();
+            }
+            return coll;
         }
         /// <summary>
         /// 取得分页数目
@@ -160,97 +140,28 @@ namespace iTCA.Yuwen.Core
                 return 0;
             }
         }
-        /// <summary>
-        /// 取得栏目名称
-        /// </summary>
-        /// <param name="columnid"></param>
-        /// <returns></returns>
-        public static string GetColumnName(int columnid)
+        public static List<ArticleInfo> GetUserArticleCollection(int uid, int pagesize, int currentpage)
         {
-            SortedList<int, object> columnarray = Articles.GetArticleColumnArray();
-            object columnname = null;
-            if (columnarray.ContainsKey(columnid))
+            if (currentpage <= 0)
             {
-                columnname = columnarray[columnid];
+                currentpage = 1;
             }
-            if (columnname == null)
-            {
-                return "";
-            }
-            else
-            {
-                return columnname.ToString().Trim();
-            }
-        }
-        /// <summary>
-        /// 取得栏目列表
-        /// </summary>
-        /// <returns></returns>
-        private static SortedList<int, object> GetArticleColumnArray()
-        {
-            SortedList<int, object> columnlist = new SortedList<int,object>();
-            List<ColumnInfo> coll = GetColumnCollection();
-            foreach (ColumnInfo columninfo in coll)
-            {
-                columnlist.Add(columninfo.Columnid, columninfo.Columnname);
-            }
-            //TinyCache cache = new TinyCache();
-            //columnlist = cache.RetrieveObject("ColumnList") as SortedList<int, object>;
+            List<ArticleInfo> coll = new List<ArticleInfo>();
 
-            //if (columnlist == null)
-            //{
-            //    columnlist = new SortedList<int, object>();
-            //    DataTable dt = DatabaseProvider.GetInstance().GetArticleColumnList();
-            //    if (dt.Rows.Count > 0)
-            //    {
-            //        foreach (DataRow dr in dt.Rows)
-            //        {
-            //            if ((dr["columnid"].ToString() != "") && (dr["columnname"].ToString() != ""))
-            //            {
-            //                columnlist.Add(Convert.ToInt32(dr["columnid"]), dr["columnname"]);
-            //            }
-            //        }
-            //    }
-            //    cache.AddObject("ColumnList", columnlist);
-            //}
-            return columnlist;
-        }
-        /// <summary>
-        /// 取得栏目列表
-        /// </summary>
-        /// <returns></returns>
-        public static List<ColumnInfo> GetColumnCollection()
-        {            
-            List<ColumnInfo> coll;
-            TinyCache cache = new TinyCache();
-            coll = cache.RetrieveObject("ColumnList") as List<ColumnInfo>;
-            if (coll == null)
-            {
-                coll = new List<ColumnInfo>();
-                IDataReader reader = DatabaseProvider.GetInstance().GetArticleColumnList();
+            IDataReader reader = DatabaseProvider.GetInstance().GetUserArticles(uid, pagesize, currentpage);
 
-                while (reader.Read())
-                {
-                    coll.Add(DataReader2ColumnInfo(reader));
-                }
-                reader.Close();
-                cache.AddObject("ColumnList", coll);
+            while (reader.Read())
+            {
+                DataReader2ArticleCollection(coll, reader);
             }
+            reader.Close();
             return coll;
         }
-        /// <summary>
-        /// 将DataReader的Column转换为ColumnInfo泛型列表
-        /// </summary>
-        /// <param name="reader"></param>
-        /// <returns></returns>
-        private static ColumnInfo DataReader2ColumnInfo(IDataReader reader)
+        public static int GetUserArticleCollectionPageCount(int uid, int pagesize)
         {
-            ColumnInfo columninfo = new ColumnInfo();
-            columninfo.Columnid = Convert.ToInt32(reader["columnid"]);
-            columninfo.Columnname= reader["columnname"].ToString();
-            columninfo.Parentid = Convert.ToInt32(reader["parentid"]);
-            return columninfo;
+            return DatabaseProvider.GetInstance().GetUserArticleCollectionPageCount(uid, pagesize);
         }
+        #endregion
 
         /// <summary>
         /// 取得文章内容
@@ -271,7 +182,7 @@ namespace iTCA.Yuwen.Core
             }
             reader.Close();
             return info;
-        }
+        }       
         /// <summary>
         /// 发布新文章
         /// </summary>
@@ -295,30 +206,6 @@ namespace iTCA.Yuwen.Core
         public static void DeleteArticle(int articleid)
         {
             DatabaseProvider.GetInstance().DeleteArticle(articleid);
-        }
-        /// <summary>
-        /// 新建栏目
-        /// </summary>
-        /// <param name="columninfo"></param>
-        public static void CreateColumn(ColumnInfo columninfo)
-        {
-            DatabaseProvider.GetInstance().CreateColumn(columninfo);
-        }
-        /// <summary>
-        /// 删除栏目
-        /// </summary>
-        /// <param name="columnid"></param>
-        public static void DeleteColumn(int columnid)
-        {
-            DatabaseProvider.GetInstance().DeleteColumn(columnid);
-        }
-        /// <summary>
-        /// 编辑栏目
-        /// </summary>
-        /// <param name="columninfo"></param>
-        public static void EditColumn(ColumnInfo columninfo)
-        {
-            DatabaseProvider.GetInstance().EditColumn(columninfo);
-        }
+        }       
     }
 }
