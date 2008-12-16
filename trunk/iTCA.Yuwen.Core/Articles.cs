@@ -11,7 +11,6 @@ namespace iTCA.Yuwen.Core
 {
     public class Articles
     {
-        #region 取得列表
         /// <summary>
         /// 将DataReader的Article转换为ArticleInfo泛型列表
         /// </summary>
@@ -37,6 +36,7 @@ namespace iTCA.Yuwen.Core
             info.Ip = reader["ip"].ToString();
             info.Postdate = Convert.ToDateTime(reader["postdate"]).ToString("yyyy-MM-dd");
             info.Del = Convert.ToInt32(reader["del"]);
+            info.Recommend = Convert.ToInt32(reader["recommend"]);
             //高亮主题
             if (info.Highlight != "")
             {
@@ -53,6 +53,7 @@ namespace iTCA.Yuwen.Core
             }
             return info;
         }
+        #region 取得列表
 
         /// <summary>
         /// 通过cid取得文章列表.

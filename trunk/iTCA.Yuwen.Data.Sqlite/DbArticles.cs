@@ -203,9 +203,10 @@ namespace iTCA.Yuwen.Data.Sqlite
 			    DbHelper.MakeInParam("@content", DbType.String, 5000,articleinfo.Content),
 			    DbHelper.MakeInParam("@postdate", DbType.DateTime, 8,articleinfo.Postdate),
 			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,articleinfo.Uid),
-			    DbHelper.MakeInParam("@username", DbType.String, 20,articleinfo.Username)
+			    DbHelper.MakeInParam("@username", DbType.String, 20,articleinfo.Username),
+			    DbHelper.MakeInParam("@recommend", DbType.Int32, 4,articleinfo.Recommend)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_articles(title,columnid,highlight,summary,content,postdate,uid,username) VALUES(@title,@columnid,@highlight,@summary,@content,@postdate,@uid,@username)", prams);
+            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_articles(title,columnid,highlight,summary,content,postdate,uid,username,recommend) VALUES(@title,@columnid,@highlight,@summary,@content,@postdate,@uid,@username,@recommend)", prams);
         }
         public void EditArticle(ArticleInfo articleinfo)
         {
@@ -219,9 +220,10 @@ namespace iTCA.Yuwen.Data.Sqlite
 			    DbHelper.MakeInParam("@postdate", DbType.DateTime, 8,articleinfo.Postdate),
 			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,articleinfo.Uid),
 			    DbHelper.MakeInParam("@username", DbType.String, 20,articleinfo.Username),
-			    DbHelper.MakeInParam("@articleid", DbType.Int32, 4,articleinfo.Articleid)
+			    DbHelper.MakeInParam("@articleid", DbType.Int32, 4,articleinfo.Articleid),
+			    DbHelper.MakeInParam("@recommend", DbType.Int32, 4,articleinfo.Recommend)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_articles SET title=@title,columnid=@columnid,highlight=@highlight,summary=@summary,content=@content,postdate=@postdate,uid=@uid,username=@username WHERE articleid=@articleid", prams);
+            DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_articles SET title=@title,columnid=@columnid,highlight=@highlight,summary=@summary,content=@content,postdate=@postdate,uid=@uid,username=@username,recommend=@recommend WHERE articleid=@articleid", prams);
         }
         public void DeleteArticle(int articleid)
         {

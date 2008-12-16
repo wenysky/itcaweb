@@ -6,6 +6,7 @@ namespace iTCA.Yuwen.Entity
     {
         public int Commentid { get; set; }
         public int Articleid { get; set; }
+        public string Articletitle { get; set; }
         public int Uid { get; set; }
         public string Username { get; set; }
         public string Postdate { get; set; }

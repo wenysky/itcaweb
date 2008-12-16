@@ -1,7 +1,10 @@
 using System;
-using System.Data;
 using System.Web;
+using System.Data;
+using System.Collections.Generic;
 using Natsuhime.Data;
+using iTCA.Yuwen.Entity;
+using iTCA.Yuwen.Core;
 
 namespace iTCA.Yuwen.Web
 {
@@ -45,6 +48,21 @@ namespace iTCA.Yuwen.Web
         /// 当前用户信息(如果为空表示未登录)
         /// </summary>
         protected iTCA.Yuwen.Entity.UserInfo userinfo;
+        /// <summary>
+        /// 热门主题(回复数排列,分页定为6条)
+        /// </summary>
+        protected List<ArticleInfo> hotarticlelist;
+        /// <summary>
+        /// 最新回复
+        /// </summary>
+        protected List<CommentInfo> latestcommentlist;
+        /// <summary>
+        /// 热门评论
+        /// </summary>
+        protected List<CommentInfo> mostgradecommentlist;
+
+        //protected List<List<ArticleInfo>> allcolumnarticlelist;
+        protected Dictionary<ColumnInfo, List<ArticleInfo>> allcolumnarticlelistd;
         #endregion
 
         protected BasePage()
@@ -57,6 +75,8 @@ namespace iTCA.Yuwen.Web
             ispost = Natsuhime.Web.YRequest.IsPost();
             //验证登录
             CheckLogin();
+            //初始化基本列表
+            InitBaseList();
             //页面执行
             Page_Show();
 
@@ -89,6 +109,31 @@ namespace iTCA.Yuwen.Web
                     userinfo = iTCA.Yuwen.Core.Users.GetUserInfo(uid, password);
                 }
             }
+        }
+
+        protected virtual void InitBaseList()
+        {
+            hotarticlelist = Articles.GetHotArticles(6, 1);
+            latestcommentlist = Comments.GetCommentCollection(0, 6, 1);
+            mostgradecommentlist = Comments.GetMostGradComments(6, 1);
+
+            allcolumnarticlelistd = new Dictionary<ColumnInfo, List<ArticleInfo>>();
+            //allcolumnarticlelist = new List<List<ArticleInfo>>();
+            List<ColumnInfo> columnlist = Columns.GetColumnCollection();
+            foreach (ColumnInfo info in columnlist)
+            {
+                
+                if (info.Parentid == 0)
+                {
+                    allcolumnarticlelistd.Add(info, Articles.GetArticleCollection(info.Columnid, 6, 1));
+                    //allcolumnarticlelist.Add(Articles.GetArticleCollection(info.Columnid, 6, 1));
+                }
+            }
+
+            //foreach (KeyValuePair<ColumnInfo, List<ArticleInfo>> b in a)
+            //{
+            //    System.Diagnostics.Debug.WriteLine(b.Key.Columnname + ":" + b.Value.Count);
+            //}
         }
     }
 }

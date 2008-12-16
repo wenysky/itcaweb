@@ -33,19 +33,6 @@ namespace iTCA.Yuwen.Data.Sqlite
             dr = DbHelper.ExecuteReader(CommandType.Text, sql, prams);
             return dr;
         }
-        public IDataReader GetUserComments(int uid, int pagesize, int currentpage)
-        {
-            IDataReader dr;
-            int recordoffset = (currentpage - 1) * pagesize;
-            DbParameter[] prams = 
-		    {
-			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,uid),
-			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
-			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
-		    };
-            dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}comments WHERE del=0 AND uid=@uid ORDER BY commentid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix), prams);
-            return dr;
-        }
         public int GetCommentsPageCount(int articleid, int pagesize)
         {
             int recordcount;
@@ -65,6 +52,20 @@ namespace iTCA.Yuwen.Data.Sqlite
             recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, sql, prams));
             return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
         }
+
+        public IDataReader GetUserComments(int uid, int pagesize, int currentpage)
+        {
+            IDataReader dr;
+            int recordoffset = (currentpage - 1) * pagesize;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@uid", DbType.Int32, 4,uid),
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}comments WHERE del=0 AND uid=@uid ORDER BY commentid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix), prams);
+            return dr;
+        }
         public int GetUserCommentsPageCount(int uid, int pagesize)
         {
             int recordcount;
@@ -75,6 +76,29 @@ namespace iTCA.Yuwen.Data.Sqlite
 		    };
             sql = string.Format("SELECT COUNT(commentid) FROM {0}comments WHERE del=0 AND uid=@uid", BaseConfigs.GetConfig().Tableprefix);
             recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, sql, prams));
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
+
+        public IDataReader GetMostGradComments(int pagesize, int currentpage)
+        {
+            IDataReader dr;
+            string sql;
+            int recordoffset = (currentpage - 1) * pagesize;
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            sql = string.Format("SELECT * FROM {0}comments WHERE del=0 ORDER BY goodcount DESC, badcount DESC, commentid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix);
+            dr = DbHelper.ExecuteReader(CommandType.Text, sql, prams);
+            return dr;
+        }
+        public int GetMostGradCommentsPageCount(int pagesize)
+        {
+            int recordcount;
+            string sql;
+            sql = string.Format("SELECT COUNT(commentid) FROM {0}comments WHERE del=0", BaseConfigs.GetConfig().Tableprefix);
+            recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, sql));
             return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
         }
         #endregion
@@ -101,9 +125,10 @@ namespace iTCA.Yuwen.Data.Sqlite
 			    DbHelper.MakeInParam("@del", DbType.Int32, 4, commentinfo.Del),
 			    DbHelper.MakeInParam("@content", DbType.String, 1000, commentinfo.Content),
 			    DbHelper.MakeInParam("@goodcount", DbType.Int32, 4, commentinfo.Goodcount),
-			    DbHelper.MakeInParam("@badcount", DbType.Int32, 4, commentinfo.Badcount)
+			    DbHelper.MakeInParam("@badcount", DbType.Int32, 4, commentinfo.Badcount),
+			    DbHelper.MakeInParam("@articletitle", DbType.String, 100, commentinfo.Articletitle)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, string.Format("INSERT INTO {0}comments(articleid,uid,username,postdate,del,content,goodcount,badcount) VALUES(@articleid,@uid,@username,@postdate,@del,@content,@goodcount,@badcount)", BaseConfigs.GetConfig().Tableprefix), dbparams);
+            DbHelper.ExecuteNonQuery(CommandType.Text, string.Format("INSERT INTO {0}comments(articleid,uid,username,postdate,del,content,goodcount,badcount,articletitle) VALUES(@articleid,@uid,@username,@postdate,@del,@content,@goodcount,@badcount,@articletitle)", BaseConfigs.GetConfig().Tableprefix), dbparams);
         }
         public void DeleteComment(int commentid)
         {

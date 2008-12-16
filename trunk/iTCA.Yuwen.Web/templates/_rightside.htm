@@ -4,74 +4,43 @@
 		<div id="search"><form action="#1" method="post">标题搜索&nbsp;:&nbsp;<input type="text" id="searchkey" name="searchkey" />&nbsp;&nbsp;<input type="submit" value="搜索" /></form></div>	
 		
 		<div id="hot-article" class="right-list">
-			<div class="div-header">热门新闻</div>
+		<%if {config.urlrewrite}==1%>
+			<div class="div-header"><a href="showcolumn-hot{config.urlrewriteextname}">热门新闻</a></div>
+	    <%else%>
+			<div class="div-header"><a href="showcolumn.aspx?type=hot">热门新闻</a></div>
+		<%/if%>
 			<ul>
-				<li><h2><a href="#">安装VS 2008 SP1后，智能提示变为英文...</a></h2></li>
-				<li><h2><a href="#">揭示Visual Studio 2010发展路线图</a></h2></li>
-				<li><h2><a href="#">.NET Framework 3.5 SP1完整版发布</a></h2></li>
-				<li><h2><a href="#">GMail再次更新:带来新主题</a></h2></li>
-				<li><h2><a href="#">求求你原谅我,亲爱的Firefox</a></h2></li>
-				<li><h2><a href="#">Google处理1TB数据只需68秒 1PB六个小时</a></h2></li>
+			<%loop (ArticleInfo) hotarticleinfo hotarticlelist%>
+			    <%if {config.urlrewrite}==1%>
+				<li><h2><a href="showarticle-{hotarticleinfo.articleid}{config.urlrewriteextname}">{hotarticleinfo.title}</a></h2></li>
+				<%else%>
+				<li><h2><a href="showarticle.aspx?id={hotarticleinfo.articleid}">{hotarticleinfo.title}</a></h2></li>
+				<%/if%>
+		    <%/loop%>
 			</ul>
 		</div>
 		
 		<div id="latest-comment" class="right-list">
 			<div class="div-header">最新评论</div>
 			<ul>
+			<%loop (CommentInfo) latestcommentinfo latestcommentlist%>
 				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article">"<a href="#">安装VS 2008 SP1后，智能提示变为英文...</a>"</span> 的评论</div>
+					<span class="content">{latestcommentinfo.content}</span>
+					<div class="comment-info"><span class="comment-author">{latestcommentinfo.username} </span>对 <span class="from-article">"<a href="<%if {config.urlrewrite}==1%>showarticle-{latestcommentinfo.articleid}{config.urlrewriteextname}<%else%>showarticle.aspx?id={latestcommentinfo.articleid}<%/if%>">{latestcommentinfo.articletitle}</a>"</span> 的评论</div>
 				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">揭示Visual Studio 2010发展路线图</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">.NET Framework 3.5 SP1完整版发布</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">GMail再次更新:带来新主题</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">求求你原谅我,亲爱的Firefox</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">Google处理1TB数据只需68秒 1PB六个小时</a></span> 的评论</div>
-				</li>
+			<%/loop%>
 			</ul>
 		</div>
 		
 		<div id="hot-comment" class="right-list">
 			<div class="div-header">热门评论</div>
 			<ul>
+			<%loop (CommentInfo) mostgradecommentinfo mostgradecommentlist%>
 				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">安装VS 2008 SP1后，智能提示变为英文...</a></span> 的评论</div>
+					<span class="content">{mostgradecommentinfo.content}</span>
+					<div class="comment-info"><span class="comment-author">{mostgradecommentinfo.username} </span>对 <span class="from-article"><a href="<%if {config.urlrewrite}==1%>showarticle-{mostgradecommentinfo.articleid}{config.urlrewriteextname}<%else%>showarticle.aspx?id={mostgradecommentinfo.articleid}<%/if%>">{mostgradecommentinfo.articletitle}</a></span> 的评论</div>
 				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">揭示Visual Studio 2010发展路线图</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">.NET Framework 3.5 SP1完整版发布</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">GMail再次更新:带来新主题</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">求求你原谅我,亲爱的Firefox</a></span> 的评论</div>
-				</li>
-				<li>
-					<span class="content">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>
-					<div class="comment-info"><span class="comment-author">匿名用户 </span>对 <span class="from-article"><a href="#">Google处理1TB数据只需68秒 1PB六个小时</a></span> 的评论</div>
-				</li>
+			<%/loop%>
 			</ul>
 		</div>
 		

@@ -130,5 +130,7 @@ namespace iTCA.Yuwen.Entity
             get { return m_Highlight; }
             set { m_Highlight = value; }
         }
+
+        public int Recommend { get; set; }
     }
 }
