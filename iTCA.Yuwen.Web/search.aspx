@@ -1,4 +1,4 @@
-﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="iTCA.Yuwen.Web.usercontrolpanel" %>
+﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="iTCA.Yuwen.Web.search" %>
 <%@ Import namespace="iTCA.Yuwen.Data" %>
 <%@ Import namespace="iTCA.Yuwen.Entity" %>
 <script runat="server">
@@ -179,42 +179,46 @@ override protected void OnInit(EventArgs e)
 
 	Response.Write("	<!--左栏开始-->\r\n");
 	Response.Write("	<div id=\"left-side\">\r\n");
-	Response.Write("		<div class=\"div-header\">用户控制面板</div>		\r\n");
-	Response.Write("		<form action=\"\" method=\"post\" id=\"login\">\r\n");
-	Response.Write("		<table>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>邮箱: </th><td>" + userinfo.Email.ToString().Trim() + "</td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>旧密码: </th><td><input id=\"oldpassword\" name=\"oldpassword\" type=\"password\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>新的密码: </th><td><input id=\"newpassword\" name=\"newpassword\" type=\"password\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>重复密码: </th><td><input id=\"newpassword2\" name=\"newpassword2\" type=\"password\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th></th><td><input type=\"submit\" value=\"修改密码\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		</table>\r\n");
-	Response.Write("		</form>\r\n");
-	Response.Write("		<div class=\"div-header\">我发布的文章</div>\r\n");
+	Response.Write("		<!--新闻列表开始-->\r\n");
+	Response.Write("		<!--推荐文章开始-->\r\n");
+	Response.Write("		<div class=\"div-header\">搜索结果</div>\r\n");
+	Response.Write("		<!--分页开始-->\r\n");
+	Response.Write("		<div id=\"pager\">页码:" + pagecounthtml.ToString() + "</div>\r\n");
+	Response.Write("		<!--分页结束-->\r\n");
 	Response.Write("		<ul>\r\n");
 
 	int info__loop__id=0;
-	foreach(ArticleInfo info in myarticlelist)
+	foreach(ArticleInfo info in searchresultlist)
 	{
 		info__loop__id++;
 
-	Response.Write("		    <li style=\"border-bottom:1px solid #666; line-height:200%;\"><a href=\"showarticle-" + info.Articleid.ToString().Trim() + ".aspx\">" + info.Title.ToString().Trim() + "</a><span style=\"margin-left:10px\">" + info.Postdate.ToString().Trim() + "</span></li>\r\n");
+	Response.Write("			    <li class=\"article-list\">\r\n");
+
+	if (config.Urlrewrite==1)
+	{
+
+	Response.Write("				    <h2 class=\"title\"><a href=\"showarticle-" + info.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + info.Title.ToString().Trim() + "</a></h2>\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("				    <h2 class=\"title\"><a href=\"showarticle.aspx?id=" + info.Articleid.ToString().Trim() + "\">" + info.Title.ToString().Trim() + "</a></h2>\r\n");
+
+	}	//end if
+
+	Response.Write("				    <span class=\"description\">" + info.Summary.ToString().Trim() + "</span>\r\n");
+	Response.Write("				    <div class=\"post-info\"><span class=\"author\">" + info.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + info.Postdate.ToString().Trim() + "</span><span>评论(" + info.Commentcount.ToString().Trim() + ")</span></div>\r\n");
+	Response.Write("			    </li>\r\n");
 
 	}	//end loop
 
-	Response.Write("		</ul>\r\n");
+	Response.Write("		</ul>		\r\n");
 	Response.Write("		<!--分页开始-->\r\n");
-	Response.Write("		    <div id=\"pager\">页码:" + pagecounthtml.ToString() + "</div>\r\n");
+	Response.Write("		<div id=\"pager\">页码:" + pagecounthtml.ToString() + "</div>\r\n");
 	Response.Write("		<!--分页结束-->\r\n");
+	Response.Write("		<!--推荐文章结束-->\r\n");
+	Response.Write("		<!--新闻列表结束-->\r\n");
 	Response.Write("	</div>\r\n");
 	Response.Write("	<!--左栏结束-->\r\n");
 	Response.Write("	<!--内容结束-->\r\n");
