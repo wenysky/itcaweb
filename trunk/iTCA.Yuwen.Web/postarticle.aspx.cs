@@ -15,7 +15,9 @@ namespace iTCA.Yuwen.Web
             pagetitle = "投递文章";
             if (userinfo == null)
             {
-                System.Web.HttpContext.Current.Response.Write("<script>alert('请登录后再投递文章,谢谢~');history.back();</script>");
+                currentcontext.Response.Write("<script>alert('请登录后再投递文章,谢谢~');history.back();</script>");
+                currentcontext.Response.End();
+                return;
             }
             columnlist = Columns.GetColumnCollection();
             if (!YRequest.IsPost())

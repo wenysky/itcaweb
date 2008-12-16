@@ -175,6 +175,34 @@ namespace iTCA.Yuwen.Data.Sqlite
 
             return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
         }
+
+        public IDataReader GetSearchArticles(string searchkey, int pagesize, int currentpage)
+        {
+            if (!Natsuhime.Common.Utils.IsSafeSqlString(searchkey))
+            {
+                return null;
+            }
+            IDataReader dr;
+            int recordoffset = (currentpage - 1) * pagesize;
+
+            DbParameter[] prams = 
+		    {
+			    DbHelper.MakeInParam("@recordoffset", DbType.Int32, 4,recordoffset),
+			    DbHelper.MakeInParam("@pagesize", DbType.Int32, 4,pagesize)
+		    };
+            dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}articles WHERE del=0 AND title LIKE '%{1}%' ORDER BY articleid DESC LIMIT @recordoffset,@pagesize", BaseConfigs.GetConfig().Tableprefix, searchkey), prams);
+
+            return dr;
+        }
+        public int GetSearchArticleCollectionPageCount(string searchkey, int pagesize)
+        {
+            if (!Natsuhime.Common.Utils.IsSafeSqlString(searchkey))
+            {
+                return 0;
+            }
+            int recordcount = Convert.ToInt32(DbHelper.ExecuteScalar(CommandType.Text, string.Format("SELECT COUNT(articleid) FROM {0}articles WHERE del=0 AND title LIKE '%{1}%'", BaseConfigs.GetConfig().Tableprefix, searchkey)));
+            return recordcount % pagesize == 0 ? recordcount / pagesize : recordcount / pagesize + 1;
+        }
         #endregion
 
         /// <summary>

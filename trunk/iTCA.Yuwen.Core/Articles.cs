@@ -162,7 +162,7 @@ namespace iTCA.Yuwen.Core
                 currentpage = 1;
             }
             List<ArticleInfo> coll = new List<ArticleInfo>();
-            IDataReader reader = DatabaseProvider.GetInstance().GetRecommendArticles(pagesize,currentpage);
+            IDataReader reader = DatabaseProvider.GetInstance().GetRecommendArticles(pagesize, currentpage);
             while (reader.Read())
             {
                 coll.Add(DataReader2ArticleInfo(reader));
@@ -193,6 +193,39 @@ namespace iTCA.Yuwen.Core
         public static int GetHotArticleCollectionPageCount(int pagesize)
         {
             return DatabaseProvider.GetInstance().GetHotArticleCollectionPageCount(pagesize);
+        }
+
+        public static List<ArticleInfo> GetSearchArticles(string searchkey, int pagesize, int currentpage)
+        {
+            if (currentpage <= 0)
+            {
+                currentpage = 1;
+            }
+
+            List<ArticleInfo> coll = new List<ArticleInfo>();
+            searchkey = searchkey.Trim();
+            if (searchkey != string.Empty)
+            {
+                IDataReader reader = DatabaseProvider.GetInstance().GetSearchArticles(searchkey, pagesize, currentpage);
+                while (reader.Read())
+                {
+                    coll.Add(DataReader2ArticleInfo(reader));
+                }
+                reader.Close();
+            }
+            return coll;
+        }
+        public static int GetSearchArticleCollectionPageCount(string searchkey, int pagesize)
+        {
+            searchkey = searchkey.Trim();
+            if (searchkey != string.Empty)
+            {
+                return DatabaseProvider.GetInstance().GetSearchArticleCollectionPageCount(searchkey, pagesize);
+            }
+            else
+            {
+                return 0;
+            }
         }
         #endregion
 

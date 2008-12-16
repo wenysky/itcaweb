@@ -22,6 +22,9 @@ namespace iTCA.Yuwen.Data
 
         IDataReader GetHotArticles(int pagesize, int currentpage);
         int GetHotArticleCollectionPageCount(int pagesize);
+
+        IDataReader GetSearchArticles(string searchkey, int pagesize, int currentpage);
+        int GetSearchArticleCollectionPageCount(string searchkey, int pagesize);
         #endregion
 
         IDataReader GetArticleInfo(int articleid);

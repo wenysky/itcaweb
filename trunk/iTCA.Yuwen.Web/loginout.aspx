@@ -65,7 +65,7 @@ override protected void OnInit(EventArgs e)
 	Response.Write("	<!--右栏开始-->\r\n");
 	Response.Write("	<div id=\"right-side\">\r\n");
 	Response.Write("		<div class=\"div-header\">站内搜索</div>\r\n");
-	Response.Write("		<div id=\"search\"><form action=\"#1\" method=\"post\">标题搜索&nbsp;:&nbsp;<input type=\"text\" id=\"searchkey\" name=\"searchkey\" />&nbsp;&nbsp;<input type=\"submit\" value=\"搜索\" /></form></div>	\r\n");
+	Response.Write("		<div id=\"search\"><form action=\"search.aspx\" method=\"get\">标题搜索&nbsp;:&nbsp;<input type=\"text\" id=\"searchkey\" name=\"searchkey\" />&nbsp;&nbsp;<input type=\"submit\" value=\"搜索\" /></form></div>	\r\n");
 	Response.Write("		<div id=\"hot-article\" class=\"right-list\">\r\n");
 
 	if (config.Urlrewrite==1)

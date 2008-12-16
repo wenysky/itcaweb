@@ -72,6 +72,10 @@
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="uploadfile.aspx.cs">
       <DependentUpon>uploadfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -405,7 +409,9 @@
   <ItemGroup>
     <Content Include="comment.aspx" />
     <Content Include="NSWindBase.config" />
+    <Content Include="search.aspx" />
     <Content Include="templates\comment.htm" />
+    <Content Include="templates\search.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />
