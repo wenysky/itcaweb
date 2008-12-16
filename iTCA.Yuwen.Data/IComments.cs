@@ -9,9 +9,13 @@ namespace iTCA.Yuwen.Data
     {
         #region 取得列表
         IDataReader GetComments(int articleid, int pagesize, int currentpage);
-        IDataReader GetUserComments(int uid, int pagesize, int currentpage);
         int GetCommentsPageCount(int articleid, int pagesize);
+
+        IDataReader GetUserComments(int uid, int pagesize, int currentpage);
         int GetUserCommentsPageCount(int uid, int pagesize);
+
+        IDataReader GetMostGradComments(int pagesize, int currentpage);
+        int GetMostGradCommentsPageCount(int pagesize);
         #endregion
 
         IDataReader GetCommentInfo(int commentid);

@@ -16,6 +16,7 @@ namespace iTCA.Yuwen.Core
             CommentInfo info = new CommentInfo();
             info.Commentid = Convert.ToInt32(reader["commentid"]);
             info.Articleid = Convert.ToInt32(reader["articleid"]);
+            info.Articletitle = reader["articletitle"].ToString();
             info.Uid = Convert.ToInt32(reader["uid"]);
             info.Username = reader["username"].ToString();
             info.Postdate = Convert.ToDateTime(reader["postdate"]).ToString("yyyy-MM-dd");
@@ -68,6 +69,26 @@ namespace iTCA.Yuwen.Core
         public static int GetUserCommentCollectionPageCount(int uid, int pagesize)
         {
             return DatabaseProvider.GetInstance().GetUserCommentsPageCount(uid, pagesize);
+        }
+
+        public static List<CommentInfo> GetMostGradComments(int pagesize, int currentpage)
+        {
+            if (currentpage <= 0)
+            {
+                currentpage = 1;
+            }
+            List<CommentInfo> coll = new List<CommentInfo>();
+            IDataReader reader = DatabaseProvider.GetInstance().GetMostGradComments(pagesize, currentpage);
+            while (reader.Read())
+            {
+                coll.Add(DataReader2CommentInfo(reader));
+            }
+            reader.Close();
+            return coll;
+        }
+        public static int GetMostGradCommentsPageCount(int pagesize)
+        {
+            return DatabaseProvider.GetInstance().GetMostGradCommentsPageCount(pagesize);
         }
         #endregion
         public static CommentInfo GetCommentInfo(int commentid)

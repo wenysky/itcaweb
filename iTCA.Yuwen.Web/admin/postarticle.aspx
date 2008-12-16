@@ -57,6 +57,13 @@
                         <asp:Button ID="btnUpload" runat="server" Text="上传" OnClick="btnUpload_Click" /><asp:Label
                             ID="lbMessage" runat="server" ForeColor="Red"></asp:Label></td>
                 </tr>
+                <tr>
+                    
+                    <td>推荐:</td>
+                    <td>
+                        <asp:CheckBox ID="ckbxRecommand" runat="server" Text="推荐主题" />
+                    </td>
+                </tr>
                 <tr>                    
                     <td align="center" colspan="2">
                         <asp:Button ID="btnSubmit" runat="server" Text="提交" OnClick="btnSubmit_Click" />&nbsp;&nbsp;&nbsp;<asp:Button ID="btnCancel" runat="server" Text="取消" /></td>

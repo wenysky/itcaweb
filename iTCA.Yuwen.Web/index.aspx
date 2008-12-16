@@ -1,6 +1,7 @@
 ﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="iTCA.Yuwen.Web.index" %>
 <%@ Import namespace="iTCA.Yuwen.Data" %>
 <%@ Import namespace="iTCA.Yuwen.Entity" %>
+<%@ Import namespace="System.Collections.Generic" %>
 <script runat="server">
 override protected void OnInit(EventArgs e)
 {
@@ -67,72 +68,110 @@ override protected void OnInit(EventArgs e)
 	Response.Write("		<div class=\"div-header\">站内搜索</div>\r\n");
 	Response.Write("		<div id=\"search\"><form action=\"#1\" method=\"post\">标题搜索&nbsp;:&nbsp;<input type=\"text\" id=\"searchkey\" name=\"searchkey\" />&nbsp;&nbsp;<input type=\"submit\" value=\"搜索\" /></form></div>	\r\n");
 	Response.Write("		<div id=\"hot-article\" class=\"right-list\">\r\n");
-	Response.Write("			<div class=\"div-header\">热门新闻</div>\r\n");
+
+	if (config.Urlrewrite==1)
+	{
+
+	Response.Write("			<div class=\"div-header\"><a href=\"showcolumn-hot" + config.Urlrewriteextname.ToString().Trim() + "\">热门新闻</a></div>\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("			<div class=\"div-header\"><a href=\"showcolumn.aspx?type=hot\">热门新闻</a></div>\r\n");
+
+	}	//end if
+
 	Response.Write("			<ul>\r\n");
-	Response.Write("				<li><h2><a href=\"#\">安装VS 2008 SP1后，智能提示变为英文...</a></h2></li>\r\n");
-	Response.Write("				<li><h2><a href=\"#\">揭示Visual Studio 2010发展路线图</a></h2></li>\r\n");
-	Response.Write("				<li><h2><a href=\"#\">.NET Framework 3.5 SP1完整版发布</a></h2></li>\r\n");
-	Response.Write("				<li><h2><a href=\"#\">GMail再次更新:带来新主题</a></h2></li>\r\n");
-	Response.Write("				<li><h2><a href=\"#\">求求你原谅我,亲爱的Firefox</a></h2></li>\r\n");
-	Response.Write("				<li><h2><a href=\"#\">Google处理1TB数据只需68秒 1PB六个小时</a></h2></li>\r\n");
+
+	int hotarticleinfo__loop__id=0;
+	foreach(ArticleInfo hotarticleinfo in hotarticlelist)
+	{
+		hotarticleinfo__loop__id++;
+
+
+	if (config.Urlrewrite==1)
+	{
+
+	Response.Write("				<li><h2><a href=\"showarticle-" + hotarticleinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("				<li><h2><a href=\"showarticle.aspx?id=" + hotarticleinfo.Articleid.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+
+	}	//end if
+
+
+	}	//end loop
+
 	Response.Write("			</ul>\r\n");
 	Response.Write("		</div>\r\n");
 	Response.Write("		<div id=\"latest-comment\" class=\"right-list\">\r\n");
 	Response.Write("			<div class=\"div-header\">最新评论</div>\r\n");
 	Response.Write("			<ul>\r\n");
+
+	int latestcommentinfo__loop__id=0;
+	foreach(CommentInfo latestcommentinfo in latestcommentlist)
+	{
+		latestcommentinfo__loop__id++;
+
 	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\">\"<a href=\"#\">安装VS 2008 SP1后，智能提示变为英文...</a>\"</span> 的评论</div>\r\n");
+	Response.Write("					<span class=\"content\">" + latestcommentinfo.Content.ToString().Trim() + "</span>\r\n");
+	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">" + latestcommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\">\"<a href=\"\r\n");
+
+	if (config.Urlrewrite==1)
+	{
+
+	Response.Write("showarticle-" + latestcommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("showarticle.aspx?id=" + latestcommentinfo.Articleid.ToString().Trim() + "\r\n");
+
+	}	//end if
+
+	Response.Write("\">" + latestcommentinfo.Articletitle.ToString().Trim() + "</a>\"</span> 的评论</div>\r\n");
 	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">揭示Visual Studio 2010发展路线图</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">.NET Framework 3.5 SP1完整版发布</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">GMail再次更新:带来新主题</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">求求你原谅我,亲爱的Firefox</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">Google处理1TB数据只需68秒 1PB六个小时</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
+
+	}	//end loop
+
 	Response.Write("			</ul>\r\n");
 	Response.Write("		</div>\r\n");
 	Response.Write("		<div id=\"hot-comment\" class=\"right-list\">\r\n");
 	Response.Write("			<div class=\"div-header\">热门评论</div>\r\n");
 	Response.Write("			<ul>\r\n");
+
+	int mostgradecommentinfo__loop__id=0;
+	foreach(CommentInfo mostgradecommentinfo in mostgradecommentlist)
+	{
+		mostgradecommentinfo__loop__id++;
+
 	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">安装VS 2008 SP1后，智能提示变为英文...</a></span> 的评论</div>\r\n");
+	Response.Write("					<span class=\"content\">" + mostgradecommentinfo.Content.ToString().Trim() + "</span>\r\n");
+	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">" + mostgradecommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\"><a href=\"\r\n");
+
+	if (config.Urlrewrite==1)
+	{
+
+	Response.Write("showarticle-" + mostgradecommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+
+	}
+	else
+	{
+
+	Response.Write("showarticle.aspx?id=" + mostgradecommentinfo.Articleid.ToString().Trim() + "\r\n");
+
+	}	//end if
+
+	Response.Write("\">" + mostgradecommentinfo.Articletitle.ToString().Trim() + "</a></span> 的评论</div>\r\n");
 	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">揭示Visual Studio 2010发展路线图</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">.NET Framework 3.5 SP1完整版发布</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">GMail再次更新:带来新主题</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">求求你原谅我,亲爱的Firefox</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">从2006年2月的“高跟鞋虐猫事件”，到近期的深圳海事局原党委书记林嘉祥事件...</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">匿名用户 </span>对 <span class=\"from-article\"><a href=\"#\">Google处理1TB数据只需68秒 1PB六个小时</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
+
+	}	//end loop
+
 	Response.Write("			</ul>\r\n");
 	Response.Write("		</div>\r\n");
 	Response.Write("	</div>\r\n");
@@ -180,39 +219,44 @@ override protected void OnInit(EventArgs e)
 	Response.Write("		<div id=\"pager\">页码:" + pagecounthtml.ToString() + "</div>\r\n");
 	Response.Write("		<!--分页结束-->\r\n");
 	Response.Write("		<!--推荐文章结束-->\r\n");
-	Response.Write("		<!--栏目列表开始-->\r\n");
-	Response.Write("		<div class=\"div-header\">技术文章</div>\r\n");
-	Response.Write("		<ul>\r\n");
+	Response.Write("		<!--栏目列表开始-->		\r\n");
+	Response.Write("	    <!--所有栏目循环开始-->\r\n");
 
-	int newsinfo__loop__id=0;
-	foreach(ArticleInfo newsinfo in newslist)
+	int allarticlelist__loop__id=0;
+	foreach(KeyValuePair<ColumnInfo,List<ArticleInfo>> allarticlelist in allcolumnarticlelistd)
 	{
-		newsinfo__loop__id++;
+		allarticlelist__loop__id++;
+
+	Response.Write("		    <div class=\"div-header\">" + allarticlelist.Key.Columnname.ToString().Trim() + "</div>\r\n");
+	Response.Write("		    <ul>\r\n");
+
+	int allarticleinfo__loop__id=0;
+	foreach(ArticleInfo allarticleinfo in allarticlelist.Value)
+	{
+		allarticleinfo__loop__id++;
 
 
 	if (config.Urlrewrite==1)
 	{
 
-	Response.Write("			        <li class=\"article-list\"><h2><a href=\"showarticle-" + newsinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + newsinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+	Response.Write("			    <li class=\"article-list\"><h2><a href=\"showarticle-" + allarticleinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + allarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("			        <li class=\"article-list\"><h2><a href=\"showarticle.aspx?id=" + newsinfo.Articleid.ToString().Trim() + "\">" + newsinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+	Response.Write("			    <li class=\"article-list\"><h2><a href=\"showarticle.aspx?id=" + allarticleinfo.Articleid.ToString().Trim() + "\">" + allarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
 
 	}	//end if
 
 
 	}	//end loop
 
-	Response.Write("		</ul>\r\n");
-	Response.Write("		<div class=\"div-header\">业界新闻</div>\r\n");
-	Response.Write("		<ul>\r\n");
-	Response.Write("			<li class=\"article-list\"><h2><a href=\"#\">鲍尔默感恩节答谢名单 盖茨杨致远榜上有名</a></h2></li>\r\n");
-	Response.Write("			<li class=\"article-list\"><h2><a href=\"#\">英国卫报：疯狂的树屋</a></h2></li>\r\n");
-	Response.Write("			<li class=\"article-list\"><h2><a href=\"#\">阿里巴巴“援冬”产品取得开门红</a></h2></li>\r\n");
-	Response.Write("		</ul>\r\n");
+	Response.Write("		    </ul>\r\n");
+
+	}	//end loop
+
+	Response.Write("	    <!--所有栏目循环结束-->		\r\n");
 	Response.Write("		<!--栏目列表结束-->\r\n");
 	Response.Write("		<!--插件文章列表开始-->\r\n");
 	Response.Write("		<div class=\"div-header\">论坛新帖</div>\r\n");

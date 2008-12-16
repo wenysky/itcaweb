@@ -38,6 +38,7 @@ namespace iTCA.Yuwen.Web
                         info.Content = Utils.RemoveUnsafeHtml(content);
                         info.Goodcount = 0;
                         info.Badcount = 0;
+                        info.Articletitle = Articles.GetArticleInfo(articleid).Title;
                         Comments.CreateComment(info);
                         Articles.ChangeCommentCount(articleid, 1, 1);
                         currentcontext.Response.Redirect(YRequest.GetUrlReferrer());

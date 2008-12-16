@@ -1,5 +1,6 @@
 ﻿<%namespace iTCA.Yuwen.Data%>
 <%namespace iTCA.Yuwen.Entity%>
+<%namespace System.Collections.Generic%>
 <%inherits iTCA.Yuwen.Web.index%>
 
 <%template _header%>
@@ -32,24 +33,21 @@
 		<!--分页结束-->
 		<!--推荐文章结束-->
 		
-		<!--栏目列表开始-->
-		<div class="div-header">技术文章</div>
-		<ul>
-		    <%loop (ArticleInfo) newsinfo newslist%>
-		        <%if {config.urlrewrite}==1%>
-			        <li class="article-list"><h2><a href="showarticle-{newsinfo.articleid}{config.urlrewriteextname}">{newsinfo.title}</a></h2></li>
+		<!--栏目列表开始-->		
+	    <!--所有栏目循环开始-->
+	    <%loop (KeyValuePair<ColumnInfo,List<ArticleInfo>>) allarticlelist allcolumnarticlelistd%>
+		    <div class="div-header">{allarticlelist.key.Columnname}</div>
+		    <ul>
+    		<%loop (ArticleInfo) allarticleinfo allarticlelist.Value%>    		    
+			    <%if {config.urlrewrite}==1%>
+			    <li class="article-list"><h2><a href="showarticle-{allarticleinfo.articleid}{config.urlrewriteextname}">{allarticleinfo.title}</a></h2></li>
 			    <%else%>
-			        <li class="article-list"><h2><a href="showarticle.aspx?id={newsinfo.articleid}">{newsinfo.title}</a></h2></li>
+			    <li class="article-list"><h2><a href="showarticle.aspx?id={allarticleinfo.articleid}">{allarticleinfo.title}</a></h2></li>
 			    <%/if%>
 			<%/loop%>
-		</ul>
-		
-		<div class="div-header">业界新闻</div>
-		<ul>
-			<li class="article-list"><h2><a href="#">鲍尔默感恩节答谢名单 盖茨杨致远榜上有名</a></h2></li>
-			<li class="article-list"><h2><a href="#">英国卫报：疯狂的树屋</a></h2></li>
-			<li class="article-list"><h2><a href="#">阿里巴巴“援冬”产品取得开门红</a></h2></li>
-		</ul>
+		    </ul>
+	    <%/loop%>
+	    <!--所有栏目循环结束-->		
 		<!--栏目列表结束-->
 		
 		<!--插件文章列表开始-->

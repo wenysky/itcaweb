@@ -32,6 +32,7 @@ namespace iTCA.Yuwen.Web.Admin
                 tbxTitle.Text = Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title.TrimEnd());
                 tbxSummary.Text = articleinfo.Summary.TrimEnd();
                 tbxContent.Text = articleinfo.Content.TrimEnd();
+                ckbxRecommand.Checked = Convert.ToBoolean(articleinfo.Recommend);
                 btnSubmit.Text = "±à¼­";
             }
         }
@@ -53,6 +54,7 @@ namespace iTCA.Yuwen.Web.Admin
             articleinfo.Summary = tbxSummary.Text.TrimEnd();
             articleinfo.Content = tbxContent.Text.TrimEnd();
             articleinfo.Postdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            articleinfo.Recommend = Convert.ToInt32(ckbxRecommand.Checked);
             articleinfo.Uid = 1;
             articleinfo.Username = "admin";
             if (articleid > 0)
@@ -71,14 +73,14 @@ namespace iTCA.Yuwen.Web.Admin
         {
             DateTime time = DateTime.Now;
             Random random = new Random();
-            string savepath = string.Format("upload{0}{1}{0}{2}{0}{3}{0}", Path.DirectorySeparatorChar, time.ToString("yyyy"),time.ToString("MM"), time.ToString("dd"));
+            string savepath = string.Format("upload{0}{1}{0}{2}{0}{3}{0}", Path.DirectorySeparatorChar, time.ToString("yyyy"), time.ToString("MM"), time.ToString("dd"));
             string filename = fuUploader.FileName;
             string fileextname = Path.GetExtension(filename).ToLower();
             string savefilename = (Environment.TickCount & int.MaxValue).ToString() + random.Next(1000, 9999).ToString() + fileextname;
 
             bool canUpload = false;
-            string[] allowedextensions ={ ".gif", ".png", ".jpeg", ".jpg", ".zip", ".rar" };
-            foreach(string allowextname in allowedextensions)
+            string[] allowedextensions = { ".gif", ".png", ".jpeg", ".jpg", ".zip", ".rar" };
+            foreach (string allowextname in allowedextensions)
             {
                 if (fileextname == allowextname)
                 {

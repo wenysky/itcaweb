@@ -26,13 +26,13 @@ namespace iTCA.Yuwen.Web
             int pageid = 1;
             if (true)
             {
-                mainarticlelist = Articles.GetRecommendArticles(10, 1);
-                pagecount = Articles.GetRecommendArticleCollectionPageCount(10);
+                mainarticlelist = Articles.GetRecommendArticles(15, 1);
+                pagecount = Articles.GetRecommendArticleCollectionPageCount(15);
                 pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, "showcolumn-recommend", ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?type=recommend", 8, "pageid", "");
             }
             else
             {
-                mainarticlelist = Articles.GetArticleCollection(0, 10, 1);
+                mainarticlelist = Articles.GetArticleCollection(0, 15, 1);
                 pagecount = Articles.GetArticleCollectionPageCount(0, 10);
                 pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", 0), ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?cid=0", 8, "pageid", "");
             }
