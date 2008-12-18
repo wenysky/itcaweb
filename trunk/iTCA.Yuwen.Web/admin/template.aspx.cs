@@ -74,7 +74,7 @@ namespace iTCA.Yuwen.Web.Admin
 
         protected void btnCreateAll_Click(object sender, EventArgs e)
         {
-            NewTemplate ntp = new NewTemplate("test");
+            NewTemplate ntp = new NewTemplate("iTCA.Yuwen.Web", "");
             ntp.CreateFromFolder(Server.MapPath("~/templates/"), Server.MapPath("~/"));
             /*
             Hashtable ht = new Hashtable();
