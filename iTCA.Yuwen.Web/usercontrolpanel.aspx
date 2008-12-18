@@ -4,84 +4,90 @@
 <script runat="server">
 override protected void OnInit(EventArgs e)
 {
+	/*
+	This is a cached-file of template("\templates\usercontrolpanel.htm"), it was created by LiteCMS.CN Template Engine.
+	Please do NOT edit it.
+	此文件为模板文件的缓存("\templates\usercontrolpanel.htm"),由 LiteCMS.CN 模板引擎生成.
+	所以请不要编辑此文件.
+	*/
 	base.OnInit(e);
 
-	Response.Write("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
-	Response.Write("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
-	Response.Write("<head>\r\n");
-	Response.Write("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/main.css\" />\r\n");
-	Response.Write("	<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />\r\n");
+	templateBuilder.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
+	templateBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
+	templateBuilder.Append("<head>\r\n");
+	templateBuilder.Append("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/main.css\" />\r\n");
+	templateBuilder.Append("	<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />\r\n");
 
 	if (pagetitle=="")
 	{
 
-	Response.Write("<title>" + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
+	templateBuilder.Append("<title>" + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("<title>" + pagetitle.ToString() + " - " + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
+	templateBuilder.Append("<title>" + pagetitle.ToString() + " - " + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
 
 	}	//end if
 
-	Response.Write("</head>\r\n");
-	Response.Write("<body>\r\n");
-	Response.Write("<div id=\"wrap\">\r\n");
-	Response.Write("	<!--头部开始-->\r\n");
-	Response.Write("	<div id=\"header\">\r\n");
-	Response.Write("		<div id=\"main-menu\">\r\n");
-	Response.Write("			<ul>\r\n");
-	Response.Write("				<li><a href=\"index.aspx\">首页</a></li>\r\n");
-	Response.Write("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
-	Response.Write("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
-	Response.Write("				<li><a href=\"#\">博客</a></li>\r\n");
-	Response.Write("				<li><a href=\"bbs/\">论坛</a></li>\r\n");
+	templateBuilder.Append("</head>\r\n");
+	templateBuilder.Append("<body>\r\n");
+	templateBuilder.Append("<div id=\"wrap\">\r\n");
+	templateBuilder.Append("	<!--头部开始-->\r\n");
+	templateBuilder.Append("	<div id=\"header\">\r\n");
+	templateBuilder.Append("		<div id=\"main-menu\">\r\n");
+	templateBuilder.Append("			<ul>\r\n");
+	templateBuilder.Append("				<li><a href=\"index.aspx\">首页</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"#\">博客</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"bbs/\">论坛</a></li>\r\n");
 
 	if (userinfo==null)
 	{
 
-	Response.Write("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
-	Response.Write("				<li><a href=\"register.aspx\">注册</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"register.aspx\">注册</a></li>\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("				<li><a href=\"usercontrolpanel.aspx\">用户中心</a></li>\r\n");
-	Response.Write("				<li><a href=\"loginout.aspx\">注销 " + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销 " + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
 
 	}	//end if
 
-	Response.Write("				<li><a href=\"#\">关于</a></li>\r\n");
-	Response.Write("			</ul>\r\n");
-	Response.Write("		</div>\r\n");
-	Response.Write("	</div>\r\n");
-	Response.Write("	<!--头部结束-->\r\n");
+	templateBuilder.Append("				<li><a href=\"#\">关于</a></li>\r\n");
+	templateBuilder.Append("			</ul>\r\n");
+	templateBuilder.Append("		</div>\r\n");
+	templateBuilder.Append("	</div>\r\n");
+	templateBuilder.Append("	<!--头部结束-->\r\n");
 
 
-	Response.Write("	<!--内容开始-->\r\n");
+	templateBuilder.Append("	<!--内容开始-->\r\n");
 
-	Response.Write("	<!--右栏开始-->\r\n");
-	Response.Write("	<div id=\"right-side\">\r\n");
-	Response.Write("		<div class=\"div-header\">站内搜索</div>\r\n");
-	Response.Write("		<div id=\"search\"><form action=\"search.aspx\" method=\"get\">标题搜索&nbsp;:&nbsp;<input type=\"text\" id=\"searchkey\" name=\"searchkey\" />&nbsp;&nbsp;<input type=\"submit\" value=\"搜索\" /></form></div>	\r\n");
-	Response.Write("		<div id=\"hot-article\" class=\"right-list\">\r\n");
+	templateBuilder.Append("	<!--右栏开始-->\r\n");
+	templateBuilder.Append("	<div id=\"right-side\">\r\n");
+	templateBuilder.Append("		<div class=\"div-header\">站内搜索</div>\r\n");
+	templateBuilder.Append("		<div id=\"search\"><form action=\"search.aspx\" method=\"get\">标题搜索&nbsp;:&nbsp;<input type=\"text\" id=\"searchkey\" name=\"searchkey\" />&nbsp;&nbsp;<input type=\"submit\" value=\"搜索\" /></form></div>	\r\n");
+	templateBuilder.Append("		<div id=\"hot-article\" class=\"right-list\">\r\n");
 
 	if (config.Urlrewrite==1)
 	{
 
-	Response.Write("			<div class=\"div-header\"><a href=\"showcolumn-hot" + config.Urlrewriteextname.ToString().Trim() + "\">热门新闻</a></div>\r\n");
+	templateBuilder.Append("			<div class=\"div-header\"><a href=\"showcolumn-hot" + config.Urlrewriteextname.ToString().Trim() + "\">热门新闻</a></div>\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("			<div class=\"div-header\"><a href=\"showcolumn.aspx?type=hot\">热门新闻</a></div>\r\n");
+	templateBuilder.Append("			<div class=\"div-header\"><a href=\"showcolumn.aspx?type=hot\">热门新闻</a></div>\r\n");
 
 	}	//end if
 
-	Response.Write("			<ul>\r\n");
+	templateBuilder.Append("			<ul>\r\n");
 
 	int hotarticleinfo__loop__id=0;
 	foreach(ArticleInfo hotarticleinfo in hotarticlelist)
@@ -92,146 +98,147 @@ override protected void OnInit(EventArgs e)
 	if (config.Urlrewrite==1)
 	{
 
-	Response.Write("				<li><h2><a href=\"showarticle-" + hotarticleinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+	templateBuilder.Append("				<li><h2><a href=\"showarticle-" + hotarticleinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("				<li><h2><a href=\"showarticle.aspx?id=" + hotarticleinfo.Articleid.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+	templateBuilder.Append("				<li><h2><a href=\"showarticle.aspx?id=" + hotarticleinfo.Articleid.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
 
 	}	//end if
 
 
 	}	//end loop
 
-	Response.Write("			</ul>\r\n");
-	Response.Write("		</div>\r\n");
-	Response.Write("		<div id=\"latest-comment\" class=\"right-list\">\r\n");
-	Response.Write("			<div class=\"div-header\">最新评论</div>\r\n");
-	Response.Write("			<ul>\r\n");
+	templateBuilder.Append("			</ul>\r\n");
+	templateBuilder.Append("		</div>\r\n");
+	templateBuilder.Append("		<div id=\"latest-comment\" class=\"right-list\">\r\n");
+	templateBuilder.Append("			<div class=\"div-header\">最新评论</div>\r\n");
+	templateBuilder.Append("			<ul>\r\n");
 
 	int latestcommentinfo__loop__id=0;
 	foreach(CommentInfo latestcommentinfo in latestcommentlist)
 	{
 		latestcommentinfo__loop__id++;
 
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">" + latestcommentinfo.Content.ToString().Trim() + "</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">" + latestcommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\">\"<a href=\"\r\n");
+	templateBuilder.Append("				<li>\r\n");
+	templateBuilder.Append("					<span class=\"content\">" + latestcommentinfo.Content.ToString().Trim() + "</span>\r\n");
+	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">" + latestcommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\">\"<a href=\"\r\n");
 
 	if (config.Urlrewrite==1)
 	{
 
-	Response.Write("showarticle-" + latestcommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle-" + latestcommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("showarticle.aspx?id=" + latestcommentinfo.Articleid.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle.aspx?id=" + latestcommentinfo.Articleid.ToString().Trim() + "\r\n");
 
 	}	//end if
 
-	Response.Write("\">" + latestcommentinfo.Articletitle.ToString().Trim() + "</a>\"</span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
+	templateBuilder.Append("\">" + latestcommentinfo.Articletitle.ToString().Trim() + "</a>\"</span> 的评论</div>\r\n");
+	templateBuilder.Append("				</li>\r\n");
 
 	}	//end loop
 
-	Response.Write("			</ul>\r\n");
-	Response.Write("		</div>\r\n");
-	Response.Write("		<div id=\"hot-comment\" class=\"right-list\">\r\n");
-	Response.Write("			<div class=\"div-header\">热门评论</div>\r\n");
-	Response.Write("			<ul>\r\n");
+	templateBuilder.Append("			</ul>\r\n");
+	templateBuilder.Append("		</div>\r\n");
+	templateBuilder.Append("		<div id=\"hot-comment\" class=\"right-list\">\r\n");
+	templateBuilder.Append("			<div class=\"div-header\">热门评论</div>\r\n");
+	templateBuilder.Append("			<ul>\r\n");
 
 	int mostgradecommentinfo__loop__id=0;
 	foreach(CommentInfo mostgradecommentinfo in mostgradecommentlist)
 	{
 		mostgradecommentinfo__loop__id++;
 
-	Response.Write("				<li>\r\n");
-	Response.Write("					<span class=\"content\">" + mostgradecommentinfo.Content.ToString().Trim() + "</span>\r\n");
-	Response.Write("					<div class=\"comment-info\"><span class=\"comment-author\">" + mostgradecommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\"><a href=\"\r\n");
+	templateBuilder.Append("				<li>\r\n");
+	templateBuilder.Append("					<span class=\"content\">" + mostgradecommentinfo.Content.ToString().Trim() + "</span>\r\n");
+	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">" + mostgradecommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\"><a href=\"\r\n");
 
 	if (config.Urlrewrite==1)
 	{
 
-	Response.Write("showarticle-" + mostgradecommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle-" + mostgradecommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
 
 	}
 	else
 	{
 
-	Response.Write("showarticle.aspx?id=" + mostgradecommentinfo.Articleid.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle.aspx?id=" + mostgradecommentinfo.Articleid.ToString().Trim() + "\r\n");
 
 	}	//end if
 
-	Response.Write("\">" + mostgradecommentinfo.Articletitle.ToString().Trim() + "</a></span> 的评论</div>\r\n");
-	Response.Write("				</li>\r\n");
+	templateBuilder.Append("\">" + mostgradecommentinfo.Articletitle.ToString().Trim() + "</a></span> 的评论</div>\r\n");
+	templateBuilder.Append("				</li>\r\n");
 
 	}	//end loop
 
-	Response.Write("			</ul>\r\n");
-	Response.Write("		</div>\r\n");
-	Response.Write("	</div>\r\n");
-	Response.Write("	<!--右栏结束-->	\r\n");
+	templateBuilder.Append("			</ul>\r\n");
+	templateBuilder.Append("		</div>\r\n");
+	templateBuilder.Append("	</div>\r\n");
+	templateBuilder.Append("	<!--右栏结束-->	\r\n");
 
 
-	Response.Write("	<!--左栏开始-->\r\n");
-	Response.Write("	<div id=\"left-side\">\r\n");
-	Response.Write("		<div class=\"div-header\">用户控制面板</div>		\r\n");
-	Response.Write("		<form action=\"\" method=\"post\" id=\"login\">\r\n");
-	Response.Write("		<table>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>邮箱: </th><td>" + userinfo.Email.ToString().Trim() + "</td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>旧密码: </th><td><input id=\"oldpassword\" name=\"oldpassword\" type=\"password\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>新的密码: </th><td><input id=\"newpassword\" name=\"newpassword\" type=\"password\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th>重复密码: </th><td><input id=\"newpassword2\" name=\"newpassword2\" type=\"password\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		    <tr>\r\n");
-	Response.Write("		        <th></th><td><input type=\"submit\" value=\"修改密码\" /></td>\r\n");
-	Response.Write("		    </tr>\r\n");
-	Response.Write("		</table>\r\n");
-	Response.Write("		</form>\r\n");
-	Response.Write("		<div class=\"div-header\">我发布的文章</div>\r\n");
-	Response.Write("		<ul>\r\n");
+	templateBuilder.Append("	<!--左栏开始-->\r\n");
+	templateBuilder.Append("	<div id=\"left-side\">\r\n");
+	templateBuilder.Append("		<div class=\"div-header\">用户控制面板</div>		\r\n");
+	templateBuilder.Append("		<form action=\"\" method=\"post\" id=\"login\">\r\n");
+	templateBuilder.Append("		<table>\r\n");
+	templateBuilder.Append("		    <tr>\r\n");
+	templateBuilder.Append("		        <th>邮箱: </th><td>" + userinfo.Email.ToString().Trim() + "</td>\r\n");
+	templateBuilder.Append("		    </tr>\r\n");
+	templateBuilder.Append("		    <tr>\r\n");
+	templateBuilder.Append("		        <th>旧密码: </th><td><input id=\"oldpassword\" name=\"oldpassword\" type=\"password\" /></td>\r\n");
+	templateBuilder.Append("		    </tr>\r\n");
+	templateBuilder.Append("		    <tr>\r\n");
+	templateBuilder.Append("		        <th>新的密码: </th><td><input id=\"newpassword\" name=\"newpassword\" type=\"password\" /></td>\r\n");
+	templateBuilder.Append("		    </tr>\r\n");
+	templateBuilder.Append("		    <tr>\r\n");
+	templateBuilder.Append("		        <th>重复密码: </th><td><input id=\"newpassword2\" name=\"newpassword2\" type=\"password\" /></td>\r\n");
+	templateBuilder.Append("		    </tr>\r\n");
+	templateBuilder.Append("		    <tr>\r\n");
+	templateBuilder.Append("		        <th></th><td><input type=\"submit\" value=\"修改密码\" /></td>\r\n");
+	templateBuilder.Append("		    </tr>\r\n");
+	templateBuilder.Append("		</table>\r\n");
+	templateBuilder.Append("		</form>\r\n");
+	templateBuilder.Append("		<div class=\"div-header\">我发布的文章</div>\r\n");
+	templateBuilder.Append("		<ul>\r\n");
 
 	int info__loop__id=0;
 	foreach(ArticleInfo info in myarticlelist)
 	{
 		info__loop__id++;
 
-	Response.Write("		    <li style=\"border-bottom:1px solid #666; line-height:200%;\"><a href=\"showarticle-" + info.Articleid.ToString().Trim() + ".aspx\">" + info.Title.ToString().Trim() + "</a><span style=\"margin-left:10px\">" + info.Postdate.ToString().Trim() + "</span></li>\r\n");
+	templateBuilder.Append("		    <li style=\"border-bottom:1px solid #666; line-height:200%;\"><a href=\"showarticle-" + info.Articleid.ToString().Trim() + ".aspx\">" + info.Title.ToString().Trim() + "</a><span style=\"margin-left:10px\">" + info.Postdate.ToString().Trim() + "</span></li>\r\n");
 
 	}	//end loop
 
-	Response.Write("		</ul>\r\n");
-	Response.Write("		<!--分页开始-->\r\n");
-	Response.Write("		    <div id=\"pager\">页码:" + pagecounthtml.ToString() + "</div>\r\n");
-	Response.Write("		<!--分页结束-->\r\n");
-	Response.Write("	</div>\r\n");
-	Response.Write("	<!--左栏结束-->\r\n");
-	Response.Write("	<!--内容结束-->\r\n");
+	templateBuilder.Append("		</ul>\r\n");
+	templateBuilder.Append("		<!--分页开始-->\r\n");
+	templateBuilder.Append("		    <div id=\"pager\">页码:" + pagecounthtml.ToString() + "</div>\r\n");
+	templateBuilder.Append("		<!--分页结束-->\r\n");
+	templateBuilder.Append("	</div>\r\n");
+	templateBuilder.Append("	<!--左栏结束-->\r\n");
+	templateBuilder.Append("	<!--内容结束-->\r\n");
 
-	Response.Write("	<div id=\"footer\" title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">\r\n");
-	Response.Write("		<ul>\r\n");
-	Response.Write("			<li><a href=\"#\">关于本站</a></li>\r\n");
-	Response.Write("			<li><a href=\"#\">联系我们</a></li>		\r\n");
-	Response.Write("			<li><a href=\"#\">广告服务</a></li>	\r\n");
-	Response.Write("			<li>版权所有 © 2004-2008 <a href=\"\">盛夏之地</a></li>\r\n");
-	Response.Write("		</ul>\r\n");
-	Response.Write("	</div>\r\n");
-	Response.Write("</div>\r\n");
-	Response.Write("</body>\r\n");
-	Response.Write("</html>\r\n");
+	templateBuilder.Append("	<div id=\"footer\" title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">\r\n");
+	templateBuilder.Append("		<ul>\r\n");
+	templateBuilder.Append("			<li><a href=\"#\">关于本站</a></li>\r\n");
+	templateBuilder.Append("			<li><a href=\"#\">联系我们</a></li>		\r\n");
+	templateBuilder.Append("			<li><a href=\"#\">广告服务</a></li>	\r\n");
+	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"\">盛夏之地</a></li>\r\n");
+	templateBuilder.Append("		</ul>\r\n");
+	templateBuilder.Append("	</div>\r\n");
+	templateBuilder.Append("</div>\r\n");
+	templateBuilder.Append("</body>\r\n");
+	templateBuilder.Append("</html>\r\n");
 
 
 
+	Response.Write(templateBuilder.ToString());
 }
 </script>
