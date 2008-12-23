@@ -49,11 +49,19 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admincp.aspx.cs">
+      <DependentUpon>admincp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="comment.aspx.cs">
       <DependentUpon>comment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frame.aspx.cs">
+      <DependentUpon>frame.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="login.aspx.cs">
@@ -407,11 +415,15 @@
     <Content Include="Utility\TestTool.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admincp.aspx" />
     <Content Include="comment.aspx" />
+    <Content Include="frame.aspx" />
     <Content Include="NSWindBase.config" />
     <Content Include="search.aspx" />
     <Content Include="templates\comment.htm" />
     <Content Include="templates\search.htm" />
+    <Content Include="templates\admincp.htm" />
+    <Content Include="templates\frame.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

@@ -29,7 +29,7 @@
                             runat="server" value='<%# DataBinder.Eval(Container.DataItem, "articleid")%>' />
                     </td>
                     <td>
-                        [<%# DataBinder.Eval(Container.DataItem, "columnname")%>]<a href="postarticle.aspx?id=<%# DataBinder.Eval(Container.DataItem,"articleid") %>&action=edit"><%# DataBinder.Eval(Container.DataItem,"title") %></a>
+                        [<%# DataBinder.Eval(Container.DataItem, "columnname")%>]<a href="../frame.aspx?action=editarticle&id=<%# DataBinder.Eval(Container.DataItem,"articleid") %>"><%# DataBinder.Eval(Container.DataItem,"title") %></a>
                     </td>
                     <td style="width: 80px">
                         <a href="#" target="_blank">

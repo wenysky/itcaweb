@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title>Admin Control Panle - Power by 盛夏之地</title>
+    <title>Admin Control Panel - Power by 盛夏之地</title>
     <style type="text/css">
     * 
     {
