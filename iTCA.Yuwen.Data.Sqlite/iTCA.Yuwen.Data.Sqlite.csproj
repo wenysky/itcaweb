@@ -44,6 +44,7 @@
     <Compile Include="DbAttachments.cs" />
     <Compile Include="DbComments.cs" />
     <Compile Include="DbColumns.cs" />
+    <Compile Include="DbAdmins.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">

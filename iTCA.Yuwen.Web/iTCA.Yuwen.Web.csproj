@@ -420,7 +420,9 @@
     <Content Include="frame.aspx" />
     <Content Include="NSWindBase.config" />
     <Content Include="search.aspx" />
+    <Content Include="templates\admincp.css" />
     <Content Include="templates\comment.htm" />
+    <Content Include="templates\images\login_title.gif" />
     <Content Include="templates\search.htm" />
     <Content Include="templates\admincp.htm" />
     <Content Include="templates\frame.htm" />

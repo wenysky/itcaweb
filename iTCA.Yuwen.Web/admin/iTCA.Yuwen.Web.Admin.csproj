@@ -41,6 +41,13 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminlogout.aspx.cs">
+      <DependentUpon>adminlogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminlogout.aspx.designer.cs">
+      <DependentUpon>adminlogout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -79,13 +86,6 @@
     <Compile Include="deleteadmin.aspx.designer.cs">
       <DependentUpon>deleteadmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="mainSetting.aspx.cs">
       <DependentUpon>mainSetting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -110,12 +110,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adminlogout.aspx" />
     <Content Include="articlelist.aspx" />
     <Content Include="columnlist.aspx" />
     <Content Include="dbcontrol.aspx" />
     <Content Include="default.aspx" />
     <Content Include="deleteadmin.aspx" />
-    <Content Include="Login.aspx" />
     <Content Include="Main.css" />
     <Content Include="mainSetting.aspx" />
     <Content Include="postarticle.aspx" />

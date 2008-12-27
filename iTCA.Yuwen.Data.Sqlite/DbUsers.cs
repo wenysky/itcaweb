@@ -55,7 +55,7 @@ namespace iTCA.Yuwen.Data.Sqlite
             DbParameter[] prams = 
 		    {
 			    DbHelper.MakeInParam("@uid", DbType.String, 100, uid),
-                DbHelper.MakeInParam("@password", DbType.Int32, 4, password)
+                DbHelper.MakeInParam("@password", DbType.String, 32, password)
 		    };
             dr = DbHelper.ExecuteReader(CommandType.Text, string.Format("SELECT * FROM {0}users WHERE uid=@uid AND password=@password", BaseConfigs.GetConfig().Tableprefix), prams);
             return dr;

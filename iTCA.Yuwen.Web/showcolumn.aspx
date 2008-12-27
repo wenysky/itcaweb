@@ -54,12 +54,19 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销 " + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心[" + userinfo.Username.ToString().Trim() + "]</a></li>\r\n");
+
+	if (userinfo.Adminid>0)
+	{
+
+	templateBuilder.Append("				<li><a href=\"admincp.aspx\" target=\"_blank\">系统设置</a></li>\r\n");
 
 	}	//end if
 
-	templateBuilder.Append("				<li><a href=\"#\">关于</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销</a></li>\r\n");
+
+	}	//end if
+
 	templateBuilder.Append("			</ul>\r\n");
 	templateBuilder.Append("		</div>\r\n");
 	templateBuilder.Append("	</div>\r\n");
@@ -187,7 +194,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("	<div id=\"left-side\">\r\n");
 	templateBuilder.Append("		<!--新闻列表开始-->\r\n");
 	templateBuilder.Append("		<!--推荐文章开始-->\r\n");
-	templateBuilder.Append("		<div class=\"div-header\">首页最新推送文章</div>\r\n");
+	templateBuilder.Append("		<div class=\"div-header\">" + pagetitle.ToString() + "</div>\r\n");
 	templateBuilder.Append("		<!--分页开始-->\r\n");
 	templateBuilder.Append("		<div id=\"pager\">页码:" + pagecounthtml.ToString() + "</div>\r\n");
 	templateBuilder.Append("		<!--分页结束-->\r\n");

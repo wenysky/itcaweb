@@ -11,8 +11,12 @@ override protected void OnInit(EventArgs e)
 	base.OnInit(e);
 	templateBuilder.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
 	templateBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\" >\r\n");
-	templateBuilder.Append("<head id=\"Head1\" runat=\"server\">\r\n");
-	templateBuilder.Append("    <title>Admin Control Panel - Power by 盛夏之地</title>\r\n");
+	templateBuilder.Append("<head>\r\n");
+	templateBuilder.Append("    <title>Administrator's Control Panel - Power by LiteCMS</title>\r\n");
+
+	if (isadminlogined)
+	{
+
 	templateBuilder.Append("    <style type=\"text/css\">\r\n");
 	templateBuilder.Append("    * \r\n");
 	templateBuilder.Append("    {\r\n");
@@ -68,13 +72,30 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("            color:#000;\r\n");
 	templateBuilder.Append("        }*/\r\n");
 	templateBuilder.Append("    </style>\r\n");
+
+	}
+	else
+	{
+
+	templateBuilder.Append("    <link rel=\"stylesheet\" href=\"templates/admincp.css\" type=\"text/css\" media=\"all\" />\r\n");
+
+	}	//end if
+
 	templateBuilder.Append("</head>\r\n");
 	templateBuilder.Append("<body>\r\n");
-	templateBuilder.Append("    <form id=\"form1\" runat=\"server\">\r\n");
+	templateBuilder.Append("<script language=\"javascript\" type=\"text/javascript\">\r\n");
+	templateBuilder.Append("	if(self.parent.frames.length != 0) {\r\n");
+	templateBuilder.Append("		self.parent.location=document.location;\r\n");
+	templateBuilder.Append("	}\r\n");
+	templateBuilder.Append("</"+ "script>\r\n");
+
+	if (isadminlogined)
+	{
+
 	templateBuilder.Append("    <div id=\"Banner\" style=\"height:70px; width:100%; background-color:Gray\">\r\n");
 	templateBuilder.Append("        Banner\r\n");
 	templateBuilder.Append("    </div>\r\n");
-	templateBuilder.Append("    <div id=\"Main\" style=\"margin:10px auto 0 auto; border:solid 1px gray; text-align:left\">欢迎 <asp:Label ID=\"lbLoginName\" runat=\"server\"></asp:Label> 登录后台管理,点击<a href=\"../\" target=\"_blank\">回到前台</a>。\r\n");
+	templateBuilder.Append("    <div id=\"Main\" style=\"margin:10px auto 0 auto; border:solid 1px gray; text-align:left\">欢迎 " + admininfo.Name.ToString().Trim() + " - [" + userinfo.Username.ToString().Trim() + "] 登录后台管理,点击<a href=\"../\" target=\"_self\">回到前台</a>。\r\n");
 	templateBuilder.Append("    </div>\r\n");
 	templateBuilder.Append("    <div id=\"Menu\" style=\"background-color:#FFF;width:13%; float:left; border:solid 1px gray; margin:10px 5px\">\r\n");
 	templateBuilder.Append("        <ul>\r\n");
@@ -88,12 +109,51 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("            <li><a href=\"#\" target=\"MainIFR\">友情管理</a></li>\r\n");
 	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=mainsetting\" target=\"MainIFR\">系统设置</a></li>\r\n");
 	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=template\" target=\"MainIFR\">模板生成</a></li>\r\n");
-	templateBuilder.Append("            <li><a href=\"#\" target=\"_parent\">退出后台</a></li>\r\n");
+	templateBuilder.Append("            <li><a href=\"admincp.aspx?action=logout\" target=\"_parent\">退出后台</a></li>\r\n");
 	templateBuilder.Append("        </ul>\r\n");
 	templateBuilder.Append("    </div>\r\n");
 	templateBuilder.Append("    <iframe id=\"MainIFR\" name=\"MainIFR\" frameborder=\"0\" scrolling=\"yes\" src=\"" + url.ToString() + "\" width=\"85%\" height=\"490px\" style=\"margin:10px auto auto auto; border:solid 1px gray;\">\r\n");
 	templateBuilder.Append("    </iframe>\r\n");
-	templateBuilder.Append("    </form>\r\n");
+
+	}
+	else
+	{
+
+	templateBuilder.Append("<table class=\"logintb\">\r\n");
+	templateBuilder.Append("    <tbody>\r\n");
+	templateBuilder.Append("        <tr>\r\n");
+	templateBuilder.Append("            <td class=\"login\">\r\n");
+	templateBuilder.Append("                <h1>LiteCMS Administrator's Control Panel</h1>\r\n");
+	templateBuilder.Append("                <p>LiteCMS 是一个采用 C# 和 SQLite 等多种数据库构建的高效内容管理系统解决方案.</p>\r\n");
+	templateBuilder.Append("            </td>\r\n");
+	templateBuilder.Append("            <td>\r\n");
+	templateBuilder.Append("            <form method=\"post\" name=\"login\" id=\"loginform\" action=\"\">\r\n");
+	templateBuilder.Append("                <input type=\"hidden\" name=\"sid\" value=\"vxbppo\">\r\n");
+	templateBuilder.Append("                <input type=\"hidden\" name=\"frames\" value=\"yes\">\r\n");
+	templateBuilder.Append("                <p class=\"logintitle\">用户名: </p>\r\n");
+	templateBuilder.Append("                <p class=\"loginform\"><input name=\"loginname\" tabindex=\"1\" type=\"text\" class=\"txt\"></p>\r\n");
+	templateBuilder.Append("                <p class=\"logintitle\">密　码:</p>\r\n");
+	templateBuilder.Append("                <p class=\"loginform\"><input name=\"password\" tabindex=\"2\" type=\"password\" class=\"txt\"></p>\r\n");
+	templateBuilder.Append("                <p class=\"logintitle\">目　录:</p>\r\n");
+	templateBuilder.Append("                <p class=\"loginform\"><input name=\"path\" tabindex=\"3\" type=\"text\" class=\"txt\"></p>\r\n");
+	templateBuilder.Append("                <p class=\"loginnofloat\"><input name=\"submit\" value=\"提交\" tabindex=\"3\" type=\"submit\" class=\"btn\"></p>\r\n");
+	templateBuilder.Append("                </form>\r\n");
+	templateBuilder.Append("                <script type=\"text/javascript\">document.getelementbyid('loginform').loginname.focus();</"+ "script>\r\n");
+	templateBuilder.Append("            </td>            \r\n");
+	templateBuilder.Append("        </tr>\r\n");
+	templateBuilder.Append("        <tr>\r\n");
+	templateBuilder.Append("            <td colspan=\"2\" class=\"footer\">\r\n");
+	templateBuilder.Append("                <div class=\"copyright\">\r\n");
+	templateBuilder.Append("                    <p>Powered by <a href=\"http://www.litecms.cn/\" target=\"_blank\">LiteCMS</a> 0.1.0 </p>\r\n");
+	templateBuilder.Append("                    <p>&copy; 2008, <a href=\"http://www.52dnt.cn/\" target=\"_blank\">盛夏之地</a> inc.</p>\r\n");
+	templateBuilder.Append("                </div>\r\n");
+	templateBuilder.Append("            </td>\r\n");
+	templateBuilder.Append("        </tr>\r\n");
+	templateBuilder.Append("    </tbody>\r\n");
+	templateBuilder.Append("</table>\r\n");
+
+	}	//end if
+
 	templateBuilder.Append("</body>\r\n");
 	templateBuilder.Append("</html>\r\n");
 
