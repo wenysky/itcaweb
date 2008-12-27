@@ -54,12 +54,19 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销 " + userinfo.Username.ToString().Trim() + "</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心[" + userinfo.Username.ToString().Trim() + "]</a></li>\r\n");
+
+	if (userinfo.Adminid>0)
+	{
+
+	templateBuilder.Append("				<li><a href=\"admincp.aspx\" target=\"_blank\">系统设置</a></li>\r\n");
 
 	}	//end if
 
-	templateBuilder.Append("				<li><a href=\"#\">关于</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销</a></li>\r\n");
+
+	}	//end if
+
 	templateBuilder.Append("			</ul>\r\n");
 	templateBuilder.Append("		</div>\r\n");
 	templateBuilder.Append("	</div>\r\n");
@@ -186,7 +193,22 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("	<!--左栏开始-->\r\n");
 	templateBuilder.Append("	<div id=\"left-side\">\r\n");
 	templateBuilder.Append("		<!--文章开始-->\r\n");
-	templateBuilder.Append("		<div class=\"div-header\"><a href=\"#\">返回列表</a> | 上一篇文章:<a href=\"#\">GMail再次更新:带来新主题</a> | 下一篇文章:<a href=\"#\">Google处理1TB数据只需68秒 1PB六个小时</a></div>\r\n");
+	templateBuilder.Append("		<div class=\"div-header\"><a href=\"\r\n");
+
+	if (config.Urlrewrite==1)
+	{
+
+	templateBuilder.Append("showcolumn-" + articleinfo.Columnid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+
+	}
+	else
+	{
+
+	templateBuilder.Append("showcolumn.aspx?cid=" + articleinfo.Columnid.ToString().Trim() + "\r\n");
+
+	}	//end if
+
+	templateBuilder.Append("\">返回此栏目文章列表</a></div>\r\n");
 	templateBuilder.Append("		<h2 class=\"title article\">" + articleinfo.Title.ToString().Trim() + "</h2>\r\n");
 	templateBuilder.Append("		<div class=\"post-info article\"><span class=\"author\">" + articleinfo.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + articleinfo.Postdate.ToString().Trim() + "</span></div>\r\n");
 	templateBuilder.Append("		<div class=\"article-content article\">" + articleinfo.Content.ToString().Trim() + "</div>\r\n");
@@ -195,7 +217,8 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("		<div id=\"comment\">\r\n");
 	templateBuilder.Append("		    <form action=\"comment.aspx?action=postcomment&articleid=" + articleinfo.Articleid.ToString().Trim() + "\" method=\"post\">\r\n");
 	templateBuilder.Append("		        <textarea cols=\"80\" rows=\"5\" name=\"commentcontent\" id=\"commentcontent\"></textarea>\r\n");
-	templateBuilder.Append("		        <input type=\"submit\" value=\"提交留言\" /><input type=\"reset\" />\r\n");
+	templateBuilder.Append("		        <br />\r\n");
+	templateBuilder.Append("		        <input type=\"submit\" value=\"提交留言\" /><input type=\"reset\" value=\"清空输入框\" />\r\n");
 	templateBuilder.Append("		    </form>\r\n");
 	templateBuilder.Append("		    <ul>\r\n");
 
@@ -216,6 +239,7 @@ override protected void OnInit(EventArgs e)
 	}	//end if
 
 	templateBuilder.Append("</span>\r\n");
+	templateBuilder.Append("		            <hr />\r\n");
 	templateBuilder.Append("		        </li>\r\n");
 
 	}	//end loop

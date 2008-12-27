@@ -9,7 +9,7 @@
 	<!--左栏开始-->
 	<div id="left-side">
 		<!--文章开始-->
-		<div class="div-header"><a href="#">返回列表</a> | 上一篇文章:<a href="#">GMail再次更新:带来新主题</a> | 下一篇文章:<a href="#">Google处理1TB数据只需68秒 1PB六个小时</a></div>
+		<div class="div-header"><a href="<%if {config.urlrewrite}==1%>showcolumn-{articleinfo.columnid}{config.urlrewriteextname}<%else%>showcolumn.aspx?cid={articleinfo.columnid}<%/if%>">返回此栏目文章列表</a></div>
 		<h2 class="title article">{articleinfo.title}</h2>
 		<div class="post-info article"><span class="author">{articleinfo.username}</span>投递 @ 发布于<span class="post-date">{articleinfo.postdate}</span></div>
 		<div class="article-content article">{articleinfo.content}</div>
@@ -18,13 +18,15 @@
 		<div id="comment">
 		    <form action="comment.aspx?action=postcomment&articleid={articleinfo.articleid}" method="post">
 		        <textarea cols="80" rows="5" name="commentcontent" id="commentcontent"></textarea>
-		        <input type="submit" value="提交留言" /><input type="reset" />
+		        <br />
+		        <input type="submit" value="提交留言" /><input type="reset" value="清空输入框" />
 		    </form>
 		    <ul>
 		    <%loop (CommentInfo) info commentlist%>
 		        <li>
 		            <div class="content">{info.content}</div>
 		            <span><a href="comment.aspx?action=grade&type=1&commentid={info.commentid}">支持({info.goodcount})</a><a href="comment.aspx?action=grade&type=-1&commentid={info.commentid}">反对({info.badcount})</a></span><span>{info.username} 于 {info.postdate} 留言 <%if userinfo!=null&&{userinfo.adminid}==1%>[<a href="comment.aspx?action=del&commentid={info.commentid}">删除</a>]<%/if%></span>
+		            <hr />
 		        </li>
 		    <%/loop%>
 		    </ul>

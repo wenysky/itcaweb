@@ -55,8 +55,8 @@ namespace iTCA.Yuwen.Web.Admin
             articleinfo.Content = tbxContent.Text.TrimEnd();
             articleinfo.Postdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             articleinfo.Recommend = Convert.ToInt32(ckbxRecommand.Checked);
-            articleinfo.Uid = 1;
-            articleinfo.Username = "admin";
+            articleinfo.Uid = userinfo.Uid;
+            articleinfo.Username = userinfo.Username;
             if (articleid > 0)
             {
                 articleinfo.Articleid = articleid;
