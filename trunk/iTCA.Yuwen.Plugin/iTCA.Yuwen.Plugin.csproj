@@ -60,6 +60,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\iTCA.Yuwen.Config\iTCA.Yuwen.Config.csproj">
+      <Project>{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}</Project>
+      <Name>iTCA.Yuwen.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\iTCA.Ywen.Entity\iTCA.Yuwen.Entity.csproj">
       <Project>{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}</Project>
       <Name>iTCA.Yuwen.Entity</Name>

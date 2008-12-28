@@ -14,7 +14,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("<head>\r\n");
 	templateBuilder.Append("    <title>Administrator's Control Panel - Power by LiteCMS</title>\r\n");
 
-	if (isadminlogined)
+	if (admininfo!=null)
 	{
 
 	templateBuilder.Append("    <style type=\"text/css\">\r\n");
@@ -89,7 +89,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("	}\r\n");
 	templateBuilder.Append("</"+ "script>\r\n");
 
-	if (isadminlogined)
+	if (admininfo!=null)
 	{
 
 	templateBuilder.Append("    <div id=\"Banner\" style=\"height:70px; width:100%; background-color:Gray\">\r\n");
@@ -99,16 +99,16 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("    </div>\r\n");
 	templateBuilder.Append("    <div id=\"Menu\" style=\"background-color:#FFF;width:13%; float:left; border:solid 1px gray; margin:10px 5px\">\r\n");
 	templateBuilder.Append("        <ul>\r\n");
-	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=listarticle&id=0\" target=\"MainIFR\">后台首页</a></li>\r\n");
-	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=postarticle\" target=\"MainIFR\">发布文章</a></li>\r\n");
-	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=listarticle&id=0\" target=\"MainIFR\">文章管理</a></li>\r\n");
-	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=mgrcolumn\" target=\"MainIFR\">栏目管理</a></li>\r\n");
+	templateBuilder.Append("            <li><a href=\"frame.aspx?action=listarticle&id=0\" target=\"MainIFR\">后台首页</a></li>\r\n");
+	templateBuilder.Append("            <li><a href=\"frame.aspx?action=postarticle\" target=\"MainIFR\">发布文章</a></li>\r\n");
+	templateBuilder.Append("            <li><a href=\"frame.aspx?action=listarticle&id=0\" target=\"MainIFR\">文章管理</a></li>\r\n");
+	templateBuilder.Append("            <li><a href=\"frame.aspx?action=mgrcolumn\" target=\"MainIFR\">栏目管理</a></li>\r\n");
 	templateBuilder.Append("            <li><a href=\"#\" target=\"MainIFR\">留言管理</a></li>\r\n");
 	templateBuilder.Append("            <li><a href=\"#\" target=\"MainIFR\">用户管理</a></li>\r\n");
 	templateBuilder.Append("            <li><a href=\"#\" target=\"MainIFR\">管理设置</a></li>\r\n");
 	templateBuilder.Append("            <li><a href=\"#\" target=\"MainIFR\">友情管理</a></li>\r\n");
-	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=mainsetting\" target=\"MainIFR\">系统设置</a></li>\r\n");
-	templateBuilder.Append("            <li><a href=\"frame.aspx?path=" + adminpath.ToString() + "&action=template\" target=\"MainIFR\">模板生成</a></li>\r\n");
+	templateBuilder.Append("            <li><a href=\"frame.aspx?action=mainsetting\" target=\"MainIFR\">系统设置</a></li>\r\n");
+	templateBuilder.Append("            <li><a href=\"frame.aspx?action=template\" target=\"MainIFR\">模板生成</a></li>\r\n");
 	templateBuilder.Append("            <li><a href=\"admincp.aspx?action=logout\" target=\"_parent\">退出后台</a></li>\r\n");
 	templateBuilder.Append("        </ul>\r\n");
 	templateBuilder.Append("    </div>\r\n");
