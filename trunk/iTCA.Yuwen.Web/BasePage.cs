@@ -47,7 +47,15 @@ namespace iTCA.Yuwen.Web
         /// <summary>
         /// 当前用户信息(如果为空表示未登录)
         /// </summary>
-        protected iTCA.Yuwen.Entity.UserInfo userinfo;
+        protected UserInfo userinfo;
+        /// <summary>
+        /// 调用这个值之前请先执行IsAdminLogined()方法初始化值.
+        /// </summary>
+        protected AdminInfo admininfo;
+        /// <summary>
+        /// 调用这个值之前请先执行IsAdminLogined()方法初始化值.
+        /// </summary>
+        protected string adminpath;
         /// <summary>
         /// 热门主题(回复数排列,分页定为6条)
         /// </summary>
@@ -110,7 +118,30 @@ namespace iTCA.Yuwen.Web
                 }
             }
         }
+        protected virtual bool IsAdminLogined()
+        {
+            HttpCookie admincookie = System.Web.HttpContext.Current.Request.Cookies["cmsntadmin"];
+            admininfo = null;
+            if (admincookie != null && admincookie.Values["adminid"] != null && admincookie.Values["password"] != null)
+            {
+                int adminid = Convert.ToInt32(admincookie.Values["adminid"]);
+                string password = admincookie.Values["password"].ToString().Trim();
 
+                if (adminid > 0 && password != string.Empty)
+                {
+                    //admininfo todo
+                    admininfo = Admins.GetAdminInfo(adminid, password);
+                    if (admininfo != null && admininfo.Uid == userinfo.Uid)
+                    {
+                        adminpath = admincookie.Values["path"].ToString().Trim();
+                        return true;
+                    }
+                }
+            }
+            //登录失败
+            adminpath = "";
+            return false;
+        }
         protected virtual void InitBaseList()
         {
             hotarticlelist = Articles.GetHotArticles(6, 1);

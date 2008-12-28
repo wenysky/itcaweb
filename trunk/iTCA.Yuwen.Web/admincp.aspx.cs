@@ -9,9 +9,7 @@ namespace iTCA.Yuwen.Web
     public partial class admincp : BasePage
     {
         protected string url;
-        protected string adminpath;
         protected bool isadminlogined;
-        protected AdminInfo admininfo;
         protected override void Page_Show()
         {
             if (YRequest.GetQueryString("action") == "logout")
@@ -33,14 +31,14 @@ namespace iTCA.Yuwen.Web
                 currentcontext.Response.End();
             }
 
-            isadminlogined = IsAdminLogined();
-            if (isadminlogined)
+            IsAdminLogined();
+            if (admininfo!=null)
             {
                 string action = YRequest.GetString("action") == string.Empty ? "default" : YRequest.GetString("action");
                 int id = YRequest.GetInt("id", 0);
 
 
-                url = string.Format("frame.aspx?path={0}&action={1}&id={2}", adminpath, action, id);
+                url = string.Format("frame.aspx?action={1}&id={2}", adminpath, action, id);
             }
             else
             {
@@ -71,31 +69,6 @@ namespace iTCA.Yuwen.Web
                     }
                 }
             }
-        }
-
-        bool IsAdminLogined()
-        {
-            HttpCookie admincookie = System.Web.HttpContext.Current.Request.Cookies["cmsntadmin"];
-            admininfo = null;
-            if (admincookie != null && admincookie.Values["adminid"] != null && admincookie.Values["password"] != null)
-            {
-                int adminid = Convert.ToInt32(admincookie.Values["adminid"]);
-                string password = admincookie.Values["password"].ToString().Trim();
-
-                if (adminid > 0 && password != string.Empty)
-                {
-                    //admininfo todo
-                    admininfo = Admins.GetAdminInfo(adminid, password);
-                    if (admininfo != null && admininfo.Uid == userinfo.Uid)
-                    {
-                        adminpath = admincookie.Values["path"].ToString().Trim();
-                        return true;
-                    }
-                }
-            }
-            //登录失败
-            adminpath = "";
-            return false;
         }
     }
 }
