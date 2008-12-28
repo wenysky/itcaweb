@@ -228,7 +228,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">" + config.Websitename.ToString().Trim() + "</a></li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1227 Alpha1</li>\r\n");
+	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1228.1</li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("</div>\r\n");
