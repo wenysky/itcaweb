@@ -200,12 +200,15 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("	<!--左栏结束-->\r\n");
 	templateBuilder.Append("	<!--内容结束-->\r\n");
 
-	templateBuilder.Append("	<div id=\"footer\" title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">\r\n");
+	templateBuilder.Append("	<div id=\"footer\">\r\n");
 	templateBuilder.Append("		<ul>\r\n");
 	templateBuilder.Append("			<li><a href=\"#\">关于本站</a></li>\r\n");
 	templateBuilder.Append("			<li><a href=\"#\">联系我们</a></li>		\r\n");
 	templateBuilder.Append("			<li><a href=\"#\">广告服务</a></li>	\r\n");
-	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"\">盛夏之地</a></li>\r\n");
+	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">" + config.Websitename.ToString().Trim() + "</a></li>\r\n");
+	templateBuilder.Append("		</ul>\r\n");
+	templateBuilder.Append("		<ul>\r\n");
+	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1227 Alpha1</li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("</div>\r\n");

@@ -46,6 +46,12 @@
     <Compile Include="UserInfo.cs" />
     <Compile Include="AdminInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\iTCA.Yuwen.Config\iTCA.Yuwen.Config.csproj">
+      <Project>{83D5BD19-274F-4DD0-AC5E-5C68E8ED76F1}</Project>
+      <Name>iTCA.Yuwen.Config</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

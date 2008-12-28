@@ -41,6 +41,7 @@
     <Compile Include="MainConfigInfo.cs" />
     <Compile Include="MainConfigs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Versions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj">

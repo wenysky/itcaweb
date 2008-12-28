@@ -3,6 +3,8 @@ using System.Data;
 using System.IO;
 using System.Collections;
 using Natsuhime;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace iTCA.Yuwen.Web.Admin
 {
@@ -74,7 +76,10 @@ namespace iTCA.Yuwen.Web.Admin
 
         protected void btnCreateAll_Click(object sender, EventArgs e)
         {
+
             NewTemplate ntp = new NewTemplate("iTCA.Yuwen.Web", "");
+            ntp.Productname = "LiteCMS";
+            ntp.Productversion = Config.Versions.GetProductVersionFromAssembly();
             ntp.CreateFromFolder(Server.MapPath("~/templates/"), Server.MapPath("~/"));
             /*
             Hashtable ht = new Hashtable();
