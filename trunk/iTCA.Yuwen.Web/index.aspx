@@ -206,21 +206,23 @@ override protected void OnInit(EventArgs e)
 	{
 		info__loop__id++;
 
-	templateBuilder.Append("			    <li class=\"article-list\">\r\n");
+	templateBuilder.Append("			    <li class=\"article-list\">			    \r\n");
+	templateBuilder.Append("				    <h2 class=\"title\"><a href=\"\r\n");
 
 	if (config.Urlrewrite==1)
 	{
 
-	templateBuilder.Append("				    <h2 class=\"title\"><a href=\"showarticle-" + info.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + info.Title.ToString().Trim() + "</a></h2>\r\n");
+	templateBuilder.Append("showarticle-" + info.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("		            <h2 class=\"title\"><a href=\"showarticle.aspx?id=" + info.Articleid.ToString().Trim() + "\">" + info.Title.ToString().Trim() + "</a></h2>\r\n");
+	templateBuilder.Append("showarticle.aspx?id=" + info.Articleid.ToString().Trim() + "\r\n");
 
 	}	//end if
 
+	templateBuilder.Append("\">" + info.Title.ToString().Trim() + "</a></h2>\r\n");
 	templateBuilder.Append("				    <span class=\"description\">" + info.Summary.ToString().Trim() + "</span>\r\n");
 	templateBuilder.Append("				    <div class=\"post-info\"><span class=\"author\">" + info.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + info.Postdate.ToString().Trim() + "</span><span>评论(" + info.Commentcount.ToString().Trim() + ")</span></div>\r\n");
 	templateBuilder.Append("			    </li>\r\n");
@@ -240,7 +242,22 @@ override protected void OnInit(EventArgs e)
 	{
 		allarticlelist__loop__id++;
 
-	templateBuilder.Append("		    <div class=\"div-header\">" + allarticlelist.Key.Columnname.ToString().Trim() + "</div>\r\n");
+	templateBuilder.Append("		    <div class=\"div-header\"><a href=\"\r\n");
+
+	if (config.Urlrewrite==1)
+	{
+
+	templateBuilder.Append("showcolumn-" + allarticlelist.Key.Columnid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+
+	}
+	else
+	{
+
+	templateBuilder.Append("showcolumn.aspx?cid=" + allarticlelist.Key.Columnid.ToString().Trim() + "\r\n");
+
+	}	//end if
+
+	templateBuilder.Append("\">" + allarticlelist.Key.Columnname.ToString().Trim() + "</div>\r\n");
 	templateBuilder.Append("		    <ul>\r\n");
 
 	int allarticleinfo__loop__id=0;
@@ -271,14 +288,14 @@ override protected void OnInit(EventArgs e)
 
 	templateBuilder.Append("	    <!--所有栏目循环结束-->		\r\n");
 	templateBuilder.Append("		<!--栏目列表结束-->\r\n");
-	templateBuilder.Append("		<!--插件文章列表开始-->\r\n");
+	templateBuilder.Append("		<!--插件文章列表开始\r\n");
 	templateBuilder.Append("		<div class=\"div-header\">论坛新帖</div>\r\n");
 	templateBuilder.Append("		<ul>\r\n");
 	templateBuilder.Append("			<li class=\"article-list\"><h2><a href=\"#\">鲍尔默感恩节答谢名单 盖茨杨致远榜上有名</a></h2></li>\r\n");
 	templateBuilder.Append("			<li class=\"article-list\"><h2><a href=\"#\">英国卫报：疯狂的树屋</a></h2></li>\r\n");
 	templateBuilder.Append("			<li class=\"article-list\"><h2><a href=\"#\">阿里巴巴“援冬”产品取得开门红</a></h2></li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
-	templateBuilder.Append("		<!--插件文章列表开始-->	\r\n");
+	templateBuilder.Append("		插件文章列表开始-->	\r\n");
 	templateBuilder.Append("		<!--新闻列表结束-->\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("	<!--左栏结束-->\r\n");
@@ -292,7 +309,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">" + config.Websitename.ToString().Trim() + "</a></li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1227 Alpha1</li>\r\n");
+	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1228.1</li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("</div>\r\n");
