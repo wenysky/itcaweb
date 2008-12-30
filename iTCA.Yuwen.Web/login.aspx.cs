@@ -21,7 +21,7 @@ namespace iTCA.Yuwen.Web
                 string password = YRequest.GetString("password");
                 if (loginid != string.Empty && password != string.Empty)
                 {
-                    UserInfo info = Users.GetUserInfo(loginid, password, 0);
+                    UserInfo info = Users.GetUserInfo(loginid, Natsuhime.Common.Utils.MD5(password), 0);
                     if (info != null)
                     {
                         System.Web.HttpCookie cookie = new System.Web.HttpCookie("cmsnt");

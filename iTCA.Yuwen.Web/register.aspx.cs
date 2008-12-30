@@ -48,7 +48,7 @@ namespace iTCA.Yuwen.Web
                     info.Lastlogip = "";
                     info.Msn = "";
                     info.Nickname = username;
-                    info.Password = password;
+                    info.Password = Natsuhime.Common.Utils.MD5(password);
                     info.Qq = "";
                     info.Realname = "";
                     info.Regdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");

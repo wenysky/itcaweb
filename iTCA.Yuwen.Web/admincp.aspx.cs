@@ -32,7 +32,7 @@ namespace iTCA.Yuwen.Web
             }
 
             IsAdminLogined();
-            if (admininfo!=null)
+            if (admininfo != null)
             {
                 string action = YRequest.GetString("action") == string.Empty ? "default" : YRequest.GetString("action");
                 int id = YRequest.GetInt("id", 0);
@@ -49,7 +49,7 @@ namespace iTCA.Yuwen.Web
                     string name = YRequest.GetFormString("loginname");
                     string password = YRequest.GetFormString("password");
                     string path = YRequest.GetFormString("path");
-                    admininfo = Admins.GetAdminInfo(name, password);
+                    admininfo = Admins.GetAdminInfo(name, Natsuhime.Common.Utils.MD5(password));
 
                     if (admininfo != null && admininfo.Uid == userinfo.Uid)
                     {
