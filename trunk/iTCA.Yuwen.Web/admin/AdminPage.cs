@@ -57,6 +57,7 @@ namespace iTCA.Yuwen.Web.Admin
                         if (admininfo != null && admininfo.Uid == userinfo.Uid)
                         {
                             admincookie.Expires = DateTime.Now.AddMinutes(20d);
+                            Response.AppendCookie(admincookie);
                             adminpath = admincookie.Values["path"].ToString().Trim();
                             return true;
                         }
