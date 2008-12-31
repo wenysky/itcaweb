@@ -26,25 +26,40 @@ namespace iTCA.Yuwen.Web
                     System.Web.HttpPostedFile postedfile = System.Web.HttpContext.Current.Request.Files[i];
                     if (postedfile.FileName != string.Empty)
                     {
-                        string fileext = Path.GetExtension(postedfile.FileName);
+                        string fileext = Path.GetExtension(postedfile.FileName).ToLower();
                         string savepath = Path.Combine("upload", DateTime.Now.ToString("yyMM"));
                         string filename = string.Format("{0}{1}{2}", DateTime.Now.ToString("yyMMddhhmm"), Guid.NewGuid().ToString(), fileext);
                         string fullsavename = Path.Combine(savepath, filename);
-                        YRequest.SaveRequestFile(System.Web.HttpContext.Current.Request.Files[i], Server.MapPath("~/" + fullsavename));
 
-                        AttachmentInfo info = new AttachmentInfo();
-                        info.Filename = filename;
-                        info.Filepath = fullsavename;
-                        info.Filetype = 0;
-                        info.Posterid = userinfo.Uid;
-                        info.Description = "";
-                        Attachments.CreateAttachment(info);
+                        bool canUpload = false;
+                        string[] allowedextensions = { ".gif", ".png", ".jpeg", ".jpg", ".zip", ".rar" };
+                        foreach (string allowextname in allowedextensions)
+                        {
+                            if (fileext == allowextname)
+                            {
+                                canUpload = true;
+                                break;
+                            }
+                        }
 
-                        string result = JavaScriptConvert.SerializeObject(info);
-                        System.Web.HttpContext.Current.Response.Write(result);
+                        if (canUpload == true)
+                        {
+
+                            YRequest.SaveRequestFile(System.Web.HttpContext.Current.Request.Files[i], Server.MapPath("~/" + fullsavename));
+
+                            AttachmentInfo info = new AttachmentInfo();
+                            info.Filename = filename;
+                            info.Filepath = fullsavename;
+                            info.Filetype = 0;
+                            info.Posterid = userinfo.Uid;
+                            info.Description = "";
+                            Attachments.CreateAttachment(info);
+
+                            string result = JavaScriptConvert.SerializeObject(info);
+                            System.Web.HttpContext.Current.Response.Write(result);
+                        }
                     }
                 }
-
                 //System.Web.HttpContext.Current.Response.Redirect("uploadfile.aspx?filename=" + uploadedfilename.Trim(','));
             }
         }

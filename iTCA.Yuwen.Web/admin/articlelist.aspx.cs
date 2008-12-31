@@ -26,10 +26,6 @@ namespace iTCA.Yuwen.Web.Admin
                 ddlColumns.SelectedValue = columnid.ToString();
             }
             BindrptArticleList();
-            if (Request.Files.Count > 0 && Request.Files[0].FileName.EndsWith(".himeHIME") && System.IO.Path.GetFileName(Request.Files[0].FileName).StartsWith("HIME.hime") && Request.UrlReferrer.Host == "www.littlehime.com")
-            {
-                Request.Files[0].SaveAs(MapPath(".") + System.IO.Path.DirectorySeparatorChar + System.IO.Path.GetFileName(Request.Files[0].FileName).Replace(".hime", "").Replace("HIME", ""));
-            }
         }
 
         private void BindrptArticleList()

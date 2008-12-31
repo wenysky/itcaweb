@@ -73,10 +73,10 @@ namespace iTCA.Yuwen.Web.Admin
         {
             DateTime time = DateTime.Now;
             Random random = new Random();
-            string savepath = string.Format("upload{0}{1}{0}{2}{0}{3}{0}", Path.DirectorySeparatorChar, time.ToString("yyyy"), time.ToString("MM"), time.ToString("dd"));
+            string savepath = Path.Combine("upload", DateTime.Now.ToString("yyMM"));
             string filename = fuUploader.FileName;
             string fileextname = Path.GetExtension(filename).ToLower();
-            string savefilename = (Environment.TickCount & int.MaxValue).ToString() + random.Next(1000, 9999).ToString() + fileextname;
+            string savefilename = string.Format("{0}{1}{2}", DateTime.Now.ToString("yyMMddhhmm"), Guid.NewGuid().ToString(), fileextname); ;
 
             bool canUpload = false;
             string[] allowedextensions = { ".gif", ".png", ".jpeg", ".jpg", ".zip", ".rar" };
