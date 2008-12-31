@@ -290,7 +290,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("                                        },\r\n");
 	templateBuilder.Append("                                        error: function (data, status, e)\r\n");
 	templateBuilder.Append("                                        {\r\n");
-	templateBuilder.Append("                                            alert(e);\r\n");
+	templateBuilder.Append("                                            alert('检查扩展名');\r\n");
 	templateBuilder.Append("                                        }\r\n");
 	templateBuilder.Append("                                    }\r\n");
 	templateBuilder.Append("                                )\r\n");

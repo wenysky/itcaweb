@@ -361,30 +361,9 @@
     <Content Include="loginout.aspx" />
     <Content Include="postarticle.aspx" />
     <Content Include="register.aspx" />
-    <Content Include="templates\login.htm" />
-    <Content Include="templates\register.htm" />
-    <Content Include="templates\loginout.htm" />
-    <Content Include="templates\postarticle.htm" />
-    <Content Include="templates\uploadfile.htm" />
-    <Content Include="templates\usercontrolpanel.htm" />
     <Content Include="uploadfile.aspx" />
     <Content Include="usercontrolpanel.aspx" />
     <Content Include="Utility\dbconvert.aspx" />
-    <Content Include="templates\index.htm">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="templates\main.css" />
-    <Content Include="templates\showarticle.htm" />
-    <Content Include="templates\showcolumn.htm" />
-    <Content Include="templates\_header.htm">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="templates\_footer.htm">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="templates\_rightside.htm">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
     <Content Include="Utility\dbtool.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -424,12 +403,25 @@
     <Content Include="frame.aspx" />
     <Content Include="NSWindBase.config" />
     <Content Include="search.aspx" />
-    <Content Include="templates\admincp.css" />
-    <Content Include="templates\comment.htm" />
-    <Content Include="templates\images\login_title.gif" />
-    <Content Include="templates\search.htm" />
-    <Content Include="templates\admincp.htm" />
-    <Content Include="templates\frame.htm" />
+    <Content Include="templates\sample\admincp.css" />
+    <Content Include="templates\sample\admincp.htm" />
+    <Content Include="templates\sample\comment.htm" />
+    <Content Include="templates\sample\frame.htm" />
+    <Content Include="templates\sample\images\login_title.gif" />
+    <Content Include="templates\sample\index.htm" />
+    <Content Include="templates\sample\login.htm" />
+    <Content Include="templates\sample\loginout.htm" />
+    <Content Include="templates\sample\main.css" />
+    <Content Include="templates\sample\postarticle.htm" />
+    <Content Include="templates\sample\register.htm" />
+    <Content Include="templates\sample\search.htm" />
+    <Content Include="templates\sample\showarticle.htm" />
+    <Content Include="templates\sample\showcolumn.htm" />
+    <Content Include="templates\sample\uploadfile.htm" />
+    <Content Include="templates\sample\usercontrolpanel.htm" />
+    <Content Include="templates\sample\_footer.htm" />
+    <Content Include="templates\sample\_header.htm" />
+    <Content Include="templates\sample\_rightside.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />
