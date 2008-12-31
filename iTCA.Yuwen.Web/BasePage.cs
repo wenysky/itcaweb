@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Natsuhime.Data;
 using iTCA.Yuwen.Entity;
 using iTCA.Yuwen.Core;
+using Natsuhime;
 
 namespace iTCA.Yuwen.Web
 {
@@ -144,27 +145,68 @@ namespace iTCA.Yuwen.Web
         }
         protected virtual void InitBaseList()
         {
-            hotarticlelist = Articles.GetHotArticles(6, 1);
-            latestcommentlist = Comments.GetCommentCollection(0, 6, 1);
-            mostgradecommentlist = Comments.GetMostGradComments(6, 1);
+            InitHotArticleList();
+            InitLatestCommentList();
+            InitMostGradeCommentList();
 
-            allcolumnarticlelistd = new Dictionary<ColumnInfo, List<ArticleInfo>>();
-            //allcolumnarticlelist = new List<List<ArticleInfo>>();
-            List<ColumnInfo> columnlist = Columns.GetColumnCollection();
-            foreach (ColumnInfo info in columnlist)
+            InitAllColumnArticleListD();
+        }
+
+        void InitAllColumnArticleListD()
+        {
+            TinyCache cache = new TinyCache();
+            allcolumnarticlelistd = cache.RetrieveObject("articlelistdictionary_allcolumn") as Dictionary<ColumnInfo, List<ArticleInfo>>;
+            if (allcolumnarticlelistd == null)
             {
-                
-                if (info.Parentid == 0)
+                allcolumnarticlelistd = new Dictionary<ColumnInfo, List<ArticleInfo>>();
+                //allcolumnarticlelist = new List<List<ArticleInfo>>();
+                List<ColumnInfo> columnlist = Columns.GetColumnCollection();
+                foreach (ColumnInfo info in columnlist)
                 {
-                    allcolumnarticlelistd.Add(info, Articles.GetArticleCollection(info.Columnid, 6, 1));
-                    //allcolumnarticlelist.Add(Articles.GetArticleCollection(info.Columnid, 6, 1));
-                }
-            }
 
-            //foreach (KeyValuePair<ColumnInfo, List<ArticleInfo>> b in a)
-            //{
-            //    System.Diagnostics.Debug.WriteLine(b.Key.Columnname + ":" + b.Value.Count);
-            //}
+                    if (info.Parentid == 0)
+                    {
+                        allcolumnarticlelistd.Add(info, Articles.GetArticleCollection(info.Columnid, 6, 1));
+                        //allcolumnarticlelist.Add(Articles.GetArticleCollection(info.Columnid, 6, 1));
+                    }
+                }
+
+                //foreach (KeyValuePair<ColumnInfo, List<ArticleInfo>> b in a)
+                //{
+                //    System.Diagnostics.Debug.WriteLine(b.Key.Columnname + ":" + b.Value.Count);
+                //}
+                cache.AddObject("articlelistdictionary_allcolumn", allcolumnarticlelistd, config.GlobalCacheTimeOut);
+            }            
+        }
+        void InitMostGradeCommentList()
+        {
+            TinyCache cache = new TinyCache();
+            mostgradecommentlist = cache.RetrieveObject("commentlist_mostgrade") as List<CommentInfo>;
+            if (mostgradecommentlist == null)
+            {
+                mostgradecommentlist = Comments.GetMostGradComments(6, 1);
+                cache.AddObject("commentlist_mostgrade", mostgradecommentlist, config.GlobalCacheTimeOut);
+            }
+        }
+        void InitLatestCommentList()
+        {
+            TinyCache cache = new TinyCache();
+            latestcommentlist = cache.RetrieveObject("commentlist_latest") as List<CommentInfo>;
+            if (latestcommentlist == null)
+            {
+                latestcommentlist = Comments.GetCommentCollection(0, 6, 1);
+                cache.AddObject("commentlist_latest", latestcommentlist, config.GlobalCacheTimeOut);
+            }
+        }
+        void InitHotArticleList()
+        {
+            TinyCache cache = new TinyCache();
+            hotarticlelist = cache.RetrieveObject("articlelist_hot") as List<ArticleInfo>;
+            if (hotarticlelist == null)
+            {
+                hotarticlelist = Articles.GetHotArticles(6, 1);
+                cache.AddObject("articlelist_hot", hotarticlelist, config.GlobalCacheTimeOut);
+            }
         }
     }
 }

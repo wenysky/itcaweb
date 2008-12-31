@@ -6,6 +6,7 @@ using iTCA.Yuwen.Data;
 using iTCA.Yuwen.Entity;
 using Natsuhime.Common;
 using Natsuhime;
+using iTCA.Yuwen.Config;
 
 namespace iTCA.Yuwen.Core
 {
@@ -76,7 +77,7 @@ namespace iTCA.Yuwen.Core
                     coll.Add(DataReader2ColumnInfo(reader));
                 }
                 reader.Close();
-                cache.AddObject("ColumnList", coll);
+                cache.AddObject("ColumnList", coll, MainConfigs.GetConfig().GlobalCacheTimeOut);
             }
             return coll;
         }
