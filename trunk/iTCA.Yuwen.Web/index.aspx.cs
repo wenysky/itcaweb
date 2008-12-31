@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using iTCA.Yuwen.Core;
 using iTCA.Yuwen.Entity;
 using Natsuhime.Web;
+using Natsuhime;
 
 namespace iTCA.Yuwen.Web
 {
@@ -24,20 +25,42 @@ namespace iTCA.Yuwen.Web
         protected override void Page_Show()
         {
             int pageid = 1;
-            if (true)
+
+
+            TinyCache cache = new TinyCache();
+            mainarticlelist = cache.RetrieveObject("articlelist_indexmain") as List<ArticleInfo>;
+            if (mainarticlelist == null)
             {
                 mainarticlelist = Articles.GetRecommendArticles(15, 1);
-                pagecount = Articles.GetRecommendArticleCollectionPageCount(15);
-                pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, "showcolumn-recommend", ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?type=recommend", 8, "pageid", "");
+                cache.AddObject("articlelist_indexmain", mainarticlelist, config.GlobalCacheTimeOut);
+            }
+            TinyCache cache_pagecount = new TinyCache();
+            object o_pagecount = cache_pagecount.RetrieveObject("pagecount_articlelist_indexmain");
+            if (o_pagecount != null)
+            {
+                pagecount = Convert.ToInt32(o_pagecount);
             }
             else
             {
-                mainarticlelist = Articles.GetArticleCollection(0, 15, 1);
-                pagecount = Articles.GetArticleCollectionPageCount(0, 10);
-                pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", 0), ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?cid=0", 8, "pageid", "");
+                pagecount = Articles.GetRecommendArticleCollectionPageCount(15);
+                cache.AddObject("pagecount_articlelist_indexmain", pagecount, config.GlobalCacheTimeOut);
             }
+            pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, "showcolumn-recommend", ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?type=recommend", 8, "pageid", "");
 
-            newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
+            //if (true)
+            //{
+            //    mainarticlelist = Articles.GetRecommendArticles(15, 1);
+            //    pagecount = Articles.GetRecommendArticleCollectionPageCount(15);
+            //    pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, "showcolumn-recommend", ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?type=recommend", 8, "pageid", "");
+            //}
+            //else
+            //{
+            //    mainarticlelist = Articles.GetArticleCollection(0, 15, 1);
+            //    pagecount = Articles.GetArticleCollectionPageCount(0, 10);
+            //    pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, string.Format("showcolumn-{0}", 0), ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?cid=0", 8, "pageid", "");
+            //}
+
+            //newslist = Articles.GetArticleCollection("2,3,4", 5, 1);
         }
     }
 }

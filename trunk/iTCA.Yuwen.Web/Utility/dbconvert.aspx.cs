@@ -26,7 +26,7 @@ namespace iTCA.Yuwen.Web
             gvPreData.DataBind();
 
             TinyCache cache = new TinyCache();
-            cache.AddObject("dt", dt);
+            cache.AddObject("dt", dt, 0);
         }
 
         protected void btnStart_Click(object sender, EventArgs e)

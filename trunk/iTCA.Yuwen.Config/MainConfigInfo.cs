@@ -23,6 +23,10 @@ namespace iTCA.Yuwen.Config
         /// UrlRewrite扩展名
         /// </summary>
         public string Urlrewriteextname { get; set; }
+        /// <summary>
+        /// 全局缓存过期时间(单位:分钟)
+        /// </summary>
+        public int GlobalCacheTimeOut { get; set; }
 
         /// <summary>
         /// 关闭站点
