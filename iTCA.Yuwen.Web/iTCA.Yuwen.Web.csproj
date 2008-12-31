@@ -40,13 +40,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ImportDLL\System.Data.SQLite.dll</HintPath>
     </Reference>
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admincp.aspx.cs">
@@ -404,6 +400,14 @@
     <ProjectReference Include="..\iTCA.Yuwen.Core\iTCA.Yuwen.Core.csproj">
       <Project>{1C1A6FB6-3170-4BAB-B500-325E811410E6}</Project>
       <Name>iTCA.Yuwen.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iTCA.Yuwen.Data.Sqlite\iTCA.Yuwen.Data.Sqlite.csproj">
+      <Project>{4A8CE0EA-DBAD-468D-9B99-8A8092A207AB}</Project>
+      <Name>iTCA.Yuwen.Data.Sqlite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iTCA.Yuwen.Data\iTCA.Yuwen.Data.csproj">
+      <Project>{9BF72E25-3096-4F3D-9C99-F7F619B6B5CA}</Project>
+      <Name>iTCA.Yuwen.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\iTCA.Ywen.Entity\iTCA.Yuwen.Entity.csproj">
       <Project>{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}</Project>
