@@ -10,9 +10,38 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:CheckBoxList ID="cbxlTemplateFileList" runat="server">
-        </asp:CheckBoxList></div>
-        <asp:Button ID="btnCreateAll" runat="server" OnClick="btnCreateAll_Click" Text="全部生成" />
+        <asp:Panel ID="plFileList" runat="server" Visible="false">
+            <asp:CheckBoxList ID="cbxlTemplateFileList" runat="server"></asp:CheckBoxList>
+            <asp:Button ID="btnCreateAll" runat="server" OnClick="btnCreateAll_Click" Text="全部生成" />
+        </asp:Panel>
+        
+        <asp:Panel ID="plFolderList" runat="server">
+            <asp:Repeater ID="rptFolderList" runat="server">
+            <HeaderTemplate>
+                <table style="width: 100%">
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td style="width: 35px">
+                        <a href="#">[删除]</a>
+                    </td>
+                    <td style="width: 10px">
+                        <asp:CheckBox ID="ckbox_single" runat="server" /><input type="hidden" id="SelectedID"
+                            runat="server" value='0' />
+                    </td>
+                    <td>
+                        <%# DataBinder.Eval(Container.DataItem,"folder") %>
+                    </td>
+                    <td style="width: 80px">
+                        <a href="frame.aspx?action=createtemplate&name=<%# DataBinder.Eval(Container.DataItem,"folder") %>">生成</a>
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                </table></FooterTemplate>
+        </asp:Repeater>
+        </asp:Panel>
+    </div>
     </form>
 </body>
 </html>
