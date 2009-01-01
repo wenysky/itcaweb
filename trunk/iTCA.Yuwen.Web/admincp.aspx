@@ -144,7 +144,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("        <tr>\r\n");
 	templateBuilder.Append("            <td colspan=\"2\" class=\"footer\">\r\n");
 	templateBuilder.Append("                <div class=\"copyright\">\r\n");
-	templateBuilder.Append("                    <p>Powered by <a href=\"http://www.litecms.cn/\" target=\"_blank\">LiteCMS</a> 0.1.1228.1 </p>\r\n");
+	templateBuilder.Append("                    <p>Powered by <a href=\"http://www.litecms.cn/\" target=\"_blank\">LiteCMS</a> 0.1.1230.1 </p>\r\n");
 	templateBuilder.Append("                    <p>&copy; 2008, <a href=\"http://www.52dnt.cn/\" target=\"_blank\">" + config.Websitename.ToString().Trim() + "</a> inc.</p>\r\n");
 	templateBuilder.Append("                </div>\r\n");
 	templateBuilder.Append("            </td>\r\n");

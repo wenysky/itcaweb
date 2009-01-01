@@ -15,6 +15,7 @@ namespace iTCA.Yuwen.Web
                 //string adminpath = YRequest.GetString("path") == string.Empty ? "admin" : YRequest.GetString("path");
                 string action = YRequest.GetString("action");
                 int id = YRequest.GetInt("id", 0);
+                string name = YRequest.GetString("name");
 
                 if (action == "postarticle")
                 {
@@ -40,11 +41,9 @@ namespace iTCA.Yuwen.Web
                 {
                     url = string.Format("{0}/template.aspx", adminpath);
                 }
-                else if (action == "")
+                else if (action == "createtemplate")
                 {
-                }
-                else if (action == "")
-                {
+                    url = string.Format("{0}/template.aspx?action=create&folder={1}", adminpath, name);
                 }
                 else if (action == "")
                 {

@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("LiteCMS - .NET 内容管理系统")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("iTCA")]
-[assembly: AssemblyProduct("LiteCMS")]
+[assembly: AssemblyProduct("LiteCMS (.NET Framework 2.0/3.x)")]
 [assembly: AssemblyCopyright("版权所有 (C) iTCA 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

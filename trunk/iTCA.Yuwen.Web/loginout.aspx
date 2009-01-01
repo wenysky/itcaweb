@@ -15,7 +15,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
 	templateBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
 	templateBuilder.Append("<head>\r\n");
-	templateBuilder.Append("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/main.css\" />\r\n");
+	templateBuilder.Append("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/sample/main.css\" />\r\n");
 	templateBuilder.Append("	<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />\r\n");
 
 	if (pagetitle=="")
@@ -208,7 +208,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">" + config.Websitename.ToString().Trim() + "</a></li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1228.1</li>\r\n");
+	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1230.1</li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("</div>\r\n");

@@ -12,10 +12,44 @@ namespace iTCA.Yuwen.Web.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            cbxlTemplateFileList.DataTextField = "filename";
-            cbxlTemplateFileList.DataValueField = "fullfilename";
-            cbxlTemplateFileList.DataSource = LoadTemplateFileList();
-            cbxlTemplateFileList.DataBind();
+            string action=Natsuhime.Web.YRequest.GetString("action");
+            if (action == "browser")
+            {
+                cbxlTemplateFileList.DataTextField = "filename";
+                cbxlTemplateFileList.DataValueField = "fullfilename";
+                cbxlTemplateFileList.DataSource = LoadTemplateFileList();
+                cbxlTemplateFileList.DataBind();
+            }
+            else if (action == "create")
+            {
+                string folder = Natsuhime.Web.YRequest.GetString("folder");
+                if (folder.Length > 0)
+                {
+                    CreateTemplate(folder);
+                    Response.Write("OK!");
+                }
+            }
+            else
+            {
+                rptFolderList.DataSource = LoadTemplateFolder();
+                rptFolderList.DataBind();
+            }    
+        }
+
+        private DataTable LoadTemplateFolder()
+        {
+            string[] folders = Directory.GetDirectories(Server.MapPath("~/templates/"));
+
+            DataTable folderlist = new DataTable("folderlist");
+            folderlist.Columns.Add("folder", Type.GetType("System.String"));
+
+            foreach (string folder in folders)
+            {
+                DataRow dr = folderlist.NewRow();
+                dr["folder"] = folder.Substring(folder.LastIndexOf(Path.DirectorySeparatorChar) + 1);
+                folderlist.Rows.Add(dr);
+            }
+            return folderlist;
         }
 
         private DataTable LoadTemplateFileList()
@@ -76,11 +110,8 @@ namespace iTCA.Yuwen.Web.Admin
 
         protected void btnCreateAll_Click(object sender, EventArgs e)
         {
-
-            NewTemplate ntp = new NewTemplate("iTCA.Yuwen.Web", "");
-            ntp.Productname = "LiteCMS";
-            ntp.Productversion = Config.Versions.GetProductVersionFromAssembly();
-            ntp.CreateFromFolder(Server.MapPath("~/templates/"), Server.MapPath("~/"));
+            string folder = "";
+            CreateTemplate(folder);
             /*
             Hashtable ht = new Hashtable();
             DirectoryInfo dirinfo = new DirectoryInfo(Server.MapPath("~/templates/"));
@@ -101,6 +132,14 @@ namespace iTCA.Yuwen.Web.Admin
             }
              */
             Response.Write("OK!");
+        }
+
+        private void CreateTemplate(string folder)
+        {
+            NewTemplate ntp = new NewTemplate("iTCA.Yuwen.Web", "");
+            ntp.Productname = "LiteCMS";
+            ntp.Productversion = Config.Versions.GetProductVersionFromAssembly();
+            ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/", folder)), Server.MapPath("~/"));
         }
     }
 }
