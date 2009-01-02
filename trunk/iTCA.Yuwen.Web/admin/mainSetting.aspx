@@ -24,6 +24,16 @@
             <th>伪静态后缀: </th><td><asp:TextBox ID="tbxUrlRewriteExtName" runat="server"></asp:TextBox></td>
         </tr>
         <tr>
+            <th>总缓存时间:</th><td><asp:TextBox ID="tbxGlobalCacheTimeOut" runat="server"></asp:TextBox>(单位:分钟)</td>
+        </tr>
+        <tr>
+            <th>统计代码  :</th><td><asp:TextBox ID="tbxAnalyticsCode" TextMode="MultiLine" 
+                        runat="server" Height="130px" Width="401px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <th></th><td></td>
+        </tr>
+        <tr>
             <th></th><td></td>
         </tr>
         <tr>

@@ -44,5 +44,9 @@ namespace iTCA.Yuwen.Config
         /// 网站title部分的SEO优化字符串
         /// </summary>
         public string Seotitle { get; set; }
+        /// <summary>
+        /// 统计代码
+        /// </summary>
+        public string Analyticscode { get; set; }
     }
 }
