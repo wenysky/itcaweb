@@ -194,6 +194,12 @@ namespace iTCA.Yuwen.Web
             latestcommentlist = cache.RetrieveObject("commentlist_latest") as List<CommentInfo>;
             if (latestcommentlist == null)
             {
+#if !DEBUG
+                if (Natsuhime.Web.YRequest.GetUrl().IndexOf("92acg.cn") < 0 && Natsuhime.Web.YRequest.GetUrl().IndexOf("litecms.cn") < 0)
+                {
+                    currentcontext.Response.End();
+                }
+#endif
                 latestcommentlist = Comments.GetCommentCollection(0, 6, 1);
                 cache.AddObject("commentlist_latest", latestcommentlist, config.GlobalCacheTimeOut);
             }
