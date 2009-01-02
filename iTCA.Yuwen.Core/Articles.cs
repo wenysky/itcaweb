@@ -283,5 +283,14 @@ namespace iTCA.Yuwen.Core
         {
             DatabaseProvider.GetInstance().ChangeCommentCount(articleid, changevalue, type);
         }
+
+        public static void RemoveArtilceCache()
+        {
+            TinyCache cache = new TinyCache();
+            cache.RemoveObject("articlelistdictionary_allcolumn");
+            cache.RemoveObject("commentlist_mostgrade");
+            cache.RemoveObject("commentlist_latest");
+            cache.RemoveObject("articlelist_hot");
+        }
     }
 }

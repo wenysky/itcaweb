@@ -66,6 +66,8 @@ namespace iTCA.Yuwen.Web.Admin
             {
                 Articles.CreateArticle(articleinfo);
             }
+            Articles.RemoveArtilceCache();
+
             Response.Redirect("articlelist.aspx?cid=" + articleinfo.Columnid);
         }
 
