@@ -25,6 +25,10 @@ namespace iTCA.Yuwen.Web
                 {
                     url = string.Format("{0}/postarticle.aspx?id={1}&action=edit", adminpath, id);
                 }
+                else if (action == "deletearticle")
+                {
+                    url = string.Format("{0}/deleteadmin.aspx?articleid={1}", adminpath, id);
+                }
                 else if (action == "listarticle")
                 {
                     url = string.Format("{0}/articlelist.aspx?cid={1}", adminpath, id);

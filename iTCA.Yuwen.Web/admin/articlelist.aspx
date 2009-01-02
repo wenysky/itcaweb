@@ -22,7 +22,7 @@
             <ItemTemplate>
                 <tr>
                     <td style="width: 35px">
-                        <a href="deleteadmin.aspx?articleid=<%# DataBinder.Eval(Container.DataItem, "articleid")%>">[删除]</a>
+                        <a href="frame.aspx?action=deletearticle&id=<%# DataBinder.Eval(Container.DataItem, "articleid")%>">[删除]</a>
                     </td>
                     <td style="width: 10px">
                         <asp:CheckBox ID="ckbox_single" runat="server" /><input type="hidden" id="SelectedID"
