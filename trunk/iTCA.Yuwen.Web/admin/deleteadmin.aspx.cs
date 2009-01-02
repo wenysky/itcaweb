@@ -28,6 +28,7 @@ namespace iTCA.Yuwen.Web.Admin
         protected void btnYes_Click(object sender, EventArgs e)
         {
             Articles.DeleteArticle(articleid);
+            Articles.RemoveArtilceCache();
             Response.Redirect("frame.aspx?action=listarticle&id=" + articleinfo.Columnid);
         }
 
