@@ -41,6 +41,7 @@ namespace iTCA.Yuwen.Web
                 articleinfo.Uid = userinfo.Uid;
                 articleinfo.Username = userinfo.Username;
                 Articles.CreateArticle(articleinfo);
+                Articles.RemoveArtilceCache();
 
                 currentcontext.Response.Write("<script>alert('发布成功,跳转到栏目列表.')</script>");
                 currentcontext.Response.Redirect(string.Format("showcolumn-{0}-1.aspx", articleinfo.Columnid));
