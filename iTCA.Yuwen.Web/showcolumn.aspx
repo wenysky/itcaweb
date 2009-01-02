@@ -21,13 +21,13 @@ override protected void OnInit(EventArgs e)
 	if (pagetitle=="")
 	{
 
-	templateBuilder.Append("<title>" + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
+	templateBuilder.Append("<title>" + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by LiteCMS</title>\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("<title>" + pagetitle.ToString() + " - " + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by 盛夏之地</title>\r\n");
+	templateBuilder.Append("<title>" + pagetitle.ToString() + " - " + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by LiteCMS</title>\r\n");
 
 	}	//end if
 
@@ -41,8 +41,8 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("				<li><a href=\"index.aspx\">首页</a></li>\r\n");
 	templateBuilder.Append("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
 	templateBuilder.Append("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"#\">博客</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"bbs/\">论坛</a></li>\r\n");
+	templateBuilder.Append("            <!--<li><a href=\"#\">博客</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"bbs/\">论坛</a></li>-->\r\n");
 
 	if (userinfo==null)
 	{
@@ -244,8 +244,9 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">" + config.Websitename.ToString().Trim() + "</a></li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"#\">LiteCMS</a> 0.1.1230.1</li>\r\n");
+	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1302.1</li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
+	templateBuilder.Append("		" + config.Analyticscode.ToString().Trim() + "\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("</div>\r\n");
 	templateBuilder.Append("</body>\r\n");
