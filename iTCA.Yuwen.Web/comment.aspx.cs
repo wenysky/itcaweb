@@ -41,6 +41,7 @@ namespace iTCA.Yuwen.Web
                         info.Articletitle = Articles.GetArticleInfo(articleid).Title;
                         Comments.CreateComment(info);
                         Articles.ChangeCommentCount(articleid, 1, 1);
+                        Articles.RemoveArtilceCache();
                         currentcontext.Response.Redirect(YRequest.GetUrlReferrer());
                     }
                 }
@@ -58,6 +59,7 @@ namespace iTCA.Yuwen.Web
                 {
                     int type = YRequest.GetQueryInt("type", 0);
                     Comments.GradeComment(commentid, type);
+                    Articles.RemoveArtilceCache();
                     currentcontext.Response.Redirect(YRequest.GetUrlReferrer());
                 }
                 else
@@ -75,6 +77,7 @@ namespace iTCA.Yuwen.Web
                     CommentInfo info = Comments.GetCommentInfo(commentid);
                     Comments.DeleteComment(info.Commentid);
                     Articles.ChangeCommentCount(info.Articleid, 1, -1);
+                    Articles.RemoveArtilceCache();
                     currentcontext.Response.Redirect(YRequest.GetUrlReferrer());
                 }
                 else
