@@ -95,7 +95,11 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("    <div id=\"Banner\" style=\"height:70px; width:100%; background-color:Gray\">\r\n");
 	templateBuilder.Append("        Banner\r\n");
 	templateBuilder.Append("    </div>\r\n");
-	templateBuilder.Append("    <div id=\"Main\" style=\"margin:10px auto 0 auto; border:solid 1px gray; text-align:left\">欢迎 " + admininfo.Name.ToString().Trim() + " - [" + userinfo.Username.ToString().Trim() + "] 登录后台管理,点击<a href=\"../\" target=\"_self\">回到前台</a>。\r\n");
+	templateBuilder.Append("    <div id=\"Main\" style=\"margin:10px auto 0 auto; border:solid 1px gray; text-align:left\">欢迎 ");
+	templateBuilder.Append(admininfo.Name.ToString().Trim());
+	templateBuilder.Append(" - [");
+	templateBuilder.Append(userinfo.Username.ToString().Trim());
+	templateBuilder.Append("] 登录后台管理,点击<a href=\"../\" target=\"_self\">回到前台</a>。\r\n");
 	templateBuilder.Append("    </div>\r\n");
 	templateBuilder.Append("    <div id=\"Menu\" style=\"background-color:#FFF;width:13%; float:left; border:solid 1px gray; margin:10px 5px\">\r\n");
 	templateBuilder.Append("        <ul>\r\n");
@@ -112,7 +116,9 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("            <li><a href=\"admincp.aspx?action=logout\" target=\"_parent\">退出后台</a></li>\r\n");
 	templateBuilder.Append("        </ul>\r\n");
 	templateBuilder.Append("    </div>\r\n");
-	templateBuilder.Append("    <iframe id=\"MainIFR\" name=\"MainIFR\" frameborder=\"0\" scrolling=\"yes\" src=\"" + url.ToString() + "\" width=\"85%\" height=\"490px\" style=\"margin:10px auto auto auto; border:solid 1px gray;\">\r\n");
+	templateBuilder.Append("    <iframe id=\"MainIFR\" name=\"MainIFR\" frameborder=\"0\" scrolling=\"yes\" src=\"");
+	templateBuilder.Append(url.ToString());
+	templateBuilder.Append("\" width=\"85%\" height=\"490px\" style=\"margin:10px auto auto auto; border:solid 1px gray;\">\r\n");
 	templateBuilder.Append("    </iframe>\r\n");
 
 	}
@@ -145,7 +151,9 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("            <td colspan=\"2\" class=\"footer\">\r\n");
 	templateBuilder.Append("                <div class=\"copyright\">\r\n");
 	templateBuilder.Append("                    <p>Powered by <a href=\"http://www.litecms.cn/\" target=\"_blank\">LiteCMS</a> 0.1.1302.1 </p>\r\n");
-	templateBuilder.Append("                    <p>&copy; 2008, <a href=\"http://www.52dnt.cn/\" target=\"_blank\">" + config.Websitename.ToString().Trim() + "</a> inc.</p>\r\n");
+	templateBuilder.Append("                    <p>&copy; 2008, <a href=\"http://www.52dnt.cn/\" target=\"_blank\">");
+	templateBuilder.Append(config.Websitename.ToString().Trim());
+	templateBuilder.Append("</a> inc.</p>\r\n");
 	templateBuilder.Append("                </div>\r\n");
 	templateBuilder.Append("            </td>\r\n");
 	templateBuilder.Append("        </tr>\r\n");

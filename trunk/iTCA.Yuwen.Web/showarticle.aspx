@@ -21,13 +21,23 @@ override protected void OnInit(EventArgs e)
 	if (pagetitle=="")
 	{
 
-	templateBuilder.Append("<title>" + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by LiteCMS</title>\r\n");
+	templateBuilder.Append("<title>");
+	templateBuilder.Append(config.Websitename.ToString().Trim());
+	templateBuilder.Append(" ");
+	templateBuilder.Append(config.Seotitle.ToString().Trim());
+	templateBuilder.Append(" - Powered by LiteCMS</title>\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("<title>" + pagetitle.ToString() + " - " + config.Websitename.ToString().Trim() + " " + config.Seotitle.ToString().Trim() + " - Powered by LiteCMS</title>\r\n");
+	templateBuilder.Append("<title>");
+	templateBuilder.Append(pagetitle.ToString());
+	templateBuilder.Append(" - ");
+	templateBuilder.Append(config.Websitename.ToString().Trim());
+	templateBuilder.Append(" ");
+	templateBuilder.Append(config.Seotitle.ToString().Trim());
+	templateBuilder.Append(" - Powered by LiteCMS</title>\r\n");
 
 	}	//end if
 
@@ -54,7 +64,9 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心[" + userinfo.Username.ToString().Trim() + "]</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心[");
+	templateBuilder.Append(userinfo.Username.ToString().Trim());
+	templateBuilder.Append("]</a></li>\r\n");
 
 	if (userinfo.Adminid>0)
 	{
@@ -84,7 +96,9 @@ override protected void OnInit(EventArgs e)
 	if (config.Urlrewrite==1)
 	{
 
-	templateBuilder.Append("			<div class=\"div-header\"><a href=\"showcolumn-hot" + config.Urlrewriteextname.ToString().Trim() + "\">热门新闻</a></div>\r\n");
+	templateBuilder.Append("			<div class=\"div-header\"><a href=\"showcolumn-hot");
+	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
+	templateBuilder.Append("\">热门新闻</a></div>\r\n");
 
 	}
 	else
@@ -105,13 +119,22 @@ override protected void OnInit(EventArgs e)
 	if (config.Urlrewrite==1)
 	{
 
-	templateBuilder.Append("				<li><h2><a href=\"showarticle-" + hotarticleinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+	templateBuilder.Append("				<li><h2><a href=\"showarticle-");
+	templateBuilder.Append(hotarticleinfo.Articleid.ToString().Trim());
+	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
+	templateBuilder.Append("\">");
+	templateBuilder.Append(hotarticleinfo.Title.ToString().Trim());
+	templateBuilder.Append("</a></h2></li>\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("				<li><h2><a href=\"showarticle.aspx?id=" + hotarticleinfo.Articleid.ToString().Trim() + "\">" + hotarticleinfo.Title.ToString().Trim() + "</a></h2></li>\r\n");
+	templateBuilder.Append("				<li><h2><a href=\"showarticle.aspx?id=");
+	templateBuilder.Append(hotarticleinfo.Articleid.ToString().Trim());
+	templateBuilder.Append("\">");
+	templateBuilder.Append(hotarticleinfo.Title.ToString().Trim());
+	templateBuilder.Append("</a></h2></li>\r\n");
 
 	}	//end if
 
@@ -130,23 +153,34 @@ override protected void OnInit(EventArgs e)
 		latestcommentinfo__loop__id++;
 
 	templateBuilder.Append("				<li>\r\n");
-	templateBuilder.Append("					<span class=\"content\">" + latestcommentinfo.Content.ToString().Trim() + "</span>\r\n");
-	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">" + latestcommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\">\"<a href=\"\r\n");
+	templateBuilder.Append("					<span class=\"content\">");
+	templateBuilder.Append(latestcommentinfo.Content.ToString().Trim());
+	templateBuilder.Append("</span>\r\n");
+	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">");
+	templateBuilder.Append(latestcommentinfo.Username.ToString().Trim());
+	templateBuilder.Append(" </span>对 <span class=\"from-article\">\"<a href=\"\r\n");
 
 	if (config.Urlrewrite==1)
 	{
 
-	templateBuilder.Append("showarticle-" + latestcommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle-");
+	templateBuilder.Append(latestcommentinfo.Articleid.ToString().Trim());
+	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
+	templateBuilder.Append("\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("showarticle.aspx?id=" + latestcommentinfo.Articleid.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle.aspx?id=");
+	templateBuilder.Append(latestcommentinfo.Articleid.ToString().Trim());
+	templateBuilder.Append("\r\n");
 
 	}	//end if
 
-	templateBuilder.Append("\">" + latestcommentinfo.Articletitle.ToString().Trim() + "</a>\"</span> 的评论</div>\r\n");
+	templateBuilder.Append("\">");
+	templateBuilder.Append(latestcommentinfo.Articletitle.ToString().Trim());
+	templateBuilder.Append("</a>\"</span> 的评论</div>\r\n");
 	templateBuilder.Append("				</li>\r\n");
 
 	}	//end loop
@@ -163,23 +197,34 @@ override protected void OnInit(EventArgs e)
 		mostgradecommentinfo__loop__id++;
 
 	templateBuilder.Append("				<li>\r\n");
-	templateBuilder.Append("					<span class=\"content\">" + mostgradecommentinfo.Content.ToString().Trim() + "</span>\r\n");
-	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">" + mostgradecommentinfo.Username.ToString().Trim() + " </span>对 <span class=\"from-article\"><a href=\"\r\n");
+	templateBuilder.Append("					<span class=\"content\">");
+	templateBuilder.Append(mostgradecommentinfo.Content.ToString().Trim());
+	templateBuilder.Append("</span>\r\n");
+	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">");
+	templateBuilder.Append(mostgradecommentinfo.Username.ToString().Trim());
+	templateBuilder.Append(" </span>对 <span class=\"from-article\"><a href=\"\r\n");
 
 	if (config.Urlrewrite==1)
 	{
 
-	templateBuilder.Append("showarticle-" + mostgradecommentinfo.Articleid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle-");
+	templateBuilder.Append(mostgradecommentinfo.Articleid.ToString().Trim());
+	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
+	templateBuilder.Append("\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("showarticle.aspx?id=" + mostgradecommentinfo.Articleid.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showarticle.aspx?id=");
+	templateBuilder.Append(mostgradecommentinfo.Articleid.ToString().Trim());
+	templateBuilder.Append("\r\n");
 
 	}	//end if
 
-	templateBuilder.Append("\">" + mostgradecommentinfo.Articletitle.ToString().Trim() + "</a></span> 的评论</div>\r\n");
+	templateBuilder.Append("\">");
+	templateBuilder.Append(mostgradecommentinfo.Articletitle.ToString().Trim());
+	templateBuilder.Append("</a></span> 的评论</div>\r\n");
 	templateBuilder.Append("				</li>\r\n");
 
 	}	//end loop
@@ -198,24 +243,39 @@ override protected void OnInit(EventArgs e)
 	if (config.Urlrewrite==1)
 	{
 
-	templateBuilder.Append("showcolumn-" + articleinfo.Columnid.ToString().Trim() + "" + config.Urlrewriteextname.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showcolumn-");
+	templateBuilder.Append(articleinfo.Columnid.ToString().Trim());
+	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
+	templateBuilder.Append("\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("showcolumn.aspx?cid=" + articleinfo.Columnid.ToString().Trim() + "\r\n");
+	templateBuilder.Append("showcolumn.aspx?cid=");
+	templateBuilder.Append(articleinfo.Columnid.ToString().Trim());
+	templateBuilder.Append("\r\n");
 
 	}	//end if
 
 	templateBuilder.Append("\">返回此栏目文章列表</a></div>\r\n");
-	templateBuilder.Append("		<h2 class=\"title article\">" + articleinfo.Title.ToString().Trim() + "</h2>\r\n");
-	templateBuilder.Append("		<div class=\"post-info article\"><span class=\"author\">" + articleinfo.Username.ToString().Trim() + "</span>投递 @ 发布于<span class=\"post-date\">" + articleinfo.Postdate.ToString().Trim() + "</span></div>\r\n");
-	templateBuilder.Append("		<div class=\"article-content article\">" + articleinfo.Content.ToString().Trim() + "</div>\r\n");
+	templateBuilder.Append("		<h2 class=\"title article\">");
+	templateBuilder.Append(articleinfo.Title.ToString().Trim());
+	templateBuilder.Append("</h2>\r\n");
+	templateBuilder.Append("		<div class=\"post-info article\"><span class=\"author\">");
+	templateBuilder.Append(articleinfo.Username.ToString().Trim());
+	templateBuilder.Append("</span>投递 @ 发布于<span class=\"post-date\">");
+	templateBuilder.Append(articleinfo.Postdate.ToString().Trim());
+	templateBuilder.Append("</span></div>\r\n");
+	templateBuilder.Append("		<div class=\"article-content article\">");
+	templateBuilder.Append(articleinfo.Content.ToString().Trim());
+	templateBuilder.Append("</div>\r\n");
 	templateBuilder.Append("		<!--文章结束-->\r\n");
 	templateBuilder.Append("		<div class=\"div-header\">评论:</div>\r\n");
 	templateBuilder.Append("		<div id=\"comment\">\r\n");
-	templateBuilder.Append("		    <form action=\"comment.aspx?action=postcomment&articleid=" + articleinfo.Articleid.ToString().Trim() + "\" method=\"post\">\r\n");
+	templateBuilder.Append("		    <form action=\"comment.aspx?action=postcomment&articleid=");
+	templateBuilder.Append(articleinfo.Articleid.ToString().Trim());
+	templateBuilder.Append("\" method=\"post\">\r\n");
 	templateBuilder.Append("		        <textarea cols=\"80\" rows=\"5\" name=\"commentcontent\" id=\"commentcontent\"></textarea>\r\n");
 	templateBuilder.Append("		        <br />\r\n");
 	templateBuilder.Append("		        <input type=\"submit\" value=\"提交留言\" /><input type=\"reset\" value=\"清空输入框\" />\r\n");
@@ -228,13 +288,29 @@ override protected void OnInit(EventArgs e)
 		info__loop__id++;
 
 	templateBuilder.Append("		        <li>\r\n");
-	templateBuilder.Append("		            <div class=\"content\">" + info.Content.ToString().Trim() + "</div>\r\n");
-	templateBuilder.Append("		            <span><a href=\"comment.aspx?action=grade&type=1&commentid=" + info.Commentid.ToString().Trim() + "\">支持(" + info.Goodcount.ToString().Trim() + ")</a><a href=\"comment.aspx?action=grade&type=-1&commentid=" + info.Commentid.ToString().Trim() + "\">反对(" + info.Badcount.ToString().Trim() + ")</a></span><span>" + info.Username.ToString().Trim() + " 于 " + info.Postdate.ToString().Trim() + " 留言 \r\n");
+	templateBuilder.Append("		            <div class=\"content\">");
+	templateBuilder.Append(info.Content.ToString().Trim());
+	templateBuilder.Append("</div>\r\n");
+	templateBuilder.Append("		            <span><a href=\"comment.aspx?action=grade&type=1&commentid=");
+	templateBuilder.Append(info.Commentid.ToString().Trim());
+	templateBuilder.Append("\">支持(");
+	templateBuilder.Append(info.Goodcount.ToString().Trim());
+	templateBuilder.Append(")</a><a href=\"comment.aspx?action=grade&type=-1&commentid=");
+	templateBuilder.Append(info.Commentid.ToString().Trim());
+	templateBuilder.Append("\">反对(");
+	templateBuilder.Append(info.Badcount.ToString().Trim());
+	templateBuilder.Append(")</a></span><span>");
+	templateBuilder.Append(info.Username.ToString().Trim());
+	templateBuilder.Append(" 于 ");
+	templateBuilder.Append(info.Postdate.ToString().Trim());
+	templateBuilder.Append(" 留言 \r\n");
 
 	if (userinfo!=null&&userinfo.Adminid==1)
 	{
 
-	templateBuilder.Append("[<a href=\"comment.aspx?action=del&commentid=" + info.Commentid.ToString().Trim() + "\">删除</a>]\r\n");
+	templateBuilder.Append("[<a href=\"comment.aspx?action=del&commentid=");
+	templateBuilder.Append(info.Commentid.ToString().Trim());
+	templateBuilder.Append("\">删除</a>]\r\n");
 
 	}	//end if
 
@@ -246,7 +322,9 @@ override protected void OnInit(EventArgs e)
 
 	templateBuilder.Append("		    </ul>\r\n");
 	templateBuilder.Append("		    <!--分页开始-->\r\n");
-	templateBuilder.Append("		    <div id=\"pager\">页码:" + commentcounthtml.ToString() + "</div>\r\n");
+	templateBuilder.Append("		    <div id=\"pager\">页码:");
+	templateBuilder.Append(commentcounthtml.ToString());
+	templateBuilder.Append("</div>\r\n");
 	templateBuilder.Append("		</div>\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("	<!--左栏结束-->\r\n");
@@ -257,12 +335,20 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("			<li><a href=\"#\">关于本站</a></li>\r\n");
 	templateBuilder.Append("			<li><a href=\"#\">联系我们</a></li>		\r\n");
 	templateBuilder.Append("			<li><a href=\"#\">广告服务</a></li>	\r\n");
-	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">" + config.Websitename.ToString().Trim() + "</a></li>\r\n");
+	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">");
+	templateBuilder.Append(config.Websitename.ToString().Trim());
+	templateBuilder.Append("</a></li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
 	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li title=\"执行时间:" + processtime.ToString() + ",查询数:" + querycount.ToString() + "\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1302.1</li>\r\n");
+	templateBuilder.Append("			<li title=\"执行时间:");
+	templateBuilder.Append(processtime.ToString());
+	templateBuilder.Append(",查询数:");
+	templateBuilder.Append(querycount.ToString());
+	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1302.1</li>\r\n");
 	templateBuilder.Append("		</ul>\r\n");
-	templateBuilder.Append("		" + config.Analyticscode.ToString().Trim() + "\r\n");
+	templateBuilder.Append("		");
+	templateBuilder.Append(config.Analyticscode.ToString().Trim());
+	templateBuilder.Append("\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("</div>\r\n");
 	templateBuilder.Append("</body>\r\n");
