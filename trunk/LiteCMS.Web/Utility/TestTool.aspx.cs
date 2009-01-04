@@ -8,11 +8,11 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-using iTCA.Yuwen.Config;
+using LiteCMS.Config;
 using Natsuhime;
 using Natsuhime.Common;
 
-namespace iTCA.Yuwen.Web.Utility
+namespace LiteCMS.Web.Utility
 {
     public partial class TestTool : System.Web.UI.Page
     {
@@ -24,7 +24,7 @@ namespace iTCA.Yuwen.Web.Utility
         protected void Button1_Click(object sender, EventArgs e)
         {
             BaseConfigInfo info = new BaseConfigInfo();
-            info.Dbconnectstring = @"Data Source=F:\Doctments\Works\Mine\iTCAWeb\trunk\iTCA.Yuwen.Web\config\db.config";
+            info.Dbconnectstring = @"Data Source=F:\Doctments\Works\Mine\iTCAWeb\trunk\LiteCMS.Web\config\db.config";
             info.Dbtype = "Sqlite";
             info.Tableprefix = "wy_";
             info.ApplictionPath = "/";

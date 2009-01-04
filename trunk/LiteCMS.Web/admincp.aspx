@@ -1,4 +1,4 @@
-﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="iTCA.Yuwen.Web.admincp" %>
+﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="LiteCMS.Web.admincp" %>
 <script runat="server">
 override protected void OnInit(EventArgs e)
 {

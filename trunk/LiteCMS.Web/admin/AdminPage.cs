@@ -1,9 +1,9 @@
 using System;
 using System.Web;
-using iTCA.Yuwen.Entity;
-using iTCA.Yuwen.Core;
+using LiteCMS.Entity;
+using LiteCMS.Core;
 
-namespace iTCA.Yuwen.Web.Admin
+namespace LiteCMS.Web.Admin
 {
     public class AdminPage : System.Web.UI.Page
     {
@@ -37,7 +37,7 @@ namespace iTCA.Yuwen.Web.Admin
 
                 if (uid > 0 && password != string.Empty)
                 {
-                    userinfo = iTCA.Yuwen.Core.Users.GetUserInfo(uid, password);
+                    userinfo = LiteCMS.Core.Users.GetUserInfo(uid, password);
                 }
             }
 

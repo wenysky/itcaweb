@@ -2,7 +2,7 @@
 using System.IO;
 using Natsuhime.Common;
 
-namespace iTCA.Yuwen.Config
+namespace LiteCMS.Config
 {
     public class MainConfigs
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace iTCA.Yuwen.Web.Admin {
+namespace LiteCMS.Web.Admin {
     
     
     public partial class postarticle {

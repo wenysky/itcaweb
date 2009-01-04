@@ -1,9 +1,9 @@
 ﻿using System;
-using iTCA.Yuwen.Core;
-using iTCA.Yuwen.Entity;
+using LiteCMS.Core;
+using LiteCMS.Entity;
 using Natsuhime.Web;
 
-namespace iTCA.Yuwen.Web
+namespace LiteCMS.Web
 {
     public partial class register : BasePage
     {

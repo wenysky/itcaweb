@@ -1,6 +1,6 @@
 using System;
 
-namespace iTCA.Yuwen.Web.Admin
+namespace LiteCMS.Web.Admin
 {
     public partial class index : AdminPage
     {

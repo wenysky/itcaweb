@@ -1,6 +1,6 @@
-﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="iTCA.Yuwen.Web.uploadfile" %>
-<%@ Import namespace="iTCA.Yuwen.Data" %>
-<%@ Import namespace="iTCA.Yuwen.Entity" %>
+﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="LiteCMS.Web.uploadfile" %>
+<%@ Import namespace="LiteCMS.Data" %>
+<%@ Import namespace="LiteCMS.Entity" %>
 <script runat="server">
 override protected void OnInit(EventArgs e)
 {

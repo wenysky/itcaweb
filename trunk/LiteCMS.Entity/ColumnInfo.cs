@@ -1,5 +1,5 @@
 using System;
-namespace iTCA.Yuwen.Entity
+namespace LiteCMS.Entity
 {
     public class ColumnInfo
     {

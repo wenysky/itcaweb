@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace iTCA.Yuwen.Web
+namespace LiteCMS.Web
 {
     public partial class loginout : BasePage
     {

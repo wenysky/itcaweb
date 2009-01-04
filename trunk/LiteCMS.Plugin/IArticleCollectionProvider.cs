@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using iTCA.Yuwen.Entity;
+using LiteCMS.Entity;
 
-namespace iTCA.Yuwen.Plugin
+namespace LiteCMS.Plugin
 {
     public interface IArticleCollectionProvider
     {

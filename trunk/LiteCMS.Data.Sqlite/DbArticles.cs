@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Data;
 using Natsuhime.Data;
-using iTCA.Yuwen.Entity;
-using iTCA.Yuwen.Config;
+using LiteCMS.Entity;
+using LiteCMS.Config;
 
-namespace iTCA.Yuwen.Data.Sqlite
+namespace LiteCMS.Data.Sqlite
 {
     public partial class DataProvider : IDataProvider
     {

@@ -4,7 +4,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace iTCA.Yuwen.Config
+namespace LiteCMS.Config
 {
     public class Versions
     {

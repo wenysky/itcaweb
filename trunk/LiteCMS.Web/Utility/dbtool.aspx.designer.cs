@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace iTCA.Yuwen.Web.Utility {
+namespace LiteCMS.Web.Utility {
     
     
     public partial class dbtool {

@@ -2,12 +2,12 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 
-using iTCA.Yuwen.Data;
-using iTCA.Yuwen.Entity;
+using LiteCMS.Data;
+using LiteCMS.Entity;
 using Natsuhime.Common;
 using Natsuhime;
 
-namespace iTCA.Yuwen.Core
+namespace LiteCMS.Core
 {
     public class Articles
     {

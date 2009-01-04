@@ -1,9 +1,9 @@
 using System;
 using System.Web;
-using iTCA.Yuwen.Core;
-using iTCA.Yuwen.Entity;
+using LiteCMS.Core;
+using LiteCMS.Entity;
 
-namespace iTCA.Yuwen.Web.Admin
+namespace LiteCMS.Web.Admin
 {
     public partial class deleteadmin : AdminPage
     {

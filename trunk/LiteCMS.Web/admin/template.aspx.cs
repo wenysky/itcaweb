@@ -6,7 +6,7 @@ using Natsuhime;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace iTCA.Yuwen.Web.Admin
+namespace LiteCMS.Web.Admin
 {
     public partial class template : AdminPage
     {
@@ -136,7 +136,7 @@ namespace iTCA.Yuwen.Web.Admin
 
         private void CreateTemplate(string folder)
         {
-            NewTemplate ntp = new NewTemplate("iTCA.Yuwen.Web", "");
+            NewTemplate ntp = new NewTemplate("LiteCMS.Web", "");
             ntp.Productname = "LiteCMS";
             ntp.Productversion = Config.Versions.GetProductVersionFromAssembly();
             ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/", folder)), Server.MapPath("~/"));

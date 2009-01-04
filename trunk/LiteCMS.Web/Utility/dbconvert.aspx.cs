@@ -12,7 +12,7 @@ using System.Data.Common;
 using Natsuhime.Data;
 using Natsuhime;
 
-namespace iTCA.Yuwen.Web
+namespace LiteCMS.Web
 {
     public partial class dbconvert : System.Web.UI.Page
     {
@@ -32,7 +32,7 @@ namespace iTCA.Yuwen.Web
         protected void btnStart_Click(object sender, EventArgs e)
         {
             DbHelper.ResetDbProvider();
-            DbHelper.ConnectionString = @"Data Source=D:\Documents\DotNet\CvsPlace\itca\iTCA.Yuwen.Web\config\db.config";
+            DbHelper.ConnectionString = @"Data Source=D:\Documents\DotNet\CvsPlace\itca\LiteCMS.Web\config\db.config";
             DbHelper.Dbtype = "Sqlite";
             TinyCache cache = new TinyCache();
             DataTable dt = cache.RetrieveObject("dt") as DataTable;

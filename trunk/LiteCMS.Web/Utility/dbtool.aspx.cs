@@ -6,7 +6,7 @@ using System.Data.Common;
 using Natsuhime.Data;
 using Natsuhime.Web;
 
-namespace iTCA.Yuwen.Web.Utility
+namespace LiteCMS.Web.Utility
 {
     public partial class dbtool : System.Web.UI.Page
     {
