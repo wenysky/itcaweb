@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace iTCA.Yuwen.Entity
+namespace LiteCMS.Entity
 {
     public class AdminInfo
     {

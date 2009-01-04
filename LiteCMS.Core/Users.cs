@@ -2,10 +2,10 @@
 using System.Data;
 using System.Collections.Generic;
 using Natsuhime;
-using iTCA.Yuwen.Data;
-using iTCA.Yuwen.Entity;
+using LiteCMS.Data;
+using LiteCMS.Entity;
 
-namespace iTCA.Yuwen.Core
+namespace LiteCMS.Core
 {
     public class Users
     {        

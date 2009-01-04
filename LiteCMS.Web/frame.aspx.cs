@@ -2,7 +2,7 @@
 using System.Web;
 using Natsuhime.Web;
 
-namespace iTCA.Yuwen.Web
+namespace LiteCMS.Web
 {
     public partial class frame : BasePage
     {

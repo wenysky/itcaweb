@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("iTCA.Yuwen.Data")]
+[assembly: AssemblyTitle("LiteCMS.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("iTCA")]
-[assembly: AssemblyProduct("iTCA.Yuwen.Data")]
+[assembly: AssemblyProduct("LiteCMS.Data")]
 [assembly: AssemblyCopyright("版权所有 (C) iTCA 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // 可以指定所有这些值，也可以使用“修订号”和“内部版本号”的默认值，
 // 方法是按如下所示使用“*”:
-[assembly: AssemblyVersion(iTCA.Yuwen.Config.Versions.ASSEMBLY_VERSION)]
-[assembly: AssemblyFileVersion(iTCA.Yuwen.Config.Versions.ASSEMBLY_VERSION)]
+[assembly: AssemblyVersion(LiteCMS.Config.Versions.ASSEMBLY_VERSION)]
+[assembly: AssemblyFileVersion(LiteCMS.Config.Versions.ASSEMBLY_VERSION)]

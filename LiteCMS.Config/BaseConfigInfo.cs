@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace iTCA.Yuwen.Config
+namespace LiteCMS.Config
 {
     [Serializable]
     public class BaseConfigInfo

@@ -9,7 +9,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 
-namespace iTCA.Yuwen.Web.Admin
+namespace LiteCMS.Web.Admin
 {
     public partial class adminlogout : System.Web.UI.Page
     {

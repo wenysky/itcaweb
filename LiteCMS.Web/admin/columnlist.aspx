@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="columnlist.aspx.cs" Inherits="iTCA.Yuwen.Web.Admin.columnlist" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="columnlist.aspx.cs" Inherits="LiteCMS.Web.Admin.columnlist" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

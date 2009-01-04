@@ -1,10 +1,10 @@
 ﻿using System;
 using Natsuhime.Web;
 using System.Web;
-using iTCA.Yuwen.Entity;
-using iTCA.Yuwen.Core;
+using LiteCMS.Entity;
+using LiteCMS.Core;
 
-namespace iTCA.Yuwen.Web
+namespace LiteCMS.Web
 {
     public partial class admincp : BasePage
     {

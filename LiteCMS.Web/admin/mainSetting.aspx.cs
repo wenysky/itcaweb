@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Web;
-using iTCA.Yuwen.Config;
+using LiteCMS.Config;
 using Natsuhime.Common;
 
-namespace iTCA.Yuwen.Web.Admin
+namespace LiteCMS.Web.Admin
 {
     public partial class mainsetting : AdminPage
     {

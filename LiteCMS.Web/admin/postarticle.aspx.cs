@@ -1,10 +1,10 @@
 using System;
 using System.Web;
-using iTCA.Yuwen.Core;
-using iTCA.Yuwen.Entity;
+using LiteCMS.Core;
+using LiteCMS.Entity;
 using System.IO;
 
-namespace iTCA.Yuwen.Web.Admin
+namespace LiteCMS.Web.Admin
 {
     public partial class postarticle : AdminPage
     {

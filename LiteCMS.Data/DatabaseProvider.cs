@@ -3,7 +3,7 @@ using System.Text;
 using System.Reflection;
 using Natsuhime.Data;
 
-namespace iTCA.Yuwen.Data
+namespace LiteCMS.Data
 {
 	public class DatabaseProvider
 	{
@@ -22,7 +22,7 @@ namespace iTCA.Yuwen.Data
 		{
 			try
 			{
-                _instance = (IDataProvider)Activator.CreateInstance(Type.GetType(string.Format("iTCA.Yuwen.Data.{0}.DataProvider, iTCA.Yuwen.Data.{0}", DbConfigs.GetConfig().Dbtype), false, true));
+                _instance = (IDataProvider)Activator.CreateInstance(Type.GetType(string.Format("LiteCMS.Data.{0}.DataProvider, LiteCMS.Data.{0}", DbConfigs.GetConfig().Dbtype), false, true));
 			}
 			catch
 			{

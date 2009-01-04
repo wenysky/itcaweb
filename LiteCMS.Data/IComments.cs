@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
-using iTCA.Yuwen.Entity;
+using LiteCMS.Entity;
 
-namespace iTCA.Yuwen.Data
+namespace LiteCMS.Data
 {
     public partial interface IDataProvider
     {

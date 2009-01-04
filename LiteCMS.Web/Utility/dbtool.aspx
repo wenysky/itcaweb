@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dbtool.aspx.cs" Inherits="iTCA.Yuwen.Web.Utility.dbtool" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dbtool.aspx.cs" Inherits="LiteCMS.Web.Utility.dbtool" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

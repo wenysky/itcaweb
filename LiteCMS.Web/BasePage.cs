@@ -3,11 +3,11 @@ using System.Web;
 using System.Data;
 using System.Collections.Generic;
 using Natsuhime.Data;
-using iTCA.Yuwen.Entity;
-using iTCA.Yuwen.Core;
+using LiteCMS.Entity;
+using LiteCMS.Core;
 using Natsuhime;
 
-namespace iTCA.Yuwen.Web
+namespace LiteCMS.Web
 {
     public class BasePage : System.Web.UI.Page
     {
@@ -36,7 +36,7 @@ namespace iTCA.Yuwen.Web
         /// 页面查询Sql内容
         /// </summary>
         protected string querydetail;
-        protected iTCA.Yuwen.Config.MainConfigInfo config;
+        protected LiteCMS.Config.MainConfigInfo config;
         /// <summary>
         /// System.Web.HttpContext.Current
         /// </summary>
@@ -80,7 +80,7 @@ namespace iTCA.Yuwen.Web
             sw = System.Diagnostics.Stopwatch.StartNew();
             DbHelper.QueryCount = 0;
             DbHelper.QueryDetail = "";
-            config = iTCA.Yuwen.Config.MainConfigs.GetConfig();
+            config = LiteCMS.Config.MainConfigs.GetConfig();
             ispost = Natsuhime.Web.YRequest.IsPost();
             //验证登录
             CheckLogin();
@@ -115,7 +115,7 @@ namespace iTCA.Yuwen.Web
 
                 if (uid > 0 && password != string.Empty)
                 {
-                    userinfo = iTCA.Yuwen.Core.Users.GetUserInfo(uid, password);
+                    userinfo = LiteCMS.Core.Users.GetUserInfo(uid, password);
                 }
             }
         }
