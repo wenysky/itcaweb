@@ -25,7 +25,7 @@
 		    <%loop (CommentInfo) info commentlist%>
 		        <li>
 		            <div class="content">{info.content}</div>
-		            <span><a href="comment.aspx?action=grade&type=1&commentid={info.commentid}">支持({info.goodcount})</a><a href="comment.aspx?action=grade&type=-1&commentid={info.commentid}">反对({info.badcount})</a></span><span>{info.username} 于 {info.postdate} 留言 <%if userinfo!=null&&{userinfo.adminid}==1%>[<a href="comment.aspx?action=del&commentid={info.commentid}">删除</a>]<%/if%></span>
+		            <span><a href="comment.aspx?action=grade&type=1&commentid={info.commentid}">支持({info.goodcount})</a><a href="comment.aspx?action=grade&type=-1&commentid={info.commentid}">反对({info.badcount})</a></span><span>{info.username} 于 {info.postdate} 留言 <%if {userid}>0&&{adminid}==1%>[<a href="comment.aspx?action=del&commentid={info.commentid}">删除</a>]<%/if%></span>
 		            <hr />
 		        </li>
 		    <%/loop%>

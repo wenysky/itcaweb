@@ -6,6 +6,7 @@ using Natsuhime.Data;
 using LiteCMS.Entity;
 using LiteCMS.Core;
 using Natsuhime;
+using Natsuhime.Web;
 
 namespace LiteCMS.Web
 {
@@ -46,9 +47,17 @@ namespace LiteCMS.Web
         /// </summary>
         protected bool ispost;
         /// <summary>
-        /// 当前用户信息(如果为空表示未登录)
+        /// 用户ID如果.大于0表示为会员,其余为游客.
         /// </summary>
-        protected UserInfo userinfo;
+        protected int userid;
+        /// <summary>
+        /// 当前用户名
+        /// </summary>
+        protected string username;
+        /// <summary>
+        /// 是否是管理员.大于0表示
+        /// </summary>
+        protected int adminid;
         /// <summary>
         /// 调用这个值之前请先执行IsAdminLogined()方法初始化值.
         /// </summary>
@@ -106,35 +115,47 @@ namespace LiteCMS.Web
         /// </summary>
         protected virtual void CheckLogin()
         {
-            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies["cmsnt"];
-            userinfo = null;
-            if (cookie != null && cookie.Values["userid"] != null && cookie.Values["password"] != null)
+            string cookiename = "cmsnt";
+            userid = YCookies.GetCookieIntValue("userid", cookiename, 0);
+            adminid = YCookies.GetCookieIntValue("adminid", cookiename, 0);
+            if (userid > 0)
             {
-                int uid = Convert.ToInt32(cookie.Values["userid"]);
-                string password = cookie.Values["password"].ToString().Trim();
-
-                if (uid > 0 && password != string.Empty)
-                {
-                    userinfo = LiteCMS.Core.Users.GetUserInfo(uid, password);
-                }
+                username = YCookies.GetCookieStringValue("username", cookiename);
             }
+            else
+            {
+                username = "游客";
+            }
+
+        }
+        protected UserInfo GetUserInfo()
+        {
+            YCookies cookie = new YCookies("cmsnt");
+            int uid = cookie.GetCookieIntValue("userid", 0);
+            string password = cookie.GetCookieStringValue("password").Trim();
+
+            if (uid > 0 && password != string.Empty)
+            {
+                return LiteCMS.Core.Users.GetUserInfo(uid, password);
+            }
+            return null;
         }
         protected virtual bool IsAdminLogined()
         {
-            HttpCookie admincookie = System.Web.HttpContext.Current.Request.Cookies["cmsntadmin"];
-            admininfo = null;
-            if (admincookie != null && admincookie.Values["adminid"] != null && admincookie.Values["password"] != null)
+            //UserInfo userinfo = GetUserInfo();
+            if (userid > 0)
             {
-                int adminid = Convert.ToInt32(admincookie.Values["adminid"]);
-                string password = admincookie.Values["password"].ToString().Trim();
+                YCookies admincookie = new YCookies("cmsntadmin");
+                int adminid = admincookie.GetCookieIntValue("adminid", 0);
+                string password = admincookie.GetCookieStringValue("password").Trim();
+                admininfo = null;
 
                 if (adminid > 0 && password != string.Empty)
                 {
-                    //admininfo todo
                     admininfo = Admins.GetAdminInfo(adminid, password);
-                    if (admininfo != null && admininfo.Uid == userinfo.Uid)
+                    if (admininfo != null && admininfo.Uid == userid)
                     {
-                        adminpath = admincookie.Values["path"].ToString().Trim();
+                        adminpath = admincookie.GetCookieStringValue("path").Trim();
                         return true;
                     }
                 }
@@ -176,7 +197,7 @@ namespace LiteCMS.Web
                 //    System.Diagnostics.Debug.WriteLine(b.Key.Columnname + ":" + b.Value.Count);
                 //}
                 cache.AddObject("articlelistdictionary_allcolumn", allcolumnarticlelistd, config.GlobalCacheTimeOut);
-            }            
+            }
         }
         void InitMostGradeCommentList()
         {

@@ -13,6 +13,7 @@ namespace LiteCMS.Web
     {
         protected override void Page_Show()
         {
+            UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
                 System.Web.HttpContext.Current.Response.Write("请登录后再使用此功能.");

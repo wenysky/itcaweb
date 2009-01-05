@@ -13,6 +13,7 @@ namespace LiteCMS.Web
         protected override void Page_Show()
         {
             pagetitle = "投递文章";
+            UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
                 currentcontext.Response.Write("<script>alert('请登录后再投递文章,谢谢~');history.back();</script>");

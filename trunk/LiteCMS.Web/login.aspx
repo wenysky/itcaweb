@@ -23,7 +23,7 @@ override protected void OnInit(EventArgs e)
 
 	templateBuilder.Append("<title>");
 	templateBuilder.Append(config.Websitename.ToString().Trim());
-	templateBuilder.Append(" ");
+	templateBuilder.Append(" - ");
 	templateBuilder.Append(config.Seotitle.ToString().Trim());
 	templateBuilder.Append(" - Powered by LiteCMS</title>\r\n");
 
@@ -35,7 +35,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(pagetitle.ToString());
 	templateBuilder.Append(" - ");
 	templateBuilder.Append(config.Websitename.ToString().Trim());
-	templateBuilder.Append(" ");
+	templateBuilder.Append(" - ");
 	templateBuilder.Append(config.Seotitle.ToString().Trim());
 	templateBuilder.Append(" - Powered by LiteCMS</title>\r\n");
 
@@ -54,21 +54,14 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("            <!--<li><a href=\"#\">博客</a></li>\r\n");
 	templateBuilder.Append("				<li><a href=\"bbs/\">论坛</a></li>-->\r\n");
 
-	if (userinfo==null)
-	{
-
-	templateBuilder.Append("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"register.aspx\">注册</a></li>\r\n");
-
-	}
-	else
+	if (userid>0)
 	{
 
 	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心[");
-	templateBuilder.Append(userinfo.Username.ToString().Trim());
+	templateBuilder.Append(username.ToString());
 	templateBuilder.Append("]</a></li>\r\n");
 
-	if (userinfo.Adminid>0)
+	if (adminid>0)
 	{
 
 	templateBuilder.Append("				<li><a href=\"admincp.aspx\" target=\"_blank\">系统设置</a></li>\r\n");
@@ -76,6 +69,13 @@ override protected void OnInit(EventArgs e)
 	}	//end if
 
 	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销</a></li>\r\n");
+
+	}
+	else
+	{
+
+	templateBuilder.Append("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"register.aspx\">注册</a></li>			\r\n");
 
 	}	//end if
 
@@ -273,7 +273,8 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1302.1</li>\r\n");
 	templateBuilder.Append("		    </ul>\r\n");
 	templateBuilder.Append("		</div>\r\n");
-	templateBuilder.Append("		<div id=\"FriendLink\" style=\"clear: both; float: left; \">\r\n");
+	templateBuilder.Append("		<br />\r\n");
+	templateBuilder.Append("		<div id=\"FriendLink\" style=\"float:right; \">\r\n");
 	templateBuilder.Append("		    <ul>\r\n");
 	templateBuilder.Append("		        <li>友情连接:<a href=\"http://phprimer.com/\" title=\"PHP/Ruby/交互设计/Ajax/RIA/CSS 技术宝典\" target=\"_blank\">PHPrimer</a> | <a href=\"#\">更多</a>.</li>\r\n");
 	templateBuilder.Append("		        <li>合作伙伴：<a target=\"_blank\" href=\"http://www.microsoft.com/\">微软</a> | <a target=\"_blank\" href=\"http://www.infoq.com/cn/\">InfoQ中文站</a>.</li>\r\n");

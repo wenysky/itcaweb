@@ -10,6 +10,7 @@ namespace LiteCMS.Web
     {
         protected override void Page_Show()
         {
+            UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
                 currentcontext.Response.Write("请登录后再留言评论.");
