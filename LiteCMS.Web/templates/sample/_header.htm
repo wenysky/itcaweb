@@ -5,9 +5,9 @@
 	<link rel="stylesheet" type="text/css" href="templates/sample/main.css" />
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <%if pagetitle==""%>
-<title>{config.websitename} {config.seotitle} - Powered by LiteCMS</title>
+<title>{config.websitename} - {config.seotitle} - Powered by LiteCMS</title>
 <%else%>
-<title>{pagetitle} - {config.websitename} {config.seotitle} - Powered by LiteCMS</title>
+<title>{pagetitle} - {config.websitename} - {config.seotitle} - Powered by LiteCMS</title>
 <%/if%>
 </head>
 <body>
@@ -21,15 +21,15 @@
 				<li><a href="postarticle.aspx">投递</a></li>
             <!--<li><a href="#">博客</a></li>
 				<li><a href="bbs/">论坛</a></li>-->
-		    <%if {userinfo}==null%>
-				<li><a href="login.aspx">登录</a></li>
-				<li><a href="register.aspx">注册</a></li>
-			<%else%>
-				<li><a href="usercontrolpanel.aspx">用户中心[{userinfo.username}]</a></li>
-			    <%if {userinfo.adminid>0}%>
+		    <%if {userid}>0%>
+				<li><a href="usercontrolpanel.aspx">用户中心[{username}]</a></li>
+			    <%if {adminid>0}%>
 				<li><a href="admincp.aspx" target="_blank">系统设置</a></li>
 				<%/if%>
 				<li><a href="loginout.aspx">注销</a></li>
+			<%else%>
+				<li><a href="login.aspx">登录</a></li>
+				<li><a href="register.aspx">注册</a></li>			
 			<%/if%>
 			</ul>
 		</div>

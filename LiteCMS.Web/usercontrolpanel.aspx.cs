@@ -8,10 +8,12 @@ namespace LiteCMS.Web
 {
     public partial class usercontrolpanel : BasePage
     {
+        protected UserInfo userinfo;
         protected List<ArticleInfo> myarticlelist;
         protected string pagecounthtml;
         protected override void Page_Show()
         {
+            userinfo = GetUserInfo();
             if (userinfo == null)
             {
                 pagetitle = "用户中心";

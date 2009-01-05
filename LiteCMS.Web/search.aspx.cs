@@ -12,6 +12,7 @@ namespace LiteCMS.Web
         protected string pagecounthtml;
         protected override void Page_Show()
         {
+            UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
                 currentcontext.Response.Write("<script>alert('请登录后再搜索文章,谢谢~');history.back();</script>");

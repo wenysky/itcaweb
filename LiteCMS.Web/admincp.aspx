@@ -98,7 +98,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("    <div id=\"Main\" style=\"margin:10px auto 0 auto; border:solid 1px gray; text-align:left\">欢迎 ");
 	templateBuilder.Append(admininfo.Name.ToString().Trim());
 	templateBuilder.Append(" - [");
-	templateBuilder.Append(userinfo.Username.ToString().Trim());
+	templateBuilder.Append(username.ToString());
 	templateBuilder.Append("] 登录后台管理,点击<a href=\"../\" target=\"_self\">回到前台</a>。\r\n");
 	templateBuilder.Append("    </div>\r\n");
 	templateBuilder.Append("    <div id=\"Menu\" style=\"background-color:#FFF;width:13%; float:left; border:solid 1px gray; margin:10px 5px\">\r\n");

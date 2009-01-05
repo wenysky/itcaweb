@@ -24,6 +24,7 @@ namespace LiteCMS.Web
                 currentcontext.Response.Redirect("index.aspx");
                 currentcontext.Response.End();
             }
+            UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
                 currentcontext.Response.Write("请登录前台.");
