@@ -287,6 +287,7 @@ namespace LiteCMS.Core
         public static void RemoveArtilceCache()
         {
             TinyCache cache = new TinyCache();
+            cache.RemoveObject("articlelist_indexmain");
             cache.RemoveObject("articlelistdictionary_allcolumn");
             cache.RemoveObject("commentlist_mostgrade");
             cache.RemoveObject("commentlist_latest");
