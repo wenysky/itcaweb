@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteCMS.Config", "LiteCMS.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteCMS.Plugin", "LiteCMS.Plugin\LiteCMS.Plugin.csproj", "{5B5C566F-94B5-4CD2-9BD1-9E40E9564E2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteCMS.Plugin.UserProvider.DNT", "LiteCMS.Plugin.UserProvider.DNT\LiteCMS.Plugin.UserProvider.DNT.csproj", "{0051CF8C-9DCB-4E8F-AEA2-0B6B71BE6B05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{5B5C566F-94B5-4CD2-9BD1-9E40E9564E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B5C566F-94B5-4CD2-9BD1-9E40E9564E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B5C566F-94B5-4CD2-9BD1-9E40E9564E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0051CF8C-9DCB-4E8F-AEA2-0B6B71BE6B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0051CF8C-9DCB-4E8F-AEA2-0B6B71BE6B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0051CF8C-9DCB-4E8F-AEA2-0B6B71BE6B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0051CF8C-9DCB-4E8F-AEA2-0B6B71BE6B05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
