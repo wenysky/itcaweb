@@ -37,6 +37,22 @@ namespace LiteCMS.Web
                         //}
 
                         currentcontext.Response.AppendCookie(cookie);
+
+                        bool pluglogin = true;
+                        if (pluglogin)
+                        {
+                            Plugin.IUserProvider provider=Plugin.ProviderUtitily.GetUserProvider("DNT");
+                            int uid = provider.IsUserExits(info.Username);
+                            if (uid > 0)
+                            {
+                                provider.Login(info.Username, password, false, 16000, "");
+                            }
+                            else
+                            {
+                                provider.Register(info.Username, info.Password, info.Email, true);
+                            }
+                        }
+
                         currentcontext.Response.Write("<script>alert('登录成功,跳转到用户中心.')</script>");
                         currentcontext.Response.Redirect("usercontrolpanel.aspx");
                     }

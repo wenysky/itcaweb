@@ -392,6 +392,14 @@
       <Project>{1CCDB94E-09C9-42A3-A6D9-AA81C47BBD1B}</Project>
       <Name>LiteCMS.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LiteCMS.Plugin.UserProvider.DNT\LiteCMS.Plugin.UserProvider.DNT.csproj">
+      <Project>{0051CF8C-9DCB-4E8F-AEA2-0B6B71BE6B05}</Project>
+      <Name>LiteCMS.Plugin.UserProvider.DNT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LiteCMS.Plugin\LiteCMS.Plugin.csproj">
+      <Project>{5B5C566F-94B5-4CD2-9BD1-9E40E9564E2C}</Project>
+      <Name>LiteCMS.Plugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\main.config" />
