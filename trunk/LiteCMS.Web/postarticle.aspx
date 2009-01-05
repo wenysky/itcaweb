@@ -5,9 +5,9 @@
 override protected void OnInit(EventArgs e)
 {
 	/*
-	This is a cached-file of template("\templates\postarticle.htm"), it was created by LiteCMS.CN Template Engine.
+	This is a cached-file of template("\templates\templatename\postarticle.htm"), it was created by LiteCMS.CN Template Engine.
 	Please do NOT edit it.
-	此文件为模板文件的缓存("\templates\postarticle.htm"),由 LiteCMS.CN 模板引擎生成.
+	此文件为模板文件的缓存("\templates\模板名\postarticle.htm"),由 LiteCMS.CN 模板引擎生成.
 	所以请不要编辑此文件.
 	*/
 	base.OnInit(e);
@@ -362,21 +362,28 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("	<!--内容结束-->\r\n");
 
 	templateBuilder.Append("	<div id=\"footer\">\r\n");
-	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li><a href=\"#\">关于本站</a></li>\r\n");
-	templateBuilder.Append("			<li><a href=\"#\">联系我们</a></li>		\r\n");
-	templateBuilder.Append("			<li><a href=\"#\">广告服务</a></li>	\r\n");
-	templateBuilder.Append("			<li>版权所有 © 2004-2008 <a href=\"#\">");
+	templateBuilder.Append("	    <div>\r\n");
+	templateBuilder.Append("		    <ul>\r\n");
+	templateBuilder.Append("			    <li><a href=\"#\">关于本站</a></li>\r\n");
+	templateBuilder.Append("			    <li><a href=\"#\">联系我们</a></li>		\r\n");
+	templateBuilder.Append("			    <li><a href=\"#\">广告服务</a></li>	\r\n");
+	templateBuilder.Append("			    <li>版权所有 © 2004-2008 <a href=\"#\">");
 	templateBuilder.Append(config.Websitename.ToString().Trim());
 	templateBuilder.Append("</a></li>\r\n");
-	templateBuilder.Append("		</ul>\r\n");
-	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li title=\"执行时间:");
+	templateBuilder.Append("			    <li title=\"执行时间:");
 	templateBuilder.Append(processtime.ToString());
 	templateBuilder.Append(",查询数:");
 	templateBuilder.Append(querycount.ToString());
 	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1302.1</li>\r\n");
-	templateBuilder.Append("		</ul>\r\n");
+	templateBuilder.Append("		    </ul>\r\n");
+	templateBuilder.Append("		</div>\r\n");
+	templateBuilder.Append("		<div id=\"FriendLink\" style=\"clear: both; float: left; \">\r\n");
+	templateBuilder.Append("		    <ul>\r\n");
+	templateBuilder.Append("		        <li>友情连接:<a href=\"http://phprimer.com/\" title=\"PHP/Ruby/交互设计/Ajax/RIA/CSS 技术宝典\" target=\"_blank\">PHPrimer</a> | <a href=\"#\">更多</a>.</li>\r\n");
+	templateBuilder.Append("		        <li>合作伙伴：<a target=\"_blank\" href=\"http://www.microsoft.com/\">微软</a> | <a target=\"_blank\" href=\"http://www.infoq.com/cn/\">InfoQ中文站</a>.</li>\r\n");
+	templateBuilder.Append("		        <li>合作出版社：<a target=\"_blank\" href=\"http://www.broadview.com.cn/\">博文视点</a> | <a target=\"_blank\" href=\"http://www.turingbook.com/\">图灵</a>.</li>\r\n");
+	templateBuilder.Append("		    </ul>\r\n");
+	templateBuilder.Append("		</div>\r\n");
 	templateBuilder.Append("		");
 	templateBuilder.Append(config.Analyticscode.ToString().Trim());
 	templateBuilder.Append("\r\n");
