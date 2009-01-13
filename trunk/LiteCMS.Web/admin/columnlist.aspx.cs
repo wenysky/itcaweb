@@ -70,18 +70,10 @@ namespace LiteCMS.Web.Admin
         protected void gvColumnList_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int columnid = Convert.ToInt32(gvColumnList.Rows[e.RowIndex].Cells[0].Text);
-            if (columnid > 5)//id<6的为系统默认分类不允许删除
-            {
-                Columns.DeleteColumn(columnid);
-                lbMessage.Text = "删除成功!";
-                RemoveColumnListCache();
-                this.BindData();
-            }
-            else
-            {
-                lbMessage.Text = "系统默认分类不允许删除!";
-            }
-            
+            Columns.DeleteColumn(columnid);
+            lbMessage.Text = "删除成功!";
+            RemoveColumnListCache();
+            this.BindData();
         }
 
         protected void gvColumnList_RowUpdating(object sender, GridViewUpdateEventArgs e)
