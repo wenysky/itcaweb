@@ -16,16 +16,10 @@ namespace LiteCMS.Web
             UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
-                currentcontext.Response.Write("<script>alert('请登录后再投递文章,谢谢~');history.back();</script>");
-                currentcontext.Response.End();
-                return;
+                ShowError("投递文章", "请登录后再投递文章,谢谢~", "", "login.aspx");
             }
             columnlist = Columns.GetColumnCollection();
-            if (!YRequest.IsPost())
-            {
-
-            }
-            else
+            if (YRequest.IsPost())
             {
                 int columnid = YRequest.GetInt("columnid", 0);
                 string title = Utils.RemoveHtml(YRequest.GetString("title"));
@@ -43,9 +37,7 @@ namespace LiteCMS.Web
                 articleinfo.Username = userinfo.Username;
                 Articles.CreateArticle(articleinfo);
                 Articles.RemoveArtilceCache();
-
-                currentcontext.Response.Write("<script>alert('发布成功,跳转到栏目列表.')</script>");
-                currentcontext.Response.Redirect(string.Format("showcolumn-{0}-1.aspx", articleinfo.Columnid));
+                ShowMsg("投递文章", "发布成功,跳转到栏目列表.", "", string.Format("showcolumn-{0}-1.aspx", articleinfo.Columnid));
             }
         }
     }

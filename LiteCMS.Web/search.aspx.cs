@@ -15,9 +15,7 @@ namespace LiteCMS.Web
             UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
-                currentcontext.Response.Write("<script>alert('请登录后再搜索文章,谢谢~');history.back();</script>");
-                currentcontext.Response.End();
-                return;
+                ShowError("站内搜索", "请登录后再搜索文章,谢谢~", "", "login.aspx");
             }
             string searchkey = YRequest.GetQueryString("searchkey");
             if (searchkey != string.Empty && Natsuhime.Common.Utils.IsSafeSqlString(searchkey))
@@ -30,11 +28,8 @@ namespace LiteCMS.Web
             }
             else
             {
-                currentcontext.Response.Write("参数异常!");
-                currentcontext.Response.End();
-                return;
+                ShowError("站内搜索", "参数异常!", "", "");
             }
-
         }
     }
 }

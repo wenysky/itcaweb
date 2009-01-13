@@ -40,6 +40,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ImportDLL\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.XML" />
@@ -54,6 +55,10 @@
     </Compile>
     <Compile Include="comment.aspx.cs">
       <DependentUpon>comment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="findpassword.aspx.cs">
+      <DependentUpon>findpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frame.aspx.cs">
@@ -78,6 +83,10 @@
     </Compile>
     <Compile Include="search.aspx.cs">
       <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="showmessage.aspx.cs">
+      <DependentUpon>showmessage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="uploadfile.aspx.cs">
@@ -408,9 +417,11 @@
   <ItemGroup>
     <Content Include="admincp.aspx" />
     <Content Include="comment.aspx" />
+    <Content Include="findpassword.aspx" />
     <Content Include="frame.aspx" />
     <Content Include="NSWindBase.config" />
     <Content Include="search.aspx" />
+    <Content Include="showmessage.aspx" />
     <Content Include="templates\sample\admincp.css" />
     <Content Include="templates\sample\admincp.htm" />
     <Content Include="templates\sample\comment.htm" />
@@ -430,6 +441,8 @@
     <Content Include="templates\sample\_footer.htm" />
     <Content Include="templates\sample\_header.htm" />
     <Content Include="templates\sample\_rightside.htm" />
+    <Content Include="templates\sample\findpassword.htm" />
+    <Content Include="templates\sample\showmessage.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

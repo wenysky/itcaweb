@@ -17,8 +17,7 @@ namespace LiteCMS.Web
             articleinfo = Articles.GetArticleInfo(articleid);
             if (articleinfo == null)
             {
-                currentcontext.Response.Write("不存在的文章!");
-                currentcontext.Response.End();
+                ShowError("查看文章", "错误,不存在的文章!", "", "");
             }
             pagetitle = string.Format("{0} - {1}", Natsuhime.Web.Utils.RemoveHtml(articleinfo.Title), articleinfo.Columnname);
 

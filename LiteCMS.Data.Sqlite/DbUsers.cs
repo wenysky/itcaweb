@@ -116,6 +116,8 @@ namespace LiteCMS.Data.Sqlite
 			    DbHelper.MakeInParam("@adminid", DbType.Int32, 4, info.Adminid),
 			    DbHelper.MakeInParam("@qq", DbType.String, 100, info.Qq),
 			    DbHelper.MakeInParam("@email", DbType.String, 100, info.Email),
+			    DbHelper.MakeInParam("@secques", DbType.String, 50, info.Secquestion),
+			    DbHelper.MakeInParam("@secans", DbType.String, 32, info.Secanswer),
 			    DbHelper.MakeInParam("@msn", DbType.String, 100, info.Msn),
 			    DbHelper.MakeInParam("@hi", DbType.String, 100, info.Hi),
 			    DbHelper.MakeInParam("@nickname", DbType.String, 100, info.Nickname),
@@ -130,7 +132,7 @@ namespace LiteCMS.Data.Sqlite
 			    DbHelper.MakeInParam("@lastlogdate", DbType.DateTime, 8, info.Lastlogdate),
 			    DbHelper.MakeInParam("@regdate", DbType.DateTime, 8, info.Regdate)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_users(username,password,groupid,adminid,qq,email,msn,hi,nickname,realname,regip,del,articlecount,topiccount,replycount,lastlogip,bdday,lastlogdate,regdate) VALUES(@username,@password,@groupid,@adminid,@qq,@email,@msn,@hi,@nickname,@realname,@regip,@del,@articlecount,@topiccount,@replycount,@lastlogip,@bdday,@lastlogdate,@regdate)", dbparams);
+            DbHelper.ExecuteNonQuery(CommandType.Text, "INSERT INTO wy_users(username,password,groupid,adminid,qq,email,secques,secans,msn,hi,nickname,realname,regip,del,articlecount,topiccount,replycount,lastlogip,bdday,lastlogdate,regdate) VALUES(@username,@password,@groupid,@adminid,@qq,@email,@secques,@secans,@msn,@hi,@nickname,@realname,@regip,@del,@articlecount,@topiccount,@replycount,@lastlogip,@bdday,@lastlogdate,@regdate)", dbparams);
         }
 
         public void EditUser(UserInfo info)
@@ -144,6 +146,8 @@ namespace LiteCMS.Data.Sqlite
 			    DbHelper.MakeInParam("@adminid", DbType.Int32, 4, info.Adminid),
 			    DbHelper.MakeInParam("@qq", DbType.String, 100, info.Qq),
 			    DbHelper.MakeInParam("@email", DbType.String, 100, info.Email),
+			    DbHelper.MakeInParam("@secques", DbType.String, 50, info.Secquestion),
+			    DbHelper.MakeInParam("@secans", DbType.String, 32, info.Secanswer),
 			    DbHelper.MakeInParam("@msn", DbType.String, 100, info.Msn),
 			    DbHelper.MakeInParam("@hi", DbType.String, 100, info.Hi),
 			    DbHelper.MakeInParam("@nickname", DbType.String, 100, info.Nickname),
@@ -158,7 +162,7 @@ namespace LiteCMS.Data.Sqlite
 			    DbHelper.MakeInParam("@lastlogdate", DbType.DateTime, 8, info.Lastlogdate),
 			    DbHelper.MakeInParam("@regdate", DbType.DateTime, 8, info.Regdate)
 		    };
-            DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_users SET username=@username,password=@password,groupid=@groupid,adminid=@adminid,qq=@qq,email=@email,msn=@msn,hi=@hi,nickname=@nickname,realname=@realname,regip=@regip,del=@del,articlecount=@articlecount,topiccount=@topiccount,replycount=@replycount,lastlogip=@lastlogip,bdday=@bdday,lastlogdate=@lastlogdate,regdate=@regdate WHERE uid=@uid", dbparams);
+            DbHelper.ExecuteNonQuery(CommandType.Text, "UPDATE wy_users SET username=@username,password=@password,groupid=@groupid,adminid=@adminid,qq=@qq,email=@email,secques=@secques,secans=@secans,msn=@msn,hi=@hi,nickname=@nickname,realname=@realname,regip=@regip,del=@del,articlecount=@articlecount,topiccount=@topiccount,replycount=@replycount,lastlogip=@lastlogip,bdday=@bdday,lastlogdate=@lastlogdate,regdate=@regdate WHERE uid=@uid", dbparams);
         }
     }
 }
