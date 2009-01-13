@@ -248,7 +248,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("		        <th>密码: </th><td><input id=\"password\" name=\"password\" type=\"password\" /></td>\r\n");
 	templateBuilder.Append("		    </tr>\r\n");
 	templateBuilder.Append("		    <tr>\r\n");
-	templateBuilder.Append("		        <th></th><td><input type=\"submit\" value=\"登录\" /></td>\r\n");
+	templateBuilder.Append("		        <th></th><td><input type=\"submit\" value=\"登录\" /><span><a href=\"findpassword.aspx\">忘记密码?点击找回</a></span></td>\r\n");
 	templateBuilder.Append("		    </tr>\r\n");
 	templateBuilder.Append("		</table>\r\n");
 	templateBuilder.Append("		</form>\r\n");
@@ -270,7 +270,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(processtime.ToString());
 	templateBuilder.Append(",查询数:");
 	templateBuilder.Append(querycount.ToString());
-	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1302.1</li>\r\n");
+	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1305.1</li>\r\n");
 	templateBuilder.Append("		    </ul>\r\n");
 	templateBuilder.Append("		</div>\r\n");
 	templateBuilder.Append("		<br />\r\n");

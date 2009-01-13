@@ -1,13 +1,13 @@
-﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="LiteCMS.Web.loginout" %>
+﻿<%@ Page language="c#" AutoEventWireup="false" EnableViewState="false" Inherits="LiteCMS.Web.findpassword" %>
 <%@ Import namespace="LiteCMS.Data" %>
 <%@ Import namespace="LiteCMS.Entity" %>
 <script runat="server">
 override protected void OnInit(EventArgs e)
 {
 	/*
-	This is a cached-file of template("\templates\templatename\loginout.htm"), it was created by LiteCMS.CN Template Engine.
+	This is a cached-file of template("\templates\templatename\findpassword.htm"), it was created by LiteCMS.CN Template Engine.
 	Please do NOT edit it.
-	此文件为模板文件的缓存("\templates\模板名\loginout.htm"),由 LiteCMS.CN 模板引擎生成.
+	此文件为模板文件的缓存("\templates\模板名\findpassword.htm"),由 LiteCMS.CN 模板引擎生成.
 	所以请不要编辑此文件.
 	*/
 	base.OnInit(e);
@@ -237,10 +237,55 @@ override protected void OnInit(EventArgs e)
 
 	templateBuilder.Append("	<!--左栏开始-->\r\n");
 	templateBuilder.Append("	<div id=\"left-side\">\r\n");
-	templateBuilder.Append("		<!--文章开始-->\r\n");
-	templateBuilder.Append("		<div class=\"div-header\">用户注销</div>\r\n");
-	templateBuilder.Append("		<span>注销成功!</span>\r\n");
-	templateBuilder.Append("		<!--文章结束-->\r\n");
+	templateBuilder.Append("		<div class=\"div-header\">找回密码</div>\r\n");
+	templateBuilder.Append("		<br />\r\n");
+	templateBuilder.Append("		<br />\r\n");
+	templateBuilder.Append("		<form action=\"\" method=\"post\" id=\"login\">\r\n");
+	templateBuilder.Append("		    <table>\r\n");
+
+	if (!ispost)
+	{
+
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th>登录帐号: </th><td><input id=\"loginid\" name=\"loginid\" type=\"text\" />(请填写注册的邮箱地址,本站将采用Email激活登陆.)</td>\r\n");
+	templateBuilder.Append("		        </tr>\r\n");
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th></th><td><input type=\"submit\" value=\"提交\" /></td>\r\n");
+	templateBuilder.Append("		        </tr>\r\n");
+
+	}
+	else
+	{
+
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th>登录帐号: </th><td>");
+	templateBuilder.Append(findusername.ToString());
+	templateBuilder.Append("<input id=\"loginid\" name=\"loginid\" type=\"hidden\" value=\"");
+	templateBuilder.Append(findusername.ToString());
+	templateBuilder.Append("\" /></td>\r\n");
+	templateBuilder.Append("		        </tr>		    \r\n");
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th>找回密码提示问题: </th><td>");
+	templateBuilder.Append(secques.ToString());
+	templateBuilder.Append("</td>\r\n");
+	templateBuilder.Append("		        </tr>\r\n");
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th>找回密码提示答案: </th><td><input id=\"secretanswer\" name=\"secretanswer\" type=\"text\" />(请输入注册时填写的验证回答.)</td>\r\n");
+	templateBuilder.Append("		        </tr>\r\n");
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th>新密码  : </th><td><input id=\"password\" name=\"password\" type=\"password\" />(如果您的验证问答正确,可重置登录密码)</td>\r\n");
+	templateBuilder.Append("		        </tr>\r\n");
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th>重复密码: </th><td><input id=\"password2\" name=\"password2\" type=\"password\" />(请再次输入,以确认密码.)</td>\r\n");
+	templateBuilder.Append("		        </tr>\r\n");
+	templateBuilder.Append("		        <tr>\r\n");
+	templateBuilder.Append("		            <th></th><td><input type=\"submit\" value=\"重设密码\" /></td>\r\n");
+	templateBuilder.Append("		        </tr>\r\n");
+
+	}	//end if
+
+	templateBuilder.Append("		    </table>\r\n");
+	templateBuilder.Append("		</form>\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("	<!--左栏结束-->\r\n");
 	templateBuilder.Append("	<!--内容结束-->\r\n");
