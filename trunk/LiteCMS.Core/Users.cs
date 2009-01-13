@@ -19,6 +19,8 @@ namespace LiteCMS.Core
             info.Adminid = Convert.ToInt32(reader["adminid"]);
             info.Qq = reader["qq"].ToString();
             info.Email = reader["email"].ToString();
+            info.Secquestion = reader["secques"].ToString();
+            info.Secanswer = reader["secans"].ToString();
             info.Msn = reader["msn"].ToString();
             info.Hi = reader["hi"].ToString();
             info.Nickname = reader["nickname"].ToString();

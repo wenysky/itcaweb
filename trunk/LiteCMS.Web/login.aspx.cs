@@ -12,8 +12,7 @@ namespace LiteCMS.Web
             pagetitle = "用户登录";
             if (userid > 0)
             {
-                currentcontext.Response.Write("<script>alert('您已经登录了,请不要重复登录!')</script>");
-                currentcontext.Response.Redirect("usercontrolpanl.aspx");
+                ShowMsg("登录消息", "您已经登录了,请不要重复登录!", "", "usercontrolpanel.aspx");
             }
             if (ispost)
             {
@@ -32,14 +31,6 @@ namespace LiteCMS.Web
                         cookie.AddCookieExpiresTime(30 * 3600 * 24);
                         cookie.SaveCookie();
 
-                        //System.Web.HttpCookie cookie = new System.Web.HttpCookie("cmsnt");
-                        //cookie.Values["userid"] = info.Uid.ToString();
-                        //cookie.Values["password"] = info.Password;
-                        //cookie.Values["username"] = info.Username;
-                        //cookie.Values["adminid"] = info.Adminid;
-                        //cookie.Expires = DateTime.Now.AddDays(30d);
-                        //currentcontext.Response.AppendCookie(cookie);
-
                         #region 插件登录
                         bool pluglogin = false;
                         if (pluglogin)
@@ -56,18 +47,16 @@ namespace LiteCMS.Web
                             }
                         }
                         #endregion
-                        currentcontext.Response.Write("<script>alert('登录成功,跳转到用户中心.')</script>");
-                        currentcontext.Response.Redirect("usercontrolpanel.aspx");
+                        ShowMsg("登录消息", "登录成功,跳转到用户中心.", "", "usercontrolpanel.aspx");
                     }
                     else
                     {
-                        currentcontext.Response.Write("<script>alert('登录失败,帐号或密码错误!')</script>");
+                        ShowError("登录消息", "登录失败,帐号或密码错误!", "", "");
                     }
                 }
                 else
                 {
-                    currentcontext.Response.Write("<script>alert('登录失败,用户名或密码为空!')</script>");
-                    currentcontext.Response.Redirect("index.aspx");
+                    ShowError("登录消息", "登录失败,用户名或密码为空,请检查输入框是否填写!", "", "");
                 }
             }
         }

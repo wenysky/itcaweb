@@ -16,9 +16,7 @@ namespace LiteCMS.Web
             userinfo = GetUserInfo();
             if (userinfo == null)
             {
-                pagetitle = "用户中心";
-                currentcontext.Response.Write("<script>alert('帐号验证失败,请登录后再访问用户中心!')</script>");
-                currentcontext.Response.Redirect("login.aspx");
+                ShowError("用户中心", "身份验证失败,请登录后再访问用户中心,谢谢~", "", "login.aspx");
             }
             else
             {
@@ -33,19 +31,23 @@ namespace LiteCMS.Web
                     string oldpassword = YRequest.GetString("oldpassword");
                     string newpassword = YRequest.GetString("newpassword");
                     string newpassword2 = YRequest.GetString("newpassword2");
-                    if (oldpassword == userinfo.Password)
+                    if (newpassword == newpassword2)
                     {
-                        if (newpassword == newpassword2)
+                        string newMD5Password = Natsuhime.Common.Utils.MD5(oldpassword);
+                        if (newMD5Password == userinfo.Password)
                         {
-                            userinfo.Password = newpassword;
+                            userinfo.Password = newMD5Password;
                             Users.EditUser(userinfo);
-                            currentcontext.Response.Write("<script>alert('修改成功.')</script>");
+                            ShowMsg("用户中心", "", "修改密码修改成功.", "");
+                        }
+                        else
+                        {
+                            ShowError("用户中心", "修改密码失败,旧密码验证错误!请检查是否输入正确,大小写锁定键是否被打开等.", "", "");
                         }
                     }
                     else
                     {
-                        currentcontext.Response.Write("<script>alert('旧密码验证错误!请检查是否输入正确,大小写锁定键是否被打开等.')</script>");
-                        currentcontext.Response.End();
+                        ShowError("用户中心", "修改密码失败,两次输入的新密码不一致.", "", "");
                     }
                 }
             }

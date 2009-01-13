@@ -20,16 +20,12 @@ namespace LiteCMS.Web
                     admincookie.Expires = DateTime.Now.AddYears(-1);
                     currentcontext.Response.AppendCookie(admincookie);
                 }
-                currentcontext.Response.Write("成功退出!");
-                currentcontext.Response.Redirect("index.aspx");
-                currentcontext.Response.End();
+                ShowMsg("注销管理状态", "管理员登录注销成功,跳转到前台首页.", "", "index.aspx");
             }
             UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
-                currentcontext.Response.Write("请登录前台.");
-                currentcontext.Response.Redirect("login.aspx");
-                currentcontext.Response.End();
+                ShowError("后台登陆", "发生错误,请先登录前台,然后再访问此页.", "", "login.aspx");
             }
 
             IsAdminLogined();
@@ -37,7 +33,6 @@ namespace LiteCMS.Web
             {
                 string action = YRequest.GetString("action") == string.Empty ? "default" : YRequest.GetString("action");
                 int id = YRequest.GetInt("id", 0);
-
 
                 url = string.Format("frame.aspx?action={1}&id={2}", adminpath, action, id);
             }
@@ -61,12 +56,11 @@ namespace LiteCMS.Web
                         admincookie.Expires = DateTime.Now.AddMinutes(20d);
                         currentcontext.Response.AppendCookie(admincookie);
 
-                        currentcontext.Response.Redirect("admincp.aspx");
+                        ShowMsg("后台登陆", "登录成功!开始跳转到后台首页", "", "admincp.aspx");
                     }
                     else
                     {
-                        currentcontext.Response.Write("用户名或密码错误!");
-                        currentcontext.Response.End();
+                        ShowError("后台登陆", "登录失败,用户名或密码错误!", "", "");
                     }
                 }
             }

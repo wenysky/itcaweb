@@ -13,6 +13,8 @@ namespace LiteCMS.Entity
         public int Adminid { get; set; }
         public string Qq { get; set; }
         public string Email { get; set; }
+        public string Secquestion { get; set; }
+        public string Secanswer { get; set; }
         public string Msn { get; set; }
         public string Hi { get; set; }
         public string Nickname { get; set; }

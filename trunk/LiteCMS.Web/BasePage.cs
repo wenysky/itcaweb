@@ -172,6 +172,38 @@ namespace LiteCMS.Web
 
             InitAllColumnArticleListD();
         }
+        protected void ShowError(string header, string body, string footer, string redirecturl)
+        {
+            currentcontext.Response.Redirect(
+                string.Format("showmessage.aspx?type=error&header={0}&body={1}&footer={2}&redirecturl={3}",
+                    Utils.UrlEncode(header),
+                    Utils.UrlEncode(body),
+                    Utils.UrlEncode(footer),
+                    Utils.UrlEncode(redirecturl)
+                    )
+                );
+            if (this.Context.ApplicationInstance != null)
+            {
+                this.Context.ApplicationInstance.CompleteRequest();
+            }
+            System.Threading.Thread.CurrentThread.Abort();
+        }
+        protected void ShowMsg(string header, string body, string footer, string redirecturl)
+        {
+            currentcontext.Response.Redirect(
+                string.Format("showmessage.aspx?type=msg&header={0}&body={1}&footer={2}&redirecturl={3}",
+                    Utils.UrlEncode(header),
+                    Utils.UrlEncode(body),
+                    Utils.UrlEncode(footer),
+                    Utils.UrlEncode(redirecturl)
+                    )
+                );
+            if (this.Context.ApplicationInstance != null)
+            {
+                this.Context.ApplicationInstance.CompleteRequest();
+            }
+            System.Threading.Thread.CurrentThread.Abort();
+        }
 
         void InitAllColumnArticleListD()
         {
@@ -235,5 +267,6 @@ namespace LiteCMS.Web
                 cache.AddObject("articlelist_hot", hotarticlelist, config.GlobalCacheTimeOut);
             }
         }
+
     }
 }

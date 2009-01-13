@@ -16,8 +16,7 @@ namespace LiteCMS.Web
             UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
-                System.Web.HttpContext.Current.Response.Write("请登录后再使用此功能.");
-                System.Web.HttpContext.Current.Response.End();
+                ShowError("上传文件", "请登录后再上传文件,谢谢~", "", "login.aspx");
             }
             if (ispost)
             {
@@ -57,7 +56,8 @@ namespace LiteCMS.Web
                             Attachments.CreateAttachment(info);
 
                             string result = JavaScriptConvert.SerializeObject(info);
-                            System.Web.HttpContext.Current.Response.Write(result);
+                            currentcontext.Response.Write(result);
+                            currentcontext.Response.End();
                         }
                     }
                 }

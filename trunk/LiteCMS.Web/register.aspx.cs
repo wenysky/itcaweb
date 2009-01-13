@@ -13,29 +13,29 @@ namespace LiteCMS.Web
             UserInfo userinfo = GetUserInfo();
             if (userinfo != null)
             {
-                currentcontext.Response.Write("您已经登录了,请不要重复注册帐号!");
-                currentcontext.Response.End();
-                return;
+                ShowError("注册用户", "您已经登录了,请不要重复注册帐号!", "", "usercontrolpanel.aspx");
             }
             if (ispost)
             {
                 string email = YRequest.GetString("email");
                 string password = YRequest.GetString("password");
                 string username = YRequest.GetString("username");
+                string secquestion = YRequest.GetString("secretquestion");
+                string secanswer = YRequest.GetString("secretanswer");
 
                 if (email != string.Empty && password != string.Empty && username != string.Empty)
                 {
                     if (Users.GetUserInfo(username, 1) != null)
                     {
-                        currentcontext.Response.Write("用户名已存在!");
-                        currentcontext.Response.End();
-                        return;
+                        ShowError("注册用户", "注册失败,用户名已存在!", "", "");
                     }
                     else if (Users.GetUserInfo(email, 0) != null)
                     {
-                        currentcontext.Response.Write("Email已存在!");
-                        currentcontext.Response.End();
-                        return;
+                        ShowError("注册用户", "注册失败,Email已存在!", "", "");
+                    }
+                    if (secquestion == string.Empty || secanswer == string.Empty)
+                    {
+                        ShowError("注册用户", "注册失败,找回密码提示或答案为空.请填写完整以保障帐号安全!", "", "");
                     }
                     UserInfo info = new UserInfo();
                     info.Adminid = 0;
@@ -43,6 +43,8 @@ namespace LiteCMS.Web
                     info.Bdday = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
                     info.Del = 0;
                     info.Email = email;
+                    info.Secquestion = secquestion;
+                    info.Secanswer = Natsuhime.Common.Utils.MD5(secanswer);
                     info.Groupid = 1;
                     info.Hi = "";
                     info.Lastlogdate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
@@ -59,8 +61,7 @@ namespace LiteCMS.Web
                     info.Username = username;
 
                     Users.AddUser(info);
-                    currentcontext.Response.Write("<script>alert('注册帐号成功,跳转到用户中心.')</script>");
-                    currentcontext.Response.Redirect("usercontrolpanel.aspx");
+                    ShowMsg("注册用户", "注册帐号成功,跳转到用户中心.", "", "usercontrolpanel.aspx");
                 }
             }
 

@@ -13,9 +13,7 @@ namespace LiteCMS.Web
             UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
-                currentcontext.Response.Write("请登录后再留言评论.");
-                currentcontext.Response.End();
-                return;
+                ShowError("评论信息", "请登录后再留言评论.", "", "login.aspx");
             }
             string action = YRequest.GetQueryString("action");
             if (action == string.Empty)
@@ -65,9 +63,7 @@ namespace LiteCMS.Web
                 }
                 else
                 {
-                    currentcontext.Response.Write("参数为空.");
-                    currentcontext.Response.End();
-                    return;
+                    ShowError("评论信息", "参数为空,请检查输入!", "", "");
                 }
             }
             else if (action == "del")
@@ -83,15 +79,12 @@ namespace LiteCMS.Web
                 }
                 else
                 {
-                    currentcontext.Response.Write("参数为空.");
-                    currentcontext.Response.End();
-                    return;
+                    ShowError("评论信息", "参数为空,请检查输入!", "", "");
                 }
             }
             else
             {
-                currentcontext.Response.Write("err");
-                currentcontext.Response.End();
+                ShowError("评论信息", "非法的参数!", "", "");
             }
         }
     }
