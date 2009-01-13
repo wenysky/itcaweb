@@ -237,18 +237,18 @@ override protected void OnInit(EventArgs e)
 
 	templateBuilder.Append("	<!--左栏开始-->\r\n");
 	templateBuilder.Append("	<div id=\"left-side\">\r\n");
-	templateBuilder.Append("		<!--文章开始-->\r\n");
 	templateBuilder.Append("		<div class=\"div-header\">系统提示</div>\r\n");
-	templateBuilder.Append("		<div>");
+	templateBuilder.Append("		<div style=\"border-style: dotted; border-width: 1px; margin: 100px auto 200px; width: 60%;\">\r\n");
+	templateBuilder.Append("		    <div class=\"div-header\" style=\"height:20px;\">");
 	templateBuilder.Append(messageheader.ToString());
 	templateBuilder.Append("</div>\r\n");
-	templateBuilder.Append("		<div>");
+	templateBuilder.Append("		    <div style=\"padding: 10px;\">");
 	templateBuilder.Append(messagebody.ToString());
 	templateBuilder.Append("</div>\r\n");
-	templateBuilder.Append("		<div>");
+	templateBuilder.Append("		    <div style=\"padding-left: 10px;\">");
 	templateBuilder.Append(messagefooter.ToString());
 	templateBuilder.Append("</div>		\r\n");
-	templateBuilder.Append("		<div>\r\n");
+	templateBuilder.Append("		    <div style=\"padding: 10px;\">\r\n");
 
 	if (isautoredirect)
 	{
@@ -260,7 +260,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("<a href=\"");
 	templateBuilder.Append(redirecturl.ToString());
 	templateBuilder.Append("\">如果浏览器没有自动转向, 请点击这里.</a></div>\r\n");
-	templateBuilder.Append("		<!--文章结束-->\r\n");
+	templateBuilder.Append("		</div>\r\n");
 	templateBuilder.Append("	</div>\r\n");
 	templateBuilder.Append("	<!--左栏结束-->\r\n");
 	templateBuilder.Append("	<!--内容结束-->\r\n");
@@ -300,7 +300,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(processtime.ToString());
 	templateBuilder.Append(",查询数:");
 	templateBuilder.Append(querycount.ToString());
-	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1305.1</li>\r\n");
+	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1314.1</li>\r\n");
 	templateBuilder.Append("		    </ul>\r\n");
 	templateBuilder.Append("		</div>\r\n");
 	templateBuilder.Append("		<br />\r\n");

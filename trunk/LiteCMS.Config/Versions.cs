@@ -8,7 +8,7 @@ namespace LiteCMS.Config
 {
     public class Versions
     {
-        public const string ASSEMBLY_VERSION = "0.1.1305.1";
+        public const string ASSEMBLY_VERSION = "0.1.1314.1";
         public static string GetProductVersionFromStrimg()
         {
             //从这里设置生成程序集的版本号.
