@@ -8,13 +8,13 @@
 	
 	<!--左栏开始-->
 	<div id="left-side">
-		<!--文章开始-->
 		<div class="div-header">系统提示</div>
-		<div>{messageheader}</div>
-		<div>{messagebody}</div>
-		<div>{messagefooter}</div>		
-		<div><%if {isautoredirect}%><span id="autoredirect"></span><%/if%><a href="{redirecturl}">如果浏览器没有自动转向, 请点击这里.</a></div>
-		<!--文章结束-->
+		<div style="border-style: dotted; border-width: 1px; margin: 100px auto 200px; width: 60%;">
+		    <div class="div-header" style="height:20px;">{messageheader}</div>
+		    <div style="padding: 10px;">{messagebody}</div>
+		    <div style="padding-left: 10px;">{messagefooter}</div>		
+		    <div style="padding: 10px;"><%if {isautoredirect}%><span id="autoredirect"></span><%/if%><a href="{redirecturl}">如果浏览器没有自动转向, 请点击这里.</a></div>
+		</div>
 	</div>
 	<!--左栏结束-->
 
