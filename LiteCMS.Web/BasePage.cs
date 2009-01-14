@@ -228,7 +228,7 @@ namespace LiteCMS.Web
                 //{
                 //    System.Diagnostics.Debug.WriteLine(b.Key.Columnname + ":" + b.Value.Count);
                 //}
-                cache.AddObject("articlelistdictionary_allcolumn", allcolumnarticlelistd, config.GlobalCacheTimeOut);
+                cache.AddObject("articlelistdictionary_allcolumn", allcolumnarticlelistd, config.Globalcachetimeout);
             }
         }
         void InitMostGradeCommentList()
@@ -238,7 +238,7 @@ namespace LiteCMS.Web
             if (mostgradecommentlist == null)
             {
                 mostgradecommentlist = Comments.GetMostGradComments(6, 1);
-                cache.AddObject("commentlist_mostgrade", mostgradecommentlist, config.GlobalCacheTimeOut);
+                cache.AddObject("commentlist_mostgrade", mostgradecommentlist, config.Globalcachetimeout);
             }
         }
         void InitLatestCommentList()
@@ -254,7 +254,7 @@ namespace LiteCMS.Web
                 }
 #endif
                 latestcommentlist = Comments.GetCommentCollection(0, 6, 1);
-                cache.AddObject("commentlist_latest", latestcommentlist, config.GlobalCacheTimeOut);
+                cache.AddObject("commentlist_latest", latestcommentlist, config.Globalcachetimeout);
             }
         }
         void InitHotArticleList()
@@ -264,7 +264,7 @@ namespace LiteCMS.Web
             if (hotarticlelist == null)
             {
                 hotarticlelist = Articles.GetHotArticles(6, 1);
-                cache.AddObject("articlelist_hot", hotarticlelist, config.GlobalCacheTimeOut);
+                cache.AddObject("articlelist_hot", hotarticlelist, config.Globalcachetimeout);
             }
         }
 
