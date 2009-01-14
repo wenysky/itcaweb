@@ -13,7 +13,7 @@ override protected void OnInit(EventArgs e)
 	*/
 	base.OnInit(e);
 
-	templateBuilder.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
+	templateBuilder.Append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
 	templateBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
 	templateBuilder.Append("<head>\r\n");
 	templateBuilder.Append("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/");
@@ -24,7 +24,7 @@ override protected void OnInit(EventArgs e)
 	if (pagetitle=="")
 	{
 
-	templateBuilder.Append("<title>");
+	templateBuilder.Append("    <title>");
 	templateBuilder.Append(config.Websitename.ToString().Trim());
 	templateBuilder.Append(" - ");
 	templateBuilder.Append(config.Seotitle.ToString().Trim());
@@ -34,7 +34,7 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("<title>");
+	templateBuilder.Append("    <title>");
 	templateBuilder.Append(pagetitle.ToString());
 	templateBuilder.Append(" - ");
 	templateBuilder.Append(config.Websitename.ToString().Trim());
@@ -44,378 +44,303 @@ override protected void OnInit(EventArgs e)
 
 	}	//end if
 
+	templateBuilder.Append("    <script src=\"javascript/common.js\" type=\"text/javascript\" language=\"javascript\"></"+ "script>\r\n");
+	templateBuilder.Append("    <script src=\"javascript/common_002.js\" type=\"text/javascript\" language=\"javascript\"></"+ "script>\r\n");
 	templateBuilder.Append("</head>\r\n");
 	templateBuilder.Append("<body>\r\n");
-	templateBuilder.Append("<div id=\"wrap\">\r\n");
-	templateBuilder.Append("	<!--头部开始-->\r\n");
-	templateBuilder.Append("	<div id=\"header\">\r\n");
-	templateBuilder.Append("		<div id=\"main-menu\">\r\n");
-	templateBuilder.Append("			<ul>\r\n");
-	templateBuilder.Append("				<li><a href=\"index.aspx\">首页</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
-	templateBuilder.Append("            <!--<li><a href=\"#\">博客</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"bbs/\">论坛</a></li>-->\r\n");
-
-	if (userid>0)
-	{
-
-	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心[");
-	templateBuilder.Append(username.ToString());
-	templateBuilder.Append("]</a></li>\r\n");
-
-	if (adminid>0)
-	{
-
-	templateBuilder.Append("				<li><a href=\"admincp.aspx\" target=\"_blank\">系统设置</a></li>\r\n");
-
-	}	//end if
-
-	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销</a></li>\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"register.aspx\">注册</a></li>			\r\n");
-
-	}	//end if
-
-	templateBuilder.Append("			</ul>\r\n");
-	templateBuilder.Append("		</div>\r\n");
-	templateBuilder.Append("	</div>\r\n");
-	templateBuilder.Append("	<!--头部结束-->\r\n");
-
-
-	templateBuilder.Append("	<!--内容开始-->\r\n");
-
-	templateBuilder.Append("	<!--右栏开始-->\r\n");
-	templateBuilder.Append("	<div id=\"right-side\">\r\n");
-	templateBuilder.Append("		<div class=\"div-header\">站内搜索</div>\r\n");
-	templateBuilder.Append("		<div id=\"search\"><form action=\"search.aspx\" method=\"get\">标题搜索&nbsp;:&nbsp;<input type=\"text\" id=\"searchkey\" name=\"searchkey\" />&nbsp;&nbsp;<input type=\"submit\" value=\"搜索\" /></form></div>	\r\n");
-	templateBuilder.Append("		<div id=\"hot-article\" class=\"right-list\">\r\n");
-
-	if (config.Urlrewrite==1)
-	{
-
-	templateBuilder.Append("			<div class=\"div-header\"><a href=\"showcolumn-hot");
-	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
-	templateBuilder.Append("\">热门新闻</a></div>\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("			<div class=\"div-header\"><a href=\"showcolumn.aspx?type=hot\">热门新闻</a></div>\r\n");
-
-	}	//end if
-
-	templateBuilder.Append("			<ul>\r\n");
-
-	int hotarticleinfo__loop__id=0;
-	foreach(ArticleInfo hotarticleinfo in hotarticlelist)
-	{
-		hotarticleinfo__loop__id++;
-
-
-	if (config.Urlrewrite==1)
-	{
-
-	templateBuilder.Append("				<li><h2><a href=\"showarticle-");
-	templateBuilder.Append(hotarticleinfo.Articleid.ToString().Trim());
-	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
-	templateBuilder.Append("\">");
-	templateBuilder.Append(hotarticleinfo.Title.ToString().Trim());
-	templateBuilder.Append("</a></h2></li>\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("				<li><h2><a href=\"showarticle.aspx?id=");
-	templateBuilder.Append(hotarticleinfo.Articleid.ToString().Trim());
-	templateBuilder.Append("\">");
-	templateBuilder.Append(hotarticleinfo.Title.ToString().Trim());
-	templateBuilder.Append("</a></h2></li>\r\n");
-
-	}	//end if
-
-
-	}	//end loop
-
-	templateBuilder.Append("			</ul>\r\n");
-	templateBuilder.Append("		</div>\r\n");
-	templateBuilder.Append("		<div id=\"latest-comment\" class=\"right-list\">\r\n");
-	templateBuilder.Append("			<div class=\"div-header\">最新评论</div>\r\n");
-	templateBuilder.Append("			<ul>\r\n");
-
-	int latestcommentinfo__loop__id=0;
-	foreach(CommentInfo latestcommentinfo in latestcommentlist)
-	{
-		latestcommentinfo__loop__id++;
-
-	templateBuilder.Append("				<li>\r\n");
-	templateBuilder.Append("					<span class=\"content\">");
-	templateBuilder.Append(latestcommentinfo.Content.ToString().Trim());
-	templateBuilder.Append("</span>\r\n");
-	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">");
-	templateBuilder.Append(latestcommentinfo.Username.ToString().Trim());
-	templateBuilder.Append(" </span>对 <span class=\"from-article\">\"<a href=\"\r\n");
-
-	if (config.Urlrewrite==1)
-	{
-
-	templateBuilder.Append("showarticle-");
-	templateBuilder.Append(latestcommentinfo.Articleid.ToString().Trim());
-	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("showarticle.aspx?id=");
-	templateBuilder.Append(latestcommentinfo.Articleid.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}	//end if
-
-	templateBuilder.Append("\">");
-	templateBuilder.Append(latestcommentinfo.Articletitle.ToString().Trim());
-	templateBuilder.Append("</a>\"</span> 的评论</div>\r\n");
-	templateBuilder.Append("				</li>\r\n");
-
-	}	//end loop
-
-	templateBuilder.Append("			</ul>\r\n");
-	templateBuilder.Append("		</div>\r\n");
-	templateBuilder.Append("		<div id=\"hot-comment\" class=\"right-list\">\r\n");
-	templateBuilder.Append("			<div class=\"div-header\">热门评论</div>\r\n");
-	templateBuilder.Append("			<ul>\r\n");
-
-	int mostgradecommentinfo__loop__id=0;
-	foreach(CommentInfo mostgradecommentinfo in mostgradecommentlist)
-	{
-		mostgradecommentinfo__loop__id++;
-
-	templateBuilder.Append("				<li>\r\n");
-	templateBuilder.Append("					<span class=\"content\">");
-	templateBuilder.Append(mostgradecommentinfo.Content.ToString().Trim());
-	templateBuilder.Append("</span>\r\n");
-	templateBuilder.Append("					<div class=\"comment-info\"><span class=\"comment-author\">");
-	templateBuilder.Append(mostgradecommentinfo.Username.ToString().Trim());
-	templateBuilder.Append(" </span>对 <span class=\"from-article\"><a href=\"\r\n");
-
-	if (config.Urlrewrite==1)
-	{
-
-	templateBuilder.Append("showarticle-");
-	templateBuilder.Append(mostgradecommentinfo.Articleid.ToString().Trim());
-	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("showarticle.aspx?id=");
-	templateBuilder.Append(mostgradecommentinfo.Articleid.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}	//end if
-
-	templateBuilder.Append("\">");
-	templateBuilder.Append(mostgradecommentinfo.Articletitle.ToString().Trim());
-	templateBuilder.Append("</a></span> 的评论</div>\r\n");
-	templateBuilder.Append("				</li>\r\n");
-
-	}	//end loop
-
-	templateBuilder.Append("			</ul>\r\n");
-	templateBuilder.Append("		</div>\r\n");
-	templateBuilder.Append("	</div>\r\n");
-	templateBuilder.Append("	<!--右栏结束-->	\r\n");
-
-
-	templateBuilder.Append("	<!--左栏开始-->\r\n");
-	templateBuilder.Append("	<div id=\"left-side\">\r\n");
-	templateBuilder.Append("		<!--新闻列表开始-->\r\n");
-	templateBuilder.Append("		<!--推荐文章开始-->\r\n");
-	templateBuilder.Append("		<div class=\"div-header\">首页最新推送文章</div>\r\n");
-	templateBuilder.Append("		<!--分页开始-->\r\n");
-	templateBuilder.Append("		<div id=\"pager\">页码:");
-	templateBuilder.Append(pagecounthtml.ToString());
-	templateBuilder.Append("</div>\r\n");
-	templateBuilder.Append("		<!--分页结束-->\r\n");
-	templateBuilder.Append("		<ul>\r\n");
-
-	int info__loop__id=0;
-	foreach(ArticleInfo info in mainarticlelist)
-	{
-		info__loop__id++;
-
-	templateBuilder.Append("			    <li class=\"article-list\">			    \r\n");
-	templateBuilder.Append("				    <h2 class=\"title\"><a href=\"\r\n");
-
-	if (config.Urlrewrite==1)
-	{
-
-	templateBuilder.Append("showarticle-");
-	templateBuilder.Append(info.Articleid.ToString().Trim());
-	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("showarticle.aspx?id=");
-	templateBuilder.Append(info.Articleid.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}	//end if
-
-	templateBuilder.Append("\">");
-	templateBuilder.Append(info.Title.ToString().Trim());
-	templateBuilder.Append("</a></h2>\r\n");
-	templateBuilder.Append("				    <span class=\"description\">");
-	templateBuilder.Append(info.Summary.ToString().Trim());
-	templateBuilder.Append("</span>\r\n");
-	templateBuilder.Append("				    <div class=\"post-info\"><span class=\"author\">");
-	templateBuilder.Append(info.Username.ToString().Trim());
-	templateBuilder.Append("</span>投递 @ 发布于<span class=\"post-date\">");
-	templateBuilder.Append(info.Postdate.ToString().Trim());
-	templateBuilder.Append("</span><span>评论(");
-	templateBuilder.Append(info.Commentcount.ToString().Trim());
-	templateBuilder.Append(")</span></div>\r\n");
-	templateBuilder.Append("			    </li>\r\n");
-
-	}	//end loop
-
-	templateBuilder.Append("		</ul>		\r\n");
-	templateBuilder.Append("		<!--分页开始-->\r\n");
-	templateBuilder.Append("		<div id=\"pager\">页码:");
-	templateBuilder.Append(pagecounthtml.ToString());
-	templateBuilder.Append("</div>\r\n");
-	templateBuilder.Append("		<!--分页结束-->\r\n");
-	templateBuilder.Append("		<!--推荐文章结束-->\r\n");
-	templateBuilder.Append("		<!--栏目列表开始-->		\r\n");
-	templateBuilder.Append("	    <!--所有栏目循环开始-->\r\n");
-
-	int allarticlelist__loop__id=0;
-	foreach(KeyValuePair<ColumnInfo,List<ArticleInfo>> allarticlelist in allcolumnarticlelistd)
-	{
-		allarticlelist__loop__id++;
-
-	templateBuilder.Append("		    <div class=\"div-header\"><a href=\"\r\n");
-
-	if (config.Urlrewrite==1)
-	{
-
-	templateBuilder.Append("showcolumn-");
-	templateBuilder.Append(allarticlelist.Key.Columnid.ToString().Trim());
-	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("showcolumn.aspx?cid=");
-	templateBuilder.Append(allarticlelist.Key.Columnid.ToString().Trim());
-	templateBuilder.Append("\r\n");
-
-	}	//end if
-
-	templateBuilder.Append("\">");
-	templateBuilder.Append(allarticlelist.Key.Columnname.ToString().Trim());
-	templateBuilder.Append("</div>\r\n");
-	templateBuilder.Append("		    <ul>\r\n");
-
-	int allarticleinfo__loop__id=0;
-	foreach(ArticleInfo allarticleinfo in allarticlelist.Value)
-	{
-		allarticleinfo__loop__id++;
-
-
-	if (config.Urlrewrite==1)
-	{
-
-	templateBuilder.Append("			    <li class=\"article-list\"><h2><a href=\"showarticle-");
-	templateBuilder.Append(allarticleinfo.Articleid.ToString().Trim());
-	templateBuilder.Append(config.Urlrewriteextname.ToString().Trim());
-	templateBuilder.Append("\">");
-	templateBuilder.Append(allarticleinfo.Title.ToString().Trim());
-	templateBuilder.Append("</a></h2></li>\r\n");
-
-	}
-	else
-	{
-
-	templateBuilder.Append("			    <li class=\"article-list\"><h2><a href=\"showarticle.aspx?id=");
-	templateBuilder.Append(allarticleinfo.Articleid.ToString().Trim());
-	templateBuilder.Append("\">");
-	templateBuilder.Append(allarticleinfo.Title.ToString().Trim());
-	templateBuilder.Append("</a></h2></li>\r\n");
-
-	}	//end if
-
-
-	}	//end loop
-
-	templateBuilder.Append("		    </ul>\r\n");
-
-	}	//end loop
-
-	templateBuilder.Append("	    <!--所有栏目循环结束-->		\r\n");
-	templateBuilder.Append("		<!--栏目列表结束-->\r\n");
-	templateBuilder.Append("		<!--插件文章列表开始\r\n");
-	templateBuilder.Append("		<div class=\"div-header\">论坛新帖</div>\r\n");
-	templateBuilder.Append("		<ul>\r\n");
-	templateBuilder.Append("			<li class=\"article-list\"><h2><a href=\"#\">鲍尔默感恩节答谢名单 盖茨杨致远榜上有名</a></h2></li>\r\n");
-	templateBuilder.Append("			<li class=\"article-list\"><h2><a href=\"#\">英国卫报：疯狂的树屋</a></h2></li>\r\n");
-	templateBuilder.Append("			<li class=\"article-list\"><h2><a href=\"#\">阿里巴巴“援冬”产品取得开门红</a></h2></li>\r\n");
-	templateBuilder.Append("		</ul>\r\n");
-	templateBuilder.Append("		插件文章列表开始-->	\r\n");
-	templateBuilder.Append("		<!--新闻列表结束-->\r\n");
-	templateBuilder.Append("	</div>\r\n");
-	templateBuilder.Append("	<!--左栏结束-->\r\n");
-	templateBuilder.Append("	<!--内容结束-->\r\n");
-
-	templateBuilder.Append("	<div id=\"footer\">\r\n");
-	templateBuilder.Append("	    <div>\r\n");
-	templateBuilder.Append("		    <ul>\r\n");
-	templateBuilder.Append("			    <li><a href=\"#\">关于本站</a></li>\r\n");
-	templateBuilder.Append("			    <li><a href=\"#\">联系我们</a></li>		\r\n");
-	templateBuilder.Append("			    <li><a href=\"#\">广告服务</a></li>	\r\n");
-	templateBuilder.Append("			    <li>版权所有 © 2004-2008 <a href=\"#\">");
-	templateBuilder.Append(config.Websitename.ToString().Trim());
-	templateBuilder.Append("</a></li>\r\n");
-	templateBuilder.Append("			    <li title=\"执行时间:");
-	templateBuilder.Append(processtime.ToString());
-	templateBuilder.Append(",查询数:");
-	templateBuilder.Append(querycount.ToString());
-	templateBuilder.Append("\">Powered by <a href=\"http://www.litecms.cn/\">LiteCMS</a> 0.1.1314.1</li>\r\n");
-	templateBuilder.Append("		    </ul>\r\n");
-	templateBuilder.Append("		</div>\r\n");
-	templateBuilder.Append("		<br />\r\n");
-	templateBuilder.Append("		<div id=\"FriendLink\" style=\"float:right; \">\r\n");
-	templateBuilder.Append("		    <ul>\r\n");
-	templateBuilder.Append("		        <li>友情连接:<a href=\"http://phprimer.com/\" title=\"PHP/Ruby/交互设计/Ajax/RIA/CSS 技术宝典\" target=\"_blank\">PHPrimer</a> | <a href=\"#\">更多</a>.</li>\r\n");
-	templateBuilder.Append("		        <li>合作伙伴：<a target=\"_blank\" href=\"http://www.microsoft.com/\">微软</a> | <a target=\"_blank\" href=\"http://www.infoq.com/cn/\">InfoQ中文站</a>.</li>\r\n");
-	templateBuilder.Append("		        <li>合作出版社：<a target=\"_blank\" href=\"http://www.broadview.com.cn/\">博文视点</a> | <a target=\"_blank\" href=\"http://www.turingbook.com/\">图灵</a>.</li>\r\n");
-	templateBuilder.Append("		    </ul>\r\n");
-	templateBuilder.Append("		</div>\r\n");
-	templateBuilder.Append("		");
-	templateBuilder.Append(config.Analyticscode.ToString().Trim());
-	templateBuilder.Append("\r\n");
-	templateBuilder.Append("	</div>\r\n");
-	templateBuilder.Append("</div>\r\n");
+	templateBuilder.Append("    <div id=\"header\">\r\n");
+	templateBuilder.Append("        <div id=\"header_content\">\r\n");
+	templateBuilder.Append("            <div class=\"user_info\">\r\n");
+	templateBuilder.Append("                <form action=\"login.aspx\" method=\"post\">\r\n");
+	templateBuilder.Append("                    <label>用户名:</label> <input name=\"loginid\" class=\"input_tx\" size=\"18\" type=\"text\">\r\n");
+	templateBuilder.Append("                    <label>密码:</label> <input name=\"password\" class=\"input_tx\" size=\"18\" type=\"password\">\r\n");
+	templateBuilder.Append("                    <input id=\"cookietime\" value=\"315360000\" name=\"cookietime\" class=\"input_remember\" type=\"checkbox\">\r\n");
+	templateBuilder.Append("                    <label class=\"label_remember\" for=\"cookietime\">记住我</label>\r\n");
+	templateBuilder.Append("                    <input class=\"input_sub\" value=\"登录\" type=\"submit\">\r\n");
+	templateBuilder.Append("                </form>\r\n");
+	templateBuilder.Append("                <div class=\"login_ext\">\r\n");
+	templateBuilder.Append("                    <a href=\"http://x.discuz.net/do.php?action=register\">注册新用户</a>| <a href=\"http://x.discuz.net/do.php?action=lostpasswd\">找回密码</a>\r\n");
+	templateBuilder.Append("                </div>\r\n");
+	templateBuilder.Append("            </div>\r\n");
+	templateBuilder.Append("            <h2><a href=\"#\"><img src=\"templates/");
+	templateBuilder.Append(config.Templatefolder.ToString().Trim());
+	templateBuilder.Append("/images/logo.gif\" alt=\"LiteCMS官方站\"></a></h2>\r\n");
+	templateBuilder.Append("            <div class=\"ad_header\"><a href=\"#\" target=\"_blank\"><img src=\"templates/");
+	templateBuilder.Append(config.Templatefolder.ToString().Trim());
+	templateBuilder.Append("/images/ss7ad.gif\" alt=\"SupeSite7有奖捉虫，提前获得测试版\" width=\"800\" height=\"65\"></a></div>\r\n");
+	templateBuilder.Append("        </div>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+
+
+	templateBuilder.Append("    <div id=\"pagebody\">\r\n");
+	templateBuilder.Append("    <div id=\"pagebody_extbg\">\r\n");
+	templateBuilder.Append("        <div id=\"nav\">\r\n");
+	templateBuilder.Append("            <ul class=\"main_nav\">\r\n");
+	templateBuilder.Append("                <li class=\"current\"><a href=\"http://x.discuz.net/index.php\"><span>首页</span></a></li>\r\n");
+	templateBuilder.Append("                <li><a style=\"background: transparent none repeat scroll 0% 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;\" href=\"http://x.discuz.net/action-uchblog.html\"><span>日志</span></a></li>\r\n");
+	templateBuilder.Append("                <li><a href=\"http://x.discuz.net/action-uchimage.html\"><span>相册</span></a></li>\r\n");
+	templateBuilder.Append("                <li><a href=\"http://x.discuz.net/action-news.html\"><span>资讯</span></a></li>\r\n");
+	templateBuilder.Append("                <li><a href=\"http://x.discuz.net/action-bbs.html\"><span>论坛</span></a></li>\r\n");
+	templateBuilder.Append("                <li><a href=\"http://x.discuz.net/m.php?name=movie\"><span>影视</span></a></li>\r\n");
+	templateBuilder.Append("                <li><a href=\"http://x.discuz.net/m.php?name=hr\"><span>招聘</span></a></li>\r\n");
+	templateBuilder.Append("            </ul>\r\n");
+	templateBuilder.Append("        </div>\r\n");
+	templateBuilder.Append("    <div class=\"column\">\r\n");
+	templateBuilder.Append("    <div id=\"supehot\"><div class=\"box_l\" id=\"index_focus_turn\">\r\n");
+	templateBuilder.Append("        <div id=\"index_focus_turn_pic\">\r\n");
+	templateBuilder.Append("            <div id=\"index_focus_turn_picList\" style=\"left: 0px; top: -675px;\">\r\n");
+	templateBuilder.Append("                <ul>\r\n");
+	templateBuilder.Append("                    <li><a href=\"http://x.discuz.net/viewnews-130107.html\"><img src=\"upload/672953_2008120210103912VQ3.jpg\" alt=\"\"></a></li>\r\n");
+	templateBuilder.Append("                    <li><a href=\"http://x.discuz.net/viewnews-130105.html\"><img src=\"upload/672953_200812021010352kqXZ_002.jpg\" alt=\"\"></a></li>\r\n");
+	templateBuilder.Append("                    <li><a href=\"http://x.discuz.net/viewnews-130104.html\"><img src=\"upload/672953_2008120210103245LtN.jpg\" alt=\"\"></a></li>\r\n");
+	templateBuilder.Append("                    <li><a href=\"http://x.discuz.net/viewnews-130094.html\"><img src=\"upload/672953_2008120210101325m31.gif\" alt=\"\"></a></li>\r\n");
+	templateBuilder.Append("                </ul>\r\n");
+	templateBuilder.Append("            </div>\r\n");
+	templateBuilder.Append("            <div id=\"index_focus_turn_opvdiv\"></div>\r\n");
+	templateBuilder.Append("            <div id=\"index_focus_turn_tx\">\r\n");
+	templateBuilder.Append("                <ul><li class=\"normal\">实战互联网开放平台 《站长》第八期发布</li><li class=\"normal\">六剑合璧Comsenz发布UCenter系列旗舰产品</li><li class=\"normal\">2008年第三届互联网站长年会在京成功召开</li><li class=\"current\">李明顺：解读社区营销现状及未来展望</li></ul>\r\n");
+	templateBuilder.Append("            </div>\r\n");
+	templateBuilder.Append("        </div>\r\n");
+	templateBuilder.Append("    <div id=\"index_focus_turn_btn\">\r\n");
+	templateBuilder.Append("    <ul><li class=\"normal\"><img src=\"upload/672953_2008120210103912VQ3_002.jpg\" alt=\"\"></li><li class=\"normal\"><img src=\"upload/672953_200812021010352kqXZ.jpg\" alt=\"\"></li><li class=\"normal\"><img src=\"upload/672953_2008120210103245LtN_002.jpg\" alt=\"\"></li><li class=\"current\"><img src=\"upload/672953_2008120210101325m31.gif\" alt=\"\"></li></ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    <div class=\"box_r\">\r\n");
+	templateBuilder.Append("    <div class=\"supehot_txbox\">\r\n");
+	templateBuilder.Append("    <div class=\"supehot_txbox_caption\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li class=\"current\"><em>最新资讯</em></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    <div class=\"supehot_txbox_content\"><ul class=\"current\" id=\"supehot_list_1\">\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130093.html\">童虎：UCenter正式版新增功能与细节改进</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130090.html\">2007网络社区权威报告即将发布</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130091.html\">SoGua采用Discuz!NT打造音乐社区</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130092.html\">戴志康荣获《中国企业家》300期十大封面...</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130094.html\">李明顺：解读社区营销现状及未来展望</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130095.html\">Discuz!NT3.0 设计思路及功能展望</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130096.html\">Comsenz产品首次促销 五大礼包等待用户</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130097.html\">国内第一本全面关注站长群体的杂志面市</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130098.html\">Discuz!仿Facebook社交网络公测开放</a></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><!--supehot end	-->\r\n");
+	templateBuilder.Append("    <div id=\"supespecial\">\r\n");
+	templateBuilder.Append("    <ul><li>调查：<a href=\"http://x.discuz.net/action-poll-pollid-1.html\" target=\"_blank\">SupeSite/X-Space页面布局调查</a></li>\r\n");
+	templateBuilder.Append("    <li>公告：<a href=\"http://x.discuz.net/action-announcement-id-2.html\" target=\"_blank\">欢迎使用个人空间</a>\r\n");
+	templateBuilder.Append("    </li><li class=\"supesearch\">\r\n");
+	templateBuilder.Append("    <form id=\"searchform\" action=\"http://x.discuz.net/batch.search.php\" method=\"post\">\r\n");
+	templateBuilder.Append("    <label>搜索：</label>\r\n");
+	templateBuilder.Append("    <input id=\"searchkey\" name=\"searchkey\" size=\"23\" class=\"input_tx\" type=\"text\">\r\n");
+	templateBuilder.Append("    <input value=\"news\" name=\"type\" type=\"hidden\">\r\n");
+	templateBuilder.Append("    <input value=\"搜索\" id=\"submit\" class=\"input_search\" name=\"searchbtn\" type=\"submit\">\r\n");
+	templateBuilder.Append("    <input name=\"subjectsearch\" value=\"true\" type=\"hidden\">\r\n");
+	templateBuilder.Append("    </form>\r\n");
+	templateBuilder.Append("    </li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div><!--supespecial end-->\r\n");
+	templateBuilder.Append("    <div id=\"supenews\" class=\"supe_globalmodule\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalmodule_l\">\r\n");
+	templateBuilder.Append("    <div class=\"global_caption\"><h3>资 讯</h3><a href=\"http://x.discuz.net/action-news.html\">更多&gt;&gt;</a></div><div class=\"supenews_pic\">\r\n");
+	templateBuilder.Append("    <dl>\r\n");
+	templateBuilder.Append("    <dt><a href=\"http://x.discuz.net/viewnews-130105.html\"><img src=\"upload/672953_200812021010352kqXZ.jpg\" alt=\"672953_200812021010352kqxz\"></a></dt>\r\n");
+	templateBuilder.Append("    <dd>\r\n");
+	templateBuilder.Append("    <h5><a href=\"http://x.discuz.net/viewnews-130105.html\">六剑合璧Comsenz发布UCen...</a></h5>\r\n");
+	templateBuilder.Append("    <p>4月21日，中国领先的社区平台与服务提供商康盛创想(Comsenz)基于UCenter体系的六大创新产品正式对外提供...</p>\r\n");
+	templateBuilder.Append("    </dd>\r\n");
+	templateBuilder.Append("    </dl>\r\n");
+	templateBuilder.Append("    <dl>\r\n");
+	templateBuilder.Append("    <dt><a href=\"http://x.discuz.net/viewnews-130107.html\"><img src=\"upload/672953_2008120210103912VQ3_002.jpg\" alt=\"672953_2008120210103912vq3\"></a></dt>\r\n");
+	templateBuilder.Append("    <dd>\r\n");
+	templateBuilder.Append("    <h5><a href=\"http://x.discuz.net/viewnews-130107.html\">实战互联网开放平台 《站...</a></h5>\r\n");
+	templateBuilder.Append("    <p>10月28日，以近期互联网热点话题开放平台为主旋律而制作的《站长》第八期今日发布。本期杂志从站长和开...</p>\r\n");
+	templateBuilder.Append("    </dd>\r\n");
+	templateBuilder.Append("    </dl>\r\n");
+	templateBuilder.Append("    </div><div class=\"supenews_tx\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130093.html\">童虎：UCenter正式版新增功能与细节改进</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130105.html\">六剑合璧Comsenz发布UCenter系列旗舰产品</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130098.html\">Discuz!仿Facebook社交网络公测开放</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130107.html\">实战互联网开放平台 《站长》第八期发布</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130094.html\">李明顺：解读社区营销现状及未来展望</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130104.html\">2008年第三届互联网站长年会在京成功召开</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130090.html\">2007网络社区权威报告即将发布</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130106.html\">康盛创想Discuz! 7.0官方论坛正式上线</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130091.html\">SoGua采用Discuz!NT打造音乐社区</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130095.html\">Discuz!NT3.0 设计思路及功能展望</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130092.html\">戴志康荣获《中国企业家》300期十大封面...</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130102.html\">康盛创想完成第二轮融资 获红杉谷歌等投资</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130096.html\">Comsenz产品首次促销 五大礼包等待用户</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\">12.02</span><a href=\"http://x.discuz.net/viewnews-130097.html\">国内第一本全面关注站长群体的杂志面市</a></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><div class=\"supe_globalmodule_r\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalcaption\"><h3>本月精华</h3></div>\r\n");
+	templateBuilder.Append("    <div class=\"supebbs_top10 supenews_top10_ext\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130098.html\">Discuz!仿Facebook社交网络公测开放</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130094.html\">李明顺：解读社区营销现状及未来展望</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130104.html\">2008年第三届互联网站长年会在京成功召开</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130095.html\">Discuz!NT3.0 设计思路及功能展望</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130092.html\">戴志康荣获《中国企业家》300期十大封面...</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130102.html\">康盛创想完成第二轮融资 获红杉谷歌等投资</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130096.html\">Comsenz产品首次促销 五大礼包等待用户</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130097.html\">国内第一本全面关注站长群体的杂志面市</a></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://x.discuz.net/viewnews-130103.html\">中国领先的社区平台与服务提供商康盛创想...</a></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><!--supenews end-->\r\n");
+	templateBuilder.Append("    <div id=\"supepic\" class=\"supe_globalmodule\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalmodule_l\">\r\n");
+	templateBuilder.Append("    <div class=\"global_caption\"><h3>相 册</h3><a href=\"http://x.discuz.net/action-uchimage.html\">更多&gt;&gt;</a></div>\r\n");
+	templateBuilder.Append("    <div class=\"top_pic\">\r\n");
+	templateBuilder.Append("    <div><a href=\"http://u.discuz.net/home/space.php?uid=824829&amp;do=album&amp;id=4015\" target=\"_blank\">\r\n");
+	templateBuilder.Append("    <img src=\"upload/824829_1230523280f6N5.jpg\" alt=\"\">\r\n");
+	templateBuilder.Append("    </a></div>\r\n");
+	templateBuilder.Append("    <span><a href=\"http://u.discuz.net/home/space.php?uid=824829&amp;do=album&amp;id=4015\" target=\"_blank\">20081216</a></span></div>\r\n");
+	templateBuilder.Append("    <div class=\"supe_piclist\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=858616&amp;do=album&amp;id=1658\" target=\"_blank\"><img src=\"upload/858616_1230523238f3PA.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=858616&amp;do=album&amp;id=1658\" target=\"_blank\">我的图片</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=1024412&amp;do=album&amp;id=4207\" target=\"_blank\"><img src=\"upload/1024412_1230522832sHxx.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=1024412&amp;do=album&amp;id=4207\" target=\"_blank\">20081229</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=1042823&amp;do=album&amp;id=4116\" target=\"_blank\"><img src=\"upload/1042823_1230522347av8T.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=1042823&amp;do=album&amp;id=4116\" target=\"_blank\">就这个</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=1025728&amp;do=album&amp;id=4206\" target=\"_blank\"><img src=\"upload/1025728_1230521519JIU2.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=1025728&amp;do=album&amp;id=4206\" target=\"_blank\">11</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=1004379&amp;do=album&amp;id=3122\" target=\"_blank\"><img src=\"upload/1004379_123051423668F1.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=1004379&amp;do=album&amp;id=3122\" target=\"_blank\">偶了啦！</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=1048937&amp;do=album&amp;id=4204\" target=\"_blank\"><img src=\"upload/1048937_1230482659kOQU.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=1048937&amp;do=album&amp;id=4204\" target=\"_blank\">感兴趣图片</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=8384&amp;do=album&amp;id=4203\" target=\"_blank\"><img src=\"upload/8384_1230480902CDB9.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=8384&amp;do=album&amp;id=4203\" target=\"_blank\">漫画 臆想</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=454215&amp;do=album&amp;id=4202\" target=\"_blank\"><img src=\"upload/454215_12304770703E3R.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=454215&amp;do=album&amp;id=4202\" target=\"_blank\">1</a></span></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><div class=\"supe_globalmodule_r\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalcaption\"><h3>精彩推荐</h3></div>\r\n");
+	templateBuilder.Append("    <div class=\"supe_piclist\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=456868&amp;do=album&amp;id=4152\" target=\"_blank\"><img src=\"upload/456868_12301224654hA4.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=456868&amp;do=album&amp;id=4152\" target=\"_blank\">芬1978</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=1030882&amp;do=album&amp;id=4155\" target=\"_blank\"><img src=\"upload/1030882_1230352179XDIP.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=1030882&amp;do=album&amp;id=4155\" target=\"_blank\">20081224</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=189889&amp;do=album&amp;id=4122\" target=\"_blank\"><img src=\"upload/189889_12299561748J58.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=189889&amp;do=album&amp;id=4122\" target=\"_blank\">文博会</a></span></li>\r\n");
+	templateBuilder.Append("    <li><div><a href=\"http://u.discuz.net/home/space.php?uid=980627&amp;do=album&amp;id=4172\" target=\"_blank\"><img src=\"upload/980627_1230274184tawx.jpg\" alt=\"\"></a></div><span><a href=\"http://u.discuz.net/home/space.php?uid=980627&amp;do=album&amp;id=4172\" target=\"_blank\">圣诞大餐 不...</a></span></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><!--supepic end-->\r\n");
+	templateBuilder.Append("    <div id=\"supebbs\" class=\"supe_globalmodule\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalmodule_l\">\r\n");
+	templateBuilder.Append("    <div class=\"global_caption\"><h3>论 坛</h3><a href=\"http://x.discuz.net/action-bbs.html\">更多&gt;&gt;</a></div><div class=\"supebbs_pic\">\r\n");
+	templateBuilder.Append("    <ul><li><a href=\"http://www.discuz.net/viewthread.php?tid=452658\" target=\"_blank\"><img src=\"upload/081224153743a7409001fb0d5d.jpg\" alt=\"█ 模版风格区链接交换专帖\" title=\"█ 模版风格区链接交换专帖\"></a><h5><a href=\"http://www.discuz.net/viewthread.php?tid=452658\" target=\"_blank\">█ 模版风格区链接.</a></h5></li><li><a href=\"http://www.discuz.net/viewthread.php?tid=818897\" target=\"_blank\"><img src=\"upload/0812232330dfc98c0103adb930.jpg\" alt=\"2008新年春节红色喜气风格FOR DZ6.0中文无错宽屏版_墨香轩论坛免费分享\" title=\"2008新年春节红色喜气风格FOR DZ6.0中文无错宽屏版_墨香轩论坛免费分享\"></a><h5><a href=\"http://www.discuz.net/viewthread.php?tid=818897\" target=\"_blank\">2008新年春节红色喜.</a></h5></li><li><a href=\"http://www.discuz.net/viewthread.php?tid=806132\" target=\"_blank\"><img src=\"upload/08122311159737b7d12817c05f.gif\" alt=\"用自己的积分来评分 For 6.0.0 by lu5266\" title=\"用自己的积分来评分 For 6.0.0 by lu5266\"></a><h5><a href=\"http://www.discuz.net/viewthread.php?tid=806132\" target=\"_blank\">用自己的积分来评分.</a></h5></li><li style=\"margin-right: 0pt;\"><a href=\"http://www.discuz.net/viewthread.php?tid=806132\" target=\"_blank\"><img src=\"upload/0812251114c74ef656011b44bd.jpg\" alt=\"用自己的积分来评分 For 6.0.0 by lu5266\" title=\"用自己的积分来评分 For 6.0.0 by lu5266\"></a><h5><a href=\"http://www.discuz.net/viewthread.php?tid=806132\" target=\"_blank\">用自己的积分来评分.</a></h5></li></ul>\r\n");
+	templateBuilder.Append("    </div><div class=\"supebbs_tx\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=1904\" target=\"_blank\">fengxue</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=1015796\" target=\"_blank\">Discuz! 使用手册正式发布</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=860394\" target=\"_blank\">sisen30000</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956355\" target=\"_blank\">新注册用户不能在SS与DZ上同步，管理员老...</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=920890\" target=\"_blank\">kaloye</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956348\" target=\"_blank\">【免费网络硬盘FS2you】免费上传1G大小附...</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=897243\" target=\"_blank\">ouyangken</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956333\" target=\"_blank\">出现这样的问题，请问如何解决呢？？</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=935119\" target=\"_blank\">youpy</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956330\" target=\"_blank\">各位兄弟，有没有百度贴吧的风格？</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=481368\" target=\"_blank\">玮玮来啦</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956322\" target=\"_blank\">请改“MSNCool”风格的兄弟要注意一下。</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=865170\" target=\"_blank\">中国提琴网</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956315\" target=\"_blank\">急救（在线等）</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=438090\" target=\"_blank\">Strafer</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956313\" target=\"_blank\">SS资讯发布的编辑器也太撮了吧</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=482801\" target=\"_blank\">tam5211314</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956312\" target=\"_blank\">页尾广告的高度在哪里修改啊</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=878649\" target=\"_blank\">diabloflys</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956311\" target=\"_blank\">寻求LOGO加入FLASH动画效果的修改方法！</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=504066\" target=\"_blank\">winasp</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956310\" target=\"_blank\">横排美化求助 怎么能实现啊？</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"box_r\"><a href=\"http://x.discuz.net/space.php?uid=746027\" target=\"_blank\">cccccccyyl</a></span><a href=\"http://www.discuz.net/viewthread.php?tid=956301\" target=\"_blank\">为什么我的查询次数老是这么高啊？</a></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><div class=\"supe_globalmodule_r\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalcaption\"><h3>版块排行</h3></div>\r\n");
+	templateBuilder.Append("    <div class=\"supebbs_top10\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">1624755</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-2.html\">Discuz!安装使用</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">932342</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-26.html\">Discuz!插件Hack</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">697745</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-21.html\">Discuz!模板风格</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">277331</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-75.html\">SS/XS-安装使用</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">171070</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-73.html\">SS/XS-模板风格</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">114762</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-138.html\">UCenter Home-安装使用</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">69433</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-22.html\">Discuz!-发展建议</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">39955</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-62.html\">SS/XS-发展建议</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">30258</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-130.html\">UCenter-安装使用</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">18914</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-72.html\">SS/XS-BUG反馈</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">18719</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-88.html\">Discuz!帮助文档</a></li>\r\n");
+	templateBuilder.Append("    <li><span class=\"num\">8495</span><a href=\"http://x.discuz.net/action-forumdisplay-fid-77.html\">SS/XS-帮助文档</a></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><!--supebbs end-->\r\n");
+	templateBuilder.Append("    <div id=\"supeblog\" class=\"supe_globalmodule\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalmodule_l\">\r\n");
+	templateBuilder.Append("    <div class=\"global_caption\"><h3>日 志</h3><a href=\"http://x.discuz.net/action-uchblog.html\">更多&gt;&gt;</a></div>\r\n");
+	templateBuilder.Append("    <div class=\"supeblog_top\">\r\n");
+	templateBuilder.Append("    <dl>\r\n");
+	templateBuilder.Append("    <dt><a href=\"http://u.discuz.net/home/space.php?uid=459675\" target=\"_blank\"><img src=\"upload/avatar_011.jpg\" alt=\"\"></a></dt>\r\n");
+	templateBuilder.Append("    <dd>\r\n");
+	templateBuilder.Append("    <h5><a href=\"http://u.discuz.net/home/space.php?uid=459675&amp;do=blog&amp;id=25656\" target=\"_blank\">ACE Proactor 框架类示意图</a></h5>\r\n");
+	templateBuilder.Append("    <p></p>\r\n");
+	templateBuilder.Append("    </dd>\r\n");
+	templateBuilder.Append("    </dl>\r\n");
+	templateBuilder.Append("    <dl>\r\n");
+	templateBuilder.Append("    <dt><a href=\"http://u.discuz.net/home/space.php?uid=143632\" target=\"_blank\"><img src=\"upload/avatar_005.jpg\" alt=\"\"></a></dt>\r\n");
+	templateBuilder.Append("    <dd>\r\n");
+	templateBuilder.Append("    <h5><a href=\"http://u.discuz.net/home/space.php?uid=143632&amp;do=blog&amp;id=25646\" target=\"_blank\">2009年春节短信专题：祝福短信＋搞笑短...</a></h5>\r\n");
+	templateBuilder.Append("    <p>2009年送礼专题：过年春节送什么礼物?\r\n");
+	templateBuilder.Append("     春节短信大全\r\n");
+	templateBuilder.Append("     春节后短信大全:惦记着往日...</p>\r\n");
+	templateBuilder.Append("    </dd>\r\n");
+	templateBuilder.Append("    </dl>\r\n");
+	templateBuilder.Append("    </div><!--supeblog_top end--><div class=\"supeblog_txlist\">\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=1018819\" target=\"_blank\">niqzone</a></span><a href=\"http://u.discuz.net/home/space.php?uid=1018819&amp;do=blog&amp;id=25655\" target=\"_blank\">22岁狂徒大学生 扬言网络就是我的提款机...</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=1018819\" target=\"_blank\">niqzone</a></span><a href=\"http://u.discuz.net/home/space.php?uid=1018819&amp;do=blog&amp;id=25654\" target=\"_blank\">搜索引擎优化的链接战略</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=1024345\" target=\"_blank\">you9</a></span><a href=\"http://u.discuz.net/home/space.php?uid=1024345&amp;do=blog&amp;id=25652\" target=\"_blank\">35xp社区分享</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=302226\" target=\"_blank\">qs263</a></span><a href=\"http://u.discuz.net/home/space.php?uid=302226&amp;do=blog&amp;id=25651\" target=\"_blank\">国际米兰专卖店地址</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=248739\" target=\"_blank\">茄子</a></span><a href=\"http://u.discuz.net/home/space.php?uid=248739&amp;do=blog&amp;id=25650\" target=\"_blank\">团圆圆的私房话</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=913934\" target=\"_blank\">cometj</a></span><a href=\"http://u.discuz.net/home/space.php?uid=913934&amp;do=blog&amp;id=25649\" target=\"_blank\">上大学不是“中举”：大学生找工作要务实</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=1030638\" target=\"_blank\">李賢愛</a></span><a href=\"http://u.discuz.net/home/space.php?uid=1030638&amp;do=blog&amp;id=25648\" target=\"_blank\">其实不想走，其实不能留</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=1045471\" target=\"_blank\">天然肥料</a></span><a href=\"http://u.discuz.net/home/space.php?uid=1045471&amp;do=blog&amp;id=25647\" target=\"_blank\">坚韧不拔</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=143632\" target=\"_blank\">terryPula</a></span><a href=\"http://u.discuz.net/home/space.php?uid=143632&amp;do=blog&amp;id=25646\" target=\"_blank\">2009年春节短信专题：祝福短信＋搞笑短信...</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=1029889\" target=\"_blank\">反烟者</a></span><a href=\"http://u.discuz.net/home/space.php?uid=1029889&amp;do=blog&amp;id=25645\" target=\"_blank\">2009·送给\"烟民\"第一份新年礼...</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=933371\" target=\"_blank\">pktmandy</a></span><a href=\"http://u.discuz.net/home/space.php?uid=933371&amp;do=blog&amp;id=25644\" target=\"_blank\">浪漫的老鼠(The Tale of Despereaux)</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=988438\" target=\"_blank\">外汇操盘手</a></span><a href=\"http://u.discuz.net/home/space.php?uid=988438&amp;do=blog&amp;id=25643\" target=\"_blank\">每日外汇综述（12月29日）</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=960450\" target=\"_blank\">严保华</a></span><a href=\"http://u.discuz.net/home/space.php?uid=960450&amp;do=blog&amp;id=25642\" target=\"_blank\">Windows 7 Beta试用</a></li>\r\n");
+	templateBuilder.Append("    <li><span><a href=\"http://u.discuz.net/home/space.php?uid=1047279\" target=\"_blank\">cnxyk</a></span><a href=\"http://u.discuz.net/home/space.php?uid=1047279&amp;do=blog&amp;id=25641\" target=\"_blank\">《合肥交友网》 www.551vip.com      合...</a></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div><!--supeblog_txlist end-->\r\n");
+	templateBuilder.Append("    </div><div class=\"supe_globalmodule_r\">\r\n");
+	templateBuilder.Append("    <div class=\"supe_globalcaption\"><h3>最近更新</h3></div>\r\n");
+	templateBuilder.Append("    <ul>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1044975\" target=\"_blank\"><img src=\"upload/avatar_008.jpg\" alt=\"handsomegu\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1044975\" target=\"_blank\">handsomegu</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1044581\" target=\"_blank\"><img src=\"upload/avatar_006.jpg\" alt=\"傻哥闯江湖\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1044581\" target=\"_blank\">傻哥闯江湖</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=897301\" target=\"_blank\"><img src=\"upload/avatar_009.jpg\" alt=\"leo_12\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=897301\" target=\"_blank\">leo_12</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1904\" target=\"_blank\"><img src=\"upload/avatar_013.jpg\" alt=\"fengxue\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1904\" target=\"_blank\">fengxue</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=8384\" target=\"_blank\"><img src=\"upload/avatar.jpg\" alt=\"a_a\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=8384\" target=\"_blank\">a_a</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=978918\" target=\"_blank\"><img src=\"upload/avatar_007.jpg\" alt=\"1234530\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=978918\" target=\"_blank\">1234530</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1049290\" target=\"_blank\"><img src=\"upload/avatar_003.jpg\" alt=\"皮修\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1049290\" target=\"_blank\">皮修</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1023002\" target=\"_blank\"><img src=\"upload/avatar_014.jpg\" alt=\"莎莎sasa\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1023002\" target=\"_blank\">莎莎sasa</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1032585\" target=\"_blank\"><img src=\"upload/avatar_010.jpg\" alt=\"carrie024\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1032585\" target=\"_blank\">carrie024</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1047279\" target=\"_blank\"><img src=\"upload/avatar_002.jpg\" alt=\"cnxyk\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1047279\" target=\"_blank\">cnxyk</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=913491\" target=\"_blank\"><img src=\"upload/avatar_012.jpg\" alt=\"魅力西安\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=913491\" target=\"_blank\">魅力西安</a></span></li>\r\n");
+	templateBuilder.Append("    <li><a href=\"http://u.discuz.net/home/space.php?uid=1047141\" target=\"_blank\"><img src=\"upload/avatar_004.jpg\" alt=\"奥迪4014\"></a><span><a href=\"http://u.discuz.net/home/space.php?uid=1047141\" target=\"_blank\">奥迪4014</a></span></li>\r\n");
+	templateBuilder.Append("    </ul>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    </div><!--supeblog end-->\r\n");
+	templateBuilder.Append("    </div><!--column end-->\r\n");
+	templateBuilder.Append("    </div><!--pagebody end-->\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    <!-- Footer -->\r\n");
+	templateBuilder.Append("    <div id=\"footer\">\r\n");
+	templateBuilder.Append("    <p>\r\n");
+	templateBuilder.Append("    <a href=\"http://x.discuz.net/index.php\">SupeSite官方站</a> | \r\n");
+	templateBuilder.Append("    <a href=\"http://x.discuz.net/action-site-type-map.html\">站点地图</a> | \r\n");
+	templateBuilder.Append("    <a href=\"http://x.discuz.net/action-site-type-link.html\">友情链接</a> | \r\n");
+	templateBuilder.Append("    <a href=\"mailto:admin@yourdomain.com\">联系我们</a>\r\n");
+	templateBuilder.Append("    </p>\r\n");
+	templateBuilder.Append("    <p id=\"copyright\">\r\n");
+	templateBuilder.Append("    Powered by <a href=\"http://www.supesite.com/\" target=\"_blank\"><strong>Supe<span>Site</span></strong></a> <em title=\"20081125\">7.0 alpha</em> \r\n");
+	templateBuilder.Append("    &#169; 2001-2008 <a href=\"http://www.comsenz.com/\" target=\"_blank\">Comsenz Inc.</a>\r\n");
+	templateBuilder.Append("    </p>\r\n");
+	templateBuilder.Append("    <p>Processed in 0.017587 second(s), 0 queries, Gzip enabled<br><a href=\"http://www.miibeian.gov.cn/\" target=\"_blank\">京ICP备05079575号</a><br></p>\r\n");
+	templateBuilder.Append("    </div>\r\n");
+	templateBuilder.Append("    <!-- /Footer -->\r\n");
 	templateBuilder.Append("</body>\r\n");
 	templateBuilder.Append("</html>\r\n");
-
-
 
 	Response.Write(templateBuilder.ToString());
 }
