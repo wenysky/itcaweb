@@ -16,10 +16,10 @@ namespace LiteCMS.Web
         protected override void Page_Show()
         {
             string type = YRequest.GetString("type").ToLower();
-            messageheader = YRequest.GetString("header");
-            messagefooter = YRequest.GetString("footer");
-            messagebody = YRequest.GetString("body");
-            redirecturl = YRequest.GetString("redirecturl") == string.Empty ? "javascript:history.back(-1);" : YRequest.GetString("redirecturl");
+            messageheader = Utils.HtmlEncode(YRequest.GetString("header"));
+            messagefooter = Utils.HtmlEncode(YRequest.GetString("footer"));
+            messagebody = Utils.HtmlEncode(YRequest.GetString("body"));
+            redirecturl = YRequest.GetString("redirecturl") == string.Empty ? "javascript:history.back(-1);" : Utils.HtmlEncode(YRequest.GetString("redirecturl"));
 
             isautoredirect = type.ToLower() == "error" ? false : true;
 
