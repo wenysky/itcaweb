@@ -5,6 +5,7 @@ using System.Collections;
 using Natsuhime;
 using System.Reflection;
 using System.Diagnostics;
+using LiteCMS.Config;
 
 namespace LiteCMS.Web.Admin
 {
@@ -12,7 +13,7 @@ namespace LiteCMS.Web.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action=Natsuhime.Web.YRequest.GetString("action");
+            string action = Natsuhime.Web.YRequest.GetString("action");
             if (action == "browser")
             {
                 cbxlTemplateFileList.DataTextField = "filename";
@@ -26,7 +27,12 @@ namespace LiteCMS.Web.Admin
                 if (folder.Length > 0)
                 {
                     CreateTemplate(folder);
-                    //Response.Write("生成成功!");
+                    //读取
+                    MainConfigInfo info = MainConfigs.Load();
+                    info.Templatefolder = folder;
+                    MainConfigs.Save(info);
+                    MainConfigs.ResetConfig();
+
                     ShowMsg("模板管理", "设置默认模板成功.", "", "frame.aspx?action=template", true);
                 }
             }
@@ -34,7 +40,7 @@ namespace LiteCMS.Web.Admin
             {
                 rptFolderList.DataSource = LoadTemplateFolder();
                 rptFolderList.DataBind();
-            }    
+            }
         }
 
         private DataTable LoadTemplateFolder()
