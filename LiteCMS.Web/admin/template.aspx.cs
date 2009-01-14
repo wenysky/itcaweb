@@ -26,7 +26,8 @@ namespace LiteCMS.Web.Admin
                 if (folder.Length > 0)
                 {
                     CreateTemplate(folder);
-                    Response.Write("OK!");
+                    //Response.Write("生成成功!");
+                    ShowMsg("模板管理", "设置默认模板成功.", "", "frame.aspx?action=template", true);
                 }
             }
             else

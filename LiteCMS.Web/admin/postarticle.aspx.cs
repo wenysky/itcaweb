@@ -68,7 +68,8 @@ namespace LiteCMS.Web.Admin
             }
             Articles.RemoveArtilceCache();
 
-            Response.Redirect("articlelist.aspx?cid=" + articleinfo.Columnid);
+            ShowMsg("文章管理", "文章提交成功.", "", "articlelist.aspx?cid=" + articleinfo.Columnid, true);
+            //Response.Redirect("articlelist.aspx?cid=" + articleinfo.Columnid);
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
