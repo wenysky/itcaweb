@@ -77,7 +77,7 @@ namespace LiteCMS.Core
                     coll.Add(DataReader2ColumnInfo(reader));
                 }
                 reader.Close();
-                cache.AddObject("ColumnList", coll, MainConfigs.GetConfig().GlobalCacheTimeOut);
+                cache.AddObject("ColumnList", coll, MainConfigs.GetConfig().Globalcachetimeout);
             }
             return coll;
         }

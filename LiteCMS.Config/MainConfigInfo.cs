@@ -26,7 +26,11 @@ namespace LiteCMS.Config
         /// <summary>
         /// 全局缓存过期时间(单位:分钟)
         /// </summary>
-        public int GlobalCacheTimeOut { get; set; }
+        public int Globalcachetimeout { get; set; }
+        /// <summary>
+        /// 模板目录
+        /// </summary>
+        public string Templatefolder { get; set; }
 
         /// <summary>
         /// 关闭站点
