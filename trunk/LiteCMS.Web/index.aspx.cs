@@ -32,7 +32,7 @@ namespace LiteCMS.Web
             if (mainarticlelist == null)
             {
                 mainarticlelist = Articles.GetRecommendArticles(15, 1);
-                cache.AddObject("articlelist_indexmain", mainarticlelist, config.GlobalCacheTimeOut);
+                cache.AddObject("articlelist_indexmain", mainarticlelist, config.Globalcachetimeout);
             }
             TinyCache cache_pagecount = new TinyCache();
             object o_pagecount = cache_pagecount.RetrieveObject("pagecount_articlelist_indexmain");
@@ -43,7 +43,7 @@ namespace LiteCMS.Web
             else
             {
                 pagecount = Articles.GetRecommendArticleCollectionPageCount(15);
-                cache.AddObject("pagecount_articlelist_indexmain", pagecount, config.GlobalCacheTimeOut);
+                cache.AddObject("pagecount_articlelist_indexmain", pagecount, config.Globalcachetimeout);
             }
             pagecounthtml = config.Urlrewrite == 1 ? Utils.GetStaticPageNumbersHtml(pageid, pagecount, "showcolumn-recommend", ".aspx", 8) : Utils.GetPageNumbersHtml(pageid, pagecount, "showcolumn.aspx?type=recommend", 8, "pageid", "");
 

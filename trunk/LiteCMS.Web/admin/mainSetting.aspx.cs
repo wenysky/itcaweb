@@ -18,7 +18,7 @@ namespace LiteCMS.Web.Admin
                 tbxSEOTitle.Text = mainconfiginfo.Seotitle;
                 ckbxUrlRewrite.Checked = mainconfiginfo.Urlrewrite == 1 ? true : false;
                 tbxUrlRewriteExtName.Text = mainconfiginfo.Urlrewriteextname;
-                tbxGlobalCacheTimeOut.Text = mainconfiginfo.GlobalCacheTimeOut.ToString();
+                tbxGlobalCacheTimeOut.Text = mainconfiginfo.Globalcachetimeout.ToString();
                 tbxAnalyticsCode.Text = mainconfiginfo.Analyticscode.Trim();
             }
             else
@@ -34,7 +34,7 @@ namespace LiteCMS.Web.Admin
                     info.Cookiedomain = "";
                     info.Urlrewrite = Convert.ToInt32(ckbxUrlRewrite.Checked);
                     info.Urlrewriteextname = tbxUrlRewriteExtName.Text.Trim();
-                    info.GlobalCacheTimeOut = Convert.ToInt32(tbxGlobalCacheTimeOut.Text.Trim());
+                    info.Globalcachetimeout = Convert.ToInt32(tbxGlobalCacheTimeOut.Text.Trim());
                     info.Websitename = websitename;
                     info.Seotitle = seotitle;
                     info.Analyticscode = tbxAnalyticsCode.Text.Trim();
