@@ -29,7 +29,8 @@ namespace LiteCMS.Web.Admin
         {
             Articles.DeleteArticle(articleid);
             Articles.RemoveArtilceCache();
-            Response.Redirect("frame.aspx?action=listarticle&id=" + articleinfo.Columnid);
+            ShowMsg("文章管理", "删除成功.", "", "frame.aspx?action=listarticle&id=" + articleinfo.Columnid, true);
+            //Response.Redirect("frame.aspx?action=listarticle&id=" + articleinfo.Columnid);
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

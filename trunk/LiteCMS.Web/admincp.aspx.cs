@@ -34,7 +34,7 @@ namespace LiteCMS.Web
                 string action = YRequest.GetString("action") == string.Empty ? "default" : YRequest.GetString("action");
                 int id = YRequest.GetInt("id", 0);
 
-                url = string.Format("frame.aspx?action={1}&id={2}", adminpath, action, id);
+                url = string.Format("frame.aspx?action={0}&id={1}", action, id);
             }
             else
             {

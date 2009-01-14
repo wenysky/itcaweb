@@ -269,7 +269,7 @@ override protected void OnInit(EventArgs e)
 	{
 
 	templateBuilder.Append("    <script language='javascript' type='text/javascript'>\r\n");
-	templateBuilder.Append("    var secs = 5; //倒计时的秒数\r\n");
+	templateBuilder.Append("    var secs = 3; //倒计时的秒数\r\n");
 	templateBuilder.Append("    var URL = '");
 	templateBuilder.Append(redirecturl.ToString());
 	templateBuilder.Append("';\r\n");
