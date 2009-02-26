@@ -52,5 +52,23 @@ namespace LiteCMS.Config
         /// 统计代码
         /// </summary>
         public string Analyticscode { get; set; }
+
+        /// <summary>
+        /// 首页主聚合显示类型(0为最新所有,1为最新推荐)
+        /// </summary>
+        public int Indexmainaggregationshowtype { get; set; }
+        /// <summary>
+        /// 首页主聚合显示条数
+        /// </summary>
+        public int Indexmainaggregationshowcount { get; set; }
+
+        /// <summary>
+        /// 首页其他聚合显示类型(0为最新所有,1为最新推荐)
+        /// </summary>
+        public int IndexOtheraggregationshowtype { get; set; }
+        /// <summary>
+        /// 首页其他聚合显示条数
+        /// </summary>
+        public int IndexOtheraggregationshowcount { get; set; }
     }
 }
