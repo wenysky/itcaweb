@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -46,42 +46,42 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admincp.aspx.cs">
+    <Compile Include="cms\admincp.aspx.cs">
       <DependentUpon>admincp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="comment.aspx.cs">
+    <Compile Include="cms\comment.aspx.cs">
       <DependentUpon>comment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="findpassword.aspx.cs">
+    <Compile Include="member\findpassword.aspx.cs">
       <DependentUpon>findpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frame.aspx.cs">
+    <Compile Include="cms\frame.aspx.cs">
       <DependentUpon>frame.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="login.aspx.cs">
+    <Compile Include="member\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="loginout.aspx.cs">
+    <Compile Include="member\loginout.aspx.cs">
       <DependentUpon>loginout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="postarticle.aspx.cs">
+    <Compile Include="cms\postarticle.aspx.cs">
       <DependentUpon>postarticle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="register.aspx.cs">
+    <Compile Include="member\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="search.aspx.cs">
+    <Compile Include="cms\search.aspx.cs">
       <DependentUpon>search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -89,13 +89,20 @@
       <DependentUpon>showmessage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="uploadfile.aspx.cs">
+    <Compile Include="cms\uploadfile.aspx.cs">
       <DependentUpon>uploadfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="usercontrolpanel.aspx.cs">
+    <Compile Include="member\usercontrolpanel.aspx.cs">
       <DependentUpon>usercontrolpanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="space\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="space\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utility\dbconvert.aspx.cs">
       <DependentUpon>dbconvert.aspx</DependentUpon>
@@ -104,16 +111,16 @@
     <Compile Include="Utility\dbconvert.aspx.designer.cs">
       <DependentUpon>dbconvert.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
+    <Compile Include="cms\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="showarticle.aspx.cs">
+    <Compile Include="cms\showarticle.aspx.cs">
       <DependentUpon>showarticle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="showcolumn.aspx.cs">
+    <Compile Include="cms\showcolumn.aspx.cs">
       <DependentUpon>showcolumn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -357,21 +364,21 @@
     <Content Include="editor\utils\form_utils.js" />
     <Content Include="editor\utils\mctabs.js" />
     <Content Include="editor\utils\validate.js" />
-    <Content Include="index.aspx" />
-    <Content Include="showarticle.aspx" />
-    <Content Include="showcolumn.aspx" />
+    <Content Include="cms\index.aspx" />
+    <Content Include="cms\showarticle.aspx" />
+    <Content Include="cms\showcolumn.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\db.config" />
     <Content Include="config\urls.config" />
     <Content Include="javascript\ajaxfileupload.js" />
     <Content Include="javascript\jquery-1.2.6.js" />
-    <Content Include="login.aspx" />
-    <Content Include="loginout.aspx" />
-    <Content Include="postarticle.aspx" />
-    <Content Include="register.aspx" />
-    <Content Include="uploadfile.aspx" />
-    <Content Include="usercontrolpanel.aspx" />
+    <Content Include="member\login.aspx" />
+    <Content Include="member\loginout.aspx" />
+    <Content Include="cms\postarticle.aspx" />
+    <Content Include="member\register.aspx" />
+    <Content Include="cms\uploadfile.aspx" />
+    <Content Include="member\usercontrolpanel.aspx" />
     <Content Include="Utility\dbconvert.aspx" />
     <Content Include="Utility\dbtool.aspx" />
     <Content Include="Web.config" />
@@ -415,15 +422,16 @@
     <Content Include="Utility\TestTool.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admincp.aspx" />
-    <Content Include="comment.aspx" />
-    <Content Include="findpassword.aspx" />
-    <Content Include="frame.aspx" />
+    <Content Include="cms\admincp.aspx" />
+    <Content Include="cms\comment.aspx" />
+    <Content Include="member\findpassword.aspx" />
+    <Content Include="cms\frame.aspx" />
     <Content Include="javascript\common.js" />
     <Content Include="javascript\common_002.js" />
     <Content Include="NSWindBase.config" />
-    <Content Include="search.aspx" />
+    <Content Include="cms\search.aspx" />
     <Content Include="showmessage.aspx" />
+    <Content Include="space\index.aspx" />
     <Content Include="templates\default\images\672953_2008120210103245LtN.jpg" />
     <Content Include="templates\default\images\btn_login_min.gif" />
     <Content Include="templates\default\images\btn_search_bg.gif" />
