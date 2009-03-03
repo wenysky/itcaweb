@@ -422,6 +422,7 @@
     <Content Include="Utility\TestTool.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\mysql.sql" />
     <Content Include="cms\admincp.aspx" />
     <Content Include="cms\comment.aspx" />
     <Content Include="member\findpassword.aspx" />
