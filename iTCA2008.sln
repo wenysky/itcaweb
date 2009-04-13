@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Web", "iTCA.Yuwe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTCA.Yuwen.Web.Admin", "iTCA.Yuwen.Web\admin\iTCA.Yuwen.Web.Admin.csproj", "{26190AC0-EE8A-426A-8DB1-6EA001FDE93E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepinSummer", "..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj", "{67268E9E-AA3B-4D9E-956A-158922DA6B79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepinSummer", "..\..\..\DeepinSummer\trunk\DeepinSummer\DeepinSummer.csproj", "{67268E9E-AA3B-4D9E-956A-158922DA6B79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
