@@ -8,7 +8,7 @@
   `lastloginip` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`adminid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_articles` (
@@ -32,7 +32,7 @@ CREATE TABLE `litecms`.`wy_articles` (
   `recommend` INTEGER UNSIGNED NOT NULL,
   PRIMARY KEY (`articleid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_articletype` (
@@ -41,7 +41,7 @@ CREATE TABLE `litecms`.`wy_articletype` (
   `description` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`typeid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
@@ -54,7 +54,7 @@ CREATE TABLE `litecms`.`wy_attachments` (
   `description` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`attachmentid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_columns` (
@@ -69,7 +69,7 @@ CREATE TABLE `litecms`.`wy_columns` (
   `del` INTEGER UNSIGNED NOT NULL,
   PRIMARY KEY (`columnid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_comments` (
@@ -85,7 +85,7 @@ CREATE TABLE `litecms`.`wy_comments` (
   `articletitle` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`commentid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_groups` (
@@ -94,7 +94,7 @@ CREATE TABLE `litecms`.`wy_groups` (
   `allowpost` INTEGER UNSIGNED NOT NULL,
   PRIMARY KEY (`groupid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_templates` (
@@ -102,7 +102,7 @@ CREATE TABLE `litecms`.`wy_templates` (
   `folder` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`templateid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_users` (
@@ -130,7 +130,7 @@ CREATE TABLE `litecms`.`wy_users` (
   `secans` VARCHAR(32) NOT NULL,
   PRIMARY KEY (`uid`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
@@ -163,5 +163,5 @@ CREATE TABLE `litecms`.`wy_feeds` (
   `senddate` DATETIME NOT NULL,
   PRIMARY KEY (`feed_id`)
 )
-ENGINE = InnoDB
+ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
