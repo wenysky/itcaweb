@@ -165,3 +165,47 @@ CREATE TABLE `litecms`.`wy_feeds` (
 )
 ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE `litecms`.`wy_comments` (
+  `commentid` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `articleid` INTEGER UNSIGNED NOT NULL,
+  `uid` INTEGER UNSIGNED NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `postdate` DATETIME NOT NULL,
+  `del` INTEGER UNSIGNED NOT NULL,
+  `content` VARCHAR(1000) NOT NULL,
+  `goodcount` INTEGER UNSIGNED NOT NULL,
+  `badcount` INTEGER UNSIGNED NOT NULL,
+  `articletitle` VARCHAR(90) NOT NULL,
+  PRIMARY KEY (`commentid`)
+)
+ENGINE = MyISAM
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+CREATE TABLE  `litecms`.`wy_columns` (
+  `columnid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `columnname` varchar(45) NOT NULL,
+  `description` varchar(90) NOT NULL,
+  `allowpost` int(10) unsigned NOT NULL,
+  `allowedit` int(10) unsigned NOT NULL,
+  `allowdel` int(10) unsigned NOT NULL,
+  `shenghe` int(10) unsigned NOT NULL,
+  `parentid` int(10) unsigned NOT NULL,
+  `del` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`columnid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `litecms`.`wy_blogs` (
+  `blog_id` INTEGER UNSIGNED,
+  `title` VARCHAR(90) NOT NULL,
+  `content` TEXT NOT NULL,
+  `uid` INTEGER UNSIGNED NOT NULL,
+  `postdate` DATETIME NOT NULL,
+  `blog_type` INTEGER UNSIGNED NOT NULL,
+  `status` INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY (`blog_id`)
+)
+ENGINE = MyISAM
+CHARACTER SET utf8 COLLATE utf8_general_ci;
