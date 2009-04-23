@@ -32,7 +32,7 @@ CREATE TABLE `litecms`.`wy_articles` (
   `recommend` INTEGER UNSIGNED NOT NULL,
   PRIMARY KEY (`articleid`)
 )
-ENGINE = InnoDB;
+ENGINE = InnoDB
 CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 CREATE TABLE `litecms`.`wy_articletype` (
