@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BB8BC9A4-BB37-42DF-9B5C-DC0C9E5E35D9}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -452,27 +452,27 @@
     <Content Include="templates\default\index.htm" />
     <Content Include="templates\default\main.css" />
     <Content Include="templates\default\_header.htm" />
-    <Content Include="templates\sample\admincp.css" />
-    <Content Include="templates\sample\admincp.htm" />
-    <Content Include="templates\sample\comment.htm" />
-    <Content Include="templates\sample\frame.htm" />
-    <Content Include="templates\sample\images\login_title.gif" />
-    <Content Include="templates\sample\index.htm" />
-    <Content Include="templates\sample\login.htm" />
-    <Content Include="templates\sample\loginout.htm" />
-    <Content Include="templates\sample\main.css" />
-    <Content Include="templates\sample\postarticle.htm" />
-    <Content Include="templates\sample\register.htm" />
-    <Content Include="templates\sample\search.htm" />
-    <Content Include="templates\sample\showarticle.htm" />
-    <Content Include="templates\sample\showcolumn.htm" />
-    <Content Include="templates\sample\uploadfile.htm" />
-    <Content Include="templates\sample\usercontrolpanel.htm" />
-    <Content Include="templates\sample\_footer.htm" />
-    <Content Include="templates\sample\_header.htm" />
-    <Content Include="templates\sample\_rightside.htm" />
-    <Content Include="templates\sample\findpassword.htm" />
-    <Content Include="templates\sample\showmessage.htm" />
+    <Content Include="templates\sample\cms\admincp.css" />
+    <Content Include="templates\sample\cms\admincp.htm" />
+    <Content Include="templates\sample\cms\comment.htm" />
+    <Content Include="templates\sample\cms\findpassword.htm" />
+    <Content Include="templates\sample\cms\frame.htm" />
+    <Content Include="templates\sample\cms\images\login_title.gif" />
+    <Content Include="templates\sample\cms\index.htm" />
+    <Content Include="templates\sample\cms\login.htm" />
+    <Content Include="templates\sample\cms\loginout.htm" />
+    <Content Include="templates\sample\cms\main.css" />
+    <Content Include="templates\sample\cms\postarticle.htm" />
+    <Content Include="templates\sample\cms\register.htm" />
+    <Content Include="templates\sample\cms\search.htm" />
+    <Content Include="templates\sample\cms\showarticle.htm" />
+    <Content Include="templates\sample\cms\showcolumn.htm" />
+    <Content Include="templates\sample\cms\showmessage.htm" />
+    <Content Include="templates\sample\cms\uploadfile.htm" />
+    <Content Include="templates\sample\cms\usercontrolpanel.htm" />
+    <Content Include="templates\sample\cms\_footer.htm" />
+    <Content Include="templates\sample\cms\_header.htm" />
+    <Content Include="templates\sample\cms\_rightside.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

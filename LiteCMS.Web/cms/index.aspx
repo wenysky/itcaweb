@@ -16,7 +16,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
 	templateBuilder.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
 	templateBuilder.Append("<head>\r\n");
-	templateBuilder.Append("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/");
+	templateBuilder.Append("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/cms/");
 	templateBuilder.Append(config.Templatefolder.ToString().Trim());
 	templateBuilder.Append("/main.css\" />\r\n");
 	templateBuilder.Append("	<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />\r\n");

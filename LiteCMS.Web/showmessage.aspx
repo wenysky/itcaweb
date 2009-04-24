@@ -17,7 +17,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("<head>\r\n");
 	templateBuilder.Append("	<link rel=\"stylesheet\" type=\"text/css\" href=\"templates/");
 	templateBuilder.Append(config.Templatefolder.ToString().Trim());
-	templateBuilder.Append("/main.css\" />\r\n");
+	templateBuilder.Append("/cms/main.css\" />\r\n");
 	templateBuilder.Append("	<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />\r\n");
 
 	if (pagetitle=="")
