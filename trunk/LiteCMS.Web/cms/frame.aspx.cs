@@ -63,7 +63,7 @@ namespace LiteCMS.Web
                 {
                     url = "";
                 }
-                Server.Transfer(url);
+                Server.Transfer("../" + url);
             }
             else
             {

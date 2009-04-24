@@ -146,7 +146,7 @@ namespace LiteCMS.Web.Admin
             NewTemplate ntp = new NewTemplate("LiteCMS.Web", "");
             ntp.Productname = "LiteCMS";
             ntp.Productversion = Config.Versions.GetProductVersionFromAssembly();
-            ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/", folder)), Server.MapPath("~/"));
+            ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/", folder)), Server.MapPath("~/cms/"));
         }
     }
 }

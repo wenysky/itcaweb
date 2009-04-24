@@ -12,7 +12,7 @@ namespace LiteCMS.Web
             pagetitle = "用户登录";
             if (userid > 0)
             {
-                ShowMsg("登录消息", "您已经登录了,请不要重复登录!", "", "usercontrolpanel.aspx");
+                ShowMsg("登录消息", "您已经登录了,请不要重复登录!", "", "../member/usercontrolpanel.aspx");
             }
             if (ispost)
             {
@@ -47,7 +47,7 @@ namespace LiteCMS.Web
                             }
                         }
                         #endregion
-                        ShowMsg("登录消息", "登录成功,跳转到用户中心.", "", "usercontrolpanel.aspx");
+                        ShowMsg("登录消息", "登录成功,跳转到用户中心.", "", "../member/usercontrolpanel.aspx");
                     }
                     else
                     {

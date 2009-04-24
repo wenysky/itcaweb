@@ -33,7 +33,7 @@
                         <%# DataBinder.Eval(Container.DataItem,"folder") %>
                     </td>
                     <td style="width: 80px">
-                        <a href="frame.aspx?action=createtemplate&name=<%# DataBinder.Eval(Container.DataItem,"folder") %>">使用此模板</a>
+                        <a href="frame.aspx?action=createtemplate&name=<%# DataBinder.Eval(Container.DataItem,"folder") %>/cms">使用此模板</a>
                     </td>
                 </tr>
             </ItemTemplate>
