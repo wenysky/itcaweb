@@ -27,7 +27,7 @@ namespace LiteCMS.Web.Admin
                 string seotitle = tbxSEOTitle.Text.Trim();
                 if (websitename != string.Empty && seotitle != string.Empty)
                 {
-                    MainConfigInfo info = new MainConfigInfo();
+                    MainConfigInfo info = MainConfigs.Load();
                     info.Closed = 0;
                     info.Closedreason = "";
                     info.ApplictionSecKey = "";

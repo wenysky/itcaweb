@@ -104,6 +104,13 @@
     <Compile Include="space\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="space\postblog.aspx.cs">
+      <DependentUpon>postblog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="space\postblog.aspx.designer.cs">
+      <DependentUpon>postblog.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utility\dbconvert.aspx.cs">
       <DependentUpon>dbconvert.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -433,6 +440,7 @@
     <Content Include="cms\search.aspx" />
     <Content Include="showmessage.aspx" />
     <Content Include="space\index.aspx" />
+    <Content Include="space\postblog.aspx" />
     <Content Include="templates\default\images\672953_2008120210103245LtN.jpg" />
     <Content Include="templates\default\images\btn_login_min.gif" />
     <Content Include="templates\default\images\btn_search_bg.gif" />
@@ -452,7 +460,7 @@
     <Content Include="templates\default\index.htm" />
     <Content Include="templates\default\main.css" />
     <Content Include="templates\default\_header.htm" />
-    <Content Include="templates\sample\cms\admincp.css" />
+    <Content Include="templates\sample\admincp.css" />
     <Content Include="templates\sample\cms\admincp.htm" />
     <Content Include="templates\sample\cms\comment.htm" />
     <Content Include="templates\sample\cms\findpassword.htm" />
@@ -461,7 +469,7 @@
     <Content Include="templates\sample\cms\index.htm" />
     <Content Include="templates\sample\cms\login.htm" />
     <Content Include="templates\sample\cms\loginout.htm" />
-    <Content Include="templates\sample\cms\main.css" />
+    <Content Include="templates\sample\main.css" />
     <Content Include="templates\sample\cms\postarticle.htm" />
     <Content Include="templates\sample\cms\register.htm" />
     <Content Include="templates\sample\cms\search.htm" />

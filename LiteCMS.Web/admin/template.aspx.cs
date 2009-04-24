@@ -27,25 +27,31 @@ namespace LiteCMS.Web.Admin
                 if (folder.Length > 0)
                 {
                     CreateTemplate(folder);
-                    //读取
-                    MainConfigInfo info = MainConfigs.Load();
-                    info.Templatefolder = folder;
-                    MainConfigs.Save(info);
-                    MainConfigs.ResetConfig();
-
-                    ShowMsg("模板管理", "设置默认模板成功.", "", "frame.aspx?action=template", true);
+                    ShowMsg("模板管理", "生成模板成功.", "", "frame.aspx?action=template", true);
                 }
+            }
+            else if (action == "settemplate")
+            {
+                string folder = Natsuhime.Web.YRequest.GetString("folder");
+
+                MainConfigInfo info = MainConfigs.Load();
+                info.Templatefolder = folder;
+                MainConfigs.Save(info);
+                MainConfigs.ResetConfig();
+                ShowMsg("模板管理", "设置默认模板成功.", "", "frame.aspx?action=template", true);
             }
             else
             {
-                rptFolderList.DataSource = LoadTemplateFolder();
+                rptTemplateList.DataSource = LoadTemplateFolder();
+                rptFolderList.DataSource = LoadSubFolder();
+                rptTemplateList.DataBind();
                 rptFolderList.DataBind();
             }
         }
 
-        private DataTable LoadTemplateFolder()
+        private DataTable LoadSubFolder()
         {
-            string[] folders = Directory.GetDirectories(Server.MapPath("~/templates/"));
+            string[] folders = Directory.GetDirectories(Server.MapPath("~/templates/" + MainConfigs.Load().Templatefolder));
 
             DataTable folderlist = new DataTable("folderlist");
             folderlist.Columns.Add("folder", Type.GetType("System.String"));
@@ -54,6 +60,22 @@ namespace LiteCMS.Web.Admin
             {
                 DataRow dr = folderlist.NewRow();
                 dr["folder"] = folder.Substring(folder.LastIndexOf(Path.DirectorySeparatorChar) + 1);
+                folderlist.Rows.Add(dr);
+            }
+            return folderlist;
+        }
+
+        private DataTable LoadTemplateFolder()
+        {
+            string[] folders = Directory.GetDirectories(Server.MapPath("~/templates/"));
+
+            DataTable folderlist = new DataTable("folderlist");
+            folderlist.Columns.Add("template_folder", Type.GetType("System.String"));
+
+            foreach (string folder in folders)
+            {
+                DataRow dr = folderlist.NewRow();
+                dr["template_folder"] = folder.Substring(folder.LastIndexOf(Path.DirectorySeparatorChar) + 1);
                 folderlist.Rows.Add(dr);
             }
             return folderlist;
@@ -72,7 +94,7 @@ namespace LiteCMS.Web.Admin
             templatefilelist.Columns.Add("filepath", Type.GetType("System.String"));
             templatefilelist.Columns.Add("filedescription", Type.GetType("System.String"));
 
-            DirectoryInfo dirinfo = new DirectoryInfo(Server.MapPath("~/templates/"));
+            DirectoryInfo dirinfo = new DirectoryInfo(Server.MapPath("~/templates/" + MainConfigs.Load().Templatefolder));
             int i = 1;
             string extname;
             foreach (FileSystemInfo file in dirinfo.GetFileSystemInfos())
@@ -146,7 +168,7 @@ namespace LiteCMS.Web.Admin
             NewTemplate ntp = new NewTemplate("LiteCMS.Web", "");
             ntp.Productname = "LiteCMS";
             ntp.Productversion = Config.Versions.GetProductVersionFromAssembly();
-            ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/", folder)), Server.MapPath("~/cms/"));
+            ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/{1}/", MainConfigs.Load().Templatefolder, folder)), Server.MapPath(string.Format("~/{0}/", folder)));
         }
     }
 }

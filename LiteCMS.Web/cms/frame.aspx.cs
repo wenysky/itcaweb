@@ -45,6 +45,10 @@ namespace LiteCMS.Web
                 {
                     url = string.Format("{0}/template.aspx", adminpath);
                 }
+                else if (action == "settemplate")
+                {
+                    url = string.Format("{0}/template.aspx?action=settemplate&folder={1}", adminpath, name);
+                }
                 else if (action == "createtemplate")
                 {
                     url = string.Format("{0}/template.aspx?action=create&folder={1}", adminpath, name);
