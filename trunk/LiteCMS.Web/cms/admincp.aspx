@@ -77,7 +77,7 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("    <link rel=\"stylesheet\" href=\"templates/sample/admincp.css\" type=\"text/css\" media=\"all\" />\r\n");
+	templateBuilder.Append("    <link rel=\"stylesheet\" href=\"../templates/sample/cms/admincp.css\" type=\"text/css\" media=\"all\" />\r\n");
 
 	}	//end if
 

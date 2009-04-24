@@ -145,6 +145,7 @@ CREATE TABLE `litecms`.`wy_feeds` (
 )
 ENGINE = MyISAM
 CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE `litecms`.`wy_feeds` ADD COLUMN `url` VARCHAR(360) NOT NULL AFTER `senddate`;
 
 CREATE TABLE `litecms`.`wy_comments` (
   `commentid` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
