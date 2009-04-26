@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using LiteCMS.Core;
+using LiteCMS.Entity;
+using Natsuhime.Web;
+using Natsuhime;
 
 namespace LiteCMS.Web.space
 {
-    public partial class index : System.Web.UI.Page
+    public partial class index : BasePage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void Page_Show()
         {
-
+            
         }
     }
 }
