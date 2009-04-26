@@ -1,6 +1,6 @@
 ﻿<%namespace LiteCMS.Data%>
 <%namespace LiteCMS.Entity%>
-<%inherits LiteCMS.Web.postarticle%>
+<%inherits LiteCMS.Web.space.postblog%>
 
 <%template _header%>
 	<!--内容开始-->
@@ -9,7 +9,7 @@
 	<!--左栏开始-->
 	<div id="left-side">
 		<!--文章开始-->
-		<div class="div-header">投递文章</div>
+		<div class="div-header">写日志</div>
 		<!-- tinyMCE -->
 
         <script language="javascript" type="text/javascript" src="../editor/tiny_mce.js"></script>
@@ -30,21 +30,11 @@
         <table style="width:100%;">
                 <tr>
                     <td style="width: 96px">
-                        <select name="columnid" id="columns" style="width:96px;">
-                        <%loop (ColumnInfo) columninfo columnlist%>
-	                        <option value="{columninfo.columnid}">{columninfo.columnname}</option>
-	                    <%/loop%>
-                        </select>
                     </td>
                     <td>
                         <input name="title" type="text" style="width:100%;" />
                     </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <textarea name="summary" rows="2" cols="20" id="summary" style="height:70px;width:100%;"></textarea>
-                    </td>
-                </tr>
+                </tr>                
                 <tr>
                     <td colspan="2">
                         <textarea name="content" rows="2" cols="20" id="content" style="height:366px;width:100%;"></textarea>
@@ -84,7 +74,7 @@
                                 $.ajaxFileUpload
                                 (
                                     {
-                                        url:'uploadfile.aspx',
+                                        url:'../cms/uploadfile.aspx',
                                         secureuri:false,
                                         fileElementId:'upfile',
                                         dataType: 'json',

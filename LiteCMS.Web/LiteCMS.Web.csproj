@@ -46,7 +46,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cms\admincp.aspx.cs">
+    <Compile Include="admincp.aspx.cs">
       <DependentUpon>admincp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -61,7 +61,7 @@
       <DependentUpon>findpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="cms\frame.aspx.cs">
+    <Compile Include="frame.aspx.cs">
       <DependentUpon>frame.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -430,10 +430,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\mysql.sql" />
-    <Content Include="cms\admincp.aspx" />
+    <Content Include="admincp.aspx" />
     <Content Include="cms\comment.aspx" />
     <Content Include="member\findpassword.aspx" />
-    <Content Include="cms\frame.aspx" />
+    <Content Include="frame.aspx" />
     <Content Include="javascript\common.js" />
     <Content Include="javascript\common_002.js" />
     <Content Include="NSWindBase.config" />
@@ -465,7 +465,7 @@
     <Content Include="templates\sample\cms\comment.htm" />
     <Content Include="templates\sample\member\findpassword.htm" />
     <Content Include="templates\sample\frame.htm" />
-    <Content Include="templates\sample\cms\images\login_title.gif" />
+    <Content Include="templates\sample\images\login_title.gif" />
     <Content Include="templates\sample\cms\index.htm" />
     <Content Include="templates\sample\member\login.htm" />
     <Content Include="templates\sample\member\loginout.htm" />
@@ -478,6 +478,8 @@
     <Content Include="templates\sample\common\showmessage.htm" />
     <Content Include="templates\sample\cms\uploadfile.htm" />
     <Content Include="templates\sample\member\usercontrolpanel.htm" />
+    <Content Include="templates\sample\space\index.htm" />
+    <Content Include="templates\sample\space\postblog.htm" />
     <Content Include="templates\sample\_footer.htm" />
     <Content Include="templates\sample\_header.htm" />
     <Content Include="templates\sample\_rightside.htm" />

@@ -51,10 +51,11 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("		<div id=\"main-menu\">\r\n");
 	templateBuilder.Append("			<ul>\r\n");
 	templateBuilder.Append("				<li><a href=\"index.aspx\">首页</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
-	templateBuilder.Append("            <!--<li><a href=\"#\">博客</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"bbs/\">论坛</a></li>-->\r\n");
+	templateBuilder.Append("				<li><a href=\"/cms/index.aspx\">文章</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"/cms/showcolumn.aspx\">新闻</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"/cms/postarticle.aspx\">投递</a></li>\r\n");
+	templateBuilder.Append("                <li><a href=\"/space/index.aspx\">博客</a></li>\r\n");
+	templateBuilder.Append("				<!--<li><a href=\"bbs/\">论坛</a></li>-->\r\n");
 
 	if (userid>0)
 	{
@@ -242,7 +243,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("		<!--文章开始-->\r\n");
 	templateBuilder.Append("		<div class=\"div-header\">投递文章</div>\r\n");
 	templateBuilder.Append("		<!-- tinyMCE -->\r\n");
-	templateBuilder.Append("        <script language=\"javascript\" type=\"text/javascript\" src=\"editor/tiny_mce.js\"></"+ "script>\r\n");
+	templateBuilder.Append("        <script language=\"javascript\" type=\"text/javascript\" src=\"../editor/tiny_mce.js\"></"+ "script>\r\n");
 	templateBuilder.Append("        <script language=\"javascript\" type=\"text/javascript\">\r\n");
 	templateBuilder.Append("            // Notice: The simple theme does not use all options some of them are limited to the advanced theme\r\n");
 	templateBuilder.Append("            tinyMCE.init({\r\n");

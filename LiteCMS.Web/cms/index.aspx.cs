@@ -5,7 +5,7 @@ using LiteCMS.Entity;
 using Natsuhime.Web;
 using Natsuhime;
 
-namespace LiteCMS.Web
+namespace LiteCMS.Web.cms
 {
     public partial class index : BasePage
     {

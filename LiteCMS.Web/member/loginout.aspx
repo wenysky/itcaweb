@@ -51,10 +51,11 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("		<div id=\"main-menu\">\r\n");
 	templateBuilder.Append("			<ul>\r\n");
 	templateBuilder.Append("				<li><a href=\"index.aspx\">首页</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"showcolumn.aspx\">新闻</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"postarticle.aspx\">投递</a></li>\r\n");
-	templateBuilder.Append("            <!--<li><a href=\"#\">博客</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"bbs/\">论坛</a></li>-->\r\n");
+	templateBuilder.Append("				<li><a href=\"/cms/index.aspx\">文章</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"/cms/showcolumn.aspx\">新闻</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"/cms/postarticle.aspx\">投递</a></li>\r\n");
+	templateBuilder.Append("                <li><a href=\"/space/index.aspx\">博客</a></li>\r\n");
+	templateBuilder.Append("				<!--<li><a href=\"bbs/\">论坛</a></li>-->\r\n");
 
 	if (userid>0)
 	{

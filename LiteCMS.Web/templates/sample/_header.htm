@@ -17,10 +17,11 @@
 		<div id="main-menu">
 			<ul>
 				<li><a href="index.aspx">首页</a></li>
-				<li><a href="showcolumn.aspx">新闻</a></li>
-				<li><a href="postarticle.aspx">投递</a></li>
-            <!--<li><a href="#">博客</a></li>
-				<li><a href="bbs/">论坛</a></li>-->
+				<li><a href="/cms/index.aspx">文章</a></li>
+				<li><a href="/cms/showcolumn.aspx">新闻</a></li>
+				<li><a href="/cms/postarticle.aspx">投递</a></li>
+                <li><a href="/space/index.aspx">博客</a></li>
+				<!--<li><a href="bbs/">论坛</a></li>-->
 		    <%if {userid}>0%>
 				<li><a href="/member/usercontrolpanel.aspx">用户中心[{username}]</a></li>
 			    <%if {adminid>0}%>
