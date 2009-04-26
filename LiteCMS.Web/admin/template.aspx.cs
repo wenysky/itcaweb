@@ -6,6 +6,7 @@ using Natsuhime;
 using System.Reflection;
 using System.Diagnostics;
 using LiteCMS.Config;
+using System.Collections.Generic;
 
 namespace LiteCMS.Web.Admin
 {
@@ -23,12 +24,37 @@ namespace LiteCMS.Web.Admin
             }
             else if (action == "create")
             {
+                List<KeyValuePair<string, string>> templateFileList = new List<KeyValuePair<string, string>>();
+                string rootTemplatePath = Server.MapPath(string.Format(@"~\templates\{0}", MainConfigs.Load().Templatefolder));
+
                 string folder = Natsuhime.Web.YRequest.GetString("folder");
                 if (folder.Length > 0)
                 {
-                    CreateTemplate(folder);
-                    ShowMsg("模板管理", "生成模板成功.", "", "frame.aspx?action=template", true);
+                    string[] baseRefTemplateList = Directory.GetFiles(rootTemplatePath, "_*.htm");
+                    foreach (string file in baseRefTemplateList)
+                    {
+                        templateFileList.Add(new KeyValuePair<string, string>(file, ""));
+                    }
+
+                    string folderTemplatePath = Path.Combine(rootTemplatePath, folder);
+                    string[] mainTemplateList = Directory.GetFiles(folderTemplatePath, "*.htm");
+                    foreach (string file in mainTemplateList)
+                    {
+                        templateFileList.Add(new KeyValuePair<string, string>(file, Server.MapPath("~/" + folder)));
+                    }
                 }
+                else
+                {
+                    string[] allTemplateList = Directory.GetFiles(rootTemplatePath, "*.htm", SearchOption.AllDirectories);
+                    foreach (string file in allTemplateList)
+                    {
+                        string currentFolder = Path.GetDirectoryName(file);
+                        string outputPath = Server.MapPath("~\\" + currentFolder.Replace(rootTemplatePath, ""));
+                        templateFileList.Add(new KeyValuePair<string, string>(file, outputPath));
+                    }
+                }
+                CreateTemplate(templateFileList);
+                ShowMsg("模板管理", "生成模板成功.", "", "frame.aspx?action=template", true);
             }
             else if (action == "settemplate")
             {
@@ -64,7 +90,6 @@ namespace LiteCMS.Web.Admin
             }
             return folderlist;
         }
-
         private DataTable LoadTemplateFolder()
         {
             string[] folders = Directory.GetDirectories(Server.MapPath("~/templates/"));
@@ -80,7 +105,6 @@ namespace LiteCMS.Web.Admin
             }
             return folderlist;
         }
-
         private DataTable LoadTemplateFileList()
         {
             #region 装入模板文件
@@ -140,7 +164,7 @@ namespace LiteCMS.Web.Admin
         protected void btnCreateAll_Click(object sender, EventArgs e)
         {
             string folder = "";
-            CreateTemplate(folder);
+            //CreateTemplate(folder);
             /*
             Hashtable ht = new Hashtable();
             DirectoryInfo dirinfo = new DirectoryInfo(Server.MapPath("~/templates/"));
@@ -163,12 +187,19 @@ namespace LiteCMS.Web.Admin
             Response.Write("OK!");
         }
 
-        private void CreateTemplate(string folder)
+        private void CreateTemplate(List<KeyValuePair<string, string>> templateFileList)
         {
             NewTemplate ntp = new NewTemplate("LiteCMS.Web", "");
             ntp.Productname = "LiteCMS";
             ntp.Productversion = Config.Versions.GetProductVersionFromAssembly();
-            ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/{1}/", MainConfigs.Load().Templatefolder, folder)), Server.MapPath(string.Format("~/{0}/", folder)));
+            ntp.CreateFromFileList(templateFileList);
+            //if (folder.Length > 0)
+            //{
+            //    ntp.CreateFromFolder(Server.MapPath(string.Format("~/templates/{0}/{1}/", MainConfigs.Load().Templatefolder, folder)), Server.MapPath(string.Format("~/{0}/", folder)));
+            //}
+            //else
+            //{
+            //}
         }
     }
 }

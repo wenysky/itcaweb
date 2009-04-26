@@ -85,7 +85,7 @@
       <DependentUpon>search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="showmessage.aspx.cs">
+    <Compile Include="common\showmessage.aspx.cs">
       <DependentUpon>showmessage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -148,7 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\information.txt" />
-    <Content Include="code.aspx" />
+    <Content Include="common\code.aspx" />
     <Content Include="config\sql.txt" />
     <Content Include="config\sqlite.txt" />
     <Content Include="App_Data\db.txt" />
@@ -438,7 +438,7 @@
     <Content Include="javascript\common_002.js" />
     <Content Include="NSWindBase.config" />
     <Content Include="cms\search.aspx" />
-    <Content Include="showmessage.aspx" />
+    <Content Include="common\showmessage.aspx" />
     <Content Include="space\index.aspx" />
     <Content Include="space\postblog.aspx" />
     <Content Include="templates\default\images\672953_2008120210103245LtN.jpg" />
@@ -461,26 +461,26 @@
     <Content Include="templates\default\main.css" />
     <Content Include="templates\default\_header.htm" />
     <Content Include="templates\sample\admincp.css" />
-    <Content Include="templates\sample\cms\admincp.htm" />
+    <Content Include="templates\sample\admincp.htm" />
     <Content Include="templates\sample\cms\comment.htm" />
-    <Content Include="templates\sample\cms\findpassword.htm" />
-    <Content Include="templates\sample\cms\frame.htm" />
+    <Content Include="templates\sample\member\findpassword.htm" />
+    <Content Include="templates\sample\frame.htm" />
     <Content Include="templates\sample\cms\images\login_title.gif" />
     <Content Include="templates\sample\cms\index.htm" />
-    <Content Include="templates\sample\cms\login.htm" />
-    <Content Include="templates\sample\cms\loginout.htm" />
+    <Content Include="templates\sample\member\login.htm" />
+    <Content Include="templates\sample\member\loginout.htm" />
     <Content Include="templates\sample\main.css" />
     <Content Include="templates\sample\cms\postarticle.htm" />
-    <Content Include="templates\sample\cms\register.htm" />
+    <Content Include="templates\sample\member\register.htm" />
     <Content Include="templates\sample\cms\search.htm" />
     <Content Include="templates\sample\cms\showarticle.htm" />
     <Content Include="templates\sample\cms\showcolumn.htm" />
-    <Content Include="templates\sample\cms\showmessage.htm" />
+    <Content Include="templates\sample\common\showmessage.htm" />
     <Content Include="templates\sample\cms\uploadfile.htm" />
-    <Content Include="templates\sample\cms\usercontrolpanel.htm" />
-    <Content Include="templates\sample\cms\_footer.htm" />
-    <Content Include="templates\sample\cms\_header.htm" />
-    <Content Include="templates\sample\cms\_rightside.htm" />
+    <Content Include="templates\sample\member\usercontrolpanel.htm" />
+    <Content Include="templates\sample\_footer.htm" />
+    <Content Include="templates\sample\_header.htm" />
+    <Content Include="templates\sample\_rightside.htm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />
