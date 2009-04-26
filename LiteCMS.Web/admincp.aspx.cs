@@ -20,12 +20,12 @@ namespace LiteCMS.Web
                     admincookie.Expires = DateTime.Now.AddYears(-1);
                     currentcontext.Response.AppendCookie(admincookie);
                 }
-                ShowMsg("注销管理状态", "管理员登录注销成功,跳转到前台首页.", "", "cms/index.aspx");
+                ShowMsg("注销管理状态", "管理员登录注销成功,跳转到前台首页.", "", "../cms/index.aspx");
             }
             UserInfo userinfo = GetUserInfo();
             if (userinfo == null)
             {
-                ShowError("后台登陆", "发生错误,请先登录前台,然后再访问此页.", "", "member/login.aspx");
+                ShowError("后台登陆", "发生错误,请先登录前台,然后再访问此页.", "", "../member/login.aspx");
             }
 
             IsAdminLogined();
@@ -56,7 +56,7 @@ namespace LiteCMS.Web
                         admincookie.Expires = DateTime.Now.AddMinutes(20d);
                         currentcontext.Response.AppendCookie(admincookie);
 
-                        ShowMsg("后台登陆", "登录成功!开始跳转到后台首页", "", "cms/admincp.aspx");
+                        ShowMsg("后台登陆", "登录成功!开始跳转到后台首页", "", "../admincp.aspx");
                     }
                     else
                     {

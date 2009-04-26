@@ -59,25 +59,25 @@ override protected void OnInit(EventArgs e)
 	if (userid>0)
 	{
 
-	templateBuilder.Append("				<li><a href=\"usercontrolpanel.aspx\">用户中心[");
+	templateBuilder.Append("				<li><a href=\"/member/usercontrolpanel.aspx\">用户中心[");
 	templateBuilder.Append(username.ToString());
 	templateBuilder.Append("]</a></li>\r\n");
 
 	if (adminid>0)
 	{
 
-	templateBuilder.Append("				<li><a href=\"admincp.aspx\" target=\"_blank\">系统设置</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"/admincp.aspx\" target=\"_blank\">系统设置</a></li>\r\n");
 
 	}	//end if
 
-	templateBuilder.Append("				<li><a href=\"loginout.aspx\">注销</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"/member/loginout.aspx\">注销</a></li>\r\n");
 
 	}
 	else
 	{
 
-	templateBuilder.Append("				<li><a href=\"login.aspx\">登录</a></li>\r\n");
-	templateBuilder.Append("				<li><a href=\"register.aspx\">注册</a></li>			\r\n");
+	templateBuilder.Append("				<li><a href=\"/member/login.aspx\">登录</a></li>\r\n");
+	templateBuilder.Append("				<li><a href=\"/member/register.aspx\">注册</a></li>			\r\n");
 
 	}	//end if
 

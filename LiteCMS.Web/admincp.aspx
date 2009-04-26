@@ -77,7 +77,7 @@ override protected void OnInit(EventArgs e)
 	else
 	{
 
-	templateBuilder.Append("    <link rel=\"stylesheet\" href=\"../templates/sample/cms/admincp.css\" type=\"text/css\" media=\"all\" />\r\n");
+	templateBuilder.Append("    <link rel=\"stylesheet\" href=\"templates/sample/admincp.css\" type=\"text/css\" media=\"all\" />\r\n");
 
 	}	//end if
 
@@ -144,7 +144,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("                <p class=\"loginform\"><input name=\"path\" tabindex=\"3\" type=\"text\" class=\"txt\"></p>\r\n");
 	templateBuilder.Append("                <p class=\"loginnofloat\"><input name=\"submit\" value=\"提交\" tabindex=\"3\" type=\"submit\" class=\"btn\"></p>\r\n");
 	templateBuilder.Append("                </form>\r\n");
-	templateBuilder.Append("                <script type=\"text/javascript\">document.getelementbyid('loginform').loginname.focus();</"+ "script>\r\n");
+	templateBuilder.Append("                <script type=\"text/javascript\">document.getElementById('loginform').loginname.focus();</"+ "script>\r\n");
 	templateBuilder.Append("            </td>            \r\n");
 	templateBuilder.Append("        </tr>\r\n");
 	templateBuilder.Append("        <tr>\r\n");
