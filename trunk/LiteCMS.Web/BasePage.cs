@@ -191,7 +191,7 @@ namespace LiteCMS.Web
         protected void ShowMsg(string header, string body, string footer, string redirecturl)
         {
             currentcontext.Response.Redirect(
-                string.Format("../showmessage.aspx?type=msg&header={0}&body={1}&footer={2}&redirecturl={3}",
+                string.Format("/common/showmessage.aspx?type=msg&header={0}&body={1}&footer={2}&redirecturl={3}",
                     Utils.UrlEncode(header),
                     Utils.UrlEncode(body),
                     Utils.UrlEncode(footer),
